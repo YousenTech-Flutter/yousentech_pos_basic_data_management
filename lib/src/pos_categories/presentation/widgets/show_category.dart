@@ -83,7 +83,7 @@ showCategorysDialog({required List items}) {
                       context: Get.context!,
                       showIndex: true,
                       addEmpty: false),
-                  buildBodyTable(category: items)
+                  buildBodyTablePosCategory(category: items)
                 ],
               )),
               // Expanded(
@@ -238,7 +238,7 @@ showCategorysDialog({required List items}) {
 }
 
 // buildBodyTable({required List<PosCategory> customer}) {
-buildBodyTable({required List category}) {
+buildBodyTablePosCategory({required List category}) {
   return Expanded(
     child: ListView.builder(
       itemCount: category.length,

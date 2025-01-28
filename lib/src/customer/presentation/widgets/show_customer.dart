@@ -35,7 +35,7 @@ showCustomersDialog({required List items}) {
                       color: AppColor.cyanTeal,
                       context: Get.context!,
                       addEmpty: false),
-                  buildBodyTable(customer: items)
+                  buildBodyTableCustomer(customer: items)
                 ],
               )),
 
@@ -315,7 +315,7 @@ showCustomersDialog({required List items}) {
 }
 
 // buildBodyTable({required List<Customer> customer}) {
-buildBodyTable({required List customer}) {
+buildBodyTableCustomer({required List customer}) {
   return Expanded(
     child: ListView.builder(
       itemCount: customer.length,
