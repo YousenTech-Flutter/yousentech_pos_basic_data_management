@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/shared_widgets/app_no_data.dart';
 import 'package:shared_widgets/shared_widgets/app_text_field.dart';
-import 'package:yousentech_pos_basic_data_management/config/app_list.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/config/app_list.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/account_tax/utils/build_body_table.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/widget/tital.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_basic_data_table.dart';
@@ -174,13 +174,7 @@ class _PosAccountTaxListScreenState extends State<PosAccountTaxListScreen> {
                       ? Container(
                           margin: EdgeInsets.only(left: 20.r, right: 20.r),
                           child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              // Header
-                              // buildBasicDataColumnHeader(
-                              //     data: taxHeader,
-                              //     context: context,
-                              //     addEmpty: false),
                               buildBasicDataColumnHeader(
                                   data: taxHeader,
                                   color: AppColor.cyanTeal,

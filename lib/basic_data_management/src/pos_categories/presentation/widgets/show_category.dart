@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/shared_widgets/app_dialog.dart';
-import 'package:yousentech_pos_basic_data_management/config/app_list.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/config/app_list.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_basic_data_table.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/yousentech_pos_loading_synchronizing_data.dart';
 

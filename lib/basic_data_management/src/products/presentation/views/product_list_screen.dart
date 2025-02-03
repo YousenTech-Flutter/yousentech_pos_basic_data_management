@@ -13,7 +13,7 @@ import 'package:shared_widgets/shared_widgets/app_no_data.dart';
 import 'package:shared_widgets/shared_widgets/app_snack_bar.dart';
 import 'package:shared_widgets/shared_widgets/app_text_field.dart';
 import 'package:shared_widgets/utils/mac_address_helper.dart';
-import 'package:yousentech_pos_basic_data_management/config/app_list.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/config/app_list.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_service.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/views/add_edit_product_screen.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/widget/show_product.dart';

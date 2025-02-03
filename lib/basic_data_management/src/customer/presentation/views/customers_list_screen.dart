@@ -12,7 +12,7 @@ import 'package:shared_widgets/shared_widgets/app_no_data.dart';
 import 'package:shared_widgets/shared_widgets/app_snack_bar.dart';
 import 'package:shared_widgets/shared_widgets/app_text_field.dart';
 import 'package:shared_widgets/utils/mac_address_helper.dart';
-import 'package:yousentech_pos_basic_data_management/config/app_list.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/config/app_list.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_service.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_viewmodel.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/presentation/views/create_customer.dart';
@@ -21,9 +21,6 @@ import 'package:yousentech_pos_basic_data_management/basic_data_management/src/c
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/widget/tital.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_basic_data_table.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/define_type_function.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/config/app_enums.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/config/app_list.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/utils/fetch_date.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/yousentech_pos_loading_synchronizing_data.dart';
 
 class CustomersListScreen extends StatefulWidget {
