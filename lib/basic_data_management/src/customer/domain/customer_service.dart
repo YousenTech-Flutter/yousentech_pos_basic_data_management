@@ -1,14 +1,13 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:odoo_rpc/odoo_rpc.dart';
-
 import 'package:pos_shared_preferences/models/customer_model.dart';
 import 'package:shared_widgets/config/app_odoo_models.dart';
 import 'package:shared_widgets/shared_widgets/handle_exception_helper.dart';
 import 'package:shared_widgets/shared_widgets/odoo_connection_helper.dart';
 import 'package:shared_widgets/utils/mac_address_helper.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_repository.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/yousentech_pos_loading_synchronizing_data.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_service.dart';
 import 'package:yousentech_pos_local_db/yousentech_pos_local_db.dart';
 
 import '../../item_history/domain/item_history_viewmodel.dart';

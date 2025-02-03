@@ -8,7 +8,8 @@ import 'package:shared_widgets/shared_widgets/odoo_connection_helper.dart';
 import 'package:shared_widgets/utils/mac_address_helper.dart';
 import 'package:shared_widgets/utils/response_result.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_viewmodel.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/utils/fetch_date.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_service.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/yousentech_pos_loading_synchronizing_data.dart';
 
 import '../../item_history/domain/item_history_viewmodel.dart';
@@ -97,7 +98,7 @@ class PosCategoryController extends GetxController {
           if (connectCategoryWithPos is bool) {
             await posCategoryService.create(
                 obj: posCategory, isRemotelyAdded: true);
-
+            LoadingDataController loadingDataController = Get.find<LoadingDataController>();
             loadingDataController.posCategoryIdsList.add(posCategory.id!);
             await loadingDataController.getitems();
 

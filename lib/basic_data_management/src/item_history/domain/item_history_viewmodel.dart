@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:pos_shared_preferences/models/basic_item_history.dart';
 import 'package:shared_widgets/utils/response_result.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/utils/define_type_function.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/utils/define_type_function.dart';
 import 'item_history_service.dart';
 
 class ItemHistoryController extends GetxController {

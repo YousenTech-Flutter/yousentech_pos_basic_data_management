@@ -12,9 +12,9 @@ import 'package:shared_widgets/utils/mac_address_helper.dart';
 import 'package:shared_widgets/utils/response_result.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/product_unit/domain/product_unit_service.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_service.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/config/app_enums.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/utils/fetch_date.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/yousentech_pos_loading_synchronizing_data.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_service.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
 import '../../item_history/domain/item_history_viewmodel.dart';
 import '../../pos_categories/domain/pos_category_service.dart';
 
@@ -125,6 +125,9 @@ class ProductController extends GetxController {
       String type = "current",
       int pageselecteed = -1,
       int? countSkip}) async {
+
+    LoadingDataController loadingDataController =
+      Get.find<LoadingDataController>();
     // if (kDebugMode) {
     //   print('filtterResults LENGTH 11 : ${filtterResults.length}');
     //   print('searchResults LENGTH 22:=== ${searchResults.length}');

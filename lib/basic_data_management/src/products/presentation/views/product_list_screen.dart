@@ -22,9 +22,9 @@ import 'package:yousentech_pos_basic_data_management/basic_data_management/src/p
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/utils/filtter_product_categ.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_basic_data_table.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/define_type_function.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/config/app_enums.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/config/app_list.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/utils/fetch_date.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_list.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/yousentech_pos_loading_synchronizing_data.dart';
 import '../../domain/product_viewmodel.dart';
 
@@ -41,6 +41,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Color iconcolor = AppColor.greyWithOpcity;
   TextEditingController searchBarController = TextEditingController();
   TextEditingController pagnationController = TextEditingController();
+  LoadingDataController loadingDataController = Get.find<LoadingDataController>();
   int selectedpag = 0;
   int skip = 0;
   int pagesNumber = 0;

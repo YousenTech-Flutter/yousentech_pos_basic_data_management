@@ -25,8 +25,8 @@ import 'package:shared_widgets/utils/response_result.dart';
 import 'package:shared_widgets/utils/validator_helper.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/account_tax/domain/account_tax_service.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/widget/tital.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/config/app_enums.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/utils/fetch_date.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
 import '../../domain/product_service.dart';
 import '../../domain/product_viewmodel.dart';
 
@@ -43,6 +43,9 @@ class AddProductScreen extends StatefulWidget {
 class _AddProductScreenState extends State<AddProductScreen> {
   final ProductController productController =
       Get.put(ProductController(), tag: 'productControllerMain');
+  LoadingDataController loadingDataController =
+      Get.find<LoadingDataController>();
+
   // TODO :CHEACK IF THE CODE IS NESSICERE
   // final DashboardController dashboardController =
   //     Get.put(DashboardController.getInstance());

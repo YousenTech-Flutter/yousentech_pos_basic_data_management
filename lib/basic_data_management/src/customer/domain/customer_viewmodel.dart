@@ -5,8 +5,8 @@ import 'package:shared_widgets/shared_widgets/handle_exception_helper.dart';
 import 'package:shared_widgets/shared_widgets/odoo_connection_helper.dart';
 import 'package:shared_widgets/utils/response_result.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_service.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/config/app_enums.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/utils/fetch_date.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
 
 class CustomerController extends GetxController {
   final loading = false.obs;
@@ -151,6 +151,8 @@ class CustomerController extends GetxController {
       String type = "current",
       int pageselecteed = -1,
       int? countSkip}) async {
+    LoadingDataController loadingDataController =
+      Get.find<LoadingDataController>();
     dynamic result;
     RxList<Customer> searchFiltterResult =
         searchResults.isNotEmpty ? searchResults : RxList<Customer>();

@@ -16,10 +16,9 @@ import 'package:yousentech_pos_basic_data_management/basic_data_management/src/p
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/views/add_edit_pos_category_screen.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/widgets/show_category.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/define_type_function.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/config/app_enums.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/config/app_list.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/utils/fetch_date.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/yousentech_pos_loading_synchronizing_data.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_list.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
 import '../../../products/presentation/widget/tital.dart';
 import '../../domain/pos_category_viewmodel.dart';
 
@@ -34,7 +33,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
   // Initialize the posCategoryController using Get.put or Get.find
   late final PosCategoryController posCategoryController;
   TextEditingController searchBarController = TextEditingController();
-
+  LoadingDataController loadingDataController = Get.find<LoadingDataController>();
   @override
   void initState() {
     super.initState();

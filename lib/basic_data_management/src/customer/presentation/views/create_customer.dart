@@ -25,8 +25,8 @@ import 'package:shared_widgets/shared_widgets/custom_app_bar.dart';
 import 'package:shared_widgets/utils/validator_helper.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_viewmodel.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/widget/tital.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/config/app_enums.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/utils/fetch_date.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
+import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
 
 // ignore: must_be_immutable
 class AddCustomerScreen extends StatefulWidget {
@@ -901,7 +901,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                   id: customer!.id!.toInt(), customer: customer!)
               : await customerController.createCustomerRemotAndLocal(
                   customer: customer!);
-
+          LoadingDataController loadingDataController = Get.find<LoadingDataController>();
           await loadingDataController.getitems();
           pagesNumber = (loadingDataController
                       .itemdata[Loaddata.customers.name.toString()]['local'] ~/
