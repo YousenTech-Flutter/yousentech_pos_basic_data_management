@@ -9,8 +9,9 @@ import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domai
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/utils/define_type_function.dart';
 
 
-LoadingDataController loadingDataController = Get.find<LoadingDataController>();
+
 Future synchronizeBasedOnModelType({required String type}) async {
+  LoadingDataController loadingDataController = Get.find<LoadingDataController>();
   Type typex = getModelClass(type);
   var result;
 
@@ -34,6 +35,7 @@ Future synchronizeBasedOnModelType({required String type}) async {
 }
 
 Future displayDataDiffBasedOnModelType({required String type}) async {
+  LoadingDataController loadingDataController = Get.find<LoadingDataController>();
   loadingDataController.isUpdate.value = true;
   Type typex = getModelClass(type);
   var result;
