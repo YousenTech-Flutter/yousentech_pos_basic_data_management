@@ -221,9 +221,18 @@ class ProductService extends ProductRepository {
         .update(id: id, obj: obj, whereField: 'id');
   }
 
+  @override
+  Future<int> updateList({
+    required List recordsList,
+    String whereKey = 'product_id',
+    required List<int> productIds
+  }) async {
+    _generalLocalDBInstance = GeneralLocalDB.getInstance<Product>(fromJsonFun: Product.fromJson) as GeneralLocalDB<Product>?;
+    return await _generalLocalDBInstance!.updateList(recordsList: recordsList, whereKey: whereKey, ids: productIds);
+  }
+
   Future updateProductRemotely({required int id, required obj}) async {
     try {
-      // print("id : $id");
       var result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.productTemplate,
         'method': 'write',
