@@ -70,7 +70,6 @@ class _AddPosCategoryScreenState extends State<AddPosCategoryScreen> {
     return GetBuilder<PosCategoryController>(
         tag: 'categoryControllerMain',
         builder: (controller) {
-          print("posCategory!.parentId ${posCategory?.parentId}");
           return IgnorePointer(
             ignoring: posCategoryController.isLoading.value,
             child: SizedBox(
