@@ -446,8 +446,7 @@ buildBodyTable({required List product}) {
                                       fit: BoxFit.contain,
                                       image: AssetImage(
                                         "assets/image/product.png",
-                                        package:
-                                            'yousentech_pos_basic_data_management',
+                                        package:'yousentech_pos_basic_data_management',
                                       )),
                                 ),
                                 // child:
