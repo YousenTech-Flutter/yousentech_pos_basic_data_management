@@ -36,7 +36,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
   late final CustomerController customerController;
   TextEditingController searchBarController = TextEditingController();
   TextEditingController pagnationController = TextEditingController();
-  LoadingDataController loadingDataController = Get.find<LoadingDataController>();
+  LoadingDataController loadingDataController =
+      Get.find<LoadingDataController>();
   int selectedpag = 0;
   int skip = 0;
   int pagesNumber = 0;
@@ -73,7 +74,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
     super.didUpdateWidget(oldWidget);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
@@ -103,7 +103,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       TitalWidget(title: 'customer_list'.tr),
-
                                       Container(
                                         margin: EdgeInsets.only(
                                             top: 10.r, left: 20.r, right: 20.r),
@@ -320,7 +319,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                     },
                                                     child: Container(
                                                       height: 30.h,
-                                                      width: 25.w,
+                                                      width: 30.w,
                                                       alignment:
                                                           Alignment.center,
                                                       decoration: BoxDecoration(
@@ -657,11 +656,12 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                           children: <TextSpan>[
                                                                             TextSpan(
                                                                               text: '${'synchronization'.tr} : ',
+                                                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10.r, fontFamily: 'Tajawal'),
                                                                             ),
                                                                             // get the number
                                                                             TextSpan(
                                                                               text: '${per.toInt()} % ',
-                                                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 3.sp, fontFamily: 'Tajawal'),
+                                                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10.r, fontFamily: 'Tajawal'),
                                                                             ),
                                                                           ],
                                                                         ),
@@ -680,7 +680,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                           ],
                                         ),
                                       ),
-
                                       SizedBox(
                                         height: 10.r,
                                       ),

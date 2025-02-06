@@ -100,609 +100,627 @@ class _AddProductScreenState extends State<AddProductScreen> {
               child: Stack(
                 children: [
                   Center(
-                      child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TitalWidget(
-                          title: (product?.id == null)
-                              ? 'add_new_product'
-                              : 'edit_product'),
-                      Container(
-                        margin:
-                            EdgeInsets.only(top: 10.r, left: 20.r, right: 20.r),
-                        padding: EdgeInsets.all(20.r),
-                        width: 0.6.sw,
-                        height: 0.52.sh,
-                        decoration: BoxDecoration(
-                          color: AppColor.white,
-                          borderRadius: BorderRadius.circular(5.r),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColor.semitransparentblack,
-                              blurRadius: 35,
-                              offset: const Offset(0, 4),
-                              spreadRadius: 0,
-                            )
-                          ],
-                        ),
-                        child: Form(
-                          key: _formKey,
-                          child: Column(
-                            children: [
-                              Expanded(
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                        flex: 2,
-                                        child: Column(
-                                          children: [
-                                            ContainerTextField(
-                                              controller: nameController,
-                                              height: 30.h,
-                                              labelText: '',
-                                              hintText: 'product_name'.tr,
-                                              fontSize: 10.r,
-                                              fillColor: AppColor.white,
-                                              borderColor: AppColor.silverGray,
-                                              hintcolor: AppColor.black
-                                                  .withOpacity(0.5),
-                                              isAddOrEdit: true,
-                                              borderRadius: 5.r,
-                                              prefixIcon: Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 5.r,
-                                                    vertical: 5.r),
-                                                child: SvgPicture.asset(
-                                                  "assets/image/name_product.svg",
-                                                  package:
-                                                      'yousentech_pos_basic_data_management',
-                                                  width: 19.r,
-                                                  height: 19.r,
-                                                ),
-                                              ),
-                                              validator: (value) {
-                                                if (value == null ||
-                                                    value.isEmpty) {
-                                                  errorMessage =
-                                                      'required_message'
-                                                          .trParams({
-                                                    'field_name':
-                                                        'product_name'.tr
-                                                  });
-                                                  countErrors++;
-                                                  return "";
-                                                }
-                                                return null;
-                                              },
-                                              onChanged: (text) async {},
-                                            ),
-                                            SizedBox(
-                                              height: 10.r,
-                                            ),
-                                            Row(
-                                              children: [
-                                                Expanded(
-                                                  child: ContainerTextField(
-                                                    inputFormatters: [
-                                                      FilteringTextInputFormatter
-                                                          .allow(RegExp(
-                                                              '[0-9\$]+')),
-                                                    ],
-                                                    controller:
-                                                        unitPriceController,
-                                                    height: 30.h,
-                                                    labelText: '',
-                                                    hintText:
-                                                        'product_unit_price'.tr,
-                                                    fontSize: 10.r,
-                                                    fillColor: AppColor.white,
-                                                    borderColor:
-                                                        AppColor.silverGray,
-                                                    hintcolor: AppColor.black
-                                                        .withOpacity(0.5),
-                                                    isAddOrEdit: true,
-                                                    borderRadius: 5.r,
-                                                    prefixIcon: Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 5.r,
-                                                              vertical: 5.r),
-                                                      child: SvgPicture.asset(
-                                                        "assets/image/price_2.svg",
-                                                        package:
-                                                            'yousentech_pos_basic_data_management',
-                                                        width: 19.r,
-                                                        height: 19.r,
-                                                        color: AppColor.amber,
-                                                      ),
-                                                    ),
-                                                    validator: (value) {
-                                                      var message = ValidatorHelper
-                                                          .priceValidation(
-                                                              value: value!,
-                                                              field:
-                                                                  'product_unit_price'
-                                                                      .tr);
-                                                      if (message == "") {
-                                                        return null;
-                                                      }
-                                                      errorMessage = message;
-                                                      return "";
-                                                      // if (value == null || value.isEmpty) {
-                                                      //   errorMessage = 'required_message'.trParams(
-                                                      //       {'field_name': 'product_unit_price'.tr});
-                                                      //   countErrors++;
-                                                      //   return "";
-                                                      // }
-                                                      // return null;
-                                                    },
-                                                    onChanged: (text) async {},
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 10.r,
-                                                ),
-                                                Expanded(
-                                                  child: ContainerTextField(
-                                                    controller:
-                                                        barcodeController,
-                                                    height: 30.h,
-                                                    inputFormatters: [
-                                                      FilteringTextInputFormatter
-                                                          .allow(RegExp(
-                                                              '[0-9\$]+')),
-                                                    ],
-                                                    labelText: '',
-                                                    hintText:
-                                                        'product_barcode'.tr,
-                                                    fontSize: 10.r,
-                                                    fillColor: AppColor.white,
-                                                    borderColor:
-                                                        AppColor.silverGray,
-                                                    hintcolor: AppColor.black
-                                                        .withOpacity(0.5),
-                                                    isAddOrEdit: true,
-                                                    borderRadius: 5.r,
-                                                    prefixIcon: Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 5.r,
-                                                              vertical: 5.r),
-                                                      child: SvgPicture.asset(
-                                                        "assets/image/search_barcode.svg",
-                                                        package:
-                                                            'yousentech_pos_basic_data_management',
-                                                        width: 19.r,
-                                                        height: 19.r,
-                                                        color: AppColor.amber,
-                                                      ),
-                                                    ),
-                                                    // validator: (value) {
-                                                    //   if (value == null ||
-                                                    //       value.isEmpty) {
-                                                    //     errorMessage =
-                                                    //         'required_message'
-                                                    //             .trParams({
-                                                    //       'field_name':
-                                                    //           'product_barcode'.tr
-                                                    //     });
-                                                    //     countErrors++;
-                                                    //     return "";
-                                                    //   }
-                                                    //   return null;
-                                                    // },
-                                                    onChanged: (text) async {},
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              height: 10.r,
-                                            ),
-
-                                            ContainerDropDownField(
-                                              // width: Get.width * 0.45,
-                                              // height: MediaQuery.sizeOf(context)
-                                              //         .height *
-                                              //     0.05,
-                                              prefixIcon: Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 5.r,
-                                                    vertical: 5.r),
-                                                child: SvgPicture.asset(
-                                                  "assets/image/categories_menu_icon.svg",
-                                                  package:
-                                                      'yousentech_pos_basic_data_management',
-                                                  width: 19.r,
-                                                  height: 19.r,
-                                                  color: AppColor.amber
-                                                      .withOpacity(0.5),
-                                                ),
-                                              ),
-                                              fontSize: 10.r,
-                                              fillColor: AppColor.white,
-                                              borderColor: AppColor.silverGray,
-                                              hintcolor: AppColor.black
-                                                  .withOpacity(0.5),
-                                              borderRadius: 5.r,
-                                              hintText: 'product_category',
-                                              labelText: 'product_category'.tr,
-                                              value: product!.soPosCategId,
-                                              color: AppColor.black,
-                                              // isPIN: true,
-
-                                              iconcolor: AppColor.black,
-
-                                              onChanged: (val) {
-                                                product!.soPosCategId = val;
-                                                PosCategory posCategory =
-                                                    controller
-                                                        .categoriesList
-                                                        .firstWhere(
-                                                            (element) =>
-                                                                element.id ==
-                                                                val,
-                                                            orElse: () =>
-                                                                PosCategory());
-                                                product!.soPosCategName =
-                                                    (SharedPr.lang == 'ar'
-                                                        ? posCategory
-                                                            .name!.ar001
-                                                        : posCategory
-                                                            .name!.enUS);
-                                                // product!.soPosCategName =
-                                                //     (SharedPr.lang == 'ar'
-                                                //         ? posCategory
-                                                //             .name!.ar001
-                                                //         : posCategory
-                                                //             .name!.enUS);
-                                              },
-                                              validator: (value) {
-                                                if (value == null) {
-                                                  errorMessage =
-                                                      'required_message'
-                                                          .trParams({
-                                                    'field_name':
-                                                        'product_category'.tr
-                                                  });
-                                                  countErrors++;
-                                                  return "";
-                                                }
-                                                return null;
-                                              },
-                                              items: controller.categoriesList
-                                                  .map((e) => DropdownMenuItem(
-                                                        // value: e.id,
-                                                        value: e.id,
-                                                        child: Center(
-                                                            child: Text((SharedPr
-                                                                        .lang ==
-                                                                    'ar'
-                                                                ? e.name!.ar001
-                                                                : e.name!
-                                                                    .enUS)!)),
-                                                      ))
-                                                  .toList(),
-                                            ),
-
-                                            SizedBox(
-                                              height: 10.r,
-                                            ), // Text('product_unit'.tr,
-                                            //     style: AppStyle.textStyle(
-                                            //         color: AppColor.black,
-                                            //         fontSize: Get.width * 0.01,
-                                            //         fontWeight: FontWeight.bold)),
-                                            // SizedBox(height: Get.height * 0.01),
-                                            ContainerDropDownField(
-                                              width: Get.width * 0.45,
-                                              height: MediaQuery.sizeOf(context)
-                                                      .height *
-                                                  0.05,
-                                              prefixIcon: Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 5.r,
-                                                    vertical: 5.r),
-                                                child: SvgPicture.asset(
-                                                  "assets/image/productunit_menu_icon.svg",
-                                                  package:
-                                                      'yousentech_pos_basic_data_management',
-                                                  width: 19.r,
-                                                  height: 19.r,
-                                                  color: AppColor.amber
-                                                      .withOpacity(0.5),
-                                                ),
-                                              ),
-                                              hintText: 'product_unit'.tr,
-                                              labelText: 'product_unit'.tr,
-                                              fontSize: 10.r,
-                                              color: AppColor.black,
-                                              fillColor: AppColor.white,
-                                              borderColor: AppColor.silverGray,
-                                              hintcolor: AppColor.black
-                                                  .withOpacity(0.5),
-                                              borderRadius: 5.r,
-                                              // validator: (value) {
-                                              //   if (value == null) {
-                                              //     errorMessage = 'required_message'.trParams(
-                                              //         {'field_name': 'product_unit'.tr});
-                                              //     countErrors++;
-                                              //     return "";
-                                              //   }
-                                              //   return null;
-                                              // },
-                                              value: product!.uomId,
-
-                                              // isPIN: true,
-
-                                              iconcolor: AppColor.black,
-
-                                              onChanged: (val) {
-                                                product!.uomId = val;
-                                                ProductUnit productUnit =
-                                                    controller
-                                                        .unitsList
-                                                        .firstWhere(
-                                                            (element) =>
-                                                                element.id ==
-                                                                val,
-                                                            orElse: () =>
-                                                                ProductUnit());
-                                                product!.uomName = (SharedPr
-                                                            .lang ==
-                                                        'ar'
-                                                    ? productUnit.name!.ar001
-                                                    : productUnit.name!.enUS);
-                                                // product!.uomName = (SharedPr.lang == 'ar' ? productUnit.name! : productUnit.name!);
-                                              },
-                                              items: controller.unitsList
-                                                  .map((e) => DropdownMenuItem(
-                                                        // value: e.id,
-                                                        value: e.id,
-                                                        child: Center(
-                                                            child: Text((SharedPr
-                                                                        .lang ==
-                                                                    'ar'
-                                                                ? e.name!.ar001
-                                                                : e.name!
-                                                                    .enUS)!)),
-                                                        // child: Center(child: Text((SharedPr.lang == 'ar' ? e.name! : e.name!))),
-                                                      ))
-                                                  .toList(),
-                                            ),
-                                            const Spacer(),
-                                            Container(
-                                              decoration: ShapeDecoration(
-                                                color: AppColor.blueGray,
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.r)),
-                                              ),
-                                              child: CheckboxListTile(
-                                                  fillColor: (product
-                                                              ?.quickMenuAvailability ==
-                                                          null)
-                                                      ? WidgetStateProperty.all(
-                                                          AppColor.white)
-                                                      : product!
-                                                              .quickMenuAvailability!
-                                                          ? WidgetStateProperty
-                                                              .all(AppColor
-                                                                  .cyanTeal)
-                                                          : WidgetStateProperty
-                                                              .all(AppColor
-                                                                  .white),
-                                                  value: product
-                                                          ?.quickMenuAvailability ??
-                                                      false,
-                                                  title: Text(
-                                                    'quick_menu_availability'
-                                                        .tr,
-                                                    style: TextStyle(
-                                                      color:
-                                                          AppColor.lavenderGray,
-                                                      fontSize: 10.r,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                    ),
-                                                  ),
-                                                  onChanged: (val) {
-                                                    product?.quickMenuAvailability =
-                                                        val!;
-                                                    setState(() {});
-                                                  }),
-                                            ),
-                                          ],
-                                        )),
-                                    SizedBox(
-                                      width: 10.r,
-                                    ),
-                                    Expanded(
-                                        child: Container(
-                                      height: 300.h,
-                                      padding: EdgeInsets.all(5.r),
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(5.r),
-                                      ),
-                                      child: Stack(
-                                        children: [
-                                          Container(
-                                            width: double.infinity,
-                                            height: 300.h,
-                                            decoration: BoxDecoration(
-                                                color: product == null ||
-                                                        product!.image ==
-                                                            null ||
-                                                        product!.image == ''
-                                                    ? AppColor.cyanTeal
-                                                        .withOpacity(0.2)
-                                                    : null,
-                                                borderRadius:
-                                                    BorderRadius.circular(5.r),
-                                                border: Border.all(
-                                                    color: AppColor.silverGray
-                                                        .withOpacity(0.3))),
-                                            child: product == null ||
-                                                    product!.image == null ||
-                                                    product!.image == ''
-                                                ? null
-                                                : isSvg(product!.image!
-                                                        .toString())
-                                                    ? SvgPicture.memory(
-                                                        base64.decode(product!
-                                                            .image!
-                                                            .toString()),
-                                                        fit: BoxFit.fill,
-                                                      )
-                                                    : Image.memory(
-                                                        base64Decode(product!
-                                                            .image!
-                                                            .toString()),
-                                                        fit: BoxFit.fill,
-                                                        filterQuality:
-                                                            FilterQuality.high),
-                                          ),
-                                          Positioned(
-                                              left: 5.r,
-                                              top: 5.r,
-                                              child: InkWell(
-                                                onTap: () async {
-                                                  final ImagePicker picker =
-                                                      ImagePicker();
-                                                  final XFile? image =
-                                                      await picker.pickImage(
-                                                          source: ImageSource
-                                                              .gallery);
-                                                  if (image != null) {
-                                                    String imagePath =
-                                                        image.path;
-                                                    File imageFile =
-                                                        File(imagePath);
-                                                    Uint8List bytes =
-                                                        await imageFile
-                                                            .readAsBytes();
-                                                    String base64String =
-                                                        base64.encode(bytes);
-                                                    product!.image =
-                                                        base64String;
-                                                    setState(() {});
-                                                  }
-                                                },
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                      color: AppColor.cyanTeal,
-                                                      shape: BoxShape.circle),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            5.0),
-                                                    child: SvgPicture.asset(
-                                                        "assets/image/edit.svg",
-                                                        package:
-                                                            'yousentech_pos_basic_data_management',
-                                                        width: 20.r,
-                                                        height: 20.r,
-                                                        color: AppColor.white),
-                                                  ),
-                                                ),
-                                              ))
-                                          // Container(
-                                          //   padding: EdgeInsets.all(5.r),
-                                          //   decoration: BoxDecoration(
-                                          //       color: AppColor.cyanTeal,
-                                          //       shape: BoxShape.circle),
-                                          //   child: SvgPicture.asset(
-                                          //     'assets/image/edit.svg',
-                                          //     color: AppColor.white,
-                                          //     height: 20.r,
-                                          //     width: 20.r,
-                                          //   ),
-                                          // ),
-                                          // Expanded(
-                                          //   child: Column(
-                                          //     crossAxisAlignment:
-                                          //         CrossAxisAlignment.center,
-                                          //     mainAxisAlignment:
-                                          //         MainAxisAlignment.center,
-                                          //     children: [
-                                          //       ClipRRect(
-                                          //         borderRadius:
-                                          //             BorderRadius.circular(25),
-                                          //         child: product!.image != null
-                                          //             ? Image.memory(
-                                          //                 base64Decode(
-                                          //                     product!.image!),
-                                          //                 fit: BoxFit.fill,
-                                          //                 width: Get.width * 0.05,
-                                          //                 height:
-                                          //                     Get.width * 0.05,
-                                          //               )
-                                          //             : Icon(
-                                          //                 Icons.photo,
-                                          //                 color:
-                                          //                     AppColor.cyanTeal,
-                                          //                 size: 100.r,
-                                          //               ),
-                                          //       ),
-                                          //     ],
-                                          //   ),
-                                          // ),
-                                        ],
-                                      ),
-                                    )),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 30.r,
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: ButtonElevated(
-                                        text: (product?.id != null
-                                                ? 'edit_product'
-                                                : 'add_new_product')
-                                            .tr,
-                                        borderRadius: 5.r,
-                                        backgroundColor: AppColor.cyanTeal,
-                                        showBoxShadow: false,
-                                        textStyle: AppStyle.textStyle(
-                                            color: Colors.white,
-                                            fontSize: 3.sp,
-                                            fontWeight: FontWeight.w700),
-                                        onPressed: _onPressed),
-                                  ),
-                                  SizedBox(width: Get.width * 0.01),
-                                  Expanded(
-                                    child: ButtonElevated(
-                                        text: 'back'.tr,
-                                        borderRadius: 5.r,
-                                        borderColor: AppColor.silverGray,
-                                        textStyle: AppStyle.textStyle(
-                                            color: AppColor.slateGray,
-                                            fontSize: 3.sp,
-                                            fontWeight: FontWeight.normal),
-                                        onPressed: () async {
-                                          productController.searchResults
-                                              .clear();
-                                          productController.update();
-                                          await productController
-                                              .resetPagingList(selectedpag: 0);
-                                          back();
-
-                                          // Get.back();
-                                        }),
-                                  ),
-                                ],
-                              ),
+                      child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TitalWidget(
+                            title: (product?.id == null)
+                                ? 'add_new_product'
+                                : 'edit_product'),
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: 10.r, left: 20.r, right: 20.r),
+                          padding: EdgeInsets.all(20.r),
+                          width: 0.6.sw,
+                          height: 0.52.sh,
+                          decoration: BoxDecoration(
+                            color: AppColor.white,
+                            borderRadius: BorderRadius.circular(5.r),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColor.semitransparentblack,
+                                blurRadius: 35,
+                                offset: const Offset(0, 4),
+                                spreadRadius: 0,
+                              )
                             ],
                           ),
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                          flex: 2,
+                                          child: Column(
+                                            children: [
+                                              ContainerTextField(
+                                                controller: nameController,
+                                                height: 30.h,
+                                                labelText: '',
+                                                hintText: 'product_name'.tr,
+                                                fontSize: 10.r,
+                                                fillColor: AppColor.white,
+                                                borderColor:
+                                                    AppColor.silverGray,
+                                                hintcolor: AppColor.black
+                                                    .withOpacity(0.5),
+                                                isAddOrEdit: true,
+                                                borderRadius: 5.r,
+                                                prefixIcon: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 5.r,
+                                                      vertical: 5.r),
+                                                  child: SvgPicture.asset(
+                                                    "assets/image/name_product.svg",
+                                                    package:
+                                                        'yousentech_pos_basic_data_management',
+                                                    width: 19.r,
+                                                    height: 19.r,
+                                                  ),
+                                                ),
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    errorMessage =
+                                                        'required_message'
+                                                            .trParams({
+                                                      'field_name':
+                                                          'product_name'.tr
+                                                    });
+                                                    countErrors++;
+                                                    return "";
+                                                  }
+                                                  return null;
+                                                },
+                                                onChanged: (text) async {},
+                                              ),
+                                              SizedBox(
+                                                height: 10.r,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Expanded(
+                                                    child: ContainerTextField(
+                                                      inputFormatters: [
+                                                        FilteringTextInputFormatter
+                                                            .allow(RegExp(
+                                                                '[0-9\$]+')),
+                                                      ],
+                                                      controller:
+                                                          unitPriceController,
+                                                      height: 30.h,
+                                                      labelText: '',
+                                                      hintText:
+                                                          'product_unit_price'
+                                                              .tr,
+                                                      fontSize: 10.r,
+                                                      fillColor: AppColor.white,
+                                                      borderColor:
+                                                          AppColor.silverGray,
+                                                      hintcolor: AppColor.black
+                                                          .withOpacity(0.5),
+                                                      isAddOrEdit: true,
+                                                      borderRadius: 5.r,
+                                                      prefixIcon: Padding(
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                                horizontal: 5.r,
+                                                                vertical: 5.r),
+                                                        child: SvgPicture.asset(
+                                                          "assets/image/price_2.svg",
+                                                          package:
+                                                              'yousentech_pos_basic_data_management',
+                                                          width: 19.r,
+                                                          height: 19.r,
+                                                          color: AppColor.amber,
+                                                        ),
+                                                      ),
+                                                      validator: (value) {
+                                                        var message = ValidatorHelper
+                                                            .priceValidation(
+                                                                value: value!,
+                                                                field:
+                                                                    'product_unit_price'
+                                                                        .tr);
+                                                        if (message == "") {
+                                                          return null;
+                                                        }
+                                                        errorMessage = message;
+                                                        return "";
+                                                        // if (value == null || value.isEmpty) {
+                                                        //   errorMessage = 'required_message'.trParams(
+                                                        //       {'field_name': 'product_unit_price'.tr});
+                                                        //   countErrors++;
+                                                        //   return "";
+                                                        // }
+                                                        // return null;
+                                                      },
+                                                      onChanged:
+                                                          (text) async {},
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 10.r,
+                                                  ),
+                                                  Expanded(
+                                                    child: ContainerTextField(
+                                                      controller:
+                                                          barcodeController,
+                                                      height: 30.h,
+                                                      inputFormatters: [
+                                                        FilteringTextInputFormatter
+                                                            .allow(RegExp(
+                                                                '[0-9\$]+')),
+                                                      ],
+                                                      labelText: '',
+                                                      hintText:
+                                                          'product_barcode'.tr,
+                                                      fontSize: 10.r,
+                                                      fillColor: AppColor.white,
+                                                      borderColor:
+                                                          AppColor.silverGray,
+                                                      hintcolor: AppColor.black
+                                                          .withOpacity(0.5),
+                                                      isAddOrEdit: true,
+                                                      borderRadius: 5.r,
+                                                      prefixIcon: Padding(
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                                horizontal: 5.r,
+                                                                vertical: 5.r),
+                                                        child: SvgPicture.asset(
+                                                          "assets/image/search_barcode.svg",
+                                                          package:
+                                                              'yousentech_pos_basic_data_management',
+                                                          width: 19.r,
+                                                          height: 19.r,
+                                                          color: AppColor.amber,
+                                                        ),
+                                                      ),
+                                                      // validator: (value) {
+                                                      //   if (value == null ||
+                                                      //       value.isEmpty) {
+                                                      //     errorMessage =
+                                                      //         'required_message'
+                                                      //             .trParams({
+                                                      //       'field_name':
+                                                      //           'product_barcode'.tr
+                                                      //     });
+                                                      //     countErrors++;
+                                                      //     return "";
+                                                      //   }
+                                                      //   return null;
+                                                      // },
+                                                      onChanged:
+                                                          (text) async {},
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 10.r,
+                                              ),
+
+                                              ContainerDropDownField(
+                                                // width: Get.width * 0.45,
+                                                // height: MediaQuery.sizeOf(context)
+                                                //         .height *
+                                                //     0.05,
+                                                prefixIcon: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 5.r,
+                                                      vertical: 5.r),
+                                                  child: SvgPicture.asset(
+                                                    "assets/image/categories_menu_icon.svg",
+                                                    package:
+                                                        'yousentech_pos_basic_data_management',
+                                                    width: 19.r,
+                                                    height: 19.r,
+                                                    color: AppColor.amber
+                                                        .withOpacity(0.5),
+                                                  ),
+                                                ),
+                                                fontSize: 10.r,
+                                                fillColor: AppColor.white,
+                                                borderColor:
+                                                    AppColor.silverGray,
+                                                hintcolor: AppColor.black
+                                                    .withOpacity(0.5),
+                                                borderRadius: 5.r,
+                                                hintText: 'product_category',
+                                                labelText:
+                                                    'product_category'.tr,
+                                                value: product!.soPosCategId,
+                                                color: AppColor.black,
+                                                // isPIN: true,
+
+                                                iconcolor: AppColor.black,
+
+                                                onChanged: (val) {
+                                                  product!.soPosCategId = val;
+                                                  PosCategory posCategory =
+                                                      controller.categoriesList
+                                                          .firstWhere(
+                                                              (element) =>
+                                                                  element.id ==
+                                                                  val,
+                                                              orElse: () =>
+                                                                  PosCategory());
+                                                  product!.soPosCategName =
+                                                      (SharedPr.lang == 'ar'
+                                                          ? posCategory
+                                                              .name!.ar001
+                                                          : posCategory
+                                                              .name!.enUS);
+                                                  // product!.soPosCategName =
+                                                  //     (SharedPr.lang == 'ar'
+                                                  //         ? posCategory
+                                                  //             .name!.ar001
+                                                  //         : posCategory
+                                                  //             .name!.enUS);
+                                                },
+                                                validator: (value) {
+                                                  if (value == null) {
+                                                    errorMessage =
+                                                        'required_message'
+                                                            .trParams({
+                                                      'field_name':
+                                                          'product_category'.tr
+                                                    });
+                                                    countErrors++;
+                                                    return "";
+                                                  }
+                                                  return null;
+                                                },
+                                                items: controller.categoriesList
+                                                    .map(
+                                                        (e) => DropdownMenuItem(
+                                                              // value: e.id,
+                                                              value: e.id,
+                                                              child: Center(
+                                                                  child: Text((SharedPr
+                                                                              .lang ==
+                                                                          'ar'
+                                                                      ? e.name!
+                                                                          .ar001
+                                                                      : e.name!
+                                                                          .enUS)!)),
+                                                            ))
+                                                    .toList(),
+                                              ),
+
+                                              SizedBox(
+                                                height: 10.r,
+                                              ), // Text('product_unit'.tr,
+                                              //     style: AppStyle.textStyle(
+                                              //         color: AppColor.black,
+                                              //         fontSize: Get.width * 0.01,
+                                              //         fontWeight: FontWeight.bold)),
+                                              // SizedBox(height: Get.height * 0.01),
+                                              ContainerDropDownField(
+                                                width: Get.width * 0.45,
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        0.05,
+                                                prefixIcon: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 5.r,
+                                                      vertical: 5.r),
+                                                  child: SvgPicture.asset(
+                                                    "assets/image/productunit_menu_icon.svg",
+                                                    package:
+                                                        'yousentech_pos_basic_data_management',
+                                                    width: 19.r,
+                                                    height: 19.r,
+                                                    color: AppColor.amber
+                                                        .withOpacity(0.5),
+                                                  ),
+                                                ),
+                                                hintText: 'product_unit'.tr,
+                                                labelText: 'product_unit'.tr,
+                                                fontSize: 10.r,
+                                                color: AppColor.black,
+                                                fillColor: AppColor.white,
+                                                borderColor:
+                                                    AppColor.silverGray,
+                                                hintcolor: AppColor.black
+                                                    .withOpacity(0.5),
+                                                borderRadius: 5.r,
+                                                // validator: (value) {
+                                                //   if (value == null) {
+                                                //     errorMessage = 'required_message'.trParams(
+                                                //         {'field_name': 'product_unit'.tr});
+                                                //     countErrors++;
+                                                //     return "";
+                                                //   }
+                                                //   return null;
+                                                // },
+                                                value: product!.uomId,
+
+                                                // isPIN: true,
+
+                                                iconcolor: AppColor.black,
+
+                                                onChanged: (val) {
+                                                  product!.uomId = val;
+                                                  ProductUnit productUnit =
+                                                      controller.unitsList
+                                                          .firstWhere(
+                                                              (element) =>
+                                                                  element.id ==
+                                                                  val,
+                                                              orElse: () =>
+                                                                  ProductUnit());
+                                                  product!.uomName = (SharedPr
+                                                              .lang ==
+                                                          'ar'
+                                                      ? productUnit.name!.ar001
+                                                      : productUnit.name!.enUS);
+                                                  // product!.uomName = (SharedPr.lang == 'ar' ? productUnit.name! : productUnit.name!);
+                                                },
+                                                items: controller.unitsList
+                                                    .map(
+                                                        (e) => DropdownMenuItem(
+                                                              // value: e.id,
+                                                              value: e.id,
+                                                              child: Center(
+                                                                  child: Text((SharedPr
+                                                                              .lang ==
+                                                                          'ar'
+                                                                      ? e.name!
+                                                                          .ar001
+                                                                      : e.name!
+                                                                          .enUS)!)),
+                                                              // child: Center(child: Text((SharedPr.lang == 'ar' ? e.name! : e.name!))),
+                                                            ))
+                                                    .toList(),
+                                              ),
+                                              const Spacer(),
+                                              Container(
+                                                decoration: ShapeDecoration(
+                                                  color: AppColor.blueGray,
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5.r)),
+                                                ),
+                                                child: CheckboxListTile(
+                                                    fillColor: (product
+                                                                ?.quickMenuAvailability ==
+                                                            null)
+                                                        ? WidgetStateProperty
+                                                            .all(AppColor.white)
+                                                        : product!
+                                                                .quickMenuAvailability!
+                                                            ? WidgetStateProperty
+                                                                .all(AppColor
+                                                                    .cyanTeal)
+                                                            : WidgetStateProperty
+                                                                .all(AppColor
+                                                                    .white),
+                                                    value: product
+                                                            ?.quickMenuAvailability ??
+                                                        false,
+                                                    title: Text(
+                                                      'quick_menu_availability'
+                                                          .tr,
+                                                      style: TextStyle(
+                                                        color: AppColor
+                                                            .lavenderGray,
+                                                        fontSize: 10.r,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ),
+                                                    onChanged: (val) {
+                                                      product?.quickMenuAvailability =
+                                                          val!;
+                                                      setState(() {});
+                                                    }),
+                                              ),
+                                            ],
+                                          )),
+                                      SizedBox(
+                                        width: 10.r,
+                                      ),
+                                      Expanded(
+                                          child: Container(
+                                        height: 300.h,
+                                        padding: EdgeInsets.all(5.r),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5.r),
+                                        ),
+                                        child: Stack(
+                                          children: [
+                                            Container(
+                                              width: double.infinity,
+                                              height: 300.h,
+                                              decoration: BoxDecoration(
+                                                  color: product == null ||
+                                                          product!.image ==
+                                                              null ||
+                                                          product!.image == ''
+                                                      ? AppColor.cyanTeal
+                                                          .withOpacity(0.2)
+                                                      : null,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.r),
+                                                  border: Border.all(
+                                                      color: AppColor.silverGray
+                                                          .withOpacity(0.3))),
+                                              child: product == null ||
+                                                      product!.image == null ||
+                                                      product!.image == ''
+                                                  ? null
+                                                  : isSvg(product!.image!
+                                                          .toString())
+                                                      ? SvgPicture.memory(
+                                                          base64.decode(product!
+                                                              .image!
+                                                              .toString()),
+                                                          fit: BoxFit.fill,
+                                                        )
+                                                      : Image.memory(
+                                                          base64Decode(product!
+                                                              .image!
+                                                              .toString()),
+                                                          fit: BoxFit.fill,
+                                                          filterQuality:
+                                                              FilterQuality
+                                                                  .high),
+                                            ),
+                                            Positioned(
+                                                left: 5.r,
+                                                top: 5.r,
+                                                child: InkWell(
+                                                  onTap: () async {
+                                                    final ImagePicker picker =
+                                                        ImagePicker();
+                                                    final XFile? image =
+                                                        await picker.pickImage(
+                                                            source: ImageSource
+                                                                .gallery);
+                                                    if (image != null) {
+                                                      String imagePath =
+                                                          image.path;
+                                                      File imageFile =
+                                                          File(imagePath);
+                                                      Uint8List bytes =
+                                                          await imageFile
+                                                              .readAsBytes();
+                                                      String base64String =
+                                                          base64.encode(bytes);
+                                                      product!.image =
+                                                          base64String;
+                                                      setState(() {});
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        color:
+                                                            AppColor.cyanTeal,
+                                                        shape: BoxShape.circle),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              5.0),
+                                                      child: SvgPicture.asset(
+                                                          "assets/image/edit.svg",
+                                                          package:
+                                                              'yousentech_pos_basic_data_management',
+                                                          width: 20.r,
+                                                          height: 20.r,
+                                                          color:
+                                                              AppColor.white),
+                                                    ),
+                                                  ),
+                                                ))
+                                            // Container(
+                                            //   padding: EdgeInsets.all(5.r),
+                                            //   decoration: BoxDecoration(
+                                            //       color: AppColor.cyanTeal,
+                                            //       shape: BoxShape.circle),
+                                            //   child: SvgPicture.asset(
+                                            //     'assets/image/edit.svg',
+                                            //     color: AppColor.white,
+                                            //     height: 20.r,
+                                            //     width: 20.r,
+                                            //   ),
+                                            // ),
+                                            // Expanded(
+                                            //   child: Column(
+                                            //     crossAxisAlignment:
+                                            //         CrossAxisAlignment.center,
+                                            //     mainAxisAlignment:
+                                            //         MainAxisAlignment.center,
+                                            //     children: [
+                                            //       ClipRRect(
+                                            //         borderRadius:
+                                            //             BorderRadius.circular(25),
+                                            //         child: product!.image != null
+                                            //             ? Image.memory(
+                                            //                 base64Decode(
+                                            //                     product!.image!),
+                                            //                 fit: BoxFit.fill,
+                                            //                 width: Get.width * 0.05,
+                                            //                 height:
+                                            //                     Get.width * 0.05,
+                                            //               )
+                                            //             : Icon(
+                                            //                 Icons.photo,
+                                            //                 color:
+                                            //                     AppColor.cyanTeal,
+                                            //                 size: 100.r,
+                                            //               ),
+                                            //       ),
+                                            //     ],
+                                            //   ),
+                                            // ),
+                                          ],
+                                        ),
+                                      )),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 30.r,
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: ButtonElevated(
+                                          text: (product?.id != null
+                                                  ? 'edit_product'
+                                                  : 'add_new_product')
+                                              .tr,
+                                          borderRadius: 5.r,
+                                          backgroundColor: AppColor.cyanTeal,
+                                          showBoxShadow: false,
+                                          textStyle: AppStyle.textStyle(
+                                              color: Colors.white,
+                                              fontSize: 3.sp,
+                                              fontWeight: FontWeight.w700),
+                                          onPressed: _onPressed),
+                                    ),
+                                    SizedBox(width: Get.width * 0.01),
+                                    Expanded(
+                                      child: ButtonElevated(
+                                          text: 'back'.tr,
+                                          borderRadius: 5.r,
+                                          borderColor: AppColor.silverGray,
+                                          textStyle: AppStyle.textStyle(
+                                              color: AppColor.slateGray,
+                                              fontSize: 3.sp,
+                                              fontWeight: FontWeight.normal),
+                                          onPressed: () async {
+                                            productController.searchResults
+                                                .clear();
+                                            productController.update();
+                                            await productController
+                                                .resetPagingList(
+                                                    selectedpag: 0);
+                                            back();
+
+                                            // Get.back();
+                                          }),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )),
                   // SingleChildScrollView(
                   //   child: Center(
