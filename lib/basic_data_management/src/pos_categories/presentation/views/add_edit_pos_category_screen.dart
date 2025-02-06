@@ -151,6 +151,8 @@ class _AddPosCategoryScreenState extends State<AddPosCategoryScreen> {
                                         height: 10.r,
                                       ),
                                       ContainerDropDownField(
+                                        height: 30.h,
+                                        width: 0.6.sw,
                                         prefixIcon: Padding(
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 5.r, vertical: 5.r),

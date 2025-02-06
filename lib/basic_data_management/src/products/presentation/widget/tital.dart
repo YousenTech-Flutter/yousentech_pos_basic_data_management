@@ -11,7 +11,7 @@ class TitalWidget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 10.r, left: 20.r, right: 20.r),
       height: 30.h,
-      width: 50.w,
+      width: 60.w,
       decoration: BoxDecoration(
           color: AppColor.white,
           borderRadius: BorderRadius.all(Radius.circular(5.r))),
