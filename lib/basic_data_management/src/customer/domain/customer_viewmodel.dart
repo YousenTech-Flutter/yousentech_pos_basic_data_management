@@ -391,6 +391,7 @@ class CustomerController extends GetxController {
 
   Future loadCustomer({required List<int> customerIds}) async {
     try {
+      print("===============loadCustomer=========== ${OdooProjectOwnerConnectionHelper.odooClient}");
       var result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.customer,
         'method': 'search_read',
