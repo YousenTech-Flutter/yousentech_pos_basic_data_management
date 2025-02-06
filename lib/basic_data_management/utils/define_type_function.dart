@@ -14,7 +14,7 @@ Future synchronizeBasedOnModelType({required String type}) async {
   LoadingDataController loadingDataController = Get.find<LoadingDataController>();
   Type typex = getModelClass(type);
   var result;
-
+  print("===============synchronizeBasedOnModelType=========== $type");
   if (typex == Product) {
     result = await loadingDataController.synchronizeDB<Product>();
   } else if (typex == Customer) {

@@ -17,7 +17,6 @@ class CustomerController extends GetxController {
   RxList<Customer> customerpagingList = <Customer>[].obs;
   RxList<Customer> seachCustomerPagingList = <Customer>[].obs;
   RxList<Customer> searchResults = RxList<Customer>();
-  // TextEditingController searchCustomerController = TextEditingController();
   Customer? object;
 
   var page = 0.obs;
@@ -44,12 +43,6 @@ class CustomerController extends GetxController {
     dynamic result =
         await customerService.updateCustomerRemotAndLocal(customer: customer);
     if (result is bool && result) {
-      // final customerIndex =
-      //     customerList.indexWhere((customer) => customer.id == id);
-      // if (customerIndex != -1) {
-      //   customerList[customerIndex] = customer;
-      // }
-      // update(['update_customer']);
       return ResponseResult(
           status: true, message: "Successful".tr, data: result);
     } else {
@@ -83,7 +76,6 @@ class CustomerController extends GetxController {
         customer.id = result;
         loading.value = false;
         customerList.add(customer);
-        // update(['update_customer']);
         return ResponseResult(
             status: true, message: "Successful".tr, data: customer);
       } else {
@@ -97,24 +89,6 @@ class CustomerController extends GetxController {
   }
 
   // ========================================== [ create Customer Remot] =============================================
-
-  // // ========================================== [ get All  Customers ] =============================================
-  // Future<ResponseResult> getAllCustomersFromRemotAndSaveLocal() async {
-  //   loading.value = true;
-
-  //   var result = await customerService.getAllCustomersFromRemotAndSaveLocal();
-
-  //   if (result.status) {
-  //     loading.value = false;
-  //     return ResponseResult(
-  //         status: true, message: result.message, data: result.data);
-  //   } else {
-  //     loading.value = false;
-  //     return ResponseResult(message: result.message);
-  //   }
-  // }
-
-  // ========================================== [ get All  Customers ] =============================================
 
   // ========================================== [ get Customer by id ] =============================================
   Future<ResponseResult> getCustomer({required int id}) async {
@@ -171,7 +145,6 @@ class CustomerController extends GetxController {
         } else if (pageselecteed != -1) {
           page.value = pageselecteed;
         }
-        // result = await customerService.getAllCustomersLocal(offset: page.value * limit, limit: limit);
         result = searchFiltterResult.isNotEmpty
             ? searchFiltterResult
                 .skip(countSkip ?? page.value * limit)
@@ -195,10 +168,6 @@ class CustomerController extends GetxController {
             if (result.length < limit) {
               hasMore.value = false;
             }
-            // if (result.length < limit || result.length == limit ) {
-            //   hasMore.value = false;
-            //   hasLess.value = false;
-            // }
           } else if (pageselecteed != -1) {
             hasLess.value = true;
             hasMore.value = true;
@@ -208,7 +177,6 @@ class CustomerController extends GetxController {
                 (dataResultLenght ~/ limit) +
                     (dataResultLenght % limit != 0 ? 1 : 0) -
                     1) {
-              // print("hello");
               hasMore.value = false;
             }
           }

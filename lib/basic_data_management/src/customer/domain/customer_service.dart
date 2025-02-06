@@ -106,18 +106,12 @@ class CustomerService extends CustomerRepository {
           'order': 'id'
         },
       });
-      // if (kDebugMode) {
-      //   print("partners :$partners");
-      // }
       return partners.isEmpty || partners == null
           ? null
           : partners
               .map((e) => Customer.fromJson(e, fromLocal: false))
               .toList();
     } catch (e) {
-      // if(kDebugMode){
-      //   print("catch :$e");
-      // }
       return handleException(
           exception: e, navigation: true, methodName: "getAllCustomer");
     }
@@ -209,10 +203,8 @@ class CustomerService extends CustomerRepository {
           (customer.id != null)) {
         bool trustedDevice = await MacAddressHelper.isTrustedDevice();
         if (trustedDevice) {
-          // print("ggggggggggg");
           dynamic result =
               await update(id: customer.id!, dataUpdated: customer);
-          // print("wwwwwwwwwwww $result");
           if (result is bool) {
             if (result) {
               int affectedRows = await _generalLocalDBInstance!.update(
@@ -220,7 +212,6 @@ class CustomerService extends CustomerRepository {
                   obj: customer,
                   whereField: 'id',
                   isRemotelyAdded: true);
-              // print("wwwwwwwwwwww222222");
               if (affectedRows > 0) {
                 var res = await _itemHistoryController.getItemFromHistory(
                     type: OdooModels.customer, itemId: customer.id!);
@@ -228,10 +219,6 @@ class CustomerService extends CustomerRepository {
                   await loadingSynchronizingDataService.updateItemHistory(
                       typeName: OdooModels.customer, itemId: customer.id);
                 }
-                // await loadingSynchronizingDataService
-                //     .updateItemHistory(itemHistory: [
-
-                // ]);
                 return true;
               } else {
                 return "exception".tr;
@@ -269,11 +256,7 @@ class CustomerService extends CustomerRepository {
               result.id = affectedRows;
               var res = await _itemHistoryController.getItemFromHistory(
                   type: OdooModels.customer, itemId: result.id!);
-              // print(res);
               if (res.status) {
-                //   // await loadingSynchronizingDataService
-                //   //     .updateItemHistory(itemHistory: [res.data]);
-                //
                 await loadingSynchronizingDataService.updateItemHistory(
                     typeName: OdooModels.customer, itemId: result.id);
               }
@@ -283,7 +266,6 @@ class CustomerService extends CustomerRepository {
                   exception: affectedRows,
                   navigation: false,
                   methodName: "createCustomerRemotAndLocal");
-              // return false;
             }
           } else {
             return result;
@@ -304,18 +286,9 @@ class CustomerService extends CustomerRepository {
     try {
       _generalLocalDBInstance =
           GeneralLocalDB.getInstance<Customer>(fromJsonFun: Customer.fromJson);
-      // await _generalLocalDBInstance!
-      //     .createTable(structure: LocalDatabaseStructure.customerStructure);
       int affectedRows = await _generalLocalDBInstance!
           .create(obj: customer, isRemotelyAdded: true);
       if (affectedRows > 0) {
-        // ItemHistory itemHistory = ItemHistory(
-        //   customerId: affectedRows,
-        //   isAdded: true,
-        //   typeName: OdooModels.customer,
-        // );
-        // await ItemHistoryService.getInstance()
-        //     .createItemHistoryDB(itemHistory: itemHistory);
       }
 
       return affectedRows;

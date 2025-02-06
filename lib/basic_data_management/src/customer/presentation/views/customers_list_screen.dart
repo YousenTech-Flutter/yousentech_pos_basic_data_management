@@ -24,7 +24,6 @@ import 'package:yousentech_pos_basic_data_management/basic_data_management/utils
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_list.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/yousentech_pos_loading_synchronizing_data.dart';
 
 class CustomersListScreen extends StatefulWidget {
   const CustomersListScreen({super.key});
@@ -42,12 +41,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
   int skip = 0;
   int pagesNumber = 0;
   Future getsCountLocalAndRemote() async {
-    // print("=======================start");
     await loadingDataController.getitems();
     loaddata.entries.firstWhere((element) => element.key == Loaddata.customers);
-
-    // print(loadingDataController.itemdata.containsKey(Loaddata.customers.name));
-    // print("=======================end");
   }
 
   @override
@@ -66,8 +61,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
     CustomerService.getInstance();
     customerController =
         Get.put(CustomerController(), tag: 'customerControllerMain');
-
-    // selectedpag = customerController.page.value;
     selectedpag = 0;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getsCountLocalAndRemote();
@@ -80,12 +73,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
     super.didUpdateWidget(oldWidget);
   }
 
-  // Future getPagingList() async {
-  //   await customerController.getAllCustomerLocal(
-  //     paging: true,
-  //     type: "current",
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +83,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
         child: Stack(
           children: [
             GetBuilder<CustomerController>(
-                // id: "update_customer",
                 tag: 'customerControllerMain',
                 builder: (controller) {
                   if (customerController.hideMainScreen.value) {
@@ -115,52 +101,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    // mainAxisSize: MainAxisSize.min,
                                     children: [
                                       TitalWidget(title: 'customer_list'.tr),
-                                      // Container(
-                                      //   margin: EdgeInsets.only(
-                                      //       top: 10.r, left: 20.r, right: 20.r),
-                                      //   height: 50.h,
-                                      //   width: 50.w,
-                                      //   decoration: BoxDecoration(
-                                      //       color: AppColor.white,
-                                      //       borderRadius: BorderRadius.all(
-                                      //           Radius.circular(5.r))),
-                                      //   child: Row(
-                                      //     children: [
-                                      //       Container(
-                                      //         height: 50.h,
-                                      //         width: 4.w,
-                                      //         decoration: BoxDecoration(
-                                      //             color: AppColor.cyanTeal,
-                                      //             borderRadius:
-                                      //                 BorderRadiusDirectional
-                                      //                     .only(
-                                      //                         topStart: Radius
-                                      //                             .circular(
-                                      //                                 5.r),
-                                      //                         bottomStart: Radius
-                                      //                             .circular(
-                                      //                                 5.r))),
-                                      //       ),
-                                      //       SizedBox(
-                                      //         width: 10.r,
-                                      //       ),
-                                      //       Align(
-                                      //         alignment: Alignment.center,
-                                      //         child: Text(
-                                      //           'customer_list'.tr,
-                                      //           style: TextStyle(
-                                      //               fontSize: 4.sp,
-                                      //               color: AppColor.slateGray,
-                                      //               fontWeight: FontWeight.bold,
-                                      //               fontFamily: 'Tajawal'),
-                                      //         ),
-                                      //       ),
-                                      //     ],
-                                      //   ),
-                                      // ),
 
                                       Container(
                                         margin: EdgeInsets.only(
@@ -220,7 +162,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                           searchBarController,
                                                       height: 30.h,
                                                       labelText: '',
-                                                      // hintText: " ${'search'.tr}",
                                                       hintText:
                                                           " ${'search'.tr}  ${"name".tr} , ${"email".tr} , ${"phone".tr}",
                                                       fontSize: 10.r,
@@ -302,8 +243,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                   selectedpag:
                                                                       selectedpag);
                                                         } else {
-                                                          // selectedpag =0;
-                                                          // await customerController.resetPagingList(selectedpag: selectedpag);
                                                           await customerController
                                                               .search(
                                                                   searchBarController
@@ -534,9 +473,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                       .name
                                                                       .toString()]['remote']
                                                               : 0;
-
-                                                          // var localNumber= 70;
-                                                          // var remotNumber =50;
                                                           var per = (remotNumber >
                                                                   localNumber)
                                                               ? (localNumber /
