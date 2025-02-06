@@ -268,9 +268,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                               flex: 2,
                                               child: Row(
                                                 children: [
-                                                  SizedBox(
-                                                    width: 10.r,
-                                                  ),
                                                   InkWell(
                                                     onTap: () async {
                                                       var e = loaddata.entries
