@@ -91,7 +91,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                   }
                   return !customerController.hideMainScreen.value
                       ? SizedBox(
-                          width: Get.width - 60,
+                          // width: Get.width - 60,
                           child: Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
