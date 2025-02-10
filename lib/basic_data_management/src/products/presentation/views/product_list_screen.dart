@@ -94,7 +94,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     selectedpag = 0;
                   }
                   return !productController.hideMainScreen.value
-                      ? SizedBox(
+                      ? Container(
+                          color: AppColor.red,
                           // width: Get.width - 60,
                           child: Center(
                             child: Column(
