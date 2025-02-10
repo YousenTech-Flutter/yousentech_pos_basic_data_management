@@ -928,7 +928,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
                                                 width: (Get.height * 0.2),
-                                                height: 30.r,
+                                                height: 20.r,
                                                 decoration: BoxDecoration(
                                                   border: Border.all(
                                                       color:
