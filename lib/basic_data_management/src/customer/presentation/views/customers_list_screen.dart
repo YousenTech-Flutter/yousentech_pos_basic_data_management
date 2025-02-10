@@ -852,7 +852,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
                                                 width: (Get.height * 0.2),
-                                                height: Get.height * 0.03,
+                                                height: 20.r,
                                                 decoration: BoxDecoration(
                                                   border: Border.all(
                                                       color:
@@ -929,7 +929,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                     "$datatBaseLenght / ",
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        6.5.r,
+                                                                        8.r,
                                                                     color: AppColor
                                                                         .lavenderGray,
                                                                     fontWeight:
@@ -944,7 +944,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                     "$datadisplayLenght -",
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        6.5.r,
+                                                                        8.r,
                                                                     color: AppColor
                                                                         .black
                                                                         .withOpacity(
