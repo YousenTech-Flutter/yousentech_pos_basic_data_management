@@ -1005,7 +1005,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                     "$dataResultLenght / ",
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        6.5.r,
+                                                                        8.r,
                                                                     color: AppColor
                                                                         .lavenderGray,
                                                                     fontWeight:
@@ -1020,7 +1020,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                     "$datadisplayLenght -",
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        6.5.r,
+                                                                        8.r,
                                                                     color: AppColor
                                                                         .black
                                                                         .withOpacity(
@@ -1041,7 +1041,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                           width: 40.r,
                                                           child: TextField(
                                                             style: TextStyle(
-                                                              fontSize: 6.5.r,
+                                                              fontSize: 8.r,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
