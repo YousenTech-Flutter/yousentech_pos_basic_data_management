@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -1042,6 +1044,10 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                         height: 10.r,
                                                         width: 40.r,
                                                         child: TextField(
+                                                          readOnly:
+                                                              Platform.isAndroid
+                                                                  ? true
+                                                                  : false,
                                                           style: TextStyle(
                                                             fontSize: 8.r,
                                                             overflow:
