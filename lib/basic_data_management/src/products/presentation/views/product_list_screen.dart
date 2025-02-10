@@ -112,6 +112,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                       ),
 
                                       Container(
+                                        color: AppColor.amber,
                                         margin: EdgeInsets.only(
                                             top: 10.r, left: 20.r, right: 20.r),
                                         child: Row(
