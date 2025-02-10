@@ -41,7 +41,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Color iconcolor = AppColor.greyWithOpcity;
   TextEditingController searchBarController = TextEditingController();
   TextEditingController pagnationController = TextEditingController();
-  LoadingDataController loadingDataController = Get.find<LoadingDataController>();
+  LoadingDataController loadingDataController =
+      Get.find<LoadingDataController>();
   int selectedpag = 0;
   int skip = 0;
   int pagesNumber = 0;
@@ -94,7 +95,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                   }
                   return !productController.hideMainScreen.value
                       ? SizedBox(
-                          width: Get.width - 60,
+                          // width: Get.width - 60,
                           child: Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
