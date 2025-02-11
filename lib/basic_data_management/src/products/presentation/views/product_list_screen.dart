@@ -736,7 +736,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                             color: (per > 100 || per < 100)
                                                                                 ? AppColor.crimsonRed
                                                                                 : AppColor.emeraldGreen,
-                                                                            fontFamily: 'Tajawal'),
+                                                                            fontFamily: 'Tajawal',package: 'yousentech_pos_basic_data_management'),
                                                                         children: <TextSpan>[
                                                                           TextSpan(
                                                                             text:
@@ -744,7 +744,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                             style: TextStyle(
                                                                                 fontWeight: FontWeight.bold,
                                                                                 fontSize: 10.r,
-                                                                                fontFamily: 'Tajawal'),
+                                                                                fontFamily: 'Tajawal',package: 'yousentech_pos_basic_data_management'),
                                                                           ),
                                                                           // get the number
                                                                           TextSpan(
@@ -753,7 +753,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                             style: TextStyle(
                                                                                 fontWeight: FontWeight.bold,
                                                                                 fontSize: 10.r,
-                                                                                fontFamily: 'Tajawal'),
+                                                                                fontFamily: 'Tajawal',package: 'yousentech_pos_basic_data_management'),
                                                                           ),
                                                                         ],
                                                                       ),
@@ -1017,7 +1017,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                       FontWeight
                                                                           .w400,
                                                                   fontFamily:
-                                                                      'Tajawal'),
+                                                                      'Tajawal',package: 'yousentech_pos_basic_data_management'),
                                                             ),
                                                             // Lenght show in screen in
                                                             TextSpan(
@@ -1033,7 +1033,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                       FontWeight
                                                                           .w400,
                                                                   fontFamily:
-                                                                      'Tajawal'),
+                                                                      'Tajawal',package: 'yousentech_pos_basic_data_management'),
                                                             ),
                                                           ],
                                                         ),

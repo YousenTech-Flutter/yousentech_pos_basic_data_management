@@ -503,7 +503,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                                     : AppColor
                                                                         .emeraldGreen,
                                                                 fontFamily:
-                                                                    'Tajawal'),
+                                                                    'Tajawal',package: 'yousentech_pos_basic_data_management'),
                                                             children: <TextSpan>[
                                                               TextSpan(
                                                                 text:
@@ -515,7 +515,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                                     fontSize:
                                                                         10.r,
                                                                     fontFamily:
-                                                                        'Tajawal'),
+                                                                        'Tajawal',package: 'yousentech_pos_basic_data_management'),
                                                               ),
                                                               // get the number
                                                               TextSpan(
@@ -528,7 +528,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                                     fontSize:
                                                                         10.r,
                                                                     fontFamily:
-                                                                        'Tajawal'),
+                                                                        'Tajawal',package: 'yousentech_pos_basic_data_management'),
                                                               ),
                                                             ],
                                                           ),

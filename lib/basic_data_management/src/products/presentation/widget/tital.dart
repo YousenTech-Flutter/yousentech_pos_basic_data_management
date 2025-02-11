@@ -68,7 +68,7 @@ class TitalWidget extends StatelessWidget {
                   fontSize: 4.sp,
                   color: AppColor.slateGray,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Tajawal'),
+                  fontFamily: 'Tajawal',package: 'yousentech_pos_basic_data_management'),
             ),
           ),
         ],

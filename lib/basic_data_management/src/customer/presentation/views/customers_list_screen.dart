@@ -649,16 +649,17 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                             TextSpan(
                                                                           style: TextStyle(
                                                                               color: (per > 100 || per < 100) ? AppColor.crimsonRed : AppColor.emeraldGreen,
-                                                                              fontFamily: 'Tajawal'),
+                                                                              fontFamily: 'Tajawal',
+                                                                              package: 'yousentech_pos_basic_data_management',),
                                                                           children: <TextSpan>[
                                                                             TextSpan(
                                                                               text: '${'synchronization'.tr} : ',
-                                                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10.r, fontFamily: 'Tajawal'),
+                                                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10.r, fontFamily: 'Tajawal',package: 'yousentech_pos_basic_data_management'),
                                                                             ),
                                                                             // get the number
                                                                             TextSpan(
                                                                               text: '${per.toInt()} % ',
-                                                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10.r, fontFamily: 'Tajawal'),
+                                                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10.r, fontFamily: 'Tajawal',package: 'yousentech_pos_basic_data_management'),
                                                                             ),
                                                                           ],
                                                                         ),
@@ -936,7 +937,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                         FontWeight
                                                                             .w400,
                                                                     fontFamily:
-                                                                        'Tajawal'),
+                                                                        'Tajawal',
+                                                                        package: 'yousentech_pos_basic_data_management'),
                                                               ),
                                                               // Lenght show in screen in
                                                               TextSpan(
@@ -953,7 +955,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                         FontWeight
                                                                             .w400,
                                                                     fontFamily:
-                                                                        'Tajawal'),
+                                                                        'Tajawal',package: 'yousentech_pos_basic_data_management'),
                                                               ),
                                                               // TextSpan(
                                                               //   text: "$dataStart",
