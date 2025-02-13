@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:odoo_rpc/odoo_rpc.dart';
 import 'package:pos_shared_preferences/models/product_data/product.dart';
 import 'package:pos_shared_preferences/models/product_data/product_more_details.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
@@ -6,6 +10,7 @@ import 'package:shared_widgets/config/app_odoo_models.dart';
 import 'package:shared_widgets/shared_widgets/handle_exception_helper.dart';
 import 'package:shared_widgets/shared_widgets/odoo_connection_helper.dart';
 import 'package:yousentech_pos_local_db/yousentech_pos_local_db.dart';
+
 import 'product_repository.dart';
 
 class ProductService extends ProductRepository {
@@ -233,6 +238,7 @@ class ProductService extends ProductRepository {
 
   Future updateProductRemotely({required int id, required obj}) async {
     try {
+      // print("id : $id");
       var result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.productTemplate,
         'method': 'write',
