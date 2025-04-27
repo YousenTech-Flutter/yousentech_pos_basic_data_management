@@ -74,7 +74,7 @@ class AccountJournalService extends AccountJournalRepository {
           // 'name LIKE ?'
           );
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "AccountTaxSearch");
     }
   }

@@ -1,8 +1,4 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:odoo_rpc/odoo_rpc.dart';
 import 'package:pos_shared_preferences/models/product_data/product.dart';
 import 'package:pos_shared_preferences/models/product_data/product_more_details.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
@@ -10,7 +6,6 @@ import 'package:shared_widgets/config/app_odoo_models.dart';
 import 'package:shared_widgets/shared_widgets/handle_exception_helper.dart';
 import 'package:shared_widgets/shared_widgets/odoo_connection_helper.dart';
 import 'package:yousentech_pos_local_db/yousentech_pos_local_db.dart';
-
 import 'product_repository.dart';
 
 class ProductService extends ProductRepository {
@@ -90,11 +85,6 @@ class ProductService extends ProductRepository {
       int? offset;
       if (page != null) offset = (page - 1) * pageSize;
 
-      // String query1 = '''
-      //   SELECT * FROM product
-      //   WHERE REPLACE(REPLACE(product_name, '"en_US":', ''), '"ar_001":', '') LIKE ? OR barcode LIKE ? OR default_code LIKE ? ${(page != null) ? '${quickMenu ? 'order by quick_menu_availability desc': ''} LIMIT ? OFFSET ?' : ''}
-      // ''';
-
       String query1 = '''
         SELECT * FROM product
         WHERE (REPLACE(REPLACE(product_name, '"en_US":', ''), '"ar_001":', '') LIKE ? 
@@ -109,14 +99,9 @@ class ProductService extends ProductRepository {
           .addAllIf(page != null, [pageSize.toString(), offset.toString()]);
       var result = await DbHelper.db!.rawQuery(
           query1, queriesList); // Offset to start fetching records from;
-      // if (kDebugMode) {
-      //   print('queriesList LENGTH : ${queriesList.length}');
-      //   print('results queriesList : ${queriesList}');
-      //   print('results LENGTH : ${result.length}');
-      // }
       return result.map((e) => Product.fromJson(e)).toList();
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "ProductSearch");
     }
   }
@@ -149,17 +134,10 @@ class ProductService extends ProductRepository {
 
       // Execute the query, passing the list of ids as arguments
       var result = await DbHelper.db!.rawQuery(query, ids);
-      //
-      // if (kDebugMode) {
-      //   print('searchProductsByIds ==================================================');
-      //   print('ids : $ids');
-      //   print('results LENGTH : ${result.length}');
-      //   print('results : $result');
-      // }
 
       return result.map((e) => Product.fromJson(e)).toList();
     } catch (e) {
-      return handleException(
+      return await  handleException(
           exception: e, navigation: false, methodName: "searchProductsByIds");
     }
   }
@@ -176,7 +154,7 @@ class ProductService extends ProductRepository {
       var result = await DbHelper.db!.rawQuery(query1, [query]);
       return result.map((e) => Product.fromJson(e)).toList();
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "ProductSearch");
     }
   }
@@ -184,15 +162,14 @@ class ProductService extends ProductRepository {
   Future searchByCateg({required List query, int? page, int? limit}) async {
     try {
       _generalLocalDBInstance =
-          GeneralLocalDB.getInstance<Product>(fromJsonFun: Product.fromJson)
-              as GeneralLocalDB<Product>?;
+          GeneralLocalDB.getInstance<Product>(fromJsonFun: Product.fromJson) as GeneralLocalDB<Product>?;
       return await _generalLocalDBInstance!.filter(
           whereArgs: query,
           where: 'so_pos_categ_id in  (${query.map((_) => '?').join(', ')})',
           page: page,
-          limit: limit!);
+          limit: limit ?? 25);
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "searchByCateg");
     }
   }
@@ -206,12 +183,9 @@ class ProductService extends ProductRepository {
         'args': [obj is Map<String, dynamic> ? obj : obj.toJson()],
         'kwargs': {},
       });
-      // if (kDebugMode) {
-      //   print('createProductRemotely : $result');
-      // }
       return result;
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "createProductRemotely");
     }
   }
@@ -238,7 +212,6 @@ class ProductService extends ProductRepository {
 
   Future updateProductRemotely({required int id, required obj}) async {
     try {
-      // print("id : $id");
       var result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.productTemplate,
         'method': 'write',
@@ -251,13 +224,9 @@ class ProductService extends ProductRepository {
           }
         },
       });
-
-      // if (kDebugMode) {
-      //   print('updateProductRemotely : $result');
-      // }
       return result;
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: true, methodName: "updateProductRemotely");
     }
   }
@@ -277,7 +246,7 @@ class ProductService extends ProductRepository {
       // print(result);
       return ProductMoreDetails.fromJson(result);
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "getMoreProductInfo");
     }
   }

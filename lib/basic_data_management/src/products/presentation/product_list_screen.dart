@@ -1,8 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_colors.dart';
@@ -13,94 +14,83 @@ import 'package:shared_widgets/shared_widgets/app_snack_bar.dart';
 import 'package:shared_widgets/shared_widgets/app_text_field.dart';
 import 'package:shared_widgets/utils/mac_address_helper.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/config/app_list.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_service.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_viewmodel.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/presentation/views/create_customer.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/utils/build_body_table.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/widgets/show_customer.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_service.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/add_edit_product_screen.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/widget/tital.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/utils/build_body_table.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/utils/filtter_product_categ.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/widgets/show_product.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_basic_data_table.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/define_type_function.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_list.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
+import '../domain/product_viewmodel.dart';
 
-class CustomersListScreen extends StatefulWidget {
-  const CustomersListScreen({super.key});
+class ProductListScreen extends StatefulWidget {
+  const ProductListScreen({super.key});
 
   @override
-  State<CustomersListScreen> createState() => _CustomersListScreenState();
+  State<ProductListScreen> createState() => _ProductListScreenState();
 }
 
-class _CustomersListScreenState extends State<CustomersListScreen> {
-  late final CustomerController customerController;
+class _ProductListScreenState extends State<ProductListScreen> {
+  late final ProductController productController;
+  Color iconcolor = AppColor.greyWithOpcity;
   TextEditingController searchBarController = TextEditingController();
   TextEditingController pagnationController = TextEditingController();
-  late final LoadingDataController loadingDataController;
   int selectedpag = 0;
   int skip = 0;
   int pagesNumber = 0;
-  Future getsCountLocalAndRemote() async {
-    // print("=======================start");
-    await loadingDataController.getitems();
-    loaddata.entries.firstWhere((element) => element.key == Loaddata.customers);
-
-    // print(loadingDataController.itemdata.containsKey(Loaddata.customers.name));
-    // print("=======================end");
+  @override
+  void initState() {
+    super.initState();
+    ProductService.productDataServiceInstance = null;
+    ProductService.getInstance();
+    productController =
+        Get.put(ProductController(), tag: 'productControllerMain');
+    selectedpag = 0;
+    getPagingList();
   }
 
   @override
   void dispose() {
-    searchBarController.dispose();
-    customerController.searchResults.clear();
+    searchBarController.text = '';
+    productController.disposeCategoriesCheckFiltter();
+    productController.searchResults.clear();
+    productController.filtterResults.clear();
     pagnationController.clear();
-    Get.delete<CustomerController>(tag: 'customerControllerMain');
+    Get.delete<ProductController>(tag: 'productControllerMain');
     super.dispose();
   }
 
-  @override
-  void initState() {
-    super.initState();
-    CustomerService.customerDataServiceInstance = null;
-    CustomerService.getInstance();
-    customerController = Get.put(CustomerController(), tag: 'customerControllerMain');
-    loadingDataController = customerController.loadingDataController;
-    selectedpag = 0;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      getsCountLocalAndRemote();
-    });
-  }
 
-  @override
-  void didUpdateWidget(covariant CustomersListScreen oldWidget) async {
-    await customerController.customersData();
-    super.didUpdateWidget(oldWidget);
-  }
 
-  // Future getPagingList() async {
-  //   await customerController.getAllCustomerLocal(
-  //     paging: true,
-  //     type: "current",
-  //   );
-  // }
+
+  Future getPagingList() async {
+    await productController.displayProductList(
+      paging: true,
+      type: "current",
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
-      ignoring: loadingDataController.isUpdate.value,
+      ignoring: productController.loadingDataController.isUpdate.value,
       child: Container(
         color: AppColor.dashbordcolor,
         child: Stack(
           children: [
-            GetBuilder<CustomerController>(
-                tag: 'customerControllerMain',
+            GetBuilder<ProductController>(
+                tag: 'productControllerMain',
                 builder: (controller) {
-                  if (customerController.hideMainScreen.value) {
+                  if (productController.hideMainScreen.value) {
                     searchBarController.text = '';
                     selectedpag = 0;
-                    pagnationController.text =(1).toString();
+                    pagnationController.text = (1).toString();
                   }
-                  return !customerController.hideMainScreen.value
+                  return !productController.hideMainScreen.value
                       ? SizedBox(
                           width: Get.width - 60,
                           child: Center(
@@ -113,7 +103,10 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      TitalWidget(title: 'customer_list'.tr),
+                                      
+                                      TitalWidget(
+                                        title: 'product_list',
+                                      ),
 
                                       Container(
                                         margin: EdgeInsets.only(
@@ -130,7 +123,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                           await MacAddressHelper
                                                               .isTrustedDevice();
                                                       if (trustedDevice) {
-                                                        customerController
+                                                        productController
                                                             .updateHideMenu(
                                                                 true);
                                                       }
@@ -152,7 +145,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                       ),
                                                       child: Center(
                                                         child: SvgPicture.asset(
-                                                          "assets/image/user_add.svg",
+                                                          "assets/image/product_add.svg",
                                                           package: 'yousentech_pos_basic_data_management',
                                                           clipBehavior:
                                                               Clip.antiAlias,
@@ -172,8 +165,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                           searchBarController,
                                                       height: 30.h,
                                                       labelText: '',
-                                                      hintText:
-                                                          " ${'search'.tr}  ${"name".tr} , ${"email".tr} , ${"phone".tr}",
+                                                      hintText: 'search'.tr,
                                                       fontSize: 10.r,
                                                       fillColor: AppColor.white,
                                                       borderColor:
@@ -198,66 +190,133 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                           searchBarController
                                                                   .text
                                                                   .isNotEmpty
-                                                              ? InkWell(
-                                                                  onTap:
-                                                                      () async {
-                                                                    searchBarController
-                                                                        .text = '';
-                                                                    customerController
-                                                                        .searchResults
-                                                                        .clear();
-                                                                    customerController
-                                                                        .update();
-                                                                    selectedpag =
-                                                                        0;
-                                                                    pagnationController.text =(1).toString();
-                                                                    await customerController.resetPagingList(
-                                                                        selectedpag:selectedpag);
-                                                                  },
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: EdgeInsets.symmetric(
-                                                                        horizontal:
-                                                                            5.r,
-                                                                        vertical:
-                                                                            10.r),
-                                                                    child: FaIcon(
-                                                                        FontAwesomeIcons
-                                                                            .circleXmark,
-                                                                        color: AppColor
-                                                                            .red,
-                                                                        size: 10
-                                                                            .r),
-                                                                  ),
-                                                                )
-                                                              : null,
+                                                              ? Builder(builder:
+                                                                  (iconContext) {
+                                                                  return SizedBox(
+                                                                    width: 50.r,
+                                                                    child: Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        InkWell(
+                                                                            onTap:
+                                                                                () async {
+                                                                              searchBarController.text = '';
+                                                                              productController.searchResults.clear();
+                                                                              productController.update();
+                                                                              selectedpag = 0;
+                                                                              pagnationController.text = (1).toString();
+                                                                              await productController.resetPagingList(selectedpag: selectedpag);
+                                                                              filtterProductByCategory(context: iconContext, product: productController.productList, productController: productController);
+                                                                            },
+                                                                            child: Padding(
+                                                                                padding: EdgeInsets.symmetric(horizontal: 5.r, vertical: 7.r),
+                                                                                child: SvgPicture.asset(
+                                                                                  "assets/image/ep_filter.svg",
+                                                                                  package: 'yousentech_pos_basic_data_management',
+                                                                                  width: 19.r,
+                                                                                  height: 19.r,
+                                                                                ))),
+                                                                        InkWell(
+                                                                            onTap:
+                                                                                () async {
+                                                                              searchBarController.text = '';
+                                                                              productController.searchResults.clear();
+                                                                              productController.update();
+                                                                              selectedpag = 0;
+                                                                              pagnationController.text = (1).toString();
+                                                                              await productController.resetPagingList(selectedpag: selectedpag);
+                                                                            },
+                                                                            child:
+                                                                                Icon(
+                                                                              Icons.cancel_outlined,
+                                                                              color: AppColor.red,
+                                                                              size: 15.r,
+                                                                            )),
+                                                                      ],
+                                                                    ),
+                                                                  );
+                                                                })
+                                                              : Builder(builder:
+                                                                  (iconContext) {
+                                                                  return InkWell(
+                                                                    onTap:
+                                                                        () async {
+                                                                      searchBarController
+                                                                          .text = '';
+                                                                      productController
+                                                                          .searchResults
+                                                                          .clear();
+                                                                      productController
+                                                                          .update();
+                                                                      selectedpag =
+                                                                          0;
+                                                                      pagnationController
+                                                                              .text =
+                                                                          (1).toString();
+                                                                      await productController.resetPagingList(
+                                                                          selectedpag:
+                                                                              selectedpag);
+                                                                      filtterProductByCategory(
+                                                                          context:
+                                                                              iconContext,
+                                                                          product: productController
+                                                                              .productList,
+                                                                          productController:
+                                                                              productController);
+                                                                    },
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsets.symmetric(
+                                                                          horizontal: 5
+                                                                              .r,
+                                                                          vertical:
+                                                                              7.r),
+                                                                      child: SvgPicture
+                                                                          .asset(
+                                                                        "assets/image/ep_filter.svg",
+                                                                        package: 'yousentech_pos_basic_data_management',
+                                                                        width:
+                                                                            19.r,
+                                                                        height:
+                                                                            19.r,
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                }),
                                                       onChanged: (text) async {
                                                         if (searchBarController
                                                                 .text ==
                                                             '') {
-                                                          customerController
+                                                          productController
                                                               .searchResults
                                                               .clear();
-                                                          customerController
+                                                          productController
                                                               .update();
                                                           selectedpag = 0;
-                                                          pagnationController.text =(1).toString();
-                                                          await customerController
+                                                          await productController
                                                               .resetPagingList(
                                                                   selectedpag:
                                                                       selectedpag);
                                                         } else {
-                                                          await customerController
+                                                          await productController
                                                               .search(
                                                                   searchBarController
                                                                       .text);
+                                                          productController
+                                                              .page.value = 0;
                                                           selectedpag = 0;
-                                                          pagnationController.text =(1).toString();
-                                                          await customerController
-                                                              .resetPagingList(
-                                                                  selectedpag:
+                                                          await productController
+                                                              .displayProductList(
+                                                                  paging: true,
+                                                                  type: "",
+                                                                  pageselecteed:
                                                                       selectedpag);
                                                         }
+                                                        pagnationController
+                                                                .text =
+                                                            (1).toString();
                                                       },
                                                     ),
                                                   ),
@@ -271,60 +330,60 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                               flex: 2,
                                               child: Row(
                                                 children: [
-                                                  
-
-                                                  SizedBox(
-                                                    width: 10.r,
-                                                  ),
                                                   InkWell(
                                                     onTap: () async {
-                                                      var e = loaddata.entries
-                                                          .firstWhere((element) =>
-                                                              element.key ==
-                                                              Loaddata
-                                                                  .customers);
-                                                      var result =
-                                                          await loadingDataController
-                                                              .updateAll(
-                                                                  name: e.key
-                                                                      .toString());
+                                                        var e = loaddata.entries
+                                                            .firstWhere(
+                                                                (element) =>
+                                                                    element
+                                                                        .key ==
+                                                                    Loaddata
+                                                                        .products);
+                                                        var result =
+                                                            await productController. loadingDataController
+                                                                .updateAll(
+                                                                    name: e.key
+                                                                        .toString());
 
-                                                      if (result == true) {
-                                                        appSnackBar(
-                                                            message:
-                                                                'update_success'
-                                                                    .tr,
+                                                        if (result == true) {
+                                                          appSnackBar(
+                                                              message:
+                                                                  'update_success'
+                                                                      .tr,
+                                                              messageType:
+                                                                  MessageTypes
+                                                                      .success,
+                                                              isDismissible:
+                                                                  false);
+                                                        } else if (result
+                                                            is String) {
+                                                          appSnackBar(
+                                                            message: result,
                                                             messageType:
                                                                 MessageTypes
-                                                                    .success,
-                                                            isDismissible:
-                                                                false);
-                                                      } else if (result
-                                                          is String) {
-                                                        appSnackBar(
-                                                          message: result,
-                                                          messageType: MessageTypes
-                                                              .connectivityOff,
-                                                        );
-                                                      } else {
-                                                        appSnackBar(
-                                                            message:
-                                                                'update_Failed'
-                                                                    .tr,
-                                                            messageType:
-                                                                MessageTypes
-                                                                    .error,
-                                                            isDismissible:
-                                                                false);
-                                                      }
-                                                      loadingDataController
-                                                          .update([
-                                                        'card_loading_data'
-                                                      ]);
+                                                                    .connectivityOff,
+                                                          );
+                                                        } else {
+                                                          appSnackBar(
+                                                              message:
+                                                                  'update_Failed'
+                                                                      .tr,
+                                                              messageType:
+                                                                  MessageTypes
+                                                                      .error,
+                                                              isDismissible:
+                                                                  false);
+                                                        }
+
+                                                     productController.loadingDataController
+                                                            .update([
+                                                          'card_loading_data'
+                                                        ]);
+                                                      
                                                     },
                                                     child: Container(
                                                       height: 30.h,
-                                                      width: 25.w,
+                                                      width: 30.w,
                                                       alignment:
                                                           Alignment.center,
                                                       decoration: BoxDecoration(
@@ -370,17 +429,19 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                   InkWell(
                                                     onTap: () async {
                                                       var e = loaddata.entries
-                                                          .firstWhere((element) =>
-                                                              element.key ==
-                                                              Loaddata
-                                                                  .customers);
+                                                          .firstWhere(
+                                                              (element) =>
+                                                                  element.key ==
+                                                                  Loaddata
+                                                                      .products);
+
                                                       var result =
                                                           await displayDataDiffBasedOnModelType(
                                                               type: e.key
                                                                   .toString());
                                                       if (result is List &&
                                                           result.isNotEmpty) {
-                                                        showCustomersDialog(
+                                                        showProductsDialog(
                                                             items: result);
                                                       } else if (result
                                                           is String) {
@@ -398,6 +459,10 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                 MessageTypes
                                                                     .success);
                                                       }
+
+                                                     productController. loadingDataController
+                                                          .isUpdate
+                                                          .value = false;
                                                     },
                                                     child: Container(
                                                       height: 30.h,
@@ -429,6 +494,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                             height: 19.r,
                                                           ),
                                                           Text(
+                                                            // "display".tr,
                                                             "sync_differences".tr,
                                                             style: TextStyle(
                                                                 fontSize: 10.r,
@@ -449,29 +515,29 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                             LoadingDataController>(
                                                         id: "card_loading_data",
                                                         builder: (_) {
-                                                          var localNumber = loadingDataController
+                                                          var localNumber = productController. loadingDataController
                                                                   .itemdata
                                                                   .containsKey(Loaddata
-                                                                      .customers
+                                                                      .products
                                                                       .name
                                                                       .toString())
-                                                              ? loadingDataController
+                                                              ? productController.loadingDataController
                                                                       .itemdata[
                                                                   Loaddata
-                                                                      .customers
+                                                                      .products
                                                                       .name
                                                                       .toString()]['local']
                                                               : 0;
-                                                          var remotNumber = loadingDataController
+                                                          var remotNumber = productController.loadingDataController
                                                                   .itemdata
                                                                   .containsKey(Loaddata
-                                                                      .customers
+                                                                      .products
                                                                       .name
                                                                       .toString())
-                                                              ? loadingDataController
+                                                              ? productController.loadingDataController
                                                                       .itemdata[
                                                                   Loaddata
-                                                                      .customers
+                                                                      .products
                                                                       .name
                                                                       .toString()]['remote']
                                                               : 0;
@@ -491,82 +557,81 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                   100;
                                                           return InkWell(
                                                             onTap: () async {
-                                                              loadingDataController
+                                                              productController.loadingDataController
                                                                   .isUpdate
                                                                   .value = true;
-                                                                var e = loaddata
-                                                                    .entries
-                                                                    .firstWhere((element) =>
-                                                                        element
-                                                                            .key ==
-                                                                        Loaddata
-                                                                            .customers);
 
-                                                                var result =
-                                                                    await synchronizeBasedOnModelType(
-                                                                        type: e
-                                                                            .key
-                                                                            .toString());
-                                                                await customerController
-                                                                    .getAllCustomerLocal(
-                                                                        paging:
-                                                                            true,
-                                                                        type:
-                                                                            "",
-                                                                        pageselecteed:
-                                                                            selectedpag);
-                                                                loadingDataController
-                                                                        .isUpdate
-                                                                        .value =
-                                                                    false;
+                                                              var e = loaddata
+                                                                  .entries
+                                                                  .firstWhere((element) =>
+                                                                      element
+                                                                          .key ==
+                                                                      Loaddata
+                                                                          .products);
+                                                              var result =
+                                                                  await synchronizeBasedOnModelType(
+                                                                      type: e
+                                                                          .key
+                                                                          .toString());
+                                                              await productController
+                                                                  .displayProductList(
+                                                                      paging:
+                                                                          true,
+                                                                      type: "",
+                                                                      pageselecteed:
+                                                                          selectedpag);
 
-                                                                if (result ==
-                                                                    true) {
-                                                                  appSnackBar(
-                                                                      message:
-                                                                          'synchronized'
-                                                                              .tr,
-                                                                      messageType:
-                                                                          MessageTypes
-                                                                              .success,
-                                                                      isDismissible:
-                                                                          false);
-                                                                } else if (result
-                                                                    is String) {
-                                                                  appSnackBar(
+                                                              if (result ==
+                                                                  true) {
+                                                                appSnackBar(
                                                                     message:
-                                                                        result,
+                                                                        'synchronized'
+                                                                            .tr,
                                                                     messageType:
                                                                         MessageTypes
-                                                                            .connectivityOff,
-                                                                  );
-                                                                } else if (result ==null) {
-                                                                  appSnackBar(
-                                                                      message:
-                                                                          'synchronization_problem'
-                                                                              .tr,
-                                                                      isDismissible:
-                                                                          false);
-                                                                } else {
-                                                                  appSnackBar(
-                                                                      message:'synchronized_successfully' .tr,
-                                                                      messageType:MessageTypes.success,
-                                                                      isDismissible:false);
-                                                                }
-
-                                                                loadingDataController
-                                                                    .update([
-                                                                  'card_loading_data'
-                                                                ]);
-                                                                loadingDataController
-                                                                    .update([
-                                                                  'loading'
-                                                                ]);
-                                                              
-                                                              loadingDataController
+                                                                            .success,
+                                                                    isDismissible:
+                                                                        false);
+                                                              } else if (result
+                                                                  is String) {
+                                                                appSnackBar(
+                                                                  message:
+                                                                      result,
+                                                                  messageType:
+                                                                      MessageTypes
+                                                                          .connectivityOff,
+                                                                );
+                                                              } else if (result ==
+                                                                  false) {
+                                                                appSnackBar(
+                                                                    message:
+                                                                        'synchronized_successfully'
+                                                                            .tr,
+                                                                    messageType:
+                                                                        MessageTypes
+                                                                            .success,
+                                                                    isDismissible:
+                                                                        false);
+                                                              } else {
+                                                                appSnackBar(
+                                                                    message:
+                                                                        'synchronization_problem'
+                                                                            .tr,
+                                                                    isDismissible:
+                                                                        false);
+                                                              }
+                                                              productController.loadingDataController
                                                                       .isUpdate
                                                                       .value =
                                                                   false;
+                                                              productController.loadingDataController
+                                                                  .update([
+                                                                'card_loading_data'
+                                                              ]);
+                                                              productController.loadingDataController
+                                                                  .update([
+                                                                'loading'
+                                                              ]);
                                                             },
                                                             child: Container(
                                                               height: 30.h,
@@ -651,11 +716,12 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                           children: <TextSpan>[
                                                                             TextSpan(
                                                                               text: '${'synchronization'.tr} : ',
+                                                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10.r, fontFamily: 'Tajawal'),
                                                                             ),
                                                                             // get the number
                                                                             TextSpan(
                                                                               text: '${per.toInt()} % ',
-                                                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 3.sp, fontFamily: 'Tajawal'),
+                                                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10.r, fontFamily: 'Tajawal'),
                                                                             ),
                                                                           ],
                                                                         ),
@@ -671,157 +737,128 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                 ],
                                               ),
                                             ),
-                                            
                                           ],
                                         ),
                                       ),
 
-                                      
-
-                                     
+                                      /// test
                                       SizedBox(
                                         height: 10.r,
                                       ),
-                                      searchBarController.text != "" &&
-                                              customerController
-                                                  .searchResults.isEmpty
-                                          ? Expanded(
-                                              child: Center(
-                                                  child: AppNoDataWidge(
-                                              message: "empty_filter".tr,
-                                            )))
-                                          : Expanded(
-                                              child: Container(
-                                                margin: EdgeInsets.only(
-                                                    left: 20.r, right: 20.r),
-                                                child: Column(
-                                                  children: [
-                                                    // Header
-                                                    buildBasicDataColumnHeader(
-                                                        data: customerHeader,
-                                                        color:
-                                                            AppColor.cyanTeal,
-                                                        context: context),
-                                                    SizedBox(
-                                                      height: 2.r,
+                                      GetBuilder<LoadingDataController>(
+                                          id: "pagin",
+                                          builder: (controller) {
+                                            return searchBarController.text !=
+                                                        "" &&
+                                                    productController
+                                                        .searchResults.isEmpty
+                                                ? Expanded(
+                                                    child: Center(
+                                                        child: AppNoDataWidge(
+                                                    message: "empty_filter".tr,
+                                                  )))
+                                                : productController.productList.isNotEmpty
+                                                ? Expanded(
+                                                    child: Container(
+                                                      margin: EdgeInsets.only(
+                                                          left: 20.r,
+                                                          right: 20.r),
+                                                      child: Column(
+                                                        children: [
+                                                          // Header
+                                                          buildBasicDataColumnHeader(
+                                                              data:
+                                                                  productHeader,
+                                                              color: AppColor
+                                                                  .cyanTeal,
+                                                              context: context),
+                                                          SizedBox(
+                                                            height: 2.r,
+                                                          ),
+                                                          
+                                                          buildProductBodyTable(
+                                                              productController:
+                                                                  productController,
+                                                              selectedpag:
+                                                                  selectedpag,
+                                                              startIndex: pagnationController
+                                                                      .text
+                                                                      .isEmpty
+                                                                  ? null
+                                                                  : int.parse(
+                                                                      pagnationController
+                                                                          .text)),
+                                                          
+                                                        ],
+                                                      ),
                                                     ),
-                                                    // body
-                                                    if (customerController.searchResults.isNotEmpty) ...[
-                                                      if (customerController.seachCustomerPagingList.isNotEmpty) ...[
-                                                        buildCustomerBodyTable(
-                                                            customerController:
-                                                                customerController,
-                                                            selectedpag:
-                                                                selectedpag,
-                                                            startIndex:
-                                                                pagnationController
-                                                                        .text
-                                                                        .isEmpty
-                                                                    ? null
-                                                                    : int.parse(
-                                                                        pagnationController
-                                                                            .text)
-                                                            )
-                                                      ]
-                                                    ] else if (customerController.searchResults.isEmpty) ...[
-                                                      if (customerController
-                                                          .customerpagingList
-                                                          .isNotEmpty) ...[
-                                                        buildCustomerBodyTable(
-                                                            customerController:
-                                                                customerController,
-                                                            selectedpag:
-                                                                selectedpag,
-                                                            startIndex:
-                                                                pagnationController
-                                                                        .text
-                                                                        .isEmpty
-                                                                    ? null
-                                                                    : int.parse(
-                                                                        pagnationController
-                                                                            .text)
-                                                            )
-                                                      ]
-                                                    ],
-                                                    if (customerController.searchResults.isNotEmpty) ...[
-                                                      if (customerController.seachCustomerPagingList.isEmpty) ...[
-                                                        Expanded(
-                                                            child: Center(
-                                                                child:
-                                                                    AppNoDataWidge(
-                                                          message:
-                                                              "empty_filter".tr,
-                                                        )))
-                                                      ]
-                                                    ] else if (customerController.searchResults.isEmpty) ...[
-                                                      if (customerController
-                                                          .customerpagingList
-                                                          .isEmpty) ...[
-                                                        Expanded(
-                                                            child: Center(
-                                                                child:
-                                                                    AppNoDataWidge(
-                                                          message:
-                                                              "empty_filter".tr,
-                                                        )))
-                                                      ]
-                                                    ],
-                                                  ],
-                                                ),
-                                              ),
-                                            )
+                                                  ) : Expanded(
+                                                child: Center(
+                                                    child: AppNoDataWidge(
+                                                      message: "empty_filter".tr,
+                                                    )));
+                                          })
+
+                                      /// test
                                     ],
                                   ),
                                 ),
 
+                                // SizedBox(height: 10.r,),
                                 GetBuilder<LoadingDataController>(
                                     id: "pagin",
                                     builder: (controller) {
-                                      var datatBaseLenght =
-                                          
-                                          customerController
-                                                  .searchResults.isNotEmpty
-                                              ? customerController
-                                                  .searchResults.length
-                                              : searchBarController.text !=
-                                                          "" &&
-                                                      customerController
-                                                          .searchResults.isEmpty
-                                                  ? 0
-                                                  : loadingDataController
-                                                          .itemdata[
-                                                      Loaddata.customers.name
-                                                          .toString()]['local'];
-                                      int dataStart = 
-                                      
-                                      pagnationController.text.isEmpty
-                                          ? (customerController.limit *
-                                                  (selectedpag + 1)) -
-                                              (customerController.limit - 1)
-                                          : int.parse(pagnationController.text);
-                                      pagnationController.text = dataStart.toString();
-                                      pagesNumber = (datatBaseLenght ~/
-                                              customerController.limit) +
-                                          (datatBaseLenght %
-                                                      customerController
-                                                          .limit !=
+                                      var dataResultLenght = productController
+                                                      .isHaveCheck.value &&
+                                                  productController
+                                                      .filtterResults.isEmpty ||
+                                              (searchBarController.text != "" &&
+                                                  productController
+                                                      .searchResults.isEmpty)
+                                          ? 0
+                                          : productController.filtterResults
+                                                      .isNotEmpty &&
+                                                  productController
+                                                      .searchResults.isEmpty
+                                              ? productController
+                                                  .filtterResults.length
+                                              : productController
+                                                      .searchResults.isNotEmpty
+                                                  ? productController
+                                                      .searchResults.length
+                                                  : searchBarController.text != "" &&
+                                                          productController
+                                                              .searchResults
+                                                              .isEmpty
+                                                      ? 0
+                                                      : productController.loadingDataController
+                                                              .itemdata[Loaddata.products.name.toString()]
+                                                          ['local'];
+                                      pagesNumber = (dataResultLenght ~/
+                                              productController.limit) +
+                                          (dataResultLenght %
+                                                      productController.limit !=
                                                   0
                                               ? 1
                                               : 0);
-
-                                     
+                                      int dataStart = pagnationController
+                                              .text.isEmpty
+                                          ? (productController.limit *
+                                                  (selectedpag + 1)) -
+                                              (productController.limit - 1)
+                                          : int.parse(pagnationController.text);
+                                      pagnationController.text =
+                                          dataStart.toString();
                                       var datadisplayLenght =
                                           (int.parse(pagnationController.text) +
-                                                      customerController
-                                                          .limit) <
-                                                  datatBaseLenght
+                                                      productController.limit) <
+                                                  dataResultLenght
                                               ? ((int.parse(pagnationController
                                                           .text) +
-                                                      customerController
-                                                          .limit) -
+                                                      productController.limit) -
                                                   1)
-                                              : datatBaseLenght;
-                                      return datatBaseLenght != 0
+                                              : dataResultLenght;
+                                      return dataResultLenght != 0
                                           ? Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
@@ -846,9 +883,9 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                         onTap: dataStart > 1
                                                             ? () async {
                                                                 if (dataStart <=
-                                                                    customerController
+                                                                    productController
                                                                         .limit) {
-                                                                  await customerController.getAllCustomerLocal(
+                                                                  await productController.displayProductList(
                                                                       paging:
                                                                           true,
                                                                       type:
@@ -861,8 +898,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                           .text =
                                                                       "1";
                                                                 } else {
-                                                                  await customerController
-                                                                      .getAllCustomerLocal(
+                                                                  await productController
+                                                                      .displayProductList(
                                                                     paging:
                                                                         true,
                                                                     type:
@@ -870,10 +907,10 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                   );
                                                                   selectedpag--;
                                                                   pagnationController
-                                                                      .text = ((customerController.limit *
+                                                                      .text = ((productController.limit *
                                                                               (selectedpag +
                                                                                   1)) -
-                                                                          (customerController.limit -
+                                                                          (productController.limit -
                                                                               1))
                                                                       .toString();
                                                                 }
@@ -899,7 +936,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                               // Lenght data in DB
                                                               TextSpan(
                                                                 text:
-                                                                    "$datatBaseLenght / ",
+                                                                    "$dataResultLenght / ",
                                                                 style: TextStyle(
                                                                     fontSize:
                                                                         6.5.r,
@@ -975,7 +1012,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                   .isNotEmpty) {
                                                                 var pageselecteed = (int.parse(
                                                                             value) /
-                                                                        customerController
+                                                                        productController
                                                                             .limit)
                                                                     .ceilToDouble();
                                                                 selectedpag =
@@ -984,7 +1021,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                         1;
                                                                 if (int.parse(
                                                                         value) >
-                                                                    datatBaseLenght) {
+                                                                    dataResultLenght) {
                                                                   pagnationController
                                                                           .text =
                                                                       (1).toString();
@@ -1009,10 +1046,10 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                 }
                                                               }
 
-                                                              customerController
+                                                              productController
                                                                   .update();
-                                                              await customerController
-                                                                  .getAllCustomerLocal(
+                                                              await productController
+                                                                  .displayProductList(
                                                                       paging:
                                                                           true,
                                                                       type: "",
@@ -1024,6 +1061,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                           ),
                                                         ),
                                                       ),
+                                                      //التالي
                                                       InkWell(
                                                         onTap: pagesNumber >
                                                                 (selectedpag +
@@ -1034,7 +1072,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                         pagnationController
                                                                             .text);
                                                                 skip = (prefixData +
-                                                                    (customerController
+                                                                    (productController
                                                                             .limit -
                                                                         1));
                                                                 pagnationController
@@ -1042,8 +1080,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                         1)
                                                                     .toString();
 
-                                                                await customerController
-                                                                    .getAllCustomerLocal(
+                                                                await productController
+                                                                    .displayProductList(
                                                                         paging:
                                                                             true,
                                                                         type:
@@ -1078,13 +1116,16 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                             ),
                           ),
                         )
-                      : AddCustomerScreen(
-                          objectToEdit: customerController.object,
+                      // : Container();
+
+                      /// test
+
+                      : AddProductScreen(
+                          objectToEdit: productController.object,
                         );
                 }),
             Obx(() {
-              if (loadingDataController.isUpdate.value ||
-                  loadingDataController.isRefresh.value) {
+              if (productController.loadingDataController.isUpdate.value) {
                 return const LoadingWidget();
               } else {
                 return const SizedBox

@@ -1,3 +1,4 @@
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:odoo_rpc/odoo_rpc.dart';
@@ -67,7 +68,7 @@ class CustomerService extends CustomerRepository {
 
       return result;
     } on OdooException catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: true, methodName: "updateCustomer");
     }
   }
@@ -84,7 +85,7 @@ class CustomerService extends CustomerRepository {
       dataCreate.id = partnerId;
       return dataCreate;
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: true, methodName: "createCustomer");
     }
   }
@@ -112,7 +113,7 @@ class CustomerService extends CustomerRepository {
               .map((e) => Customer.fromJson(e, fromLocal: false))
               .toList();
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: true, methodName: "getAllCustomer");
     }
   }
@@ -134,7 +135,7 @@ class CustomerService extends CustomerRepository {
       });
       return partners;
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "CustomerCount");
     }
   }
@@ -159,7 +160,7 @@ class CustomerService extends CustomerRepository {
           ? null
           : Customer.fromJson(partners.first);
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: true, methodName: "getCustomerById");
     }
   }
@@ -173,7 +174,7 @@ class CustomerService extends CustomerRepository {
           whereArgs: ['%$query%', '%$query%', '%$query%'],
           where: 'name LIKE ? OR email LIKE ? OR phone LIKE ?');
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "CustomerSearch");
     }
   }
@@ -189,23 +190,22 @@ class CustomerService extends CustomerRepository {
       });
       return result;
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: true, methodName: "deleteCustomer");
     }
   }
 
   Future updateCustomerRemotAndLocal({required Customer customer}) async {
     try {
-      _generalLocalDBInstance =
-          GeneralLocalDB.getInstance<Customer>(fromJsonFun: Customer.fromJson);
+      _generalLocalDBInstance =GeneralLocalDB.getInstance<Customer>(fromJsonFun: Customer.fromJson);
       var connectivityResult = await (Connectivity().checkConnectivity());
       if (!connectivityResult.contains(ConnectivityResult.none) &&
           (customer.id != null)) {
         bool trustedDevice = await MacAddressHelper.isTrustedDevice();
         if (trustedDevice) {
-          dynamic result =
-              await update(id: customer.id!, dataUpdated: customer);
+          dynamic result = await update(id: customer.id!, dataUpdated: customer);
           if (result is bool) {
+            
             if (result) {
               int affectedRows = await _generalLocalDBInstance!.update(
                   id: customer.id!,
@@ -226,7 +226,6 @@ class CustomerService extends CustomerRepository {
             }
             return "exception".tr;
           } else {
-            // return "exception".tr;
             return result;
           }
         }
@@ -262,7 +261,7 @@ class CustomerService extends CustomerRepository {
               }
               return result;
             } else {
-              return handleException(
+              return await handleException(
                   exception: affectedRows,
                   navigation: false,
                   methodName: "createCustomerRemotAndLocal");
@@ -275,7 +274,7 @@ class CustomerService extends CustomerRepository {
         return "no_connection".tr;
       }
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e,
           navigation: false,
           methodName: "createCustomerRemotAndLocal");
@@ -297,6 +296,8 @@ class CustomerService extends CustomerRepository {
     }
   }
 
+
+
   // ========================================== [ get All  Customers ] =============================================
 
   // ========================================== [ get All  Customers Local ] =============================================
@@ -308,27 +309,26 @@ class CustomerService extends CustomerRepository {
           await _generalLocalDBInstance!.index(offset: offset, limit: limit);
       return customers;
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "getAllCustomersLocal");
     }
   }
 
   // ========================================== [ get All  Customers Local ] =============================================
 
-  Future<List<Customer>> fetchCustomers(
-      String search, int page, int pageSize) async {
+  Future<List<Customer>> fetchCustomers(String search, int page, int pageSize) async {
     try {
-      _generalLocalDBInstance =
-          GeneralLocalDB.getInstance<Customer>(fromJsonFun: Customer.fromJson);
-      List<Customer> matchedCustomer = (await _generalLocalDBInstance!.filter(
-          whereArgs: ['%$search%', '%$search%', '%$search%'],
-          where: 'name LIKE ? OR email LIKE ? OR phone LIKE ?',
-          limit: pageSize,
-          page: page)) as List<Customer>;
+      _generalLocalDBInstance = GeneralLocalDB.getInstance<Customer>(fromJsonFun: Customer.fromJson);
+      List<Customer> matchedCustomer = ( await _generalLocalDBInstance!.filter(whereArgs: ['%$search%', '%$search%', '%$search%'],where: 'name LIKE ? OR email LIKE ? OR phone LIKE ?',limit:pageSize ,page:page ) ) as List<Customer>
+    ;
 
       return matchedCustomer;
     } catch (e) {
       return [];
     }
   }
+
+
+
+
 }

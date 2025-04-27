@@ -21,13 +21,22 @@ class AccountTaxController extends GetxController {
   _unitsData() async {
     var result = await displayAccountTaxList();
     accountTaxList = result.data;
-    // if (kDebugMode) {
-    //   print('accountTaxList.length : ${accountTaxList.length}');
-    // }
     update();
   }
 
-  // ========================================== [ START DISPLAY PRODUCT UNIT LIST ] =============================================
+// # ===================================================== [ DISPLAY ACCOUNT TAX LIST ] =====================================================
+  // # Functionality:
+  // # - Retrieves a list of account taxes .
+  // # - If the result is a list, wraps it in a `ResponseResult` with a success status.
+  // # - If the result is not a list, wraps the result in a `ResponseResult` with an error message.
+  // # - Sets the `isLoading` flag to false once the operation is complete.
+  // # Input:
+  // # - None
+  // # Raises:
+  // # - None
+  // # Returns:
+  // # - A `ResponseResult` object with the list of account taxes or an error message.
+
   Future<dynamic> displayAccountTaxList() async {
     isLoading.value = true;
     dynamic result = await _accountTaxService.index();
@@ -41,96 +50,56 @@ class AccountTaxController extends GetxController {
     isLoading.value = false;
     return result;
   }
-  // ========================================== [ END DISPLAY PRODUCT UNIT LIST ] =============================================
+// # ===================================================== [ DISPLAY ACCOUNT TAX LIST ] =====================================================
 
-  // ========================================== [ START CREATE PRODUCT UNIT ] =============================================
-  // Future<dynamic> createAccountTax(
-  //     {required AccountTax productUnit, bool isFromHistory = false}) async {
-  //   isLoading.value = true;
-  //   var connectivityResult = await (Connectivity().checkConnectivity());
-  //
-  //   if (!connectivityResult.contains(ConnectivityResult.none)) {
-  //     // Remotely Added
-  //     var remoteResult = await productUnitService.createAccountTaxRemotely(
-  //         obj: productUnit.toJson());
-  //
-  //     if (remoteResult is int) {
-  //       productUnit.id = remoteResult;
-  //       await productUnitService.create(
-  //           obj: productUnit, isRemotelyAdded: true);
-  //       isLoading.value = false;
-  //       return ResponseResult(
-  //           status: true, data: productUnit, message: "Successful".tr);
-  //
-  //       //
-  //     } else {
-  //       isLoading.value = false;
-  //       return ResponseResult(message: remoteResult);
-  //     }
-  //   }
-  //   isLoading.value = false;
-  //   return ResponseResult(message: "no_connection".tr);
-  // }
 
-// ========================================== [ END CREATE PRODUCT UNIT ] =============================================
 
-// ========================================== [ START UPDATE PRODUCT UNIT ] =============================================
-//   Future<dynamic> updateAccountTax({required AccountTax productUnit}) async {
-//     isLoading.value = true;
-//     var connectivityResult = await (Connectivity().checkConnectivity());
-//     if (!connectivityResult.contains(ConnectivityResult.none) &&
-//         productUnit.id != null) {
-//       var remoteResult = await productUnitService.updateAccountTaxRemotely(
-//           id: productUnit.id!, obj: productUnit.toJson());
-//       if (remoteResult is! bool || remoteResult != true) {
-//         isLoading.value = false;
-//         return ResponseResult(message: "error");
-//       }
-//       //
-//       else {
-//         await productUnitService.update(
-//             id: productUnit.id!, obj: productUnit, whereField: 'id');
-//         isLoading.value = false;
-//         return ResponseResult(status: true, data: productUnit);
-//       }
-//       //
-//     }
-//     isLoading.value = false;
-//     return ResponseResult(message: "no_connection".tr);
-//   }
-// ========================================== [ END UPDATE PRODUCT UNIT ] =============================================
 
-// ============================================ [ SEARCH PRODUCT UNIT ] ===============================================
+
+
+  
+  
+  
+  
+  // # ===================================================== [ SEARCH ACCOUNT TAX ] =====================================================
+  // # Functionality:
+  // # - Clears the existing search results and performs a search based on the provided query.
+  // # - Fetches the search results.
+  // # - If results are found, it updates the `searchResults` list with the new data and triggers a UI update.
+  // # Input:
+  // # - query: The search query to filter account taxes.
+  // # Raises:
+  // # - None
+  // # Returns:
+  // # - None
+
   Future<void> search(String query) async {
     if (accountTaxList.isNotEmpty) {
-      // if (kDebugMode) {
-      //   print("AccountTax list is not empty");
-      // }
       searchResults.clear();
       var result = await _accountTaxService.search(query);
       if (result is List) {
-        // if (kDebugMode) {
-        //   print(
-        //       '_accountTaxService LENGTH : ${result.map((e) => e.toJson()).toList()}');
-        // }
         searchResults.addAll(result as List<AccountTax>);
       }
-      // for (AccountTax productUnit in accountTaxList) {
-      //   if (productUnit.name!.toLowerCase().contains(query.toLowerCase())) {
-      //     searchResults.add(productUnit);
-      //   }
-      // }
       update();
     }
   }
+// # ===================================================== [ SEARCH ACCOUNT TAX ] =====================================================
 
-// ============================================ [ SEARCH PRODUCT UNIT ] ===============================================
+
+
+  
+// ===================================================== [ UPDATE HIDE MENU ] =====================================================
+  // # Functionality:
+  // # - Updates the visibility of the main screen based on the provided value.
+  // # - Toggles the `hideMainScreen` value and updates the UI accordingly.
+  // # Input:
+  // # - value: A boolean indicating whether to hide (true) or show (false) the main screen.
+  // # Returns:
+  // # - None
 
   updateHideMenu(bool value) {
     hideMainScreen.value = value;
-    // if (kDebugMode) {
-    //   print('hideMainScreen.value : ${hideMainScreen.value}');
-    // }
     update();
   }
+// ===================================================== [ UPDATE HIDE MENU ] =====================================================
 }

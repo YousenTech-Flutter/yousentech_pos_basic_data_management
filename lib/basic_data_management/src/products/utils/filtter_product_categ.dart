@@ -14,7 +14,6 @@ filtterProductByCategory(
     direction: PopoverDirection.bottom,
     context: context,
     width: Get.width * 0.15,
-    // height: Get.height * 0.30,
     backgroundColor: AppColor.white,
     bodyBuilder: (context) {
       return StatefulBuilder(builder: (BuildContext context, setState) {
@@ -50,8 +49,7 @@ filtterProductByCategory(
                                       .indexOf(item)]["is_check"] = value!;
                             },
                           );
-                          await productController.searchByCateg(
-                              query: productController.categoriesCheckFiltter);
+                          await productController.searchByCateg(query: productController.categoriesCheckFiltter);
                           await productController.resetPagingList(
                               selectedpag: 0);
                         },

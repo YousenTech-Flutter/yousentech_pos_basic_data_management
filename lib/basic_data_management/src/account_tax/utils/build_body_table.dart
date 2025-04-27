@@ -26,24 +26,6 @@ buildAccountTaxBodyTable(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Row(
                 children: [
-                  // Container(
-                  //   width: Get.width * 0.03,
-                  //   // width: Get.width * 0.04,
-                  //   height: Get.height * 0.04,
-                  //   alignment: Alignment.center,
-                  //   padding: const EdgeInsets.all(5),
-                  //   decoration: BoxDecoration(
-                  //     shape: BoxShape.rectangle,
-                  //     borderRadius: BorderRadius.circular(10),
-                  //     color: AppColor.shadepurple,
-                  //   ),
-                  //   child: Text(
-                  //     (index + 1).toString(),
-                  //     style: const TextStyle(
-                  //         // fontSize: Get.width * 0.01,
-                  //         color: Colors.white),
-                  //   ),
-                  // ),
                   Container(
                       width: Get.width * 0.04,
                       height: Get.height * 0.04,
@@ -57,34 +39,25 @@ buildAccountTaxBodyTable(
                   Expanded(
                     flex: 2,
                     child: Center(
-                      child: Text(
-                        item.getAccountTaxBasedOnLang,
-                        style: TextStyle(
-                            fontSize: 10.r, color: AppColor.charcoalGray),
+                      child: Text(item.getAccountTaxBasedOnLang,
+                      style: TextStyle(fontSize: 10.r, color: AppColor.charcoalGray),
                       ),
-                      // (SharedPr.lang == 'ar' ? item.name! : item.name!) ?? ''),
                     ),
                   ),
                   Expanded(
                     flex: 1,
                     child: Center(
-                      child: Text(
-                        item.amount.toString(),
-                        style: TextStyle(
-                            fontSize: 10.r, color: AppColor.charcoalGray),
-                      ),
-                      // (SharedPr.lang == 'ar' ? item.name! : item.name!) ?? ''),
+                      child: Text(item.amount.toString(),
+                      style: TextStyle(
+                            fontSize: 10.r, color: AppColor.charcoalGray),),
                     ),
                   ),
                   Expanded(
                     flex: 1,
                     child: Center(
-                      child: Text(
-                        item.getIfPriceIncluded,
-                        style: TextStyle(
-                            fontSize: 10.r, color: AppColor.charcoalGray),
-                      ),
-                      // (SharedPr.lang == 'ar' ? item.name! : item.name!) ?? ''),
+                      child: Text(item.getIfPriceIncluded,
+                      style: TextStyle(
+                            fontSize: 10.r, color: AppColor.charcoalGray),),
                     ),
                   ),
                 ],

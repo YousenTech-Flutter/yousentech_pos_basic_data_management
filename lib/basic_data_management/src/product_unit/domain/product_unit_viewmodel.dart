@@ -21,13 +21,20 @@ class ProductUnitController extends GetxController {
   _unitsData() async {
     var result = await displayProductUnitList();
     productUnitList = result.data;
-    // if (kDebugMode) {
-    //   print('productUnitList.length : ${productUnitList.length}');
-    // }
     update();
   }
 
-  // ========================================== [ START DISPLAY PRODUCT UNIT LIST ] =============================================
+// # ===================================================== [ DISPLAY PRODUCT UNIT LIST ] =====================================================
+  // # Functionality:
+  // # - This function fetches a list of product units.
+  // # - The `isLoading` flag is set to true at the beginning to indicate that data is being loaded.
+  // # - If the result is a valid list, it wraps the result in a `ResponseResult` with a success status and message.
+  // # - If the result is not a valid list, it wraps the result in a `ResponseResult` with the error message.
+  // # - After the data is loaded, the `isLoading` flag is set to false.
+  // # Input:
+  // # - No specific input, as it fetches data from the service.
+  // # Returns:
+  // # - A `ResponseResult` containing the product unit list and a success or error message.
   Future<dynamic> displayProductUnitList() async {
     isLoading.value = true;
     dynamic result = await productUnitService.index();
@@ -41,9 +48,23 @@ class ProductUnitController extends GetxController {
     isLoading.value = false;
     return result;
   }
-  // ========================================== [ END DISPLAY PRODUCT UNIT LIST ] =============================================
+// # ===================================================== [ DISPLAY PRODUCT UNIT LIST ] =====================================================
 
-  // ========================================== [ START DISPLAY PRODUCT UNIT ] =============================================
+
+
+
+  
+// # ===================================================== [ DISPLAY PRODUCT ] =====================================================
+  // # Functionality:
+  // # - This function fetches a single product based on its ID.
+  // # - The `isLoading` flag is set to true at the beginning to indicate that data is being loaded.
+  // # - If the result is a valid list, it wraps the result in a `ResponseResult` with a success status and message.
+  // # - If the result is not a valid list, it wraps the result in a `ResponseResult` with the error message.
+  // # - After the data is loaded, the `isLoading` flag is set to false.
+  // # Input:
+  // # - `id`: The unique identifier for the product.
+  // # Returns:
+  // # - A `ResponseResult` containing the product data or an error message.
   Future<dynamic> displayProduct({required int id}) async {
     isLoading.value = true;
     dynamic result = await productUnitService.show(val: id);
@@ -56,96 +77,54 @@ class ProductUnitController extends GetxController {
     isLoading.value = false;
     return result;
   }
-  // ========================================== [ END DISPLAY PRODUCT UNIT ] =============================================
+// # ===================================================== [ DISPLAY PRODUCT ] =====================================================
 
-  // ========================================== [ START CREATE PRODUCT UNIT ] =============================================
-  // Future<dynamic> createProductUnit(
-  //     {required ProductUnit productUnit, bool isFromHistory = false}) async {
-  //   isLoading.value = true;
-  //   var connectivityResult = await (Connectivity().checkConnectivity());
-  //
-  //   if (!connectivityResult.contains(ConnectivityResult.none)) {
-  //     // Remotely Added
-  //     var remoteResult = await productUnitService.createProductUnitRemotely(
-  //         obj: productUnit.toJson());
-  //
-  //     if (remoteResult is int) {
-  //       productUnit.id = remoteResult;
-  //       await productUnitService.create(
-  //           obj: productUnit, isRemotelyAdded: true);
-  //       isLoading.value = false;
-  //       return ResponseResult(
-  //           status: true, data: productUnit, message: "Successful".tr);
-  //
-  //       //
-  //     } else {
-  //       isLoading.value = false;
-  //       return ResponseResult(message: remoteResult);
-  //     }
-  //   }
-  //   isLoading.value = false;
-  //   return ResponseResult(message: "no_connection".tr);
-  // }
 
-// ========================================== [ END CREATE PRODUCT UNIT ] =============================================
 
-// ========================================== [ START UPDATE PRODUCT UNIT ] =============================================
-//   Future<dynamic> updateProductUnit({required ProductUnit productUnit}) async {
-//     isLoading.value = true;
-//     var connectivityResult = await (Connectivity().checkConnectivity());
-//     if (!connectivityResult.contains(ConnectivityResult.none) &&
-//         productUnit.id != null) {
-//       var remoteResult = await productUnitService.updateProductUnitRemotely(
-//           id: productUnit.id!, obj: productUnit.toJson());
-//       if (remoteResult is! bool || remoteResult != true) {
-//         isLoading.value = false;
-//         return ResponseResult(message: "error");
-//       }
-//       //
-//       else {
-//         await productUnitService.update(
-//             id: productUnit.id!, obj: productUnit, whereField: 'id');
-//         isLoading.value = false;
-//         return ResponseResult(status: true, data: productUnit);
-//       }
-//       //
-//     }
-//     isLoading.value = false;
-//     return ResponseResult(message: "no_connection".tr);
-//   }
-// ========================================== [ END UPDATE PRODUCT UNIT ] =============================================
-
-// ============================================ [ SEARCH PRODUCT UNIT ] ===============================================
+  
+  
+// # ===================================================== [ SEARCH PRODUCT UNIT ] =====================================================
+  // # Functionality:
+  // # - This function allows searching for product units based on the provided query string.
+  // # - It first checks if the `productUnitList` is not empty.
+  // # - The `searchResults` list is cleared to ensure fresh search results.
+  // # - If the search result is a valid list, the results are added to the `searchResults` list.
+  // # - After updating the search results, the `update()` method is called to update the state.
+  // # Input:
+  // # - `query`: The query string used for searching product units.
+  // # Returns:
+  // # - This function doesn't return anything. It updates the search results in the state.
   Future<void> search(String query) async {
     if (productUnitList.isNotEmpty) {
-      // if (kDebugMode) {
-      //   print("ProductUnit list is not empty");
-      // }
+
       searchResults.clear();
       var result = await productUnitService.search(query: query);
       if (result is List) {
-        // if (kDebugMode) {
-        //   print(
-        //       'productUnitService LENGTH : ${result.map((e) => e.toJson()).toList()}');
-        // }
+        
         searchResults.addAll(result as List<ProductUnit>);
       }
-      // for (ProductUnit productUnit in productUnitList) {
-      //   if (productUnit.name!.toLowerCase().contains(query.toLowerCase())) {
-      //     searchResults.add(productUnit);
-      //   }
-      // }
       update();
     }
   }
+// # ===================================================== [ SEARCH PRODUCT UNIT ] =====================================================
 
-// ============================================ [ SEARCH PRODUCT UNIT ] ===============================================
+
+
+  
+//   # ===================================================== [ UPDATE HIDE MENU ] =====================================================
+  // # Functionality:
+  // # - This function is used to update the visibility of the main screen.
+  // # - The visibility is controlled by the `hideMainScreen` variable, which is updated to the value passed as an argument (`value`).
+  // # - After updating the `hideMainScreen` variable, the `update()` method is called to trigger a UI update, ensuring the changes are reflected in the UI.
+  // # Input:
+  // # - `value`: A boolean value that determines whether to hide the main screen (`true` for hiding, `false` for showing).
+  // # Returns:
+  // # - This function does not return anything. It only updates the state of the visibility and triggers a UI update.
 
   updateHideMenu(bool value) {
     hideMainScreen.value = value;
-    // if (kDebugMode) {
-    //   print('hideMainScreen.value : ${hideMainScreen.value}');
-    // }
     update();
   }
+//   # ===================================================== [ UPDATE HIDE MENU ] =====================================================
+
 }

@@ -144,8 +144,7 @@ class _PosProductUnitListScreenState extends State<PosProductUnitListScreen> {
                                       padding: EdgeInsets.all(5.r),
                                       child: SvgPicture.asset(
                                         'assets/image/productunit_menu_icon.svg',
-                                        package:
-                                            'yousentech_pos_basic_data_management',
+                                        package: 'yousentech_pos_basic_data_management',
                                         color: AppColor.white,
                                       ),
                                     ),
@@ -192,29 +191,8 @@ class _PosProductUnitListScreenState extends State<PosProductUnitListScreen> {
                     ),
                   ),
                 )
-
-          // Expanded(
-          //     child: controller.productUnitList.isNotEmpty
-          //         ? Column(
-          //             // mainAxisAlignment: MainAxisAlignment.start,
-          //             children: [
-          //               // Header
-          //               buildBasicDataColumnHeader(
-          //                   data: productUnitHeader,
-          //                   context: context,
-          //                   addEmpty: false),
-          //               // body
-          //               buildProductUnitBodyTable(
-          //                   controller: controller, context: context)
-          //             ],
-          //           )
-          //         : const AppEmptyState(),
-          //   )
         ],
       );
-      // : AddEditProductUnitScreen(
-      //     objectToEdit: posProductUnitController.object,
-      //   );
     });
   }
 }

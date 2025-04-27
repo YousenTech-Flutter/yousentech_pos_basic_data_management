@@ -10,7 +10,6 @@ import 'package:yousentech_pos_basic_data_management/basic_data_management/confi
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/account_tax/utils/build_body_table.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/widget/tital.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_basic_data_table.dart';
-
 import '../domain/account_tax_service.dart';
 import '../domain/account_tax_viewmodel.dart';
 
@@ -46,7 +45,6 @@ class _PosAccountTaxListScreenState extends State<PosAccountTaxListScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<AccountTaxController>(builder: (controller) {
       return Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -106,60 +104,6 @@ class _PosAccountTaxListScreenState extends State<PosAccountTaxListScreen> {
               ],
             ),
           ),
-
-          // SizedBox(height: MediaQuery.sizeOf(context).width * 0.01),
-          // Text(
-          //   'pos_account_tax_list'.tr,
-          //   style: AppStyle.header1,
-          // ),
-          // SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: ContainerTextField(
-          //     width: Get.width / 3,
-          //     height: MediaQuery.sizeOf(context).height * 0.03,
-          //     // height: MediaQuery.sizeOf(context).height * 0.05,
-          //     prefixIcon: Icon(
-          //       Icons.search,
-          //       size: 4.sp,
-          //       color: AppColor.purple,
-          //     ),
-          //     suffixIcon: searchBarController.text.isNotEmpty
-          //         ? IconButton(
-          //             onPressed: () {
-          //               searchBarController.text = '';
-          //               controller.searchResults.clear();
-          //               controller.update();
-          //             },
-          //             icon: Icon(
-          //               Icons.cancel_outlined,
-          //               color: AppColor.grey.withOpacity(0.7),
-          //             ))
-          //         : null,
-          //     isPIN: true,
-          //     isAddOrEdit: true,
-          //     labelText: 'pos_tax_name'.tr,
-          //     hintText: 'pos_tax_name'.tr,
-          //     hintcolor: AppColor.purple,
-          //     iconcolor: AppColor.purple,
-          //     borderColor: AppColor.purple,
-          //     fontSize: Get.width * 0.013,
-          //     color: AppColor.purple,
-          //     borderRadius: 5,
-          //     // borderRadius: 50,
-          //     maxLength: 20,
-          //     controller: searchBarController,
-          //     onChanged: (text) {
-          //       if (searchBarController.text == '') {
-          //         controller.searchResults.clear();
-          //         controller.update();
-          //       } else {
-          //         controller.search(searchBarController.text);
-          //       }
-          //     },
-          //   ),
-          // ),
-
           SizedBox(
             height: 10.r,
           ),

@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:shared_widgets/config/app_colors.dart';
-import 'package:shared_widgets/config/app_enum.dart';
+import 'package:shared_widgets/config/app_enums.dart';
 import 'package:shared_widgets/shared_widgets/app_dialog.dart';
 import 'package:shared_widgets/shared_widgets/app_loading.dart';
 import 'package:shared_widgets/shared_widgets/app_no_data.dart';
@@ -13,14 +13,14 @@ import 'package:shared_widgets/shared_widgets/app_snack_bar.dart';
 import 'package:shared_widgets/shared_widgets/app_text_field.dart';
 import 'package:shared_widgets/utils/mac_address_helper.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/domain/pos_category_service.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/views/add_edit_pos_category_screen.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/widgets/show_category.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/add_edit_pos_category_screen.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/widgets/show_category.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/define_type_function.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_list.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
-import '../../../products/presentation/widget/tital.dart';
-import '../../domain/pos_category_viewmodel.dart';
+import '../../products/presentation/widget/tital.dart';
+import '../domain/pos_category_viewmodel.dart';
 
 class PosCategoryListScreen extends StatefulWidget {
   const PosCategoryListScreen({super.key});
@@ -33,14 +33,13 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
   // Initialize the posCategoryController using Get.put or Get.find
   late final PosCategoryController posCategoryController;
   TextEditingController searchBarController = TextEditingController();
-  LoadingDataController loadingDataController = Get.find<LoadingDataController>();
+
   @override
   void initState() {
     super.initState();
     PosCategoryService.posCategoryDataServiceInstance = null;
     PosCategoryService.getInstance();
-    posCategoryController =
-        Get.put(PosCategoryController(), tag: 'categoryControllerMain');
+    posCategoryController = Get.put(PosCategoryController(), tag: 'categoryControllerMain');
     categoriesData();
   }
 
@@ -58,7 +57,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
-      ignoring: loadingDataController.isUpdate.value,
+      ignoring: posCategoryController.loadingDataController.isUpdate.value,
       child: Container(
         color: AppColor.dashbordcolor,
         child: Stack(
@@ -67,8 +66,6 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                 tag: 'categoryControllerMain',
                 builder: (controller) {
                   return
-                      // !posCategoryController.hideMainScreen.value
-                      //     ?
                       Center(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,8 +78,6 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                           margin: EdgeInsets.only(
                               top: 10.r, left: 20.r, right: 20.r),
                           child: Row(
-                            // mainAxisAlignment:
-                            //     MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
                                 flex: 4,
@@ -101,8 +96,6 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                               colorBorderSide:
                                                   AppColor.cyanTeal,
                                               addCancelButton: false,
-                                              // height: 270.h,
-                                              // width: 0.5.sw,
                                               height: 300.h,
                                               width: 0.4.sw,
                                               title: '',
@@ -128,8 +121,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                         child: Center(
                                           child: SvgPicture.asset(
                                             "assets/image/add_categry.svg",
-                                            package:
-                                                'yousentech_pos_basic_data_management',
+                                            package: 'yousentech_pos_basic_data_management',
                                             clipBehavior: Clip.antiAlias,
                                             fit: BoxFit.fill,
                                             width: 19.r,
@@ -161,8 +153,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                               horizontal: 5.r, vertical: 5.r),
                                           child: SvgPicture.asset(
                                             "assets/image/search_quick.svg",
-                                            package:
-                                                'yousentech_pos_basic_data_management',
+                                            package: 'yousentech_pos_basic_data_management',
                                             width: 19.r,
                                             height: 19.r,
                                           ),
@@ -212,7 +203,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                             (element) =>
                                                 element.key ==
                                                 Loaddata.categories);
-                                        var result = await loadingDataController
+                                        var result = await posCategoryController.loadingDataController
                                             .updateAll(name: e.key.toString());
                                         if (result == true) {
                                           appSnackBar(
@@ -231,7 +222,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                               messageType: MessageTypes.error,
                                               isDismissible: false);
                                         }
-                                        loadingDataController
+                                        posCategoryController.loadingDataController
                                             .update(['card_loading_data']);
                                       },
                                       child: Container(
@@ -251,8 +242,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                           children: [
                                             SvgPicture.asset(
                                               "assets/image/refresh-circle.svg",
-                                              package:
-                                                  'yousentech_pos_basic_data_management',
+                                              package: 'yousentech_pos_basic_data_management',
                                               clipBehavior: Clip.antiAlias,
                                               fit: BoxFit.fill,
                                               width: 19.r,
@@ -274,7 +264,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                     ),
                                     InkWell(
                                       onTap: () async {
-                                        loadingDataController.isUpdate.value =
+                                        posCategoryController.loadingDataController.isUpdate.value =
                                             true;
                                         var e = loaddata.entries.firstWhere(
                                             (element) =>
@@ -300,12 +290,12 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                   MessageTypes.success);
                                         }
 
-                                        loadingDataController.isUpdate.value =
+                                        posCategoryController.loadingDataController.isUpdate.value =
                                             false;
                                       },
                                       child: Container(
                                         height: 30.h,
-                                        width: 25.w,
+                                        width: 33.w,
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
@@ -320,15 +310,14 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                           children: [
                                             SvgPicture.asset(
                                               "assets/image/list-left.svg",
-                                              package:
-                                                  'yousentech_pos_basic_data_management',
+                                              package: 'yousentech_pos_basic_data_management',
                                               clipBehavior: Clip.antiAlias,
                                               fit: BoxFit.fill,
                                               width: 19.r,
                                               height: 19.r,
                                             ),
                                             Text(
-                                              "display".tr,
+                                              "sync_differences".tr,
                                               style: TextStyle(
                                                   fontSize: 10.r,
                                                   color: AppColor.black
@@ -346,11 +335,11 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                           id: "card_loading_data",
                                           builder: (_) {
                                             var localNumber =
-                                                loadingDataController.itemdata
+                                                posCategoryController.loadingDataController.itemdata
                                                         .containsKey(Loaddata
                                                             .categories.name
                                                             .toString())
-                                                    ? loadingDataController
+                                                    ? posCategoryController.loadingDataController
                                                                 .itemdata[
                                                             Loaddata
                                                                 .categories.name
@@ -358,19 +347,17 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                         ['local']
                                                     : 0;
                                             var remotNumber =
-                                                loadingDataController.itemdata
+                                                posCategoryController.loadingDataController.itemdata
                                                         .containsKey(Loaddata
                                                             .categories.name
                                                             .toString())
-                                                    ? loadingDataController
+                                                    ? posCategoryController.loadingDataController
                                                                 .itemdata[
                                                             Loaddata
                                                                 .categories.name
                                                                 .toString()]
                                                         ['remote']
                                                     : 0;
-                                            // var localNumber= 70;
-                                            // var remotNumber =50;
                                             var per = (remotNumber >
                                                     localNumber)
                                                 ? (localNumber /
@@ -385,7 +372,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                     100;
                                             return InkWell(
                                               onTap: () async {
-                                                loadingDataController
+                                                posCategoryController.loadingDataController
                                                     .isUpdate.value = true;
 
                                                 var e = loaddata.entries
@@ -408,28 +395,24 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                     messageType: MessageTypes
                                                         .connectivityOff,
                                                   );
-                                                } else if (result == false) {
-                                                  appSnackBar(
-                                                      message:
-                                                          'synchronized_successfully'
-                                                              .tr,
-                                                      messageType:
-                                                          MessageTypes.success,
-                                                      isDismissible: false);
-                                                } else {
+                                                } 
+                                                else if (result ==false) { appSnackBar(
+                                                                      message:'synchronized_successfully' .tr,
+                                                                      messageType:MessageTypes.success,
+                                                                      isDismissible:false);}
+                                                
+                                                else {
                                                   appSnackBar(
                                                       message:
                                                           'synchronization_problem'
                                                               .tr,
-                                                      messageType:
-                                                          MessageTypes.success,
                                                       isDismissible: false);
                                                 }
-                                                loadingDataController
+                                                posCategoryController.loadingDataController
                                                     .isUpdate.value = false;
-                                                loadingDataController.update(
+                                                posCategoryController.loadingDataController.update(
                                                     ['card_loading_data']);
-                                                loadingDataController
+                                                posCategoryController.loadingDataController
                                                     .update(['loading']);
                                               },
                                               child: Container(
@@ -503,7 +486,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                                     : AppColor
                                                                         .emeraldGreen,
                                                                 fontFamily:
-                                                                    'Tajawal',package: 'yousentech_pos_basic_data_management'),
+                                                                    'Tajawal',package: 'yousentech_pos_basic_data_management',),
                                                             children: <TextSpan>[
                                                               TextSpan(
                                                                 text:
@@ -515,7 +498,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                                     fontSize:
                                                                         10.r,
                                                                     fontFamily:
-                                                                        'Tajawal',package: 'yousentech_pos_basic_data_management'),
+                                                                        'Tajawal',package: 'yousentech_pos_basic_data_management',),
                                                               ),
                                                               // get the number
                                                               TextSpan(
@@ -528,7 +511,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                                     fontSize:
                                                                         10.r,
                                                                     fontFamily:
-                                                                        'Tajawal',package: 'yousentech_pos_basic_data_management'),
+                                                                        'Tajawal'),
                                                               ),
                                                             ],
                                                           ),
@@ -557,9 +540,10 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                     child: AppNoDataWidge(
                                 message: "empty_filter".tr,
                               )))
-                            : posCategoryController.posCategoryList.isNotEmpty
+                            : posCategoryController
+                                    .posCategoryList.isNotEmpty
                                 ? Expanded(
-                                    child: Padding(
+                                  child: Padding(
                                       padding: EdgeInsets.only(
                                           left: 20.r, right: 20.r),
                                       child: Wrap(
@@ -568,7 +552,8 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                         children: [
                                           ...List.generate(
                                               posCategoryController
-                                                      .searchResults.isNotEmpty
+                                                      .searchResults
+                                                      .isNotEmpty
                                                   ? posCategoryController
                                                       .searchResults.length
                                                   : posCategoryController
@@ -586,18 +571,21 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius:
-                                                    BorderRadius.circular(5.r),
+                                                    BorderRadius.circular(
+                                                        5.r),
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    color: AppColor.softIceBlue,
+                                                    color:
+                                                        AppColor.softIceBlue,
                                                     blurRadius: 60,
-                                                    offset: const Offset(0, 10),
+                                                    offset:
+                                                        const Offset(0, 10),
                                                     spreadRadius: 0,
                                                   )
                                                 ],
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(5.r),
+                                                padding:  EdgeInsets.all(5.r),
                                                 child: Column(
                                                   children: [
                                                     Row(
@@ -621,8 +609,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                                     5.0.r),
                                                             child: SvgPicture.asset(
                                                                 "assets/image/categories_menu_icon.svg",
-                                                                package:
-                                                                    'yousentech_pos_basic_data_management',
+                                                                package: 'yousentech_pos_basic_data_management',
                                                                 width: 12.r,
                                                                 height: 12.r,
                                                                 color: AppColor
@@ -630,9 +617,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                           ),
                                                         ),
                                                         Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
                                                           children: [
                                                             Text(
                                                                 item
@@ -647,33 +632,19 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                                       FontWeight
                                                                           .w700,
                                                                 )),
-                                                            // if(item.getPosParentCategoryNameBasedOnLang != null)
-                                                            // Text(item.getPosParentCategoryNameBasedOnLang!,
-                                                            //     style:
-                                                            //     TextStyle(
-                                                            //       color: AppColor
-                                                            //           .gunmetalGray,
-                                                            //       fontSize:
-                                                            //       10.r,
-                                                            //       fontWeight:
-                                                            //       FontWeight
-                                                            //           .w700,
-                                                            //     )),
-                                                            if (item.getPosParentCategoryNameBasedOnLang !=
-                                                                null)
-                                                              Text(
-                                                                // '(${"No".tr} : ${(index + 1).toString()} )',
-                                                                '(parent  : ${item.getPosParentCategoryNameBasedOnLang ?? ""} )',
-                                                                style:
-                                                                    TextStyle(
-                                                                  color: AppColor
-                                                                      .lavenderGray,
-                                                                  fontSize: 8.r,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                ),
-                                                              )
+                                                           
+                                                            if(item.getPosParentCategoryNameBasedOnLang != null)
+                                                            Text(
+                                                              '(parent  : ${item.getPosParentCategoryNameBasedOnLang?? ""} )',
+                                                              style: TextStyle(
+                                                                color: AppColor
+                                                                    .lavenderGray,
+                                                                fontSize: 8.r,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                              ),
+                                                            )
                                                           ],
                                                         )
                                                       ],
@@ -687,15 +658,14 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                         onTap: () {
                                                           posCategoryController
                                                               .object = item;
-
+                                                
                                                           posCategoryController
                                                               .updateHideMenu(
                                                                   true);
                                                           CustomDialog
                                                                   .getInstance()
                                                               .dialog2(
-                                                                  color: AppColor
-                                                                      .dashbordcolor,
+                                                                  color: AppColor.dashbordcolor,
                                                                   colorBorderSide:
                                                                       AppColor
                                                                           .cyanTeal,
@@ -725,13 +695,10 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                                                       .circular(
                                                                           5.r)),
                                                           child: Padding(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    5.0.r),
+                                                            padding:EdgeInsets.all( 5.0.r),
                                                             child: SvgPicture.asset(
                                                                 "assets/image/edit.svg",
-                                                                package:
-                                                                    'yousentech_pos_basic_data_management',
+                                                                package: 'yousentech_pos_basic_data_management',
                                                                 width: 15.r,
                                                                 height: 15.r,
                                                                 color: AppColor
@@ -747,25 +714,15 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                                           }),
                                         ],
                                       ),
-                                      // child: Column(
-                                      //   children: [
-                                      //     // Header
-                                      // buildBasicDataColumnHeader(
-                                      //     data: posCategHeader,
-                                      //     context: context),
-                                      //     // body
-                                      //     buildPosCategoreBodyTable(
-                                      //         posCategoryController:
-                                      //             posCategoryController)
-                                      //   ],
-                                      // ),
+                                    
                                     ),
-                                  )
+                                )
                                 : Expanded(
                                     child: Center(
                                         child: AppNoDataWidge(
                                     message: "empty_filter".tr,
                                   )))
+                      
                       ],
                     ),
                   );
@@ -774,7 +731,7 @@ class _PosCategoryListScreenState extends State<PosCategoryListScreen> {
                   //   );
                 }),
             Obx(() {
-              if (loadingDataController.isUpdate.value) {
+              if (posCategoryController. loadingDataController.isUpdate.value) {
                 return const LoadingWidget();
               } else {
                 return const SizedBox

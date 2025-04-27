@@ -10,8 +10,6 @@ import 'package:shared_widgets/utils/response_result.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_viewmodel.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_service.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
-import 'package:yousentech_pos_loading_synchronizing_data/yousentech_pos_loading_synchronizing_data.dart';
-
 import '../../item_history/domain/item_history_viewmodel.dart';
 import 'pos_category_service.dart';
 
@@ -20,10 +18,9 @@ class PosCategoryController extends GetxController {
   final ItemHistoryController _itemHistoryController = ItemHistoryController();
   LoadingSynchronizingDataService loadingSynchronizingDataService =
       LoadingSynchronizingDataService(type: PosCategory);
-
+  LoadingDataController loadingDataController =  Get.find<LoadingDataController>();
   var isLoading = false.obs;
   var hideMainScreen = false.obs;
-  // List<PosCategory> posCategoryList = [];
   RxList<PosCategory> posCategoryList = <PosCategory>[].obs;
   RxList<PosCategory> searchResults = RxList<PosCategory>();
   PosCategory? object;
@@ -36,17 +33,22 @@ class PosCategoryController extends GetxController {
 
   categoriesData() async {
     displayPosCategoryList().then((value) {
-      // posCategoryList = value.data;
       posCategoryList.value = value.data;
-      // if (kDebugMode) {
-      //   print(posCategoryList.length);
-      // }
-      // Update the controller
       update();
     });
   }
 
-  // ========================================== [ START DISPLAY PRODUCT CATEGORY LIST ] =============================================
+// # ===================================================== [ DISPLAY POS CATEGORY LIST ] =====================================================
+  // # Functionality:
+  // # - Retrieves a list of POS categories.
+  // # - If the result is a valid list, it wraps it in a `ResponseResult` with a success status and the data.
+  // # - If the result is not a valid list, it wraps the result in a `ResponseResult` with an error message.
+  // # Input:
+  // # - None
+  // # Raises:
+  // # - None
+  // # Returns:
+  // # - A `ResponseResult` object containing the list of POS categories or an error message.
   Future<dynamic> displayPosCategoryList() async {
     isLoading.value = true;
     dynamic result = await posCategoryService.index();
@@ -59,10 +61,23 @@ class PosCategoryController extends GetxController {
     isLoading.value = false;
     return result;
   }
+// # ===================================================== [ DISPLAY POS CATEGORY LIST ] =====================================================
 
-  // ========================================== [ END DISPLAY PRODUCT CATEGORY LIST ] =============================================
 
-  // ========================================== [ START DISPLAY PRODUCT CATEGORY ] =============================================
+
+  
+
+// # ===================================================== [ DISPLAY POS CATEGORY ] =====================================================
+  // # Functionality:
+  // # - Retrieves a specific POS category based on the given `id` using the `posCategoryService`.
+  // # - If the result is a valid list, it wraps it in a `ResponseResult` with a success status and the data.
+  // # - If the result is not a valid list, it wraps the result in a `ResponseResult` with an error message.
+  // # Input:
+  // # - `id`: The ID of the POS category to be retrieved.
+  // # Raises:
+  // # - None
+  // # Returns:
+  // # - A `ResponseResult` object containing the POS category data or an error message.
   Future<dynamic> displayPosCategory({required int id}) async {
     isLoading.value = true;
     dynamic result = await posCategoryService.show(val: id);
@@ -75,10 +90,28 @@ class PosCategoryController extends GetxController {
     isLoading.value = false;
     return result;
   }
+// # ===================================================== [ DISPLAY POS CATEGORY ] =====================================================
 
-  // ========================================== [ END DISPLAY PRODUCT CATEGORY ] =============================================
 
-  // ========================================== [ START CREATE PRODUCT CATEGORY ] =============================================
+
+
+
+//   # ===================================================== [ CREATE POS CATEGORY ] =====================================================
+  // # Functionality:
+  // # - Checks the connectivity of the device.
+  // # - If there is a network connection, checks if the device is trusted.
+  // # - If the device is trusted, creates a POS category remotely.
+  // # - After successfully adding the POS category remotely, connects the category to the POS.
+  // # - Creates the POS category locally and updates the data.
+  // # - If no network connection is available, returns an error message.
+  // # Input:
+  // # - `posCategory`: The POS category object to be created.
+  // # - `isFromHistory`: Optional flag to specify if the operation is triggered from history (default is `false`).
+  // # Raises:
+  // # - None
+  // # Returns:
+  // # - A `ResponseResult` containing the POS category data or an error message.
+
   Future<dynamic> createPosCategory(
       {required PosCategory posCategory, bool isFromHistory = false}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
@@ -98,12 +131,9 @@ class PosCategoryController extends GetxController {
           if (connectCategoryWithPos is bool) {
             await posCategoryService.create(
                 obj: posCategory, isRemotelyAdded: true);
-            LoadingDataController loadingDataController = Get.find<LoadingDataController>();
+
             loadingDataController.posCategoryIdsList.add(posCategory.id!);
             await loadingDataController.getitems();
-
-            // var res = await _itemHistoryController.getItemFromHistory(
-            //     itemId: posCategory.id!, type: OdooModels.posCategory);
             await loadingSynchronizingDataService.updateItemHistory(
                 typeName: OdooModels.posCategory, itemId: posCategory.id);
           }
@@ -117,10 +147,28 @@ class PosCategoryController extends GetxController {
       return ResponseResult(message: "no_connection".tr);
     }
   }
+//   # ===================================================== [ CREATE POS CATEGORY ] =====================================================
 
-// ========================================== [ END CREATE PRODUCT CATEGORY ] =============================================
 
-// ========================================== [ START UPDATE PRODUCT CATEGORY ] =============================================
+
+
+
+  
+ // # ===================================================== [ UPDATE POS CATEGORY ] =====================================================
+  // # Functionality:
+  // # - Checks the connectivity of the device and ensures the POS category has a valid ID.
+  // # - If the device is connected and the POS category is valid, checks if the device is trusted.
+  // # - If the device is trusted, remotely updates the POS category.
+  // # - If the remote update is successful, updates the POS category locally.
+  // # - Clears the product list if the `ProductController` is registered and reloads the products.
+  // # - Updates the item history with the new POS category data.
+  // # - Returns a `ResponseResult` indicating success or failure.
+  // # Input:
+  // # - `posCategory`: The POS category object that needs to be updated.
+  // # Raises:
+  // # - None
+  // # Returns:
+  // # - A `ResponseResult` containing the updated POS category data or an error message.
   Future<dynamic> updatePosCategory({required PosCategory posCategory}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (!connectivityResult.contains(ConnectivityResult.none) &&
@@ -137,8 +185,6 @@ class PosCategoryController extends GetxController {
               id: posCategory.id!, obj: posCategory, whereField: 'id');
           if (result is int) {
             // to reload the categories with new name
-            // await ProductController().onInit();
-
             bool productControllerRegistered =
                 Get.isRegistered<ProductController>(
                     tag: 'productControllerMain');
@@ -165,195 +211,116 @@ class PosCategoryController extends GetxController {
     } else {
       return ResponseResult(message: "no_connection".tr);
     }
-    // if (connectivityResult.contains(ConnectivityResult.none) &&
-    //     posCategory.odooId != null) {
-    //   dynamic result = await posCategoryService.update(
-    //       id: posCategory.id!, obj: posCategory, whereField: 'id');
-    //   if (result is int) {
-    //     ItemHistory itemHistory = ItemHistory(
-    //       posCategoryId: posCategory.id!,
-    //       isAdded: false,
-    //       typeName: OdooModels.posCategory,
-    //     );
-    //     await ItemHistoryService.getInstance()
-    //         .createItemHistoryDB(itemHistory: itemHistory);
-    //     result = ResponseResult(
-    //         status: true, message: "Successful".tr, data: posCategory);
-    //     hideMainScreen.value = true;
-    //   } else {
-    //     result = ResponseResult(message: result);
-    //   }
-    //   isLoading.value = false;
-    //   return result;
-    // } else {
-    //   dynamic result = await posCategoryService.update(
-    //       id: posCategory.id!, obj: posCategory, whereField: 'id');
-    //   if (result is int) {
-    //     result = ResponseResult(
-    //         status: true, message: "Successful".tr, data: posCategory);
-    //     hideMainScreen.value = true;
-    //   } else {
-    //     result = ResponseResult(message: result);
-    //   }
-    //   isLoading.value = false;
-    //   return result;
-    // }
-    // dynamic result = await posCategoryService.update(
-    //     id: posCategory.id!, obj: posCategory, whereField: 'id');
-    // if (result is int) {
-    //   result = ResponseResult(
-    //       status: true, message: "Successful".tr, data: posCategory);
-    //   hideMainScreen.value = true;
-    // } else {
-    //   result = ResponseResult(message: result);
-    // }
-    // isLoading.value = false;
-    // return result;
   }
+  // # ===================================================== [ UPDATE POS CATEGORY ] =====================================================
 
-// ========================================== [ END UPDATE PRODUCT CATEGORY ] =============================================
 
-// ========================================== [ START DELETE PRODUCT CATEGORY ] =============================================
-  // Future<dynamic> deletePosCategory({required PosCategory posCategory}) async {
-  //   isLoading.value = true;
-  //   dynamic result;
-  //   // Check if there is an internet connection
-  //   if (posCategory.odooId != null) {
-  //     var connectivityResult = await (Connectivity().checkConnectivity());
-  //     if (!connectivityResult.contains(ConnectivityResult.none)) {
-  //       // Remotely Remove
-  //       result = await posCategoryService.deletePosCategoryRemotely(
-  //           id: posCategory.odooId!);
-  //       if (result is! bool && result != true) {
-  //         result = ResponseResult(message: result);
-  //       }
-  //     }
-  //   }
 
-  //   // Locally Remove
-  //   result =
-  //       await posCategoryService.delete(id: posCategory.id!, whereField: 'id');
-  //   if (result != 0) {
-  //     result = ResponseResult(
-  //         status: true, message: "Successful".tr, data: posCategory);
-  //   } else {
-  //     result = ResponseResult(message: result);
-  //   }
-  //   isLoading.value = false;
-  //   update();
-  //   return result;
-  // }
 
-// ========================================== [ END DELETE PRODUCT CATEGORY ] =============================================
+  
 
-// ============================================ [ SEARCH PRODUCT CATEGORY ] ===============================================
+
+ // # ===================================================== [ SEARCH POS CATEGORY ] =====================================================
+  // # Functionality:
+  // # - Clears the search results if there are existing items in the list.
+  // # - Executes a search for POS categories using the provided query.
+  // # - If search results are found, it adds them to the `searchResults` list.
+  // # - Calls `update()` to notify the UI to refresh with the new search results.
+  // # Input:
+  // # - `query`: The search query string to find matching POS categories.
+  // # Raises:
+  // # - None
+  // # Returns:
+  // # - None
+
   Future<void> search(String query) async {
     if (posCategoryList.isNotEmpty) {
       searchResults.clear();
       var result = await posCategoryService.search(query);
       if (result is List) {
-        // if (kDebugMode) {
-        //   print(
-        //       'posCategoryService LENGTH : ${result.map((e) => e.toJson()).toList()}');
-        // }
         searchResults.addAll(result as List<PosCategory>);
       }
-      // for (PosCategory posCategory in posCategoryList) {
-      //   if (posCategory.name!.toLowerCase().contains(query.toLowerCase())) {
-      //     searchResults.add(posCategory);
-      //   }
-      // }
       update();
     }
   }
+ // # ===================================================== [ SEARCH POS CATEGORY ] =====================================================
 
-// ============================================ [ SEARCH PRODUCT CATEGORY ] ===============================================
+
+  
+// # ===================================================== [ UPDATE HIDE MENU ] =====================================================
+  // # Functionality:
+  // # - Sets the value of `hideMainScreen` to the provided boolean `value`.
+  // # - Calls `update()` to notify the UI to refresh with the new state.
+  // # Input:
+  // # - `value`: A boolean value that determines whether the main screen should be hidden.
+  // # Raises:
+  // # - None
+  // # Returns:
+  // # - None
 
   updateHideMenu(bool value) {
     hideMainScreen.value = value;
-    // if (kDebugMode) {
-    //   print('hideMainScreen.value : ${hideMainScreen.value}');
-    // }
     update();
   }
+// # ===================================================== [ UPDATE HIDE MENU ] =====================================================
 
-  // Future getRemotPosCategoryIsNotIds(
-  //     {required List<int> ids, required List<int> posSetting}) async {
-  //   try {
-  //     // if (kDebugMode) {
-  //     //   print("getRemotPosCategoryIsNotIds ids+++++++ : $ids");
-  //     //   print("posSetting ids+++++++ : $posSetting");
-  //     // }
-  //     var result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
-  //       'model': OdooModels.posSetting,
-  //       'method': 'search_read',
-  //       'args': [],
-  //       'kwargs': {
-  //         'domain': [
-  //           ['id', 'in', posSetting],
-  //         ],
-  //         'fields': ['pos_category_ids'],
-  //       },
-  //     });
-  //     // if (kDebugMode) {
-  //     //   print("result : $result");
-  //     // }
-  //     if (result.isNotEmpty) {
-  //       List<int> posCategory = [];
-  //       for (Map<String, dynamic> item in result) {
-  //         // print("pos_category_ids ${item["pos_category_ids"]}");
-  //         posCategory.addAll(item["pos_category_ids"].cast<int>());
-  //       }
-  //       // print("pos_category_ids ${posCategory}");
-  //       Set<int> setCategory = posCategory.toSet();
-  //       Set<int> setPos = ids.toSet();
-  //       Set<int> difference = setCategory.difference(setPos);
-  //       // Convert the difference back to a list
-  //       List<int> diffList = difference.toList();
-  //       // print("diffList $diffList");
-  //       return await loadPosCategoryIsNotDB(posCategoriesIds: diffList);
-  //       // return await loadPosCategoryBasedOnUser();
-  //     }
 
-  //     return null;
-  //   } catch (e) {
-  //     return handleException(
-  //         exception: e,
-  //         navigation: false,
-  //         methodName: "getRemotPosCategoryIsNotIds");
-  //   }
-  // }
+
+  
+  
+  
+//   # ===================================================== [ LOAD POS CATEGORY BASED ON USER ] =====================================================
+  // # Functionality:
+  // # - This function loads POS categories for the user based on the current POS object.
+  // # - Calls an external service (`OdooProjectOwnerConnectionHelper.odooClient.callKw`) to retrieve translated category names for the POS.
+  // # - If the data is available, it maps the response into a list of `PosCategory` objects.
+  // # - In case of an error, it handles the exception gracefully and returns an appropriate response.
+  // # Input:
+  // # - None (relies on `SharedPr.currentPosObject` for the POS ID).
+  // # Raises:
+  // # - Exception handling via the `handleException` function in case of failures.
+  // # Returns:
+  // # - A list of `PosCategory` objects if data is retrieved successfully, `null` otherwise.
 
   Future loadPosCategoryBasedOnUser() async {
     try {
-      // if (kDebugMode) {
-      //   print(SharedPr.currentPosObject!.id!);
-      // }
       var result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.posCategoryTransit,
         'method': 'get_translated_category_names',
         'args': [SharedPr.currentPosObject!.id!],
         'kwargs': {
-          // 'context': {},
-          // 'domain': [
-          //   ['id', 'in', posCategoriesIds]
-          // ],
-          // 'fields': [],
         },
       });
-      // print(result);
       return result.isEmpty
           ? null
           : (result as List)
               .map((e) => PosCategory.fromJson(e, fromPosCategoryModel: false))
               .toList();
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e,
           navigation: false,
           methodName: "loadPosCategoryBasedOnUser");
     }
   }
+//   # ===================================================== [ LOAD POS CATEGORY BASED ON USER ] =====================================================
+
+
+
+
+//   # ===================================================== [ LOAD POS CATEGORY BASED ON IDS ] =====================================================
+  // # Functionality:
+  // # - This function loads POS categories based on the provided list of IDs (`posCategoriesIds`).
+  // # - If the list is empty, it returns `null`.
+  // # -  fetch POS categories by their IDs from the remote server.
+  // # - The fetched data is mapped into a list of `PosCategory` objects.
+  // # - In case of an error, it handles the exception.
+  // # Input:
+  // # - List of integers `posCategoriesIds`: The list of POS category IDs to be loaded.
+  // # Raises:
+  // # - Exception handling via the `handleException` function in case of failures.
+  // # Returns:
+  // # - A list of `PosCategory` objects if data is retrieved successfully, `null` otherwise.
 
   Future loadPosCategoryIsNotDB({required List<int> posCategoriesIds}) async {
     try {
@@ -363,13 +330,9 @@ class PosCategoryController extends GetxController {
         var result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
           'model': OdooModels.posCategory,
           'method': 'search_read',
-          // 'args': [SharedPr.currentPosObject!.id!],
           'args': [],
           'kwargs': {
-            'domain': [
-              ['id', 'in', posCategoriesIds]
-            ],
-            // 'context': {'lang': SharedPr.lang == 'ar' ? 'ar_001' : 'en_US'}
+            'domain': [['id', 'in', posCategoriesIds]],
           },
         });
         return result.isEmpty
@@ -379,12 +342,30 @@ class PosCategoryController extends GetxController {
                 .toList();
       }
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e,
           navigation: false,
           methodName: "loadPosCategoryIsNotDB");
     }
   }
+//   # ===================================================== [ LOAD POS CATEGORY BASED ON IDS ] =====================================================
+
+
+
+
+
+//   # ===================================================== [ COUNT REMOTE POS CATEGORY ] =====================================================
+  // # Functionality:
+  // # - This function counts the number of unique POS categories from remote settings.
+  // # - It calls an external service to fetch POS category IDs from `posSetting` models based on the provided list of IDs (`posSetting`).
+  // # - It extracts the `pos_category_ids` field from the results, removes duplicates (using a set), and returns the count of unique POS categories.
+  // # - In case of an error, it handles the exception via the `handleException` function.
+  // # Input:
+  // # - List of integers `posSetting`: A list of POS setting IDs whose POS categories are to be counted.
+  // # Raises:
+  // # - Exception handling via the `handleException` function in case of failures.
+  // # Returns:
+  // # - An integer representing the count of unique POS categories.
 
   Future countRemotPosCategory({required List<int> posSetting}) async {
     try {
@@ -411,14 +392,31 @@ class PosCategoryController extends GetxController {
 
       return 0;
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e,
           navigation: false,
           methodName: "getRemotPosCategoryIsNotIds");
     }
   }
+//   # ===================================================== [ COUNT REMOTE POS CATEGORY ] =====================================================
 
-  // ===========================================================================================
+
+
+  
+ //   # ===================================================== [ BUILD CATEGORY TREE ] =====================================================
+  // # Functionality:
+  // # - This function builds a tree-like structure from a flat list of categories.
+  // # - Each category can have a parent ID (`parentId`), and if it doesn't have a parent, it is considered a root category.
+  // # - The function first creates a map of categories, where each category is identified by its ID.
+  // # - Then, it iterates through the list of categories:
+  // #   - If a category has no parent (i.e., `parentId` is `null` or `0`), it is added to the `rootCategories` list.
+  // #   - If a category has a parent, it is added as a child to the corresponding parent category.
+  // # - The function returns a list of root categories, each of which may have children nested in them.
+  // # Input:
+  // # - A list of `PosCategory` objects, each having an `id`, `parentId`, and optionally a list of `children`.
+  // # Returns:
+  // # - A list of root `PosCategory` objects, each having a nested structure of `children` representing the category tree.
+
   List<PosCategory> buildCategoryTree(List<PosCategory> categories) {
     Map<int, PosCategory> map = {};
     List<PosCategory> rootCategories = [];
@@ -439,20 +437,7 @@ class PosCategoryController extends GetxController {
       }
     }
 
-    // OUTPUT SIMULATION
-    // ===========================================================
-    // [
-    //   PosCategory(id: 1, name: 'Electronics', parentId: null, children: [
-    //     PosCategory(id: 2, name: 'Laptops', parentId: 1),
-    //     PosCategory(id: 3, name: 'Phones', parentId: 1),
-    //   ]),
-    //   PosCategory(id: 4, name: 'Clothing', parentId: null, children: [
-    //     PosCategory(id: 5, name: 'Men', parentId: 4),
-    //     PosCategory(id: 6, name: 'Women', parentId: 4),
-    //   ]),
-    // ]
-    // =================================================================
     return rootCategories; // Return root categories
   }
-  // ===========================================================================================
+
 }

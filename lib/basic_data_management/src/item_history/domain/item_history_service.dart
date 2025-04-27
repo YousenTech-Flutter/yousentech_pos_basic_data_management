@@ -1,8 +1,10 @@
+
 import 'package:pos_shared_preferences/models/basic_item_history.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_odoo_models.dart';
 import 'package:shared_widgets/shared_widgets/handle_exception_helper.dart';
 import 'package:shared_widgets/shared_widgets/odoo_connection_helper.dart';
+
 import 'item_history_repository.dart';
 
 class ItemHistoryService extends ItemHistoryRepository {
@@ -38,36 +40,29 @@ class ItemHistoryService extends ItemHistoryRepository {
           ],
         },
       });
-
-      // print(result);
       return result.isEmpty
           ? BasicItemHistory()
           : BasicItemHistory.fromJson(result.first);
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "getItemsFromHistory");
     }
   }
 
+
   @override
-  Future updateHistoryAndReturnProductId(
-      {required int productTemplateId}) async {
+  Future updateHistoryAndReturnProductId({required int productTemplateId}) async {
     try {
       int result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.itemsHistory,
         'method': 'update_history_and_return_product_id',
         'args': [productTemplateId, SharedPr.currentPosObject!.id!],
         'kwargs': {
-          // 'domain': [],
         },
       });
-
-      // if (kDebugMode) {
-      //   print(result);
-      // }
       return result;
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "getItemsFromHistory");
     }
   }
@@ -81,15 +76,14 @@ class ItemHistoryService extends ItemHistoryRepository {
       bool result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.itemsHistory,
         'method': 'update_history_record_on_first_login',
-        'args': [SharedPr.currentPosObject!.id!, type],
+        'args': [SharedPr.currentPosObject!.id!,type],
         'kwargs': {
-          // 'domain':[['active', '=', true]]
         },
       });
 
       return result;
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e,
           navigation: false,
           methodName: "updateHistoryRecordOnFirstLogin");

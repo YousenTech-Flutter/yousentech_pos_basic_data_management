@@ -1,3 +1,4 @@
+
 import 'package:pos_shared_preferences/models/pos_categories_data/pos_category.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_odoo_models.dart';
@@ -76,7 +77,7 @@ class PosCategoryService extends PosCategoryRepository {
           where:
               '''REPLACE(REPLACE(name, '"en_US":', ''), '"ar_001":', '') LIKE ?''');
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "PosCategorySearch");
     }
   }
@@ -89,12 +90,9 @@ class PosCategoryService extends PosCategoryRepository {
         'args': [obj is Map<String, dynamic> ? obj : obj.toJson()],
         'kwargs': {},
       });
-      // if (kDebugMode) {
-      //   print('createPosCategoryRemotely : $result');
-      // }
       return result;
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e,
           navigation: false,
           methodName: "createPosCategoryRemotely");
@@ -114,12 +112,9 @@ class PosCategoryService extends PosCategoryRepository {
         ],
         'kwargs': {},
       });
-      // if (kDebugMode) {
-      //   print('connectCategoryWithPOS : $result');
-      // }
       return result;
     } catch (e) {
-      return handleException(
+      return await  handleException(
           exception: e,
           navigation: false,
           methodName: "connectCategoryWithPOS");
@@ -140,13 +135,7 @@ class PosCategoryService extends PosCategoryRepository {
       bool result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.posCategory,
         'method': 'write',
-        // 'method': 'update_category_name_translation',
         'args': [id, obj],
-        // 'args': [
-        //   id,
-        //   obj.name!.enUS,
-        //   obj.name!.ar001,
-        // ],
         'kwargs': {
           'context': {
             'lang': SharedPr.lang == 'ar'
@@ -158,8 +147,7 @@ class PosCategoryService extends PosCategoryRepository {
 
       return result;
     } catch (e) {
-      // print(e);
-      return handleException(
+      return await handleException(
           exception: e,
           navigation: false,
           methodName: "updatePosCategoryRemotely");

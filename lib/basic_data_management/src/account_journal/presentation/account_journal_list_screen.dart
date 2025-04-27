@@ -107,58 +107,6 @@ class _PosAccountJournalListScreenState
               ],
             ),
           ),
-
-          // Text(
-          //   'pos_account_journal_list'.tr,
-          //   style: AppStyle.header1,
-          // ),
-          // SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: ContainerTextField(
-          //     width: Get.width / 3,
-          //     height: MediaQuery.sizeOf(context).height * 0.03,
-          //     // height: MediaQuery.sizeOf(context).height * 0.05,
-          //     prefixIcon: Icon(
-          //       Icons.search,
-          //       size: 4.sp,
-          //       color: AppColor.purple,
-          //     ),
-          //     suffixIcon: searchBarController.text.isNotEmpty
-          //         ? IconButton(
-          //             onPressed: () {
-          //               searchBarController.text = '';
-          //               controller.searchResults.clear();
-          //               controller.update();
-          //             },
-          //             icon: Icon(
-          //               Icons.cancel_outlined,
-          //               color: AppColor.grey.withOpacity(0.7),
-          //             ))
-          //         : null,
-          //     isPIN: true,
-          //     isAddOrEdit: true,
-          //     labelText: 'pos_journal_name'.tr,
-          //     hintText: 'pos_journal_name'.tr,
-          //     hintcolor: AppColor.purple,
-          //     iconcolor: AppColor.purple,
-          //     borderColor: AppColor.purple,
-          //     fontSize: Get.width * 0.013,
-          //     color: AppColor.purple,
-          //     borderRadius: 5,
-          //     // borderRadius: 50,
-          //     maxLength: 20,
-          //     controller: searchBarController,
-          //     onChanged: (text) {
-          //       if (searchBarController.text == '') {
-          //         controller.searchResults.clear();
-          //         controller.update();
-          //       } else {
-          //         controller.search(searchBarController.text);
-          //       }
-          //     },
-          //   ),
-          // ),
           SizedBox(
             height: 10.r,
           ),
@@ -172,9 +120,7 @@ class _PosAccountJournalListScreenState
                   child: controller.accountJournalList.isNotEmpty
                       ? Container(
                           margin: EdgeInsets.only(left: 20.r, right: 20.r),
-                          // padding: const EdgeInsets.symmetric(vertical: 16.0),
                           child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               // Header
                               buildBasicDataColumnHeader(

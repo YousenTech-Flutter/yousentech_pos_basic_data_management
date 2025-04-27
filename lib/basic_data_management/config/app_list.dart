@@ -1,3 +1,5 @@
+import 'package:yousentech_pos_basic_data_management/basic_data_management/config/app_enums.dart';
+
 List<Map> accountJournalHeader = [
   {"name": 'id', "flex": 1},
   {"name": 'pos_journal_name', "flex": 2},
@@ -29,4 +31,16 @@ List<Map> productUnitHeader = [
 ];
 List<Map> posCategHeader = [
   {"name": 'pos_category_name', "flex": 2},
+];
+
+final List<CustomerType> customerType = [
+  CustomerType.individual,
+  CustomerType.company,
+
+];
+final List<DetailedType> productDetailedType = [
+  DetailedType.consu,
+  DetailedType.service,
+  DetailedType.product,
+  DetailedType.combo,
 ];

@@ -71,10 +71,9 @@ class AccountTaxService extends AccountTaxRepository {
           whereArgs: ['%$query%'],
           where:
               '''REPLACE(REPLACE(name, '"en_US":', ''), '"ar_001":', '') LIKE ?'''
-          // 'name LIKE ?'
           );
     } catch (e) {
-      return handleException(
+      return await handleException(
           exception: e, navigation: false, methodName: "AccountTaxSearch");
     }
   }
