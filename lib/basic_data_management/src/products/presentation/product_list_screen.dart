@@ -381,7 +381,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                     },
                                                     child: Container(
                                                       height: 30.h,
-                                                      width: 30.w,
+                                                      width: 40.w,
                                                       alignment:
                                                           Alignment.center,
                                                       decoration: BoxDecoration(
@@ -466,7 +466,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                     },
                                                     child: Container(
                                                       height: 30.h,
-                                                      width: 33.w,
+                                                      width: 40.w,
                                                       alignment:
                                                           Alignment.center,
                                                       decoration: BoxDecoration(
