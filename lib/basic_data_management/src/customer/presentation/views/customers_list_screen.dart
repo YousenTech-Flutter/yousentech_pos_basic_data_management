@@ -63,7 +63,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
     super.initState();
     CustomerService.customerDataServiceInstance = null;
     CustomerService.getInstance();
-    customerController = Get.put(CustomerController(), tag: 'customerControllerMain');
+    customerController =
+        Get.put(CustomerController(), tag: 'customerControllerMain');
     loadingDataController = customerController.loadingDataController;
     selectedpag = 0;
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -98,7 +99,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                   if (customerController.hideMainScreen.value) {
                     searchBarController.text = '';
                     selectedpag = 0;
-                    pagnationController.text =(1).toString();
+                    pagnationController.text = (1).toString();
                   }
                   return !customerController.hideMainScreen.value
                       ? SizedBox(
@@ -114,7 +115,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       TitalWidget(title: 'customer_list'.tr),
-
                                       Container(
                                         margin: EdgeInsets.only(
                                             top: 10.r, left: 20.r, right: 20.r),
@@ -153,7 +153,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                       child: Center(
                                                         child: SvgPicture.asset(
                                                           "assets/image/user_add.svg",
-                                                          package: 'yousentech_pos_basic_data_management',
+                                                          package:
+                                                              'yousentech_pos_basic_data_management',
                                                           clipBehavior:
                                                               Clip.antiAlias,
                                                           fit: BoxFit.fill,
@@ -189,7 +190,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                 vertical: 5.r),
                                                         child: SvgPicture.asset(
                                                           "assets/image/search_quick.svg",
-                                                          package: 'yousentech_pos_basic_data_management',
+                                                          package:
+                                                              'yousentech_pos_basic_data_management',
                                                           width: 19.r,
                                                           height: 19.r,
                                                         ),
@@ -210,9 +212,12 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                         .update();
                                                                     selectedpag =
                                                                         0;
-                                                                    pagnationController.text =(1).toString();
+                                                                    pagnationController
+                                                                            .text =
+                                                                        (1).toString();
                                                                     await customerController.resetPagingList(
-                                                                        selectedpag:selectedpag);
+                                                                        selectedpag:
+                                                                            selectedpag);
                                                                   },
                                                                   child:
                                                                       Padding(
@@ -241,7 +246,9 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                           customerController
                                                               .update();
                                                           selectedpag = 0;
-                                                          pagnationController.text =(1).toString();
+                                                          pagnationController
+                                                                  .text =
+                                                              (1).toString();
                                                           await customerController
                                                               .resetPagingList(
                                                                   selectedpag:
@@ -252,7 +259,9 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                   searchBarController
                                                                       .text);
                                                           selectedpag = 0;
-                                                          pagnationController.text =(1).toString();
+                                                          pagnationController
+                                                                  .text =
+                                                              (1).toString();
                                                           await customerController
                                                               .resetPagingList(
                                                                   selectedpag:
@@ -268,11 +277,9 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                               width: 10.r,
                                             ),
                                             Expanded(
-                                              flex: 2,
+                                              flex: 3,
                                               child: Row(
                                                 children: [
-                                                  
-
                                                   SizedBox(
                                                     width: 10.r,
                                                   ),
@@ -324,7 +331,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                     },
                                                     child: Container(
                                                       height: 30.h,
-                                                      width: 25.w,
+                                                      width: 40.w,
                                                       alignment:
                                                           Alignment.center,
                                                       decoration: BoxDecoration(
@@ -344,7 +351,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                         children: [
                                                           SvgPicture.asset(
                                                             "assets/image/refresh-circle.svg",
-                                                            package: 'yousentech_pos_basic_data_management',
+                                                            package:
+                                                                'yousentech_pos_basic_data_management',
                                                             clipBehavior:
                                                                 Clip.antiAlias,
                                                             fit: BoxFit.fill,
@@ -401,7 +409,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                     },
                                                     child: Container(
                                                       height: 30.h,
-                                                      width: 33.w,
+                                                      width: 40.w,
                                                       alignment:
                                                           Alignment.center,
                                                       decoration: BoxDecoration(
@@ -421,7 +429,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                         children: [
                                                           SvgPicture.asset(
                                                             "assets/image/list-left.svg",
-                                                            package: 'yousentech_pos_basic_data_management',
+                                                            package:
+                                                                'yousentech_pos_basic_data_management',
                                                             clipBehavior:
                                                                 Clip.antiAlias,
                                                             fit: BoxFit.fill,
@@ -429,7 +438,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                             height: 19.r,
                                                           ),
                                                           Text(
-                                                            "sync_differences".tr,
+                                                            "sync_differences"
+                                                                .tr,
                                                             style: TextStyle(
                                                                 fontSize: 10.r,
                                                                 color: AppColor
@@ -494,75 +504,80 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                               loadingDataController
                                                                   .isUpdate
                                                                   .value = true;
-                                                                var e = loaddata
-                                                                    .entries
-                                                                    .firstWhere((element) =>
-                                                                        element
-                                                                            .key ==
-                                                                        Loaddata
-                                                                            .customers);
+                                                              var e = loaddata
+                                                                  .entries
+                                                                  .firstWhere((element) =>
+                                                                      element
+                                                                          .key ==
+                                                                      Loaddata
+                                                                          .customers);
 
-                                                                var result =
-                                                                    await synchronizeBasedOnModelType(
-                                                                        type: e
-                                                                            .key
-                                                                            .toString());
-                                                                await customerController
-                                                                    .getAllCustomerLocal(
-                                                                        paging:
-                                                                            true,
-                                                                        type:
-                                                                            "",
-                                                                        pageselecteed:
-                                                                            selectedpag);
-                                                                loadingDataController
-                                                                        .isUpdate
-                                                                        .value =
-                                                                    false;
+                                                              var result =
+                                                                  await synchronizeBasedOnModelType(
+                                                                      type: e
+                                                                          .key
+                                                                          .toString());
+                                                              await customerController
+                                                                  .getAllCustomerLocal(
+                                                                      paging:
+                                                                          true,
+                                                                      type: "",
+                                                                      pageselecteed:
+                                                                          selectedpag);
+                                                              loadingDataController
+                                                                      .isUpdate
+                                                                      .value =
+                                                                  false;
 
-                                                                if (result ==
-                                                                    true) {
-                                                                  appSnackBar(
-                                                                      message:
-                                                                          'synchronized'
-                                                                              .tr,
-                                                                      messageType:
-                                                                          MessageTypes
-                                                                              .success,
-                                                                      isDismissible:
-                                                                          false);
-                                                                } else if (result
-                                                                    is String) {
-                                                                  appSnackBar(
+                                                              if (result ==
+                                                                  true) {
+                                                                appSnackBar(
                                                                     message:
-                                                                        result,
+                                                                        'synchronized'
+                                                                            .tr,
                                                                     messageType:
                                                                         MessageTypes
-                                                                            .connectivityOff,
-                                                                  );
-                                                                } else if (result ==null) {
-                                                                  appSnackBar(
-                                                                      message:
-                                                                          'synchronization_problem'
-                                                                              .tr,
-                                                                      isDismissible:
-                                                                          false);
-                                                                } else {
-                                                                  appSnackBar(
-                                                                      message:'synchronized_successfully' .tr,
-                                                                      messageType:MessageTypes.success,
-                                                                      isDismissible:false);
-                                                                }
+                                                                            .success,
+                                                                    isDismissible:
+                                                                        false);
+                                                              } else if (result
+                                                                  is String) {
+                                                                appSnackBar(
+                                                                  message:
+                                                                      result,
+                                                                  messageType:
+                                                                      MessageTypes
+                                                                          .connectivityOff,
+                                                                );
+                                                              } else if (result ==
+                                                                  null) {
+                                                                appSnackBar(
+                                                                    message:
+                                                                        'synchronization_problem'
+                                                                            .tr,
+                                                                    isDismissible:
+                                                                        false);
+                                                              } else {
+                                                                appSnackBar(
+                                                                    message:
+                                                                        'synchronized_successfully'
+                                                                            .tr,
+                                                                    messageType:
+                                                                        MessageTypes
+                                                                            .success,
+                                                                    isDismissible:
+                                                                        false);
+                                                              }
 
-                                                                loadingDataController
-                                                                    .update([
-                                                                  'card_loading_data'
-                                                                ]);
-                                                                loadingDataController
-                                                                    .update([
-                                                                  'loading'
-                                                                ]);
-                                                              
+                                                              loadingDataController
+                                                                  .update([
+                                                                'card_loading_data'
+                                                              ]);
+                                                              loadingDataController
+                                                                  .update([
+                                                                'loading'
+                                                              ]);
+
                                                               loadingDataController
                                                                       .isUpdate
                                                                       .value =
@@ -671,14 +686,9 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                 ],
                                               ),
                                             ),
-                                            
                                           ],
                                         ),
                                       ),
-
-                                      
-
-                                     
                                       SizedBox(
                                         height: 10.r,
                                       ),
@@ -706,8 +716,12 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                       height: 2.r,
                                                     ),
                                                     // body
-                                                    if (customerController.searchResults.isNotEmpty) ...[
-                                                      if (customerController.seachCustomerPagingList.isNotEmpty) ...[
+                                                    if (customerController
+                                                        .searchResults
+                                                        .isNotEmpty) ...[
+                                                      if (customerController
+                                                          .seachCustomerPagingList
+                                                          .isNotEmpty) ...[
                                                         buildCustomerBodyTable(
                                                             customerController:
                                                                 customerController,
@@ -720,10 +734,11 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                     ? null
                                                                     : int.parse(
                                                                         pagnationController
-                                                                            .text)
-                                                            )
+                                                                            .text))
                                                       ]
-                                                    ] else if (customerController.searchResults.isEmpty) ...[
+                                                    ] else if (customerController
+                                                        .searchResults
+                                                        .isEmpty) ...[
                                                       if (customerController
                                                           .customerpagingList
                                                           .isNotEmpty) ...[
@@ -739,12 +754,15 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                     ? null
                                                                     : int.parse(
                                                                         pagnationController
-                                                                            .text)
-                                                            )
+                                                                            .text))
                                                       ]
                                                     ],
-                                                    if (customerController.searchResults.isNotEmpty) ...[
-                                                      if (customerController.seachCustomerPagingList.isEmpty) ...[
+                                                    if (customerController
+                                                        .searchResults
+                                                        .isNotEmpty) ...[
+                                                      if (customerController
+                                                          .seachCustomerPagingList
+                                                          .isEmpty) ...[
                                                         Expanded(
                                                             child: Center(
                                                                 child:
@@ -753,7 +771,9 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                               "empty_filter".tr,
                                                         )))
                                                       ]
-                                                    ] else if (customerController.searchResults.isEmpty) ...[
+                                                    ] else if (customerController
+                                                        .searchResults
+                                                        .isEmpty) ...[
                                                       if (customerController
                                                           .customerpagingList
                                                           .isEmpty) ...[
@@ -773,33 +793,28 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                     ],
                                   ),
                                 ),
-
                                 GetBuilder<LoadingDataController>(
                                     id: "pagin",
                                     builder: (controller) {
-                                      var datatBaseLenght =
-                                          
-                                          customerController
-                                                  .searchResults.isNotEmpty
-                                              ? customerController
-                                                  .searchResults.length
-                                              : searchBarController.text !=
-                                                          "" &&
-                                                      customerController
-                                                          .searchResults.isEmpty
-                                                  ? 0
-                                                  : loadingDataController
-                                                          .itemdata[
-                                                      Loaddata.customers.name
-                                                          .toString()]['local'];
-                                      int dataStart = 
-                                      
-                                      pagnationController.text.isEmpty
+                                      var datatBaseLenght = customerController
+                                              .searchResults.isNotEmpty
+                                          ? customerController
+                                              .searchResults.length
+                                          : searchBarController.text != "" &&
+                                                  customerController
+                                                      .searchResults.isEmpty
+                                              ? 0
+                                              : loadingDataController.itemdata[
+                                                  Loaddata.customers.name
+                                                      .toString()]['local'];
+                                      int dataStart = pagnationController
+                                              .text.isEmpty
                                           ? (customerController.limit *
                                                   (selectedpag + 1)) -
                                               (customerController.limit - 1)
                                           : int.parse(pagnationController.text);
-                                      pagnationController.text = dataStart.toString();
+                                      pagnationController.text =
+                                          dataStart.toString();
                                       pagesNumber = (datatBaseLenght ~/
                                               customerController.limit) +
                                           (datatBaseLenght %
@@ -809,7 +824,6 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                               ? 1
                                               : 0);
 
-                                     
                                       var datadisplayLenght =
                                           (int.parse(pagnationController.text) +
                                                       customerController
@@ -883,7 +897,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                           SharedPr.lang == "ar"
                                                               ? "assets/image/arrow_right.svg"
                                                               : "assets/image/arrow_left.svg",
-                                                          package: 'yousentech_pos_basic_data_management',
+                                                          package:
+                                                              'yousentech_pos_basic_data_management',
                                                           color: dataStart <= 1
                                                               ? AppColor
                                                                   .silverGray
@@ -900,33 +915,41 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                               TextSpan(
                                                                 text:
                                                                     "$datatBaseLenght / ",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        6.5.r,
-                                                                    color: AppColor
-                                                                        .lavenderGray,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    fontFamily:
-                                                                        'Tajawal',package: 'yousentech_pos_basic_data_management',),
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      6.5.r,
+                                                                  color: AppColor
+                                                                      .lavenderGray,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  fontFamily:
+                                                                      'Tajawal',
+                                                                  package:
+                                                                      'yousentech_pos_basic_data_management',
+                                                                ),
                                                               ),
                                                               // Lenght show in screen in
                                                               TextSpan(
                                                                 text:
                                                                     "$datadisplayLenght -",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        6.5.r,
-                                                                    color: AppColor
-                                                                        .black
-                                                                        .withOpacity(
-                                                                            0.5),
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    fontFamily:
-                                                                        'Tajawal',package: 'yousentech_pos_basic_data_management',),
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      6.5.r,
+                                                                  color: AppColor
+                                                                      .black
+                                                                      .withOpacity(
+                                                                          0.5),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  fontFamily:
+                                                                      'Tajawal',
+                                                                  package:
+                                                                      'yousentech_pos_basic_data_management',
+                                                                ),
                                                               ),
                                                             ],
                                                           ),
@@ -1058,7 +1081,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                           SharedPr.lang == "ar"
                                                               ? "assets/image/arrow_left.svg"
                                                               : "assets/image/arrow_right.svg",
-                                                          package: 'yousentech_pos_basic_data_management',
+                                                          package:
+                                                              'yousentech_pos_basic_data_management',
                                                           color: pagesNumber >
                                                                   (selectedpag +
                                                                       1)
