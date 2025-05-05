@@ -64,9 +64,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
     super.dispose();
   }
 
-
-
-
   Future getPagingList() async {
     await productController.displayProductList(
       paging: true,
@@ -103,7 +100,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      
                                       TitalWidget(
                                         title: 'product_list',
                                       ),
@@ -146,7 +142,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                       child: Center(
                                                         child: SvgPicture.asset(
                                                           "assets/image/product_add.svg",
-                                                          package: 'yousentech_pos_basic_data_management',
+                                                          package:
+                                                              'yousentech_pos_basic_data_management',
                                                           clipBehavior:
                                                               Clip.antiAlias,
                                                           fit: BoxFit.fill,
@@ -181,7 +178,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                 vertical: 5.r),
                                                         child: SvgPicture.asset(
                                                           "assets/image/search_quick.svg",
-                                                          package: 'yousentech_pos_basic_data_management',
+                                                          package:
+                                                              'yousentech_pos_basic_data_management',
                                                           width: 19.r,
                                                           height: 19.r,
                                                         ),
@@ -276,7 +274,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                       child: SvgPicture
                                                                           .asset(
                                                                         "assets/image/ep_filter.svg",
-                                                                        package: 'yousentech_pos_basic_data_management',
+                                                                        package:
+                                                                            'yousentech_pos_basic_data_management',
                                                                         width:
                                                                             19.r,
                                                                         height:
@@ -327,59 +326,58 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                               width: 10.r,
                                             ),
                                             Expanded(
-                                              flex: 2,
+                                              flex: 3,
                                               child: Row(
                                                 children: [
                                                   InkWell(
                                                     onTap: () async {
-                                                        var e = loaddata.entries
-                                                            .firstWhere(
-                                                                (element) =>
-                                                                    element
-                                                                        .key ==
-                                                                    Loaddata
-                                                                        .products);
-                                                        var result =
-                                                            await productController. loadingDataController
-                                                                .updateAll(
-                                                                    name: e.key
-                                                                        .toString());
+                                                      var e = loaddata.entries
+                                                          .firstWhere(
+                                                              (element) =>
+                                                                  element.key ==
+                                                                  Loaddata
+                                                                      .products);
+                                                      var result =
+                                                          await productController
+                                                              .loadingDataController
+                                                              .updateAll(
+                                                                  name: e.key
+                                                                      .toString());
 
-                                                        if (result == true) {
-                                                          appSnackBar(
-                                                              message:
-                                                                  'update_success'
-                                                                      .tr,
-                                                              messageType:
-                                                                  MessageTypes
-                                                                      .success,
-                                                              isDismissible:
-                                                                  false);
-                                                        } else if (result
-                                                            is String) {
-                                                          appSnackBar(
-                                                            message: result,
+                                                      if (result == true) {
+                                                        appSnackBar(
+                                                            message:
+                                                                'update_success'
+                                                                    .tr,
                                                             messageType:
                                                                 MessageTypes
-                                                                    .connectivityOff,
-                                                          );
-                                                        } else {
-                                                          appSnackBar(
-                                                              message:
-                                                                  'update_Failed'
-                                                                      .tr,
-                                                              messageType:
-                                                                  MessageTypes
-                                                                      .error,
-                                                              isDismissible:
-                                                                  false);
-                                                        }
+                                                                    .success,
+                                                            isDismissible:
+                                                                false);
+                                                      } else if (result
+                                                          is String) {
+                                                        appSnackBar(
+                                                          message: result,
+                                                          messageType: MessageTypes
+                                                              .connectivityOff,
+                                                        );
+                                                      } else {
+                                                        appSnackBar(
+                                                            message:
+                                                                'update_Failed'
+                                                                    .tr,
+                                                            messageType:
+                                                                MessageTypes
+                                                                    .error,
+                                                            isDismissible:
+                                                                false);
+                                                      }
 
-                                                     productController.loadingDataController
-                                                            .update([
-                                                          'card_loading_data'
-                                                        ]);
-                                                      
+                                                      productController
+                                                          .loadingDataController
+                                                          .update([
+                                                        'card_loading_data'
+                                                      ]);
                                                     },
                                                     child: Container(
                                                       height: 30.h,
@@ -403,7 +401,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                         children: [
                                                           SvgPicture.asset(
                                                             "assets/image/refresh-circle.svg",
-                                                            package: 'yousentech_pos_basic_data_management',
+                                                            package:
+                                                                'yousentech_pos_basic_data_management',
                                                             clipBehavior:
                                                                 Clip.antiAlias,
                                                             fit: BoxFit.fill,
@@ -460,7 +459,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                     .success);
                                                       }
 
-                                                     productController. loadingDataController
+                                                      productController
+                                                          .loadingDataController
                                                           .isUpdate
                                                           .value = false;
                                                     },
@@ -486,7 +486,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                         children: [
                                                           SvgPicture.asset(
                                                             "assets/image/list-left.svg",
-                                                            package: 'yousentech_pos_basic_data_management',
+                                                            package:
+                                                                'yousentech_pos_basic_data_management',
                                                             clipBehavior:
                                                                 Clip.antiAlias,
                                                             fit: BoxFit.fill,
@@ -495,7 +496,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                           ),
                                                           Text(
                                                             // "display".tr,
-                                                            "sync_differences".tr,
+                                                            "sync_differences"
+                                                                .tr,
                                                             style: TextStyle(
                                                                 fontSize: 10.r,
                                                                 color: AppColor
@@ -515,26 +517,30 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                             LoadingDataController>(
                                                         id: "card_loading_data",
                                                         builder: (_) {
-                                                          var localNumber = productController. loadingDataController
+                                                          var localNumber = productController
+                                                                  .loadingDataController
                                                                   .itemdata
                                                                   .containsKey(Loaddata
                                                                       .products
                                                                       .name
                                                                       .toString())
-                                                              ? productController.loadingDataController
+                                                              ? productController
+                                                                      .loadingDataController
                                                                       .itemdata[
                                                                   Loaddata
                                                                       .products
                                                                       .name
                                                                       .toString()]['local']
                                                               : 0;
-                                                          var remotNumber = productController.loadingDataController
+                                                          var remotNumber = productController
+                                                                  .loadingDataController
                                                                   .itemdata
                                                                   .containsKey(Loaddata
                                                                       .products
                                                                       .name
                                                                       .toString())
-                                                              ? productController.loadingDataController
+                                                              ? productController
+                                                                      .loadingDataController
                                                                       .itemdata[
                                                                   Loaddata
                                                                       .products
@@ -557,7 +563,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                   100;
                                                           return InkWell(
                                                             onTap: () async {
-                                                              productController.loadingDataController
+                                                              productController
+                                                                  .loadingDataController
                                                                   .isUpdate
                                                                   .value = true;
 
@@ -620,15 +627,17 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                     isDismissible:
                                                                         false);
                                                               }
-                                                              productController.loadingDataController
-                                                                      .isUpdate
-                                                                      .value =
-                                                                  false;
-                                                              productController.loadingDataController
+                                                              productController
+                                                                  .loadingDataController
+                                                                  .isUpdate
+                                                                  .value = false;
+                                                              productController
+                                                                  .loadingDataController
                                                                   .update([
                                                                 'card_loading_data'
                                                               ]);
-                                                              productController.loadingDataController
+                                                              productController
+                                                                  .loadingDataController
                                                                   .update([
                                                                 'loading'
                                                               ]);
@@ -757,46 +766,51 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                         child: AppNoDataWidge(
                                                     message: "empty_filter".tr,
                                                   )))
-                                                : productController.productList.isNotEmpty
-                                                ? Expanded(
-                                                    child: Container(
-                                                      margin: EdgeInsets.only(
-                                                          left: 20.r,
-                                                          right: 20.r),
-                                                      child: Column(
-                                                        children: [
-                                                          // Header
-                                                          buildBasicDataColumnHeader(
-                                                              data:
-                                                                  productHeader,
-                                                              color: AppColor
-                                                                  .cyanTeal,
-                                                              context: context),
-                                                          SizedBox(
-                                                            height: 2.r,
+                                                : productController
+                                                        .productList.isNotEmpty
+                                                    ? Expanded(
+                                                        child: Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 20.r,
+                                                                  right: 20.r),
+                                                          child: Column(
+                                                            children: [
+                                                              // Header
+                                                              buildBasicDataColumnHeader(
+                                                                  data:
+                                                                      productHeader,
+                                                                  color: AppColor
+                                                                      .cyanTeal,
+                                                                  context:
+                                                                      context),
+                                                              SizedBox(
+                                                                height: 2.r,
+                                                              ),
+
+                                                              buildProductBodyTable(
+                                                                  productController:
+                                                                      productController,
+                                                                  selectedpag:
+                                                                      selectedpag,
+                                                                  startIndex: pagnationController
+                                                                          .text
+                                                                          .isEmpty
+                                                                      ? null
+                                                                      : int.parse(
+                                                                          pagnationController
+                                                                              .text)),
+                                                            ],
                                                           ),
-                                                          
-                                                          buildProductBodyTable(
-                                                              productController:
-                                                                  productController,
-                                                              selectedpag:
-                                                                  selectedpag,
-                                                              startIndex: pagnationController
-                                                                      .text
-                                                                      .isEmpty
-                                                                  ? null
-                                                                  : int.parse(
-                                                                      pagnationController
-                                                                          .text)),
-                                                          
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ) : Expanded(
-                                                child: Center(
-                                                    child: AppNoDataWidge(
-                                                      message: "empty_filter".tr,
-                                                    )));
+                                                        ),
+                                                      )
+                                                    : Expanded(
+                                                        child: Center(
+                                                            child:
+                                                                AppNoDataWidge(
+                                                        message:
+                                                            "empty_filter".tr,
+                                                      )));
                                           })
 
                                       /// test
@@ -831,9 +845,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                               .searchResults
                                                               .isEmpty
                                                       ? 0
-                                                      : productController.loadingDataController
-                                                              .itemdata[Loaddata.products.name.toString()]
-                                                          ['local'];
+                                                      : productController
+                                                          .loadingDataController
+                                                          .itemdata[Loaddata.products.name.toString()]['local'];
                                       pagesNumber = (dataResultLenght ~/
                                               productController.limit) +
                                           (dataResultLenght %
@@ -920,7 +934,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                           SharedPr.lang == "ar"
                                                               ? "assets/image/arrow_right.svg"
                                                               : "assets/image/arrow_left.svg",
-                                                          package: 'yousentech_pos_basic_data_management',
+                                                          package:
+                                                              'yousentech_pos_basic_data_management',
                                                           color: dataStart <= 1
                                                               ? AppColor
                                                                   .silverGray
@@ -937,33 +952,41 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                               TextSpan(
                                                                 text:
                                                                     "$dataResultLenght / ",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        6.5.r,
-                                                                    color: AppColor
-                                                                        .lavenderGray,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    fontFamily:
-                                                                        'Tajawal',package: 'yousentech_pos_basic_data_management',),
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      6.5.r,
+                                                                  color: AppColor
+                                                                      .lavenderGray,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  fontFamily:
+                                                                      'Tajawal',
+                                                                  package:
+                                                                      'yousentech_pos_basic_data_management',
+                                                                ),
                                                               ),
                                                               // Lenght show in screen in
                                                               TextSpan(
                                                                 text:
                                                                     "$datadisplayLenght -",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        6.5.r,
-                                                                    color: AppColor
-                                                                        .black
-                                                                        .withOpacity(
-                                                                            0.5),
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    fontFamily:
-                                                                        'Tajawal',package: 'yousentech_pos_basic_data_management',),
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      6.5.r,
+                                                                  color: AppColor
+                                                                      .black
+                                                                      .withOpacity(
+                                                                          0.5),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  fontFamily:
+                                                                      'Tajawal',
+                                                                  package:
+                                                                      'yousentech_pos_basic_data_management',
+                                                                ),
                                                               ),
                                                             ],
                                                           ),
@@ -1096,7 +1119,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                           SharedPr.lang == "ar"
                                                               ? "assets/image/arrow_left.svg"
                                                               : "assets/image/arrow_right.svg",
-                                                          package: 'yousentech_pos_basic_data_management',
+                                                          package:
+                                                              'yousentech_pos_basic_data_management',
                                                           color: pagesNumber >
                                                                   (selectedpag +
                                                                       1)
