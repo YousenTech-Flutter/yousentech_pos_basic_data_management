@@ -918,7 +918,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      6.5.r,
+                                                                      10.r,
                                                                   color: AppColor
                                                                       .lavenderGray,
                                                                   fontWeight:
@@ -937,7 +937,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      6.5.r,
+                                                                      10.r,
                                                                   color: AppColor
                                                                       .black
                                                                       .withOpacity(
@@ -961,7 +961,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                           width: 40.r,
                                                           child: TextField(
                                                             style: TextStyle(
-                                                              fontSize: 6.5.r,
+                                                              fontSize: 10.r,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
