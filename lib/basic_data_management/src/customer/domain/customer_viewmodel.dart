@@ -25,6 +25,11 @@ class CustomerController extends GetxController {
   final int limit = 16;
   var hasMore = false.obs;
   var hasLess = false.obs;
+  //==================for Pagnation  item================
+  int selectedPagnation = 0;
+  int skip = 0;
+  int pagnationpagesNumber = 0;
+  //==================for Pagnation  item================
   @override
   Future<void> onInit() async {
     super.onInit();

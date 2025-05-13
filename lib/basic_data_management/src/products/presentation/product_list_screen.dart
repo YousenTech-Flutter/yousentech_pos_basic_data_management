@@ -21,6 +21,7 @@ import 'package:yousentech_pos_basic_data_management/basic_data_management/src/p
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/utils/filtter_product_categ.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/widgets/show_product.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_basic_data_table.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_pagnation.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/define_type_function.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_list.dart';
@@ -39,9 +40,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Color iconcolor = AppColor.greyWithOpcity;
   TextEditingController searchBarController = TextEditingController();
   TextEditingController pagnationController = TextEditingController();
-  int selectedpag = 0;
-  int skip = 0;
-  int pagesNumber = 0;
+  // int selectedpag = 0;
+  // int skip = 0;
+  // int pagesNumber = 0;
   @override
   void initState() {
     super.initState();
@@ -49,7 +50,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
     ProductService.getInstance();
     productController =
         Get.put(ProductController(), tag: 'productControllerMain');
-    selectedpag = 0;
+    productController.selectedPagnation = 0;
     getPagingList();
   }
 
@@ -84,7 +85,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 builder: (controller) {
                   if (productController.hideMainScreen.value) {
                     searchBarController.text = '';
-                    selectedpag = 0;
+                    productController.selectedPagnation = 0;
                     pagnationController.text = (1).toString();
                   }
                   return !productController.hideMainScreen.value
@@ -203,9 +204,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                               searchBarController.text = '';
                                                                               productController.searchResults.clear();
                                                                               productController.update();
-                                                                              selectedpag = 0;
+                                                                              productController.selectedPagnation = 0;
                                                                               pagnationController.text = (1).toString();
-                                                                              await productController.resetPagingList(selectedpag: selectedpag);
+                                                                              await productController.resetPagingList(selectedpag: productController.selectedPagnation);
                                                                               filtterProductByCategory(context: iconContext, product: productController.productList, productController: productController);
                                                                             },
                                                                             child: Padding(
@@ -222,9 +223,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                               searchBarController.text = '';
                                                                               productController.searchResults.clear();
                                                                               productController.update();
-                                                                              selectedpag = 0;
+                                                                              productController.selectedPagnation = 0;
                                                                               pagnationController.text = (1).toString();
-                                                                              await productController.resetPagingList(selectedpag: selectedpag);
+                                                                              await productController.resetPagingList(selectedpag: productController.selectedPagnation);
                                                                             },
                                                                             child:
                                                                                 Icon(
@@ -248,14 +249,14 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                           .clear();
                                                                       productController
                                                                           .update();
-                                                                      selectedpag =
+                                                                      productController.selectedPagnation =
                                                                           0;
                                                                       pagnationController
                                                                               .text =
                                                                           (1).toString();
                                                                       await productController.resetPagingList(
-                                                                          selectedpag:
-                                                                              selectedpag);
+                                                                         selectedpag:
+                                                                              productController.selectedPagnation);
                                                                       filtterProductByCategory(
                                                                           context:
                                                                               iconContext,
@@ -293,11 +294,11 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                               .clear();
                                                           productController
                                                               .update();
-                                                          selectedpag = 0;
+                                                          productController.selectedPagnation = 0;
                                                           await productController
                                                               .resetPagingList(
                                                                   selectedpag:
-                                                                      selectedpag);
+                                                                      productController.selectedPagnation);
                                                         } else {
                                                           await productController
                                                               .search(
@@ -305,13 +306,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                       .text);
                                                           productController
                                                               .page.value = 0;
-                                                          selectedpag = 0;
+                                                          productController.selectedPagnation = 0;
                                                           await productController
                                                               .displayProductList(
                                                                   paging: true,
                                                                   type: "",
                                                                   pageselecteed:
-                                                                      selectedpag);
+                                                                      productController.selectedPagnation);
                                                         }
                                                         pagnationController
                                                                 .text =
@@ -586,7 +587,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                           true,
                                                                       type: "",
                                                                       pageselecteed:
-                                                                          selectedpag);
+                                                                          productController.selectedPagnation);
 
                                                               if (result ==
                                                                   true) {
@@ -792,7 +793,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                   productController:
                                                                       productController,
                                                                   selectedpag:
-                                                                      selectedpag,
+                                                                      productController.selectedPagnation,
                                                                   startIndex: pagnationController
                                                                           .text
                                                                           .isEmpty
@@ -818,321 +819,326 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                   ),
                                 ),
 
-                                // SizedBox(height: 10.r,),
-                                GetBuilder<LoadingDataController>(
-                                    id: "pagin",
-                                    builder: (controller) {
-                                      var dataResultLenght = productController
-                                                      .isHaveCheck.value &&
-                                                  productController
-                                                      .filtterResults.isEmpty ||
-                                              (searchBarController.text != "" &&
-                                                  productController
-                                                      .searchResults.isEmpty)
-                                          ? 0
-                                          : productController.filtterResults
-                                                      .isNotEmpty &&
-                                                  productController
-                                                      .searchResults.isEmpty
-                                              ? productController
-                                                  .filtterResults.length
-                                              : productController
-                                                      .searchResults.isNotEmpty
-                                                  ? productController
-                                                      .searchResults.length
-                                                  : searchBarController.text != "" &&
-                                                          productController
-                                                              .searchResults
-                                                              .isEmpty
-                                                      ? 0
-                                                      : productController.loadingDataController.itemdata[Loaddata.products.name.toString()] == null ? 0 : productController.loadingDataController.itemdata[Loaddata.products.name.toString()]['local'];
-                                      pagesNumber = (dataResultLenght ~/
-                                              productController.limit) +
-                                          (dataResultLenght %
-                                                      productController.limit !=
-                                                  0
-                                              ? 1
-                                              : 0);
-                                      int dataStart = pagnationController
-                                              .text.isEmpty
-                                          ? (productController.limit *
-                                                  (selectedpag + 1)) -
-                                              (productController.limit - 1)
-                                          : int.parse(pagnationController.text);
-                                      pagnationController.text =
-                                          dataStart.toString();
-                                      var datadisplayLenght =
-                                          (int.parse(pagnationController.text) +
-                                                      productController.limit) <
-                                                  dataResultLenght
-                                              ? ((int.parse(pagnationController
-                                                          .text) +
-                                                      productController.limit) -
-                                                  1)
-                                              : dataResultLenght;
-                                      return dataResultLenght != 0
-                                          ? Padding(
-                                              padding: EdgeInsets.all(8.0.r),
-                                              child: Container(
-                                                width: (Get.height * 0.2),
-                                                height: Get.height * 0.03,
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color:
-                                                          AppColor.silverGray),
-                                                  borderRadius:
-                                                      BorderRadius.circular(50),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsets.all(5.r),
-                                                  child: Row(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      InkWell(
-                                                        onTap: dataStart > 1
-                                                            ? () async {
-                                                                if (dataStart <=
-                                                                    productController
-                                                                        .limit) {
-                                                                  await productController.displayProductList(
-                                                                      paging:
-                                                                          true,
-                                                                      type:
-                                                                          "prefix",
-                                                                      countSkip:
-                                                                          0);
-                                                                  selectedpag =
-                                                                      0;
-                                                                  pagnationController
-                                                                          .text =
-                                                                      "1";
-                                                                } else {
-                                                                  await productController
-                                                                      .displayProductList(
-                                                                    paging:
-                                                                        true,
-                                                                    type:
-                                                                        "prefix",
-                                                                  );
-                                                                  selectedpag--;
-                                                                  pagnationController
-                                                                      .text = ((productController.limit *
-                                                                              (selectedpag +
-                                                                                  1)) -
-                                                                          (productController.limit -
-                                                                              1))
-                                                                      .toString();
-                                                                }
-                                                              }
-                                                            : null,
-                                                        child: SvgPicture.asset(
-                                                          SharedPr.lang == "ar"
-                                                              ? "assets/image/arrow_right.svg"
-                                                              : "assets/image/arrow_left.svg",
-                                                          package:
-                                                              'yousentech_pos_basic_data_management',
-                                                          color: dataStart <= 1
-                                                              ? AppColor
-                                                                  .silverGray
-                                                              : null,
-                                                        ),
-                                                      ),
-                                                      const Spacer(),
-                                                      SizedBox(
-                                                        height: 10.r,
-                                                        child: RichText(
-                                                          text: TextSpan(
-                                                            children: <TextSpan>[
-                                                              // Lenght data in DB
-                                                              TextSpan(
-                                                                text:
-                                                                    "$dataResultLenght / ",
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      10.r,
-                                                                  color: AppColor
-                                                                      .lavenderGray,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  fontFamily:
-                                                                      'Tajawal',
-                                                                  package:
-                                                                      'yousentech_pos_basic_data_management',
-                                                                ),
-                                                              ),
-                                                              // Lenght show in screen in
-                                                              TextSpan(
-                                                                text:
-                                                                    "$datadisplayLenght -",
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      10.r,
-                                                                  color: AppColor
-                                                                      .black
-                                                                      .withOpacity(
-                                                                          0.5),
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  fontFamily:
-                                                                      'Tajawal',
-                                                                  package:
-                                                                      'yousentech_pos_basic_data_management',
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: SizedBox(
-                                                          height: 10.r,
-                                                          width: 40.r,
-                                                          child: TextField(
-                                                            style: TextStyle(
-                                                              fontSize: 10.r,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              // fontWeight: FontWeight.bold
-                                                            ),
-                                                            inputFormatters: [
-                                                              FilteringTextInputFormatter
-                                                                  .digitsOnly, // Only digits allowed
-                                                            ],
-                                                            decoration:
-                                                                InputDecoration(
-                                                              isDense:
-                                                                  true, // Reduces the padding inside the TextField
-                                                              contentPadding:
-                                                                  EdgeInsets.symmetric(
-                                                                      vertical:
-                                                                          2.r), // Set padding to zero or adjust
-                                                              border: InputBorder
-                                                                  .none, // Remove the border if not needed
-                                                            ),
-                                                            controller:
-                                                                pagnationController,
-                                                            onSubmitted:
-                                                                (value) async {
-                                                              int? countSkip;
-                                                              if (value
-                                                                  .isEmpty) {
-                                                                pagnationController
-                                                                        .text =
-                                                                    (1).toString();
-                                                                countSkip = 0;
-                                                                selectedpag = 0;
-                                                              } else if (value
-                                                                  .isNotEmpty) {
-                                                                var pageselecteed = (int.parse(
-                                                                            value) /
-                                                                        productController
-                                                                            .limit)
-                                                                    .ceilToDouble();
-                                                                selectedpag =
-                                                                    pageselecteed
-                                                                            .toInt() -
-                                                                        1;
-                                                                if (int.parse(
-                                                                        value) >
-                                                                    dataResultLenght) {
-                                                                  pagnationController
-                                                                          .text =
-                                                                      (1).toString();
-                                                                  countSkip = 0;
-                                                                  selectedpag =
-                                                                      0;
-                                                                } else if (int
-                                                                        .parse(
-                                                                            value) <=
-                                                                    1) {
-                                                                  pagnationController
-                                                                          .text =
-                                                                      (1).toString();
-                                                                  countSkip = 0;
-                                                                  selectedpag =
-                                                                      0;
-                                                                } else {
-                                                                  countSkip =
-                                                                      int.parse(
-                                                                              value) -
-                                                                          1;
-                                                                }
-                                                              }
 
-                                                              productController
-                                                                  .update();
-                                                              await productController
-                                                                  .displayProductList(
-                                                                      paging:
-                                                                          true,
-                                                                      type: "",
-                                                                      countSkip:
-                                                                          countSkip,
-                                                                      pageselecteed:
-                                                                          selectedpag);
-                                                            },
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      //التالي
-                                                      InkWell(
-                                                        onTap: pagesNumber >
-                                                                (selectedpag +
-                                                                    1)
-                                                            ? () async {
-                                                                int prefixData =
-                                                                    int.parse(
-                                                                        pagnationController
-                                                                            .text);
-                                                                skip = (prefixData +
-                                                                    (productController
-                                                                            .limit -
-                                                                        1));
-                                                                pagnationController
-                                                                    .text = (skip +
-                                                                        1)
-                                                                    .toString();
+                                PagnationWidget(searchBarController: searchBarController, pagnationController:pagnationController , controller:productController ,)
+                                // // SizedBox(height: 10.r,),
+                                // GetBuilder<LoadingDataController>(
+                                //     id: "pagin",
+                                //     builder: (controller) {
+                                //       var dataResultLenght = productController
+                                //                       .isHaveCheck.value &&
+                                //                   productController
+                                //                       .filtterResults.isEmpty ||
+                                //               (searchBarController.text != "" &&
+                                //                   productController
+                                //                       .searchResults.isEmpty)
+                                //           ? 0
+                                //           : productController.filtterResults
+                                //                       .isNotEmpty &&
+                                //                   productController
+                                //                       .searchResults.isEmpty
+                                //               ? productController
+                                //                   .filtterResults.length
+                                //               : productController
+                                //                       .searchResults.isNotEmpty
+                                //                   ? productController
+                                //                       .searchResults.length
+                                //                   : searchBarController.text != "" &&
+                                //                           productController
+                                //                               .searchResults
+                                //                               .isEmpty
+                                //                       ? 0
+                                //                       : productController.loadingDataController.itemdata[Loaddata.products.name.toString()] == null ? 0 : productController.loadingDataController.itemdata[Loaddata.products.name.toString()]['local'];
+                                //       pagesNumber = (dataResultLenght ~/
+                                //               productController.limit) +
+                                //           (dataResultLenght %
+                                //                       productController.limit !=
+                                //                   0
+                                //               ? 1
+                                //               : 0);
+                                //       int dataStart = pagnationController
+                                //               .text.isEmpty
+                                //           ? (productController.limit *
+                                //                   (productController.selectedPagnation + 1)) -
+                                //               (productController.limit - 1)
+                                //           : int.parse(pagnationController.text);
+                                //       pagnationController.text =
+                                //           dataStart.toString();
+                                //       var datadisplayLenght =
+                                //           (int.parse(pagnationController.text) +
+                                //                       productController.limit) <
+                                //                   dataResultLenght
+                                //               ? ((int.parse(pagnationController
+                                //                           .text) +
+                                //                       productController.limit) -
+                                //                   1)
+                                //               : dataResultLenght;
+                                //       return dataResultLenght != 0
+                                //           ? Padding(
+                                //               padding: EdgeInsets.all(8.0.r),
+                                //               child: Container(
+                                //                 width: (Get.height * 0.2),
+                                //                 height: Get.height * 0.03,
+                                //                 decoration: BoxDecoration(
+                                //                   border: Border.all(
+                                //                       color:
+                                //                           AppColor.silverGray),
+                                //                   borderRadius:
+                                //                       BorderRadius.circular(50),
+                                //                 ),
+                                //                 child: Padding(
+                                //                   padding: EdgeInsets.all(5.r),
+                                //                   child: Row(
+                                //                     crossAxisAlignment:
+                                //                         CrossAxisAlignment
+                                //                             .start,
+                                //                     children: [
+                                //                       InkWell(
+                                //                         onTap: dataStart > 1
+                                //                             ? () async {
+                                //                                 if (dataStart <=
+                                //                                     productController
+                                //                                         .limit) {
+                                //                                   await productController.displayProductList(
+                                //                                       paging:
+                                //                                           true,
+                                //                                       type:
+                                //                                           "prefix",
+                                //                                       countSkip:
+                                //                                           0);
+                                //                                   productController.selectedPagnation =
+                                //                                       0;
+                                //                                   pagnationController
+                                //                                           .text =
+                                //                                       "1";
+                                //                                 } else {
+                                //                                   await productController
+                                //                                       .displayProductList(
+                                //                                     paging:
+                                //                                         true,
+                                //                                     type:
+                                //                                         "prefix",
+                                //                                   );
+                                //                                   productController.selectedPagnation--;
+                                //                                   pagnationController
+                                //                                       .text = ((productController.limit *
+                                //                                               (productController.selectedPagnation +
+                                //                                                   1)) -
+                                //                                           (productController.limit -
+                                //                                               1))
+                                //                                       .toString();
+                                //                                 }
+                                //                               }
+                                //                             : null,
+                                //                         child: SvgPicture.asset(
+                                //                           SharedPr.lang == "ar"
+                                //                               ? "assets/image/arrow_right.svg"
+                                //                               : "assets/image/arrow_left.svg",
+                                //                           package:
+                                //                               'yousentech_pos_basic_data_management',
+                                //                           color: dataStart <= 1
+                                //                               ? AppColor
+                                //                                   .silverGray
+                                //                               : null,
+                                //                         ),
+                                //                       ),
+                                //                       const Spacer(),
+                                //                       SizedBox(
+                                //                         height: 10.r,
+                                //                         child: RichText(
+                                //                           text: TextSpan(
+                                //                             children: <TextSpan>[
+                                //                               // Lenght data in DB
+                                //                               TextSpan(
+                                //                                 text:
+                                //                                     "$dataResultLenght / ",
+                                //                                 style:
+                                //                                     TextStyle(
+                                //                                   fontSize:
+                                //                                       10.r,
+                                //                                   color: AppColor
+                                //                                       .lavenderGray,
+                                //                                   fontWeight:
+                                //                                       FontWeight
+                                //                                           .w400,
+                                //                                   fontFamily:
+                                //                                       'Tajawal',
+                                //                                   package:
+                                //                                       'yousentech_pos_basic_data_management',
+                                //                                 ),
+                                //                               ),
+                                //                               // Lenght show in screen in
+                                //                               TextSpan(
+                                //                                 text:
+                                //                                     "$datadisplayLenght -",
+                                //                                 style:
+                                //                                     TextStyle(
+                                //                                   fontSize:
+                                //                                       10.r,
+                                //                                   color: AppColor
+                                //                                       .black
+                                //                                       .withOpacity(
+                                //                                           0.5),
+                                //                                   fontWeight:
+                                //                                       FontWeight
+                                //                                           .w400,
+                                //                                   fontFamily:
+                                //                                       'Tajawal',
+                                //                                   package:
+                                //                                       'yousentech_pos_basic_data_management',
+                                //                                 ),
+                                //                               ),
+                                //                             ],
+                                //                           ),
+                                //                         ),
+                                //                       ),
+                                //                       Expanded(
+                                //                         child: SizedBox(
+                                //                           height: 10.r,
+                                //                           width: 40.r,
+                                //                           child: TextField(
+                                //                             style: TextStyle(
+                                //                               fontSize: 10.r,
+                                //                               overflow:
+                                //                                   TextOverflow
+                                //                                       .ellipsis,
+                                //                               // fontWeight: FontWeight.bold
+                                //                             ),
+                                //                             inputFormatters: [
+                                //                               FilteringTextInputFormatter
+                                //                                   .digitsOnly, // Only digits allowed
+                                //                             ],
+                                //                             decoration:
+                                //                                 InputDecoration(
+                                //                               isDense:
+                                //                                   true, // Reduces the padding inside the TextField
+                                //                               contentPadding:
+                                //                                   EdgeInsets.symmetric(
+                                //                                       vertical:
+                                //                                           2.r), // Set padding to zero or adjust
+                                //                               border: InputBorder
+                                //                                   .none, // Remove the border if not needed
+                                //                             ),
+                                //                             controller:
+                                //                                 pagnationController,
+                                //                             onSubmitted:
+                                //                                 (value) async {
+                                //                               int? countSkip;
+                                //                               if (value
+                                //                                   .isEmpty) {
+                                //                                 pagnationController
+                                //                                         .text =
+                                //                                     (1).toString();
+                                //                                 countSkip = 0;
+                                //                                 productController.selectedPagnation = 0;
+                                //                               } else if (value
+                                //                                   .isNotEmpty) {
+                                //                                 var pageselecteed = (int.parse(
+                                //                                             value) /
+                                //                                         productController
+                                //                                             .limit)
+                                //                                     .ceilToDouble();
+                                //                                 productController.selectedPagnation =
+                                //                                     pageselecteed
+                                //                                             .toInt() -
+                                //                                         1;
+                                //                                 if (int.parse(
+                                //                                         value) >
+                                //                                     dataResultLenght) {
+                                //                                   pagnationController
+                                //                                           .text =
+                                //                                       (1).toString();
+                                //                                   countSkip = 0;
+                                //                                   productController.selectedPagnation =
+                                //                                       0;
+                                //                                 } else if (int
+                                //                                         .parse(
+                                //                                             value) <=
+                                //                                     1) {
+                                //                                   pagnationController
+                                //                                           .text =
+                                //                                       (1).toString();
+                                //                                   countSkip = 0;
+                                //                                   productController.selectedPagnation =
+                                //                                       0;
+                                //                                 } else {
+                                //                                   countSkip =
+                                //                                       int.parse(
+                                //                                               value) -
+                                //                                           1;
+                                //                                 }
+                                //                               }
 
-                                                                await productController
-                                                                    .displayProductList(
-                                                                        paging:
-                                                                            true,
-                                                                        type:
-                                                                            "suffix",
-                                                                        // countSkip: pagnationController.text.isEmpty? null : (int.parse(pagnationController.text) )-1
-                                                                        countSkip:
-                                                                            skip);
-                                                                selectedpag++;
-                                                              }
-                                                            : null,
-                                                        child: SvgPicture.asset(
-                                                          SharedPr.lang == "ar"
-                                                              ? "assets/image/arrow_left.svg"
-                                                              : "assets/image/arrow_right.svg",
-                                                          package:
-                                                              'yousentech_pos_basic_data_management',
-                                                          color: pagesNumber >
-                                                                  (selectedpag +
-                                                                      1)
-                                                              ? null
-                                                              : AppColor
-                                                                  .silverGray,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            )
-                                          : const SizedBox.shrink();
-                                    }),
+                                //                               productController
+                                //                                   .update();
+                                //                               await productController
+                                //                                   .displayProductList(
+                                //                                       paging:
+                                //                                           true,
+                                //                                       type: "",
+                                //                                       countSkip:
+                                //                                           countSkip,
+                                //                                       pageselecteed:
+                                //                                           productController.selectedPagnation);
+                                //                             },
+                                //                           ),
+                                //                         ),
+                                //                       ),
+                                //                       //التالي
+                                //                       InkWell(
+                                //                         onTap: pagesNumber >
+                                //                                 (productController.selectedPagnation +
+                                //                                     1)
+                                //                             ? () async {
+                                //                                 int prefixData =
+                                //                                     int.parse(
+                                //                                         pagnationController
+                                //                                             .text);
+                                //                                 skip = (prefixData +
+                                //                                     (productController
+                                //                                             .limit -
+                                //                                         1));
+                                //                                 pagnationController
+                                //                                     .text = (skip +
+                                //                                         1)
+                                //                                     .toString();
+
+                                //                                 await productController
+                                //                                     .displayProductList(
+                                //                                         paging:
+                                //                                             true,
+                                //                                         type:
+                                //                                             "suffix",
+                                //                                         // countSkip: pagnationController.text.isEmpty? null : (int.parse(pagnationController.text) )-1
+                                //                                         countSkip:
+                                //                                             skip);
+                                //                                 productController.selectedPagnation++;
+                                //                               }
+                                //                             : null,
+                                //                         child: SvgPicture.asset(
+                                //                           SharedPr.lang == "ar"
+                                //                               ? "assets/image/arrow_left.svg"
+                                //                               : "assets/image/arrow_right.svg",
+                                //                           package:
+                                //                               'yousentech_pos_basic_data_management',
+                                //                           color: pagesNumber >
+                                //                                   (productController.selectedPagnation +
+                                //                                       1)
+                                //                               ? null
+                                //                               : AppColor
+                                //                                   .silverGray,
+                                //                         ),
+                                //                       ),
+                                //                     ],
+                                //                   ),
+                                //                 ),
+                                //               ),
+                                //             )
+                                //           : const SizedBox.shrink();
+                                //     }),
+                              
+                              
+                              
                               ],
                             ),
                           ),

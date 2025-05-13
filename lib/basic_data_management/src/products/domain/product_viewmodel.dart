@@ -48,7 +48,11 @@ class ProductController extends GetxController {
   var hasMore = true.obs;
   var hasLess = false.obs;
   TextEditingController searchProductController = TextEditingController();
-
+  //==================for Pagnation  item================
+  int selectedPagnation = 0;
+  int skip = 0;
+  int pagnationpagesNumber = 0;
+  //==================for Pagnation  item================
   @override
   Future<void> onInit() async {
     super.onInit();
