@@ -845,9 +845,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                               .searchResults
                                                               .isEmpty
                                                       ? 0
-                                                      : productController
-                                                          .loadingDataController
-                                                          .itemdata[Loaddata.products.name.toString()]['local'];
+                                                      : productController.loadingDataController.itemdata[Loaddata.products.name.toString()] == null ? 0 : productController.loadingDataController.itemdata[Loaddata.products.name.toString()]['local'];
                                       pagesNumber = (dataResultLenght ~/
                                               productController.limit) +
                                           (dataResultLenght %

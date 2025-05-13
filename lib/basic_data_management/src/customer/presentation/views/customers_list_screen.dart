@@ -788,10 +788,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                                                       customerController
                                                           .searchResults.isEmpty
                                                   ? 0
-                                                  : loadingDataController
-                                                          .itemdata[
-                                                      Loaddata.customers.name
-                                                          .toString()]['local'];
+                                                  : loadingDataController.itemdata[Loaddata.customers.name.toString()] == null ? 0 : loadingDataController.itemdata[Loaddata.customers.name.toString()]['local'];
                                       int dataStart = 
                                       
                                       pagnationController.text.isEmpty
