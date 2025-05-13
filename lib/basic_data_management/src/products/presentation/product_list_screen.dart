@@ -381,7 +381,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                     },
                                                     child: Container(
                                                       height: 30.h,
-                                                      width: 30.w,
+                                                      width: 40.w,
                                                       alignment:
                                                           Alignment.center,
                                                       decoration: BoxDecoration(
@@ -466,7 +466,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                     },
                                                     child: Container(
                                                       height: 30.h,
-                                                      width: 33.w,
+                                                      width: 40.w,
                                                       alignment:
                                                           Alignment.center,
                                                       decoration: BoxDecoration(
@@ -872,8 +872,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                               : dataResultLenght;
                                       return dataResultLenght != 0
                                           ? Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
+                                              padding: EdgeInsets.all(8.0.r),
                                               child: Container(
                                                 width: (Get.height * 0.2),
                                                 height: Get.height * 0.03,
@@ -953,7 +952,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      6.5.r,
+                                                                      10.r,
                                                                   color: AppColor
                                                                       .lavenderGray,
                                                                   fontWeight:
@@ -972,7 +971,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize:
-                                                                      6.5.r,
+                                                                      10.r,
                                                                   color: AppColor
                                                                       .black
                                                                       .withOpacity(
@@ -996,7 +995,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                                           width: 40.r,
                                                           child: TextField(
                                                             style: TextStyle(
-                                                              fontSize: 6.5.r,
+                                                              fontSize: 10.r,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
