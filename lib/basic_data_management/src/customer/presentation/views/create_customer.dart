@@ -10,7 +10,6 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl_phone_field/countries.dart';
 import 'package:pos_shared_preferences/models/customer_model.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_colors.dart';
@@ -25,6 +24,7 @@ import 'package:shared_widgets/utils/validator_helper.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/config/app_list.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_viewmodel.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/widget/tital.dart';
+import 'package:yousentech_pos_invoice/invoices/domain/invoice_viewmodel.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
 
 // ignore: must_be_immutable
@@ -73,6 +73,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
     customer = widget.objectToEdit != null
         ? Customer.fromJson(widget.objectToEdit!.toJson())
         : null;
+    _selectedOption = false;
     if (customer?.id != null) {
       name.text = customer!.name!;
       email.text = customer!.email ?? '';
@@ -930,18 +931,28 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
               ? 1
               : 0);
       if (func.status) {
-        if (widget.objectToEdit == null && pagesNumber == 1) {
-          customerController.customerpagingList.add(func.data);
+        InvoiceController  invoiceController = Get.isRegistered<InvoiceController>() ? Get.find<InvoiceController>() : Get.put(InvoiceController());
+        if (widget.objectToEdit == null ) {
+          invoiceController.customersList.add(func.data);
+          if(pagesNumber == 1){
+            customerController.customerpagingList.add(func.data);
+          }
+          
         }
         var customerIndex = customerController.customerpagingList
             .indexWhere((item) => item.id == widget.objectToEdit?.id);
         if (customerIndex != -1) {
           customerController.customerpagingList[customerIndex] = customer!;
+          var index = invoiceController.customersList.indexWhere((item) => item.id == widget.objectToEdit?.id);
+          if (index != -1) {
+            invoiceController.customersList[index] = customer!;
+          }
         }
         customerController.update();
         customer = null;
         customerController.isLoading.value = false;
         customerController.update();
+        invoiceController.update();
         appSnackBar(
           messageType: MessageTypes.success,
           message: func.message,

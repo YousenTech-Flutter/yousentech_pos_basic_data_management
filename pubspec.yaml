@@ -38,6 +38,10 @@ dependencies:
     git:
       url: https://github.com/YousenTech-Flutter/yousentech_pos_dashboard.git
       ref: master
+  yousentech_pos_invoice:
+    git:
+      url: https://github.com/YousenTech-Flutter/yousentech_pos_invoice.git
+      ref: master
 dev_dependencies:
   flutter_test:
     sdk: flutter
