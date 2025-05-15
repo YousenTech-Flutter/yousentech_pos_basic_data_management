@@ -30,8 +30,9 @@ import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/ap
 // ignore: must_be_immutable
 class AddCustomerScreen extends StatefulWidget {
   Customer? objectToEdit;
+  String ? name;
 
-  AddCustomerScreen({super.key, this.objectToEdit});
+  AddCustomerScreen({super.key, this.objectToEdit, this.name});
 
   @override
   State<AddCustomerScreen> createState() => _AddCustomerScreenState();
@@ -89,6 +90,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
       l10nSaEdiPlotIdentification.text = customer!.l10nSaEdiPlotIdentification ?? "";
       _selectedOption = customer!.isCompany;
     }
+    if(widget.name != null) name.text = widget.name!;
     customer ??= Customer();
   }
 
@@ -847,6 +849,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                                                           FontWeight.bold),
                                                   onPressed: _onPressed),
                                             ),
+                                            if(widget.name == null)...[
                                             SizedBox(width: Get.width * 0.01),
                                             Expanded(
                                               child: ButtonElevated(
@@ -872,7 +875,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
 
                                                     // Get.back();
                                                   }),
-                                            ),
+                                            ),]
                                           ],
                                         ),
                                       ),
@@ -959,6 +962,14 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
         );
         back();
         await customerController.resetPagingList(selectedpag: 0);
+        if(widget.name != null){
+          invoiceController.changeSelection(func.data.id!);
+          Get.back();
+          if (invoiceController.isDialogOpen) {
+            Get.back();
+            invoiceController.isDialogOpen = false;
+          }
+        }
       } else {
         customerController.isLoading.value = false;
         customerController.update();
