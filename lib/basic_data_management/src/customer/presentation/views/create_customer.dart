@@ -963,7 +963,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
         back();
         await customerController.resetPagingList(selectedpag: 0);
         if(widget.name != null){
-          invoiceController.changeSelection(func.data.id!);
+          invoiceController.changeSelection(func.data.id!, name.text.trim() );
           Get.back();
           if (invoiceController.isDialogOpen) {
             Get.back();
