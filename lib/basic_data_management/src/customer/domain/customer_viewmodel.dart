@@ -191,11 +191,10 @@ class CustomerController extends GetxController {
         RxList<Customer> searchFiltterResult =searchResults.isNotEmpty
                 ? searchResults
                 : RxList<Customer>();
-    
     var dataResultLenght = searchResults.isNotEmpty
             ? searchResults.length
-            : loadingDataController.itemdata[Loaddata.customers.name.toString()]
-                ['local'];
+            : loadingDataController.itemdata[Loaddata.customers.name.toString()] == null? 0 : 
+                loadingDataController.itemdata[Loaddata.customers.name.toString()]['local'];
     if (paging) {
       if (!isLoading.value) {
         isLoading.value = true;

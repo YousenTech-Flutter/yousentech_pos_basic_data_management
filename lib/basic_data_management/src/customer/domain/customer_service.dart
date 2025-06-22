@@ -76,10 +76,15 @@ class CustomerService extends CustomerRepository {
   @override
   Future create({required dataCreate}) async {
     try {
+       // add new line
+      var newCustomer = dataCreate.toJson(isRemotelyAdded: false);
+      newCustomer.remove('pay_type');
+      // add new line
       var partnerId = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.customer,
         'method': 'create',
-        'args': [dataCreate.toJson(isRemotelyAdded: false)],
+        // 'args': [dataCreate.toJson(isRemotelyAdded: false)],
+        'args': [newCustomer],
         'kwargs': {},
       });
       dataCreate.id = partnerId;
