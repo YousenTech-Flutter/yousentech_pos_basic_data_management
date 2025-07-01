@@ -101,7 +101,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 : productController.unitsList[0].name!.enUS)
             : null,
         taxesId: [productController.taxesList.first.id!],
-        detailedType: DetailedType.product.enUS);
+        // detailedType: !SharedPr.chosenUserObj!.isPosInventoryModuleInstalled!? DetailedType.consu.enUS :  DetailedType.product.enUS);
+        detailedType:DetailedType.consu.enUS);
   }
   
 
@@ -485,7 +486,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                                     hintText: 'product_type',
                                                     labelText:
                                                         'product_type'.tr,
-                                                    value: product!.detailedType,
+                                                     value: 
+                                                    !SharedPr.userObj!.isPosInventoryModuleInstalled! && product!.detailedType == DetailedType.product.enUS ? null : product!.detailedType,
                                                     color: AppColor.black,
                                                     iconcolor: AppColor.black,
                                                     onChanged: (val) {
@@ -505,7 +507,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                                       }
                                                       return null;
                                                     },
-                                                    items: productDetailedType
+                                                    items: (!SharedPr.userObj!.isPosInventoryModuleInstalled! ? productDetailedType.take(2): productDetailedType)
                                                         .map(
                                                             (detailedTypeItem) =>
                                                                 DropdownMenuItem(
