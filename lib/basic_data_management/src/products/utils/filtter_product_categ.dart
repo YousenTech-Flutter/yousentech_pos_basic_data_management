@@ -2,14 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:popover/popover.dart';
-import 'package:pos_shared_preferences/models/product_data/product.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_viewmodel.dart';
 
-filtterProductByCategory(
-    {required BuildContext context,
-    required List<Product> product,
-    required ProductController productController}) {
+filtterProductByCategory({required BuildContext context,required ProductController productController}) {
   return showPopover(
     direction: PopoverDirection.bottom,
     context: context,

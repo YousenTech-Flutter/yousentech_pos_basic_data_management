@@ -3,6 +3,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:odoo_rpc/odoo_rpc.dart';
 import 'package:pos_shared_preferences/models/customer_model.dart';
+import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_odoo_models.dart';
 import 'package:shared_widgets/shared_widgets/handle_exception_helper.dart';
 import 'package:shared_widgets/shared_widgets/odoo_connection_helper.dart';
@@ -56,12 +57,15 @@ class CustomerService extends CustomerRepository {
   @override
   Future update({required int id, required dataUpdated}) async {
     try {
+      var newCustomer = dataUpdated.toJson(isRemotelyAdded: false);
+      newCustomer.remove('pay_type');
       bool result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.customer,
         'method': 'write',
         'args': [
           id,
-          dataUpdated.toJson(isRemotelyAdded: false),
+          // dataUpdated.toJson(isRemotelyAdded: false),
+          newCustomer,
         ],
         'kwargs': {},
       });
@@ -77,7 +81,7 @@ class CustomerService extends CustomerRepository {
   Future create({required dataCreate}) async {
     try {
        // add new line
-      var newCustomer = dataCreate.toJson(isRemotelyAdded: false);
+      var newCustomer = dataCreate.toJson(isRemotelyAdded: false , isInstall : SharedPr.isModel_l10n_sa_edie_install);
       newCustomer.remove('pay_type');
       // add new line
       var partnerId = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
