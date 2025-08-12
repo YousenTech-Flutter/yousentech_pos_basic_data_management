@@ -76,7 +76,7 @@ class ProductService extends ProductRepository {
 
   @override
   Future search(String query,
-      {int? page, int pageSize = 10, bool quickMenu = false}) async {
+      {int? page, int pageSize = 10, bool quickMenu = false ,  List<dynamic>? itemCategSearch}) async {
     try {
       _generalLocalDBInstance =
           GeneralLocalDB.getInstance<Product>(fromJsonFun: Product.fromJson)
@@ -85,16 +85,33 @@ class ProductService extends ProductRepository {
       int? offset;
       if (page != null) offset = (page - 1) * pageSize;
 
+      // String query1 = '''
+      //   SELECT * FROM product
+      //   WHERE (REPLACE(REPLACE(product_name, '"en_US":', ''), '"ar_001":', '') LIKE ? 
+      //          OR barcode LIKE ? 
+      //          OR default_code LIKE ?) 
+      //          ${quickMenu ? 'AND quick_menu_availability = 1' : ''}
+      //          ${(page != null) ? 'LIMIT ? OFFSET ?' : ''}
+      // ''';
+
+      // var queriesList = ['%$query%', '%$query%', '%$query%'];
       String query1 = '''
         SELECT * FROM product
-        WHERE (REPLACE(REPLACE(product_name, '"en_US":', ''), '"ar_001":', '') LIKE ? 
+        WHERE 
+        ${itemCategSearch!.isNotEmpty ? 'so_pos_categ_id IN (${List.filled(itemCategSearch.length, '?').join(', ')}) AND ' : ''}
+          (REPLACE(REPLACE(product_name, '"en_US":', ''), '"ar_001":', '') LIKE ? 
                OR barcode LIKE ? 
-               OR default_code LIKE ?) 
+               OR default_code LIKE ?
+              ) 
                ${quickMenu ? 'AND quick_menu_availability = 1' : ''}
                ${(page != null) ? 'LIMIT ? OFFSET ?' : ''}
       ''';
-
-      var queriesList = ['%$query%', '%$query%', '%$query%'];
+      List queriesList = [
+        ...itemCategSearch,
+        '%$query%',
+        '%$query%',
+        '%$query%',
+      ];
       queriesList
           .addAllIf(page != null, [pageSize.toString(), offset.toString()]);
       var result = await DbHelper.db!.rawQuery(

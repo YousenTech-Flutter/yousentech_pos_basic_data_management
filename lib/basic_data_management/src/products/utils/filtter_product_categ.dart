@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import 'package:popover/popover.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_viewmodel.dart';
+import 'package:yousentech_pos_invoice/invoices/domain/invoice_viewmodel.dart';
 
-filtterProductByCategory({required BuildContext context,required ProductController productController}) {
+filtterProductByCategory({required BuildContext context,required ProductController productController, bool  isProductPage = true , InvoiceController? invoiceController}) {
   return showPopover(
     direction: PopoverDirection.bottom,
     context: context,
@@ -45,9 +46,18 @@ filtterProductByCategory({required BuildContext context,required ProductControll
                                       .indexOf(item)]["is_check"] = value!;
                             },
                           );
-                          await productController.searchByCateg(query: productController.categoriesCheckFiltter);
-                          await productController.resetPagingList(
-                              selectedpag: 0);
+                          if(isProductPage){
+                            await productController.searchByCateg(query: productController.categoriesCheckFiltter);
+                            await productController.resetPagingList(selectedpag: 0);
+                          }
+                          else{
+                            productController.update();
+                            invoiceController!.categoriesCheckFiltter = productController.categoriesCheckFiltter;
+                            invoiceController.pagingController.refresh();
+                          }
+                          // await productController.searchByCateg(query: productController.categoriesCheckFiltter);
+                          // await productController.resetPagingList(
+                          //     selectedpag: 0);
                         },
                         title: Text(
                           item.getPosCategoryNameBasedOnLang,
