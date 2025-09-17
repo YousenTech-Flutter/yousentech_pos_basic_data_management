@@ -76,7 +76,7 @@ class ProductService extends ProductRepository {
 
   @override
   Future search(String query,
-      {int? page, int pageSize = 10, bool quickMenu = false ,  List<dynamic>? itemCategSearch}) async {
+      {int? page, int pageSize = 10, bool quickMenu = false ,  List<dynamic> itemCategSearch = const []}) async {
     try {
       _generalLocalDBInstance =
           GeneralLocalDB.getInstance<Product>(fromJsonFun: Product.fromJson)
@@ -98,7 +98,7 @@ class ProductService extends ProductRepository {
       String query1 = '''
         SELECT * FROM product
         WHERE 
-        ${itemCategSearch!.isNotEmpty ? 'so_pos_categ_id IN (${List.filled(itemCategSearch.length, '?').join(', ')}) AND ' : ''}
+        ${itemCategSearch.isNotEmpty ? 'so_pos_categ_id IN (${List.filled(itemCategSearch.length, '?').join(', ')}) AND ' : ''}
           (REPLACE(REPLACE(product_name, '"en_US":', ''), '"ar_001":', '') LIKE ? 
                OR barcode LIKE ? 
                OR default_code LIKE ?
