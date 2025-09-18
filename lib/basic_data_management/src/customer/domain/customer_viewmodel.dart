@@ -22,7 +22,7 @@ class CustomerController extends GetxController {
   LoadingDataController loadingDataController =  Get.find<LoadingDataController>();
 
   var page = 0.obs;
-  final int limit = 16;
+  int limit = 10;
   var hasMore = false.obs;
   var hasLess = false.obs;
   //==================for Pagnation  item================
