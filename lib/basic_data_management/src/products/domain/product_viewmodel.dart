@@ -44,7 +44,7 @@ class ProductController extends GetxController {
   Product? object;
 
   var page = 0.obs;
-  final int limit = 16;
+  int limit = 16;
   var hasMore = true.obs;
   var hasLess = false.obs;
   TextEditingController searchProductController = TextEditingController();
