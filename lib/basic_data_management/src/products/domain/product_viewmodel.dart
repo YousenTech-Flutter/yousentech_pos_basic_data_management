@@ -405,9 +405,59 @@ class ProductController extends GetxController {
   // # Output:
   // # - Updates `searchResults` with the filtered or searched product data.
 
-  Future<void> search(String query) async {
+  // Future<void> search(String query) async {
+  //   if (productList.isNotEmpty) {
+  //     searchResults.clear();
+  //     if (filtterResults.isNotEmpty) {
+  //       var results = filtterResults.where((product) {
+  //         final productName = product.getProductNameBasedOnLang.toLowerCase();
+  //         final barcode = product.barcode.toString().toLowerCase();
+  //         final defaultCode = product.defaultCode.toString().toLowerCase();
+  //         return productName.contains(query.toLowerCase()) ||
+  //             barcode.contains(query.toLowerCase()) ||
+  //             defaultCode.contains(query.toLowerCase());
+  //       }).toList();
+  //       searchResults.addAll(results);
+
+  //       update();
+  //     } else {
+  //       var result = await productService.search(query);
+  //       if (result is List) {
+  //         searchResults.addAll(result as List<Product>);
+  //       }
+
+  //       update();
+  //     }
+  //   }
+  // }
+
+    Future<void> search(String query) async {
     if (productList.isNotEmpty) {
-      searchResults.clear();
+      if (selectedPagnation == 1) {
+        if (searchResults.isEmpty & filtterResults.isEmpty) {
+          var results = pagingList.where((product) {
+            final productName = product.getProductNameBasedOnLang.toLowerCase();
+            final barcode = product.barcode.toString().toLowerCase();
+            final defaultCode = product.defaultCode.toString().toLowerCase();
+            return productName.contains(query.toLowerCase()) ||
+                barcode.contains(query.toLowerCase()) ||
+                defaultCode.contains(query.toLowerCase());
+          }).toList();
+          searchResults.clear();
+          searchResults.addAll(results);
+        } else {
+          var results = seachFilterPagingList.where((product) {
+            final productName = product.getProductNameBasedOnLang.toLowerCase();
+            final barcode = product.barcode.toString().toLowerCase();
+            final defaultCode = product.defaultCode.toString().toLowerCase();
+            return productName.contains(query.toLowerCase()) ||
+                barcode.contains(query.toLowerCase()) ||
+                defaultCode.contains(query.toLowerCase());
+          }).toList();
+          searchResults.clear();
+          searchResults.addAll(results);
+        }
+      }
       if (filtterResults.isNotEmpty) {
         var results = filtterResults.where((product) {
           final productName = product.getProductNameBasedOnLang.toLowerCase();
@@ -417,18 +467,21 @@ class ProductController extends GetxController {
               barcode.contains(query.toLowerCase()) ||
               defaultCode.contains(query.toLowerCase());
         }).toList();
+        searchResults.clear();
         searchResults.addAll(results);
 
         update();
       } else {
         var result = await productService.search(query);
         if (result is List) {
+          searchResults.clear();
           searchResults.addAll(result as List<Product>);
         }
 
         update();
       }
     }
+    selectedPagnation = 0;
   }
 //   # ===================================================== [ SEARCH PRODUCTS ] =====================================================
 
