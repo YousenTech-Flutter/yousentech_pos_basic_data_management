@@ -38,7 +38,7 @@ class CustomerController extends GetxController {
   }
 
   customersData() async {
-    var result = await getAllCustomerLocal(paging: true);
+    var result = await getAllCustomerLocal(paging: true , pageselecteed: 0 , type: "");
     if (result.status) {
       customerList.value = result.data;
     }

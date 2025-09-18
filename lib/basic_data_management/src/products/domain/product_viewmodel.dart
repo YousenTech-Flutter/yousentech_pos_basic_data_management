@@ -76,7 +76,7 @@ class ProductController extends GetxController {
   // # - This function does not return anything. It updates the `productList` and `pagingList` with the fetched data and triggers a UI update.
 
   productsData() async {
-    var result = await displayProductList(paging: true);
+    var result = await displayProductList(paging: true , pageselecteed: 0 , type: "");
     productList.value = result.data;
     pagingList.value = result.data;
     update();
