@@ -183,8 +183,9 @@ class ProductService extends ProductRepository {
       return await _generalLocalDBInstance!.filter(
           whereArgs: query,
           where: 'so_pos_categ_id in  (${query.map((_) => '?').join(', ')})',
-          page: page,
-          limit: limit ?? 25);
+          // page: page,
+          // limit: limit ?? 25
+          );
     } catch (e) {
       return await handleException(
           exception: e, navigation: false, methodName: "searchByCateg");
