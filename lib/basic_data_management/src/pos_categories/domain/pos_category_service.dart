@@ -86,8 +86,10 @@ class PosCategoryService extends PosCategoryRepository {
     try {
       int result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.posCategory,
-        'method': 'create',
-        'args': [obj is Map<String, dynamic> ? obj : obj.toJson()],
+        // 'method': 'create',
+        // 'args': [obj is Map<String, dynamic> ? obj : obj.toJson()],
+        'method': 'add_or_update_category',
+        'args': [null, obj is Map<String, dynamic> ? obj : obj.toJson()],
         'kwargs': {},
       });
       return result;
@@ -134,7 +136,9 @@ class PosCategoryService extends PosCategoryRepository {
     try {
       bool result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
         'model': OdooModels.posCategory,
-        'method': 'write',
+        // 'method': 'write',
+        // 'args': [id, obj],
+        'method': 'add_or_update_category',
         'args': [id, obj],
         'kwargs': {
           'context': {
