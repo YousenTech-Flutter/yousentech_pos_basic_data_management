@@ -268,4 +268,17 @@ class ProductService extends ProductRepository {
           exception: e, navigation: false, methodName: "getMoreProductInfo");
     }
   }
+  // Future createProductNote({required String note}) async {
+  //   try {
+  //     var result = await OdooProjectOwnerConnectionHelper.odooClient.callKw({
+  //       'model': "so.pos.category.note",
+  //       'method': 'create',
+  //       'args': [note],
+  //       'kwargs': {}
+  //     });
+  //     return result;
+  //   } catch (e) {
+  //     return await handleException(exception: e, navigation: false, methodName: "createProductNote");
+  //   }
+  // }
 }

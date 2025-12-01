@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:pos_shared_preferences/models/customer_model.dart';
 import 'package:shared_widgets/config/app_odoo_models.dart';
@@ -22,7 +24,7 @@ class CustomerController extends GetxController {
   LoadingDataController loadingDataController =  Get.find<LoadingDataController>();
 
   var page = 0.obs;
-  int limit = 10;
+  int limit = Platform.isWindows ? 18 : 10;
   var hasMore = false.obs;
   var hasLess = false.obs;
   //==================for Pagnation  item================

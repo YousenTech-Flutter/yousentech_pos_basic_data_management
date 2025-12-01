@@ -1,5 +1,7 @@
 // ignore_for_file: unrelated_type_equality_checks
 
+import 'dart:io';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -44,7 +46,7 @@ class ProductController extends GetxController {
   Product? object;
 
   var page = 0.obs;
-  int limit = 10;
+  int limit = Platform.isWindows ? 18 : 10;
   var hasMore = true.obs;
   var hasLess = false.obs;
   TextEditingController searchProductController = TextEditingController();
