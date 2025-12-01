@@ -75,8 +75,7 @@ class ProductService extends ProductRepository {
   }
 
   @override
-  Future search(String query,
-      {int? page, int pageSize = 10, bool quickMenu = false ,  List<dynamic> itemCategSearch = const []}) async {
+  Future search(String query,{int? page, int pageSize = 10, bool quickMenu = false ,  List<dynamic> itemCategSearch = const []}) async {
     try {
       _generalLocalDBInstance =
           GeneralLocalDB.getInstance<Product>(fromJsonFun: Product.fromJson)

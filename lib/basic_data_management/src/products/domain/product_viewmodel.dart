@@ -474,7 +474,7 @@ class ProductController extends GetxController {
 
         update();
       } else {
-        var result = await productService.search(query);
+        var result = await productService.search(query , pageSize: limit);
         if (result is List) {
           searchResults.clear();
           searchResults.addAll(result as List<Product>);
