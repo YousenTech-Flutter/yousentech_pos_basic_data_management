@@ -18,6 +18,7 @@ dependencies:
   odoo_rpc: ^0.5.4
   image_picker: ^1.1.2
   popover:
+  infinite_scroll_pagination: ^4.0.0
   pos_shared_preferences:
     git:
       url: https://github.com/YousenTech-Flutter/yousentech_pos_shared_preferences.git
