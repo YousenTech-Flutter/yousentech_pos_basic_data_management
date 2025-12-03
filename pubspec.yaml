@@ -13,7 +13,7 @@ dependencies:
   get: ^4.6.6
   flutter_svg: ^2.0.10+1
   font_awesome_flutter: ^10.7.0
-  flutter_screenutil: ^5.9.3
+  # flutter_screenutil: ^5.9.3
   connectivity_plus: ^6.0.3
   odoo_rpc: ^0.5.4
   image_picker: ^1.1.2
