@@ -89,7 +89,7 @@ buildProductBodyTable({
                       ),
                   child:item.image == null  ||  isSvg(item.image!.toString()) ? Center(
                     child: SvgPicture.asset(
-                      AppImages.productEmpty,
+                      AppImages.productEmptySvg,
                       package: 'shared_widgets',
                       color: SharedPr.isDarkMode! ? null : const Color(0xFF666C6D),
                     ),

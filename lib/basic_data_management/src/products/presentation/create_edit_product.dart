@@ -353,7 +353,7 @@ void createEditeProduct({
                                                   ),
                                                 ),
                                                 child: SvgPicture.asset(
-                                                  AppImages.productEmpty,
+                                                  AppImages.productEmptySvg,
                                                   package: 'shared_widgets',
                                                   color: const Color(
                                                     0xFF16A6B7,
