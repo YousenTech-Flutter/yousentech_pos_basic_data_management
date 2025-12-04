@@ -402,7 +402,7 @@ void createEditeCustomer({
                                                               .setHeight(10),
                                                         ),
                                                     child: SvgPicture.asset(
-                                                      AppImages.productEmptySvg,
+                                                      AppImages.partner,
                                                       package: 'shared_widgets',
                                                       color: const Color(
                                                         0xFF16A6B7,
@@ -1587,7 +1587,7 @@ void createEditeCustomer({
                                                                   ),
                                                             ),
                                                             child: SvgPicture.asset(
-                                                              AppImages.productEmptySvg,
+                                                              AppImages.partner,
                                                             package: 'shared_widgets',
                                                               
                                                               color:

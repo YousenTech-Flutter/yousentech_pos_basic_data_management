@@ -91,7 +91,7 @@ buildCustomerBodyTable({
                   child: item.image == null || isSvg(item.image!.toString())
                       ? Center(
                           child: SvgPicture.asset(
-                            AppImages.productEmptySvg,
+                            AppImages.partner,
                             package: 'shared_widgets',
                             color: SharedPr.isDarkMode!
                                 ? null
