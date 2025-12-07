@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
+import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/config/app_images.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
 
@@ -9,6 +10,8 @@ import '../presentation/create_edit_category.dart';
 buildCategoryBodyTable({
   required List data,
   required BuildContext context,
+  bool showActions = true,
+  bool isShowDiffItems = false,
 }) {
   return ListView.builder(
     shrinkWrap: true,
@@ -16,13 +19,20 @@ buildCategoryBodyTable({
     physics: const ClampingScrollPhysics(),
     itemCount: data.length,
     itemBuilder: (BuildContext context, int index) {
-      var item =  data[index];
+      var item = isShowDiffItems ? data[index]["item"] : data[index];
       return Container(
-        color:(index % 2 == 0
-                ? null
-                : SharedPr.isDarkMode!
-                ? const Color(0xFF1E1E1E)
-                : const Color(0xFFF3F2F2)),
+                color:
+            isShowDiffItems
+                ? data[index]["vale"] == 0
+                    ? AppColor.green.withValues(alpha: 0.50)
+                    : data[index]["vale"] == 1
+                    ? AppColor.cyanTeal.withValues(alpha: 0.50)
+                    : AppColor.red.withValues(alpha: 0.50)
+                : (index % 2 == 0
+                    ? null
+                    : SharedPr.isDarkMode!
+                    ? const Color(0xFF1E1E1E)
+                    : const Color(0xFFF3F2F2)),
         height: context.setHeight(35),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: context.setHeight(5.5)),
@@ -85,6 +95,9 @@ buildCategoryBodyTable({
                   ),
                 ),
               ),
+              if(showActions)...[
+
+              
                 Expanded(
                   flex: 1,
                   child: GestureDetector(
@@ -105,7 +118,7 @@ buildCategoryBodyTable({
                     ),
                   ),
                 ),
-              
+              ]
             ],
           ),
         ),

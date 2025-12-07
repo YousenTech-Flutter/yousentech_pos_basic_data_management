@@ -5,12 +5,10 @@ import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/shared_widgets/app_dialog.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_provider.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/utils/build_product_body_table.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/utils/build_category_body_table.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_basic_data_table.dart';
 
-import '../utils/build_customer_body_table.dart';
-
-showDiffCustomersDialog({required List items, required BuildContext context}) {
+showDiffCategoriesDialog({required List items, required BuildContext context}) {
   dialogcontent(
     context: context,
     content: Builder(
@@ -33,7 +31,7 @@ showDiffCustomersDialog({required List items, required BuildContext context}) {
                   spacing: context.setHeight(16),
                   children: [
                     Text(
-                      'customer_list'.tr,
+                      'pos_category_list'.tr,
                       style: TextStyle(
                         color:
                             SharedPr.isDarkMode!
@@ -48,20 +46,18 @@ showDiffCustomersDialog({required List items, required BuildContext context}) {
                     definitionColorTable(context: context),
                     buildBasicDataColumnHeader(
                       context: context,
-
                       data: [
                         {"name": "number", "flex": 1},
-                        {"name": "customer_image", "flex": 1},
                         {"name": "name", "flex": 2},
-                        {"name": "email", "flex": 2},
-                        {"name": "phone", "flex": 1},
+                        {"name": "parent_category", "flex": 2},
                       ],
                     ),
-                    buildCustomerBodyTable(
+                    buildCategoryBodyTable(
                       context: context,
                       showActions: false,
                       isShowDiffItems: true,
                       data:items,
+                      
                     ),
                   ],
                 ),

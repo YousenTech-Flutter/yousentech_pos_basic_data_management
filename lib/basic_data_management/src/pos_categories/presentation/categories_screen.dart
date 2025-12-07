@@ -14,6 +14,7 @@ import 'package:yousentech_pos_basic_data_management/basic_data_management/src/p
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/domain/pos_category_viewmodel.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/create_edit_category.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/utils/build_category_body_table.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/widgets/show_diff_category_dialog.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/product_screen.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_basic_data_table.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/define_type_function.dart';
@@ -250,10 +251,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                                   );
                                                   if (result is List &&
                                                       result.isNotEmpty) {
-                                                    // showDiffCustomersDialog(
-                                                    //   items: result,
-                                                    //   context: context,
-                                                    // );
+                                                    showDiffCategoriesDialog(
+                                                      items: result,
+                                                      context: context,
+                                                    );
                                                   } else if (result is String) {
                                                     appSnackBar(
                                                       message: result,
