@@ -210,7 +210,7 @@ void createEditeProduct({
               height:Platform.isWindows ?context.setHeight(520) :  context.setHeight(484),
               child: Container(
                 width: context.setWidth(720),
-                height: context.setHeight(484),
+                height:Platform.isWindows ?context.setHeight(520) :  context.setHeight(484),
                 padding: EdgeInsets.all(context.setMinSize(20)),
                 child: Obx(
                   () => IgnorePointer(
