@@ -205,12 +205,12 @@ void createEditeProduct({
           tag: 'productControllerMain',
           builder: (controller) {
             return SizeProvider(
-              baseSize: Size(context.setWidth(720), Platform.isWindows ?context.setHeight(520) : context.setHeight(484)),
+              baseSize: Size(context.setWidth(720), Platform.isWindows ?context.setHeight(550) : context.setHeight(484)),
               width: context.setWidth(720),
-              height:Platform.isWindows ?context.setHeight(520) :  context.setHeight(484),
+              height:Platform.isWindows ?context.setHeight(550) :  context.setHeight(484),
               child: Container(
                 width: context.setWidth(720),
-                height:Platform.isWindows ?context.setHeight(520) :  context.setHeight(484),
+                height:Platform.isWindows ?context.setHeight(550) :  context.setHeight(484),
                 padding: EdgeInsets.all(context.setMinSize(20)),
                 child: Obx(
                   () => IgnorePointer(

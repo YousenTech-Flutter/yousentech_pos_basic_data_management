@@ -94,15 +94,14 @@ void createEditeCustomer({
         customer?.customerRank = 1;
         customer?.isCompany = _selectedOption;
         customer?.otherSelleId = otherSelleId.text;
-        var func =
-            customer?.id != null
-                ? await customerController.updateCustomerRemotAndLocal(
-                  id: customer!.id!.toInt(),
-                  customer: customer!,
-                )
-                : await customerController.createCustomerRemotAndLocal(
-                  customer: customer!,
-                );
+        var func = customer?.id != null
+            ? await customerController.updateCustomerRemotAndLocal(
+                id: customer!.id!.toInt(),
+                customer: customer!,
+              )
+            : await customerController.createCustomerRemotAndLocal(
+                customer: customer!,
+              );
 
         await loadingDataController.getitems();
         if (func.status) {
@@ -212,10 +211,9 @@ void createEditeCustomer({
                                                 ? "add_new_customer".tr
                                                 : 'edit_customer'.tr,
                                             style: TextStyle(
-                                              color:
-                                                  SharedPr.isDarkMode!
-                                                      ? Colors.white
-                                                      : const Color(0xFF0C0C0C),
+                                              color: SharedPr.isDarkMode!
+                                                  ? Colors.white
+                                                  : const Color(0xFF0C0C0C),
                                               fontSize: context.setSp(16),
                                               fontFamily: 'Tajawal',
                                               fontWeight: FontWeight.w500,
@@ -231,10 +229,9 @@ void createEditeCustomer({
                                               package: 'shared_widgets',
                                               width: context.setWidth(13),
                                               height: context.setHeight(13),
-                                              color:
-                                                  SharedPr.isDarkMode!
-                                                      ? null
-                                                      : const Color(0xFF0C0C0C),
+                                              color: SharedPr.isDarkMode!
+                                                  ? null
+                                                  : const Color(0xFF0C0C0C),
                                             ),
                                           ),
                                         ],
@@ -251,10 +248,10 @@ void createEditeCustomer({
                                             onTap: () async {
                                               final ImagePicker picker =
                                                   ImagePicker();
-                                              final XFile? image = await picker
-                                                  .pickImage(
-                                                    source: ImageSource.gallery,
-                                                  );
+                                              final XFile? image =
+                                                  await picker.pickImage(
+                                                source: ImageSource.gallery,
+                                              );
                                               if (image != null) {
                                                 String imagePath = image.path;
                                                 File imageFile = File(
@@ -263,8 +260,8 @@ void createEditeCustomer({
                                                 Uint8List bytes =
                                                     await imageFile
                                                         .readAsBytes();
-                                                String base64String = base64
-                                                    .encode(bytes);
+                                                String base64String =
+                                                    base64.encode(bytes);
                                                 customer!.image = base64String;
                                                 setState(() {});
                                               }
@@ -281,61 +278,66 @@ void createEditeCustomer({
                                                   spacing: context.setWidth(
                                                     16,
                                                   ), // المسافة بين الخيارات
-                                                  children:
-                                                      customerType.map((
-                                                        option,
-                                                      ) {
-                                                        return Row(
-                                                          children: [
-                                                            Radio<bool>(
-                                                              hoverColor:SharedPr.isDarkMode! ? Colors.white : null,
-                                                              focusColor:SharedPr.isDarkMode! ? Colors.yellow : null,
-                                                              activeColor:
-                                                                  const Color(
-                                                                    0xFF16A6B7,
+                                                  children: customerType.map((
+                                                    option,
+                                                  ) {
+                                                    return Row(
+                                                      children: [
+                                                        Radio<bool>(
+                                                          side: BorderSide(
+                                                            color:  SharedPr
+                                                                    .isDarkMode!
+                                                                ? const Color(
+                                                                    0xFFD1D5DB,
+                                                                  )
+                                                                : const Color(
+                                                                    0xFF2F343C,
                                                                   ),
-                                                              value:
-                                                                  option
-                                                                      .isCompany,
-                                                              groupValue:
-                                                                  _selectedOption ??
+                                                            width: 1,
+                                                          ),
+                                                          activeColor:
+                                                              const Color(
+                                                            0xFF16A6B7,
+                                                          ),
+                                                          value:
+                                                              option.isCompany,
+                                                          groupValue:
+                                                              _selectedOption ??
                                                                   false,
-                                                              onChanged: (
-                                                                value,
-                                                              ) {
-                                                                _selectedOption =
-                                                                    value;
-                                                                customerController
-                                                                    .update();
-                                                              },
+                                                          onChanged: (
+                                                            value,
+                                                          ) {
+                                                            _selectedOption =
+                                                                value;
+                                                            customerController
+                                                                .update();
+                                                          },
+                                                        ),
+                                                        Text(
+                                                          option.lable.tr,
+                                                          style: TextStyle(
+                                                            color: SharedPr
+                                                                    .isDarkMode!
+                                                                ? const Color(
+                                                                    0xFFD1D5DB,
+                                                                  )
+                                                                : const Color(
+                                                                    0xFF2F343C,
+                                                                  ),
+                                                            fontSize:
+                                                                context.setSp(
+                                                              14,
                                                             ),
-                                                            Text(
-                                                              option.lable.tr,
-                                                              style: TextStyle(
-                                                                color:
-                                                                    SharedPr.isDarkMode!
-                                                                        ? const Color(
-                                                                          0xFFD1D5DB,
-                                                                        )
-                                                                        : const Color(
-                                                                          0xFF2F343C,
-                                                                        ),
-                                                                fontSize:
-                                                                    context
-                                                                        .setSp(
-                                                                          14,
-                                                                        ),
-                                                                fontFamily:
-                                                                    'Tajawal',
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                height: 1.01,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      }).toList(),
+                                                            fontFamily:
+                                                                'Tajawal',
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            height: 1.01,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  }).toList(),
                                                 ),
 
                                                 //product_name
@@ -350,59 +352,56 @@ void createEditeCustomer({
                                                   fontSize: context.setSp(14),
                                                   contentPadding:
                                                       EdgeInsets.fromLTRB(
-                                                        context.setWidth(9.36),
-                                                        context.setHeight(
-                                                          10.29,
-                                                        ),
-                                                        context.setWidth(7.86),
-                                                        context.setHeight(4.71),
-                                                      ),
+                                                    context.setWidth(9.36),
+                                                    context.setHeight(
+                                                      10.29,
+                                                    ),
+                                                    context.setWidth(7.86),
+                                                    context.setHeight(4.71),
+                                                  ),
                                                   showLable: false,
-                                                  borderColor:
-                                                      SharedPr.isDarkMode!
-                                                          ? Colors.white
-                                                              .withValues(
-                                                                alpha: 0.50,
-                                                              )
-                                                          : const Color(
-                                                            0xFFC2C3CB,
-                                                          ),
-                                                  fillColor:
-                                                      !SharedPr.isDarkMode!
-                                                          ? Colors.white
-                                                              .withValues(
-                                                                alpha: 0.43,
-                                                              )
-                                                          : const Color(
-                                                            0xFF2B2B2B,
-                                                          ),
+                                                  borderColor: SharedPr
+                                                          .isDarkMode!
+                                                      ? Colors.white.withValues(
+                                                          alpha: 0.50,
+                                                        )
+                                                      : const Color(
+                                                          0xFFC2C3CB,
+                                                        ),
+                                                  fillColor: !SharedPr
+                                                          .isDarkMode!
+                                                      ? Colors.white.withValues(
+                                                          alpha: 0.43,
+                                                        )
+                                                      : const Color(
+                                                          0xFF2B2B2B,
+                                                        ),
                                                   hintcolor:
                                                       !SharedPr.isDarkMode!
                                                           ? const Color(
-                                                            0xFF6B7280,
-                                                          )
+                                                              0xFF6B7280,
+                                                            )
                                                           : const Color(
-                                                            0xFF9CA3AF,
-                                                          ),
-                                                  color:
-                                                      !SharedPr.isDarkMode!
-                                                          ? const Color(
-                                                            0xFF6B7280,
-                                                          )
-                                                          : const Color(
-                                                            0xFF6B7280,
-                                                          ),
+                                                              0xFF9CA3AF,
+                                                            ),
+                                                  color: !SharedPr.isDarkMode!
+                                                      ? const Color(
+                                                          0xFF6B7280,
+                                                        )
+                                                      : const Color(
+                                                          0xFF6B7280,
+                                                        ),
                                                   isAddOrEdit: true,
-                                                  borderRadius: context
-                                                      .setMinSize(8),
+                                                  borderRadius:
+                                                      context.setMinSize(8),
                                                   prefixIcon: Padding(
                                                     padding:
                                                         EdgeInsets.symmetric(
-                                                          horizontal: context
-                                                              .setWidth(10),
-                                                          vertical: context
-                                                              .setHeight(10),
-                                                        ),
+                                                      horizontal:
+                                                          context.setWidth(10),
+                                                      vertical:
+                                                          context.setHeight(10),
+                                                    ),
                                                     child: SvgPicture.asset(
                                                       AppImages.partner,
                                                       package: 'shared_widgets',
@@ -417,10 +416,9 @@ void createEditeCustomer({
                                                       errorMessage =
                                                           'required_message_f'
                                                               .trParams({
-                                                                'field_name':
-                                                                    'customer_name'
-                                                                        .tr,
-                                                              });
+                                                        'field_name':
+                                                            'customer_name'.tr,
+                                                      });
                                                       countErrors++;
                                                       return "";
                                                     } else {
@@ -439,7 +437,8 @@ void createEditeCustomer({
                                                         labelText: 'phone'.tr,
                                                         hintText: 'phone'.tr,
                                                         inputFormatters: [
-                                                          FilteringTextInputFormatter.allow(
+                                                          FilteringTextInputFormatter
+                                                              .allow(
                                                             RegExp(r'[0-9]+'),
                                                           ),
                                                         ],
@@ -455,79 +454,74 @@ void createEditeCustomer({
                                                         ),
                                                         contentPadding:
                                                             EdgeInsets.fromLTRB(
-                                                              context.setWidth(
-                                                                9.36,
-                                                              ),
-                                                              context.setHeight(
-                                                                10.29,
-                                                              ),
-                                                              context.setWidth(
-                                                                7.86,
-                                                              ),
-                                                              context.setHeight(
-                                                                4.71,
-                                                              ),
-                                                            ),
+                                                          context.setWidth(
+                                                            9.36,
+                                                          ),
+                                                          context.setHeight(
+                                                            10.29,
+                                                          ),
+                                                          context.setWidth(
+                                                            7.86,
+                                                          ),
+                                                          context.setHeight(
+                                                            4.71,
+                                                          ),
+                                                        ),
                                                         showLable: false,
                                                         borderColor:
                                                             SharedPr.isDarkMode!
                                                                 ? Colors.white
                                                                     .withValues(
-                                                                      alpha:
-                                                                          0.50,
-                                                                    )
+                                                                    alpha: 0.50,
+                                                                  )
                                                                 : const Color(
-                                                                  0xFFC2C3CB,
-                                                                ),
-                                                        fillColor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? Colors.white
-                                                                    .withValues(
-                                                                      alpha:
-                                                                          0.43,
-                                                                    )
-                                                                : const Color(
-                                                                  0xFF2B2B2B,
-                                                                ),
-                                                        hintcolor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF9CA3AF,
-                                                                ),
-                                                        color:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF6B7280,
-                                                                ),
+                                                                    0xFFC2C3CB,
+                                                                  ),
+                                                        fillColor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? Colors.white
+                                                                .withValues(
+                                                                alpha: 0.43,
+                                                              )
+                                                            : const Color(
+                                                                0xFF2B2B2B,
+                                                              ),
+                                                        hintcolor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF9CA3AF,
+                                                              ),
+                                                        color: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF6B7280,
+                                                              ),
                                                         isAddOrEdit: true,
                                                         borderRadius: context
                                                             .setMinSize(8),
                                                         prefixIcon: Padding(
-                                                          padding:
-                                                              EdgeInsets.symmetric(
-                                                                horizontal:
-                                                                    context
-                                                                        .setWidth(
-                                                                          6.3,
-                                                                        ),
-                                                                vertical: context
-                                                                    .setHeight(
-                                                                      6.3,
-                                                                    ),
-                                                              ),
-                                                          child: SvgPicture.asset(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                            horizontal: context
+                                                                .setWidth(
+                                                              6.3,
+                                                            ),
+                                                            vertical: context
+                                                                .setHeight(
+                                                              6.3,
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              SvgPicture.asset(
                                                             AppImages.dIV59,
-                                                            
-                                                            package: 'shared_widgets',
+                                                            package:
+                                                                'shared_widgets',
                                                           ),
                                                         ),
                                                       ),
@@ -549,87 +543,83 @@ void createEditeCustomer({
                                                         ),
                                                         contentPadding:
                                                             EdgeInsets.fromLTRB(
-                                                              context.setWidth(
-                                                                9.36,
-                                                              ),
-                                                              context.setHeight(
-                                                                10.29,
-                                                              ),
-                                                              context.setWidth(
-                                                                7.86,
-                                                              ),
-                                                              context.setHeight(
-                                                                4.71,
-                                                              ),
-                                                            ),
+                                                          context.setWidth(
+                                                            9.36,
+                                                          ),
+                                                          context.setHeight(
+                                                            10.29,
+                                                          ),
+                                                          context.setWidth(
+                                                            7.86,
+                                                          ),
+                                                          context.setHeight(
+                                                            4.71,
+                                                          ),
+                                                        ),
                                                         showLable: false,
                                                         borderColor:
                                                             SharedPr.isDarkMode!
                                                                 ? Colors.white
                                                                     .withValues(
-                                                                      alpha:
-                                                                          0.50,
-                                                                    )
+                                                                    alpha: 0.50,
+                                                                  )
                                                                 : const Color(
-                                                                  0xFFC2C3CB,
-                                                                ),
-                                                        fillColor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? Colors.white
-                                                                    .withValues(
-                                                                      alpha:
-                                                                          0.43,
-                                                                    )
-                                                                : const Color(
-                                                                  0xFF2B2B2B,
-                                                                ),
-                                                        hintcolor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF9CA3AF,
-                                                                ),
-                                                        color:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF6B7280,
-                                                                ),
+                                                                    0xFFC2C3CB,
+                                                                  ),
+                                                        fillColor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? Colors.white
+                                                                .withValues(
+                                                                alpha: 0.43,
+                                                              )
+                                                            : const Color(
+                                                                0xFF2B2B2B,
+                                                              ),
+                                                        hintcolor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF9CA3AF,
+                                                              ),
+                                                        color: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF6B7280,
+                                                              ),
                                                         isAddOrEdit: true,
                                                         borderRadius: context
                                                             .setMinSize(8),
                                                         prefixIcon: Padding(
-                                                          padding:
-                                                              EdgeInsets.symmetric(
-                                                                horizontal:
-                                                                    context
-                                                                        .setWidth(
-                                                                          6.3,
-                                                                        ),
-                                                                vertical: context
-                                                                    .setHeight(
-                                                                      6.3,
-                                                                    ),
-                                                              ),
-                                                          child: SvgPicture.asset(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                            horizontal: context
+                                                                .setWidth(
+                                                              6.3,
+                                                            ),
+                                                            vertical: context
+                                                                .setHeight(
+                                                              6.3,
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              SvgPicture.asset(
                                                             AppImages.dIV59,
-                                                            package: 'shared_widgets',
+                                                            package:
+                                                                'shared_widgets',
                                                           ),
                                                         ),
                                                         validator: (value) {
                                                           var message =
-                                                              ValidatorHelper.emailValidation(
-                                                                value: value!,
-                                                                field:
-                                                                    'email'.tr,
-                                                              );
+                                                              ValidatorHelper
+                                                                  .emailValidation(
+                                                            value: value!,
+                                                            field: 'email'.tr,
+                                                          );
                                                           if (message == "") {
                                                             return null;
                                                           }
@@ -662,78 +652,74 @@ void createEditeCustomer({
                                                         ),
                                                         contentPadding:
                                                             EdgeInsets.fromLTRB(
-                                                              context.setWidth(
-                                                                9.36,
-                                                              ),
-                                                              context.setHeight(
-                                                                10.29,
-                                                              ),
-                                                              context.setWidth(
-                                                                7.86,
-                                                              ),
-                                                              context.setHeight(
-                                                                4.71,
-                                                              ),
-                                                            ),
+                                                          context.setWidth(
+                                                            9.36,
+                                                          ),
+                                                          context.setHeight(
+                                                            10.29,
+                                                          ),
+                                                          context.setWidth(
+                                                            7.86,
+                                                          ),
+                                                          context.setHeight(
+                                                            4.71,
+                                                          ),
+                                                        ),
                                                         showLable: false,
                                                         borderColor:
                                                             SharedPr.isDarkMode!
                                                                 ? Colors.white
                                                                     .withValues(
-                                                                      alpha:
-                                                                          0.50,
-                                                                    )
+                                                                    alpha: 0.50,
+                                                                  )
                                                                 : const Color(
-                                                                  0xFFC2C3CB,
-                                                                ),
-                                                        fillColor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? Colors.white
-                                                                    .withValues(
-                                                                      alpha:
-                                                                          0.43,
-                                                                    )
-                                                                : const Color(
-                                                                  0xFF2B2B2B,
-                                                                ),
-                                                        hintcolor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF9CA3AF,
-                                                                ),
-                                                        color:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF6B7280,
-                                                                ),
+                                                                    0xFFC2C3CB,
+                                                                  ),
+                                                        fillColor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? Colors.white
+                                                                .withValues(
+                                                                alpha: 0.43,
+                                                              )
+                                                            : const Color(
+                                                                0xFF2B2B2B,
+                                                              ),
+                                                        hintcolor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF9CA3AF,
+                                                              ),
+                                                        color: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF6B7280,
+                                                              ),
                                                         isAddOrEdit: true,
                                                         borderRadius: context
                                                             .setMinSize(8),
                                                         prefixIcon: Padding(
-                                                          padding:
-                                                              EdgeInsets.symmetric(
-                                                                horizontal:
-                                                                    context
-                                                                        .setWidth(
-                                                                          6.3,
-                                                                        ),
-                                                                vertical: context
-                                                                    .setHeight(
-                                                                      6.3,
-                                                                    ),
-                                                              ),
-                                                          child: SvgPicture.asset(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                            horizontal: context
+                                                                .setWidth(
+                                                              6.3,
+                                                            ),
+                                                            vertical: context
+                                                                .setHeight(
+                                                              6.3,
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              SvgPicture.asset(
                                                             AppImages.dIV59,
-                                                            package: 'shared_widgets',
+                                                            package:
+                                                                'shared_widgets',
                                                           ),
                                                         ),
                                                         validator: (value) {
@@ -744,10 +730,9 @@ void createEditeCustomer({
                                                             errorMessage =
                                                                 'required_message_f'
                                                                     .trParams({
-                                                                      'field_name':
-                                                                          'street'
-                                                                              .tr,
-                                                                    });
+                                                              'field_name':
+                                                                  'street'.tr,
+                                                            });
                                                             countErrors++;
                                                             return "";
                                                           } else {
@@ -774,78 +759,74 @@ void createEditeCustomer({
                                                         ),
                                                         contentPadding:
                                                             EdgeInsets.fromLTRB(
-                                                              context.setWidth(
-                                                                9.36,
-                                                              ),
-                                                              context.setHeight(
-                                                                10.29,
-                                                              ),
-                                                              context.setWidth(
-                                                                7.86,
-                                                              ),
-                                                              context.setHeight(
-                                                                4.71,
-                                                              ),
-                                                            ),
+                                                          context.setWidth(
+                                                            9.36,
+                                                          ),
+                                                          context.setHeight(
+                                                            10.29,
+                                                          ),
+                                                          context.setWidth(
+                                                            7.86,
+                                                          ),
+                                                          context.setHeight(
+                                                            4.71,
+                                                          ),
+                                                        ),
                                                         showLable: false,
                                                         borderColor:
                                                             SharedPr.isDarkMode!
                                                                 ? Colors.white
                                                                     .withValues(
-                                                                      alpha:
-                                                                          0.50,
-                                                                    )
+                                                                    alpha: 0.50,
+                                                                  )
                                                                 : const Color(
-                                                                  0xFFC2C3CB,
-                                                                ),
-                                                        fillColor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? Colors.white
-                                                                    .withValues(
-                                                                      alpha:
-                                                                          0.43,
-                                                                    )
-                                                                : const Color(
-                                                                  0xFF2B2B2B,
-                                                                ),
-                                                        hintcolor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF9CA3AF,
-                                                                ),
-                                                        color:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF6B7280,
-                                                                ),
+                                                                    0xFFC2C3CB,
+                                                                  ),
+                                                        fillColor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? Colors.white
+                                                                .withValues(
+                                                                alpha: 0.43,
+                                                              )
+                                                            : const Color(
+                                                                0xFF2B2B2B,
+                                                              ),
+                                                        hintcolor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF9CA3AF,
+                                                              ),
+                                                        color: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF6B7280,
+                                                              ),
                                                         isAddOrEdit: true,
                                                         borderRadius: context
                                                             .setMinSize(8),
                                                         prefixIcon: Padding(
-                                                          padding:
-                                                              EdgeInsets.symmetric(
-                                                                horizontal:
-                                                                    context
-                                                                        .setWidth(
-                                                                          6.3,
-                                                                        ),
-                                                                vertical: context
-                                                                    .setHeight(
-                                                                      6.3,
-                                                                    ),
-                                                              ),
-                                                          child: SvgPicture.asset(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                            horizontal: context
+                                                                .setWidth(
+                                                              6.3,
+                                                            ),
+                                                            vertical: context
+                                                                .setHeight(
+                                                              6.3,
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              SvgPicture.asset(
                                                             AppImages.dIV59,
-                                                            package: 'shared_widgets',
+                                                            package:
+                                                                'shared_widgets',
                                                           ),
                                                         ),
                                                         validator: (value) {
@@ -856,10 +837,9 @@ void createEditeCustomer({
                                                             errorMessage =
                                                                 'required_message_f'
                                                                     .trParams({
-                                                                      'field_name':
-                                                                          'district'
-                                                                              .tr,
-                                                                    });
+                                                              'field_name':
+                                                                  'district'.tr,
+                                                            });
                                                             countErrors++;
                                                             return "";
                                                           } else {
@@ -885,78 +865,74 @@ void createEditeCustomer({
                                                         ),
                                                         contentPadding:
                                                             EdgeInsets.fromLTRB(
-                                                              context.setWidth(
-                                                                9.36,
-                                                              ),
-                                                              context.setHeight(
-                                                                10.29,
-                                                              ),
-                                                              context.setWidth(
-                                                                7.86,
-                                                              ),
-                                                              context.setHeight(
-                                                                4.71,
-                                                              ),
-                                                            ),
+                                                          context.setWidth(
+                                                            9.36,
+                                                          ),
+                                                          context.setHeight(
+                                                            10.29,
+                                                          ),
+                                                          context.setWidth(
+                                                            7.86,
+                                                          ),
+                                                          context.setHeight(
+                                                            4.71,
+                                                          ),
+                                                        ),
                                                         showLable: false,
                                                         borderColor:
                                                             SharedPr.isDarkMode!
                                                                 ? Colors.white
                                                                     .withValues(
-                                                                      alpha:
-                                                                          0.50,
-                                                                    )
+                                                                    alpha: 0.50,
+                                                                  )
                                                                 : const Color(
-                                                                  0xFFC2C3CB,
-                                                                ),
-                                                        fillColor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? Colors.white
-                                                                    .withValues(
-                                                                      alpha:
-                                                                          0.43,
-                                                                    )
-                                                                : const Color(
-                                                                  0xFF2B2B2B,
-                                                                ),
-                                                        hintcolor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF9CA3AF,
-                                                                ),
-                                                        color:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF6B7280,
-                                                                ),
+                                                                    0xFFC2C3CB,
+                                                                  ),
+                                                        fillColor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? Colors.white
+                                                                .withValues(
+                                                                alpha: 0.43,
+                                                              )
+                                                            : const Color(
+                                                                0xFF2B2B2B,
+                                                              ),
+                                                        hintcolor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF9CA3AF,
+                                                              ),
+                                                        color: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF6B7280,
+                                                              ),
                                                         isAddOrEdit: true,
                                                         borderRadius: context
                                                             .setMinSize(8),
                                                         prefixIcon: Padding(
-                                                          padding:
-                                                              EdgeInsets.symmetric(
-                                                                horizontal:
-                                                                    context
-                                                                        .setWidth(
-                                                                          6.3,
-                                                                        ),
-                                                                vertical: context
-                                                                    .setHeight(
-                                                                      6.3,
-                                                                    ),
-                                                              ),
-                                                          child: SvgPicture.asset(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                            horizontal: context
+                                                                .setWidth(
+                                                              6.3,
+                                                            ),
+                                                            vertical: context
+                                                                .setHeight(
+                                                              6.3,
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              SvgPicture.asset(
                                                             AppImages.dIV59,
-                                                            package: 'shared_widgets',
+                                                            package:
+                                                                'shared_widgets',
                                                           ),
                                                         ),
                                                       ),
@@ -985,78 +961,74 @@ void createEditeCustomer({
                                                         ),
                                                         contentPadding:
                                                             EdgeInsets.fromLTRB(
-                                                              context.setWidth(
-                                                                9.36,
-                                                              ),
-                                                              context.setHeight(
-                                                                10.29,
-                                                              ),
-                                                              context.setWidth(
-                                                                7.86,
-                                                              ),
-                                                              context.setHeight(
-                                                                4.71,
-                                                              ),
-                                                            ),
+                                                          context.setWidth(
+                                                            9.36,
+                                                          ),
+                                                          context.setHeight(
+                                                            10.29,
+                                                          ),
+                                                          context.setWidth(
+                                                            7.86,
+                                                          ),
+                                                          context.setHeight(
+                                                            4.71,
+                                                          ),
+                                                        ),
                                                         showLable: false,
                                                         borderColor:
                                                             SharedPr.isDarkMode!
                                                                 ? Colors.white
                                                                     .withValues(
-                                                                      alpha:
-                                                                          0.50,
-                                                                    )
+                                                                    alpha: 0.50,
+                                                                  )
                                                                 : const Color(
-                                                                  0xFFC2C3CB,
-                                                                ),
-                                                        fillColor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? Colors.white
-                                                                    .withValues(
-                                                                      alpha:
-                                                                          0.43,
-                                                                    )
-                                                                : const Color(
-                                                                  0xFF2B2B2B,
-                                                                ),
-                                                        hintcolor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF9CA3AF,
-                                                                ),
-                                                        color:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF6B7280,
-                                                                ),
+                                                                    0xFFC2C3CB,
+                                                                  ),
+                                                        fillColor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? Colors.white
+                                                                .withValues(
+                                                                alpha: 0.43,
+                                                              )
+                                                            : const Color(
+                                                                0xFF2B2B2B,
+                                                              ),
+                                                        hintcolor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF9CA3AF,
+                                                              ),
+                                                        color: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF6B7280,
+                                                              ),
                                                         isAddOrEdit: true,
                                                         borderRadius: context
                                                             .setMinSize(8),
                                                         prefixIcon: Padding(
-                                                          padding:
-                                                              EdgeInsets.symmetric(
-                                                                horizontal:
-                                                                    context
-                                                                        .setWidth(
-                                                                          6.3,
-                                                                        ),
-                                                                vertical: context
-                                                                    .setHeight(
-                                                                      6.3,
-                                                                    ),
-                                                              ),
-                                                          child: SvgPicture.asset(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                            horizontal: context
+                                                                .setWidth(
+                                                              6.3,
+                                                            ),
+                                                            vertical: context
+                                                                .setHeight(
+                                                              6.3,
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              SvgPicture.asset(
                                                             AppImages.dIV59,
- package: 'shared_widgets',
+                                                            package:
+                                                                'shared_widgets',
                                                           ),
                                                         ),
                                                         validator: (value) {
@@ -1067,10 +1039,10 @@ void createEditeCustomer({
                                                             errorMessage =
                                                                 'required_message_f'
                                                                     .trParams({
-                                                                      'field_name':
-                                                                          'building_no'
-                                                                              .tr,
-                                                                    });
+                                                              'field_name':
+                                                                  'building_no'
+                                                                      .tr,
+                                                            });
                                                             countErrors++;
                                                             return "";
                                                           } else {
@@ -1101,78 +1073,74 @@ void createEditeCustomer({
                                                         ),
                                                         contentPadding:
                                                             EdgeInsets.fromLTRB(
-                                                              context.setWidth(
-                                                                9.36,
-                                                              ),
-                                                              context.setHeight(
-                                                                10.29,
-                                                              ),
-                                                              context.setWidth(
-                                                                7.86,
-                                                              ),
-                                                              context.setHeight(
-                                                                4.71,
-                                                              ),
-                                                            ),
+                                                          context.setWidth(
+                                                            9.36,
+                                                          ),
+                                                          context.setHeight(
+                                                            10.29,
+                                                          ),
+                                                          context.setWidth(
+                                                            7.86,
+                                                          ),
+                                                          context.setHeight(
+                                                            4.71,
+                                                          ),
+                                                        ),
                                                         showLable: false,
                                                         borderColor:
                                                             SharedPr.isDarkMode!
                                                                 ? Colors.white
                                                                     .withValues(
-                                                                      alpha:
-                                                                          0.50,
-                                                                    )
+                                                                    alpha: 0.50,
+                                                                  )
                                                                 : const Color(
-                                                                  0xFFC2C3CB,
-                                                                ),
-                                                        fillColor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? Colors.white
-                                                                    .withValues(
-                                                                      alpha:
-                                                                          0.43,
-                                                                    )
-                                                                : const Color(
-                                                                  0xFF2B2B2B,
-                                                                ),
-                                                        hintcolor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF9CA3AF,
-                                                                ),
-                                                        color:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF6B7280,
-                                                                ),
+                                                                    0xFFC2C3CB,
+                                                                  ),
+                                                        fillColor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? Colors.white
+                                                                .withValues(
+                                                                alpha: 0.43,
+                                                              )
+                                                            : const Color(
+                                                                0xFF2B2B2B,
+                                                              ),
+                                                        hintcolor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF9CA3AF,
+                                                              ),
+                                                        color: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF6B7280,
+                                                              ),
                                                         isAddOrEdit: true,
                                                         borderRadius: context
                                                             .setMinSize(8),
                                                         prefixIcon: Padding(
-                                                          padding:
-                                                              EdgeInsets.symmetric(
-                                                                horizontal:
-                                                                    context
-                                                                        .setWidth(
-                                                                          6.3,
-                                                                        ),
-                                                                vertical: context
-                                                                    .setHeight(
-                                                                      6.3,
-                                                                    ),
-                                                              ),
-                                                          child: SvgPicture.asset(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                            horizontal: context
+                                                                .setWidth(
+                                                              6.3,
+                                                            ),
+                                                            vertical: context
+                                                                .setHeight(
+                                                              6.3,
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              SvgPicture.asset(
                                                             AppImages.dIV59,
- package: 'shared_widgets',
+                                                            package:
+                                                                'shared_widgets',
                                                           ),
                                                         ),
                                                       ),
@@ -1203,78 +1171,74 @@ void createEditeCustomer({
                                                         ),
                                                         contentPadding:
                                                             EdgeInsets.fromLTRB(
-                                                              context.setWidth(
-                                                                9.36,
-                                                              ),
-                                                              context.setHeight(
-                                                                10.29,
-                                                              ),
-                                                              context.setWidth(
-                                                                7.86,
-                                                              ),
-                                                              context.setHeight(
-                                                                4.71,
-                                                              ),
-                                                            ),
+                                                          context.setWidth(
+                                                            9.36,
+                                                          ),
+                                                          context.setHeight(
+                                                            10.29,
+                                                          ),
+                                                          context.setWidth(
+                                                            7.86,
+                                                          ),
+                                                          context.setHeight(
+                                                            4.71,
+                                                          ),
+                                                        ),
                                                         showLable: false,
                                                         borderColor:
                                                             SharedPr.isDarkMode!
                                                                 ? Colors.white
                                                                     .withValues(
-                                                                      alpha:
-                                                                          0.50,
-                                                                    )
+                                                                    alpha: 0.50,
+                                                                  )
                                                                 : const Color(
-                                                                  0xFFC2C3CB,
-                                                                ),
-                                                        fillColor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? Colors.white
-                                                                    .withValues(
-                                                                      alpha:
-                                                                          0.43,
-                                                                    )
-                                                                : const Color(
-                                                                  0xFF2B2B2B,
-                                                                ),
-                                                        hintcolor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF9CA3AF,
-                                                                ),
-                                                        color:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF6B7280,
-                                                                ),
+                                                                    0xFFC2C3CB,
+                                                                  ),
+                                                        fillColor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? Colors.white
+                                                                .withValues(
+                                                                alpha: 0.43,
+                                                              )
+                                                            : const Color(
+                                                                0xFF2B2B2B,
+                                                              ),
+                                                        hintcolor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF9CA3AF,
+                                                              ),
+                                                        color: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF6B7280,
+                                                              ),
                                                         isAddOrEdit: true,
                                                         borderRadius: context
                                                             .setMinSize(8),
                                                         prefixIcon: Padding(
-                                                          padding:
-                                                              EdgeInsets.symmetric(
-                                                                horizontal:
-                                                                    context
-                                                                        .setWidth(
-                                                                          6.3,
-                                                                        ),
-                                                                vertical: context
-                                                                    .setHeight(
-                                                                      6.3,
-                                                                    ),
-                                                              ),
-                                                          child: SvgPicture.asset(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                            horizontal: context
+                                                                .setWidth(
+                                                              6.3,
+                                                            ),
+                                                            vertical: context
+                                                                .setHeight(
+                                                              6.3,
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              SvgPicture.asset(
                                                             AppImages.dIV59,
- package: 'shared_widgets',
+                                                            package:
+                                                                'shared_widgets',
                                                           ),
                                                         ),
                                                       ),
@@ -1298,78 +1262,74 @@ void createEditeCustomer({
                                                         ),
                                                         contentPadding:
                                                             EdgeInsets.fromLTRB(
-                                                              context.setWidth(
-                                                                9.36,
-                                                              ),
-                                                              context.setHeight(
-                                                                10.29,
-                                                              ),
-                                                              context.setWidth(
-                                                                7.86,
-                                                              ),
-                                                              context.setHeight(
-                                                                4.71,
-                                                              ),
-                                                            ),
+                                                          context.setWidth(
+                                                            9.36,
+                                                          ),
+                                                          context.setHeight(
+                                                            10.29,
+                                                          ),
+                                                          context.setWidth(
+                                                            7.86,
+                                                          ),
+                                                          context.setHeight(
+                                                            4.71,
+                                                          ),
+                                                        ),
                                                         showLable: false,
                                                         borderColor:
                                                             SharedPr.isDarkMode!
                                                                 ? Colors.white
                                                                     .withValues(
-                                                                      alpha:
-                                                                          0.50,
-                                                                    )
+                                                                    alpha: 0.50,
+                                                                  )
                                                                 : const Color(
-                                                                  0xFFC2C3CB,
-                                                                ),
-                                                        fillColor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? Colors.white
-                                                                    .withValues(
-                                                                      alpha:
-                                                                          0.43,
-                                                                    )
-                                                                : const Color(
-                                                                  0xFF2B2B2B,
-                                                                ),
-                                                        hintcolor:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF9CA3AF,
-                                                                ),
-                                                        color:
-                                                            !SharedPr
-                                                                    .isDarkMode!
-                                                                ? const Color(
-                                                                  0xFF6B7280,
-                                                                )
-                                                                : const Color(
-                                                                  0xFF6B7280,
-                                                                ),
+                                                                    0xFFC2C3CB,
+                                                                  ),
+                                                        fillColor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? Colors.white
+                                                                .withValues(
+                                                                alpha: 0.43,
+                                                              )
+                                                            : const Color(
+                                                                0xFF2B2B2B,
+                                                              ),
+                                                        hintcolor: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF9CA3AF,
+                                                              ),
+                                                        color: !SharedPr
+                                                                .isDarkMode!
+                                                            ? const Color(
+                                                                0xFF6B7280,
+                                                              )
+                                                            : const Color(
+                                                                0xFF6B7280,
+                                                              ),
                                                         isAddOrEdit: true,
                                                         borderRadius: context
                                                             .setMinSize(8),
                                                         prefixIcon: Padding(
-                                                          padding:
-                                                              EdgeInsets.symmetric(
-                                                                horizontal:
-                                                                    context
-                                                                        .setWidth(
-                                                                          6.3,
-                                                                        ),
-                                                                vertical: context
-                                                                    .setHeight(
-                                                                      6.3,
-                                                                    ),
-                                                              ),
-                                                          child: SvgPicture.asset(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                            horizontal: context
+                                                                .setWidth(
+                                                              6.3,
+                                                            ),
+                                                            vertical: context
+                                                                .setHeight(
+                                                              6.3,
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              SvgPicture.asset(
                                                             AppImages.dIV59,
- package: 'shared_widgets',
+                                                            package:
+                                                                'shared_widgets',
                                                           ),
                                                         ),
                                                       ),
@@ -1385,111 +1345,108 @@ void createEditeCustomer({
                                                     children: [
                                                       // tax_number
                                                       Expanded(
-                                                        child: ContainerTextField(
+                                                        child:
+                                                            ContainerTextField(
                                                           controller: taxNumber,
                                                           labelText:
                                                               'tax_number'.tr,
                                                           hintText:
                                                               'tax_number'.tr,
                                                           inputFormatters: [
-                                                            FilteringTextInputFormatter.allow(
+                                                            FilteringTextInputFormatter
+                                                                .allow(
                                                               RegExp('[0-9]'),
                                                             ),
                                                           ],
                                                           keyboardType:
                                                               TextInputType
                                                                   .name,
-                                                          width:
-                                                              context
-                                                                  .screenWidth,
+                                                          width: context
+                                                              .screenWidth,
                                                           height: context
                                                               .setHeight(40),
-                                                          fontSize: context
-                                                              .setSp(14),
+                                                          fontSize:
+                                                              context.setSp(14),
                                                           contentPadding:
-                                                              EdgeInsets.fromLTRB(
-                                                                context
-                                                                    .setWidth(
-                                                                      9.36,
-                                                                    ),
-                                                                context
-                                                                    .setHeight(
-                                                                      10.29,
-                                                                    ),
-                                                                context
-                                                                    .setWidth(
-                                                                      7.86,
-                                                                    ),
-                                                                context
-                                                                    .setHeight(
-                                                                      4.71,
-                                                                    ),
-                                                              ),
+                                                              EdgeInsets
+                                                                  .fromLTRB(
+                                                            context.setWidth(
+                                                              9.36,
+                                                            ),
+                                                            context.setHeight(
+                                                              10.29,
+                                                            ),
+                                                            context.setWidth(
+                                                              7.86,
+                                                            ),
+                                                            context.setHeight(
+                                                              4.71,
+                                                            ),
+                                                          ),
                                                           showLable: false,
-                                                          borderColor:
-                                                              SharedPr.isDarkMode!
-                                                                  ? Colors.white
-                                                                      .withValues(
-                                                                        alpha:
-                                                                            0.50,
-                                                                      )
-                                                                  : const Color(
-                                                                    0xFFC2C3CB,
-                                                                  ),
-                                                          fillColor:
-                                                              !SharedPr
-                                                                      .isDarkMode!
-                                                                  ? Colors.white
-                                                                      .withValues(
-                                                                        alpha:
-                                                                            0.43,
-                                                                      )
-                                                                  : const Color(
-                                                                    0xFF2B2B2B,
-                                                                  ),
-                                                          hintcolor:
-                                                              !SharedPr
-                                                                      .isDarkMode!
-                                                                  ? const Color(
-                                                                    0xFF6B7280,
-                                                                  )
-                                                                  : const Color(
-                                                                    0xFF9CA3AF,
-                                                                  ),
-                                                          color:
-                                                              !SharedPr
-                                                                      .isDarkMode!
-                                                                  ? const Color(
-                                                                    0xFF6B7280,
-                                                                  )
-                                                                  : const Color(
-                                                                    0xFF6B7280,
-                                                                  ),
+                                                          borderColor: SharedPr
+                                                                  .isDarkMode!
+                                                              ? Colors.white
+                                                                  .withValues(
+                                                                  alpha: 0.50,
+                                                                )
+                                                              : const Color(
+                                                                  0xFFC2C3CB,
+                                                                ),
+                                                          fillColor: !SharedPr
+                                                                  .isDarkMode!
+                                                              ? Colors.white
+                                                                  .withValues(
+                                                                  alpha: 0.43,
+                                                                )
+                                                              : const Color(
+                                                                  0xFF2B2B2B,
+                                                                ),
+                                                          hintcolor: !SharedPr
+                                                                  .isDarkMode!
+                                                              ? const Color(
+                                                                  0xFF6B7280,
+                                                                )
+                                                              : const Color(
+                                                                  0xFF9CA3AF,
+                                                                ),
+                                                          color: !SharedPr
+                                                                  .isDarkMode!
+                                                              ? const Color(
+                                                                  0xFF6B7280,
+                                                                )
+                                                              : const Color(
+                                                                  0xFF6B7280,
+                                                                ),
                                                           isAddOrEdit: true,
                                                           borderRadius: context
                                                               .setMinSize(8),
                                                           prefixIcon: Padding(
-                                                            padding: EdgeInsets.symmetric(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
                                                               horizontal:
                                                                   context
                                                                       .setWidth(
-                                                                        6.3,
-                                                                      ),
+                                                                6.3,
+                                                              ),
                                                               vertical: context
                                                                   .setHeight(
-                                                                    6.3,
-                                                                  ),
+                                                                6.3,
+                                                              ),
                                                             ),
-                                                            child: SvgPicture.asset(
+                                                            child: SvgPicture
+                                                                .asset(
                                                               AppImages.dIV59,
- package: 'shared_widgets',
+                                                              package:
+                                                                  'shared_widgets',
                                                             ),
                                                           ),
                                                         ),
                                                       ),
 
                                                       Expanded(
-                                                        child: ContainerTextField(
+                                                        child:
+                                                            ContainerTextField(
                                                           controller:
                                                               otherSelleId,
                                                           labelText:
@@ -1499,7 +1456,8 @@ void createEditeCustomer({
                                                               'other_selleId'
                                                                   .tr,
                                                           inputFormatters: [
-                                                            FilteringTextInputFormatter.allow(
+                                                            FilteringTextInputFormatter
+                                                                .allow(
                                                               RegExp('[0-9]'),
                                                             ),
                                                           ],
@@ -1507,95 +1465,88 @@ void createEditeCustomer({
                                                               TextInputType
                                                                   .number,
                                                           // textAlign: TextAlign.justify,
-                                                          width:
-                                                              context
-                                                                  .screenWidth,
+                                                          width: context
+                                                              .screenWidth,
                                                           height: context
                                                               .setHeight(40),
-                                                          fontSize: context
-                                                              .setSp(14),
+                                                          fontSize:
+                                                              context.setSp(14),
                                                           contentPadding:
-                                                              EdgeInsets.fromLTRB(
-                                                                context
-                                                                    .setWidth(
-                                                                      9.36,
-                                                                    ),
-                                                                context
-                                                                    .setHeight(
-                                                                      10.29,
-                                                                    ),
-                                                                context
-                                                                    .setWidth(
-                                                                      7.86,
-                                                                    ),
-                                                                context
-                                                                    .setHeight(
-                                                                      4.71,
-                                                                    ),
-                                                              ),
+                                                              EdgeInsets
+                                                                  .fromLTRB(
+                                                            context.setWidth(
+                                                              9.36,
+                                                            ),
+                                                            context.setHeight(
+                                                              10.29,
+                                                            ),
+                                                            context.setWidth(
+                                                              7.86,
+                                                            ),
+                                                            context.setHeight(
+                                                              4.71,
+                                                            ),
+                                                          ),
                                                           showLable: false,
-                                                          borderColor:
-                                                              SharedPr.isDarkMode!
-                                                                  ? Colors.white
-                                                                      .withValues(
-                                                                        alpha:
-                                                                            0.50,
-                                                                      )
-                                                                  : const Color(
-                                                                    0xFFC2C3CB,
-                                                                  ),
-                                                          fillColor:
-                                                              !SharedPr
-                                                                      .isDarkMode!
-                                                                  ? Colors.white
-                                                                      .withValues(
-                                                                        alpha:
-                                                                            0.43,
-                                                                      )
-                                                                  : const Color(
-                                                                    0xFF2B2B2B,
-                                                                  ),
-                                                          hintcolor:
-                                                              !SharedPr
-                                                                      .isDarkMode!
-                                                                  ? const Color(
-                                                                    0xFF6B7280,
-                                                                  )
-                                                                  : const Color(
-                                                                    0xFF9CA3AF,
-                                                                  ),
-                                                          color:
-                                                              !SharedPr
-                                                                      .isDarkMode!
-                                                                  ? const Color(
-                                                                    0xFF6B7280,
-                                                                  )
-                                                                  : const Color(
-                                                                    0xFF6B7280,
-                                                                  ),
+                                                          borderColor: SharedPr
+                                                                  .isDarkMode!
+                                                              ? Colors.white
+                                                                  .withValues(
+                                                                  alpha: 0.50,
+                                                                )
+                                                              : const Color(
+                                                                  0xFFC2C3CB,
+                                                                ),
+                                                          fillColor: !SharedPr
+                                                                  .isDarkMode!
+                                                              ? Colors.white
+                                                                  .withValues(
+                                                                  alpha: 0.43,
+                                                                )
+                                                              : const Color(
+                                                                  0xFF2B2B2B,
+                                                                ),
+                                                          hintcolor: !SharedPr
+                                                                  .isDarkMode!
+                                                              ? const Color(
+                                                                  0xFF6B7280,
+                                                                )
+                                                              : const Color(
+                                                                  0xFF9CA3AF,
+                                                                ),
+                                                          color: !SharedPr
+                                                                  .isDarkMode!
+                                                              ? const Color(
+                                                                  0xFF6B7280,
+                                                                )
+                                                              : const Color(
+                                                                  0xFF6B7280,
+                                                                ),
                                                           isAddOrEdit: true,
                                                           borderRadius: context
                                                               .setMinSize(8),
                                                           prefixIcon: Padding(
-                                                            padding: EdgeInsets.symmetric(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
                                                               horizontal:
                                                                   context
                                                                       .setWidth(
-                                                                        10,
-                                                                      ),
+                                                                10,
+                                                              ),
                                                               vertical: context
                                                                   .setHeight(
-                                                                    10,
-                                                                  ),
+                                                                10,
+                                                              ),
                                                             ),
-                                                            child: SvgPicture.asset(
+                                                            child: SvgPicture
+                                                                .asset(
                                                               AppImages.partner,
-                                                            package: 'shared_widgets',
-                                                              
+                                                              package:
+                                                                  'shared_widgets',
                                                               color:
                                                                   const Color(
-                                                                    0xFF16A6B7,
-                                                                  ),
+                                                                0xFF16A6B7,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -1613,10 +1564,9 @@ void createEditeCustomer({
                                         decoration: BoxDecoration(
                                           border: Border(
                                             top: BorderSide(
-                                              color:
-                                                  SharedPr.isDarkMode!
-                                                      ? const Color(0xFF3F3F3F)
-                                                      : const Color(0xFF374151),
+                                              color: SharedPr.isDarkMode!
+                                                  ? const Color(0xFF3F3F3F)
+                                                  : const Color(0xFF374151),
                                               width: 1,
                                             ),
                                           ),
@@ -1630,10 +1580,9 @@ void createEditeCustomer({
                                             children: [
                                               ButtonClick(
                                                 color: const Color(0xFF16A6B7),
-                                                data:
-                                                    (customer?.id != null)
-                                                        ? 'edit_customer'.tr
-                                                        : 'add_new_customer'.tr,
+                                                data: (customer?.id != null)
+                                                    ? 'edit_customer'.tr
+                                                    : 'add_new_customer'.tr,
                                                 onTap: _onPressed,
                                               ),
                                               ButtonClick(
@@ -1691,47 +1640,46 @@ class UploadImage extends StatelessWidget {
                 width: context.setMinSize(115),
                 height: context.setMinSize(115),
                 alignment: Alignment.center,
-                child:
-                    customer == null ||
-                            customer!.image == null ||
-                            customer!.image == ''
-                        ? Center(
-                          child: Column(
-                            spacing: context.setHeight(10.62),
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.camera_alt,
-                                size: context.setMinSize(25.64),
-                                color: Colors.grey,
+                child: customer == null ||
+                        customer!.image == null ||
+                        customer!.image == ''
+                    ? Center(
+                        child: Column(
+                          spacing: context.setHeight(10.62),
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.camera_alt,
+                              size: context.setMinSize(25.64),
+                              color: Colors.grey,
+                            ),
+                            Text(
+                              "upload".tr,
+                              style: TextStyle(
+                                color: const Color(0xFF9CA3AF),
+                                fontSize: context.setSp(12),
+                                fontFamily: 'Tajawal',
+                                fontWeight: FontWeight.w400,
+                                height: 1.43,
                               ),
-                              Text(
-                                "upload".tr,
-                                style: TextStyle(
-                                  color: const Color(0xFF9CA3AF),
-                                  fontSize: context.setSp(12),
-                                  fontFamily: 'Tajawal',
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.43,
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                        : isSvg(customer!.image!.toString())
-                        ? SvgPicture.memory(
-                          base64.decode(customer!.image!.toString()),
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          height: double.infinity,
-                        )
-                        : Image.memory(
-                          base64Decode(customer!.image!.toString()),
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          height: double.infinity,
-                          filterQuality: FilterQuality.high,
+                            ),
+                          ],
                         ),
+                      )
+                    : isSvg(customer!.image!.toString())
+                        ? SvgPicture.memory(
+                            base64.decode(customer!.image!.toString()),
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: double.infinity,
+                          )
+                        : Image.memory(
+                            base64Decode(customer!.image!.toString()),
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: double.infinity,
+                            filterQuality: FilterQuality.high,
+                          ),
               ),
             ),
           ),
@@ -1767,11 +1715,10 @@ class DashedBorderPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint =
-        Paint()
-          ..color = color
-          ..strokeWidth = strokeWidth
-          ..style = PaintingStyle.stroke;
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = strokeWidth
+      ..style = PaintingStyle.stroke;
 
     final rect = RRect.fromRectAndRadius(
       Offset.zero & size,
