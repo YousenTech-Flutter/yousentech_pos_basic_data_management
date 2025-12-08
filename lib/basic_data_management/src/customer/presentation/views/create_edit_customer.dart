@@ -288,6 +288,8 @@ void createEditeCustomer({
                                                         return Row(
                                                           children: [
                                                             Radio<bool>(
+                                                              hoverColor:SharedPr.isDarkMode! ? Colors.white : null,
+                                                              focusColor:SharedPr.isDarkMode! ? Colors.white : null,
                                                               activeColor:
                                                                   const Color(
                                                                     0xFF16A6B7,
