@@ -695,11 +695,11 @@ void createEditeCategory({
                                                     ),
                                                     ButtonElevated(
                                                       text: 'addition'.tr,
+                                                      height:context.setHeight(40) ,
                                                       width: context.setWidth(
                                                         100,
                                                       ),
-                                                      borderRadius:
-                                                          context.setMinSize(9),
+                                                      borderRadius: context.setMinSize(9),
                                                       borderColor: const Color(
                                                         0xFF16A6B7,
                                                       ),
