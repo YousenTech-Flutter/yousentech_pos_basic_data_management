@@ -193,7 +193,8 @@ void createEditeProduct({
         );
       }
     } catch (e) {
-      appSnackBar(status: false, message: e);
+      productController.isLoading.value = false;
+      appSnackBar(status: false, message: e.toString());
     }
   }
 
@@ -249,7 +250,7 @@ void createEditeProduct({
                                           height: 1.42,
                                         ),
                                       ),
-                                      GestureDetector(
+                                      InkWell(
                                         onTap: () {
                                           Get.back();
                                         },
@@ -1474,7 +1475,7 @@ class UploadImage extends StatelessWidget {
     return Column(
       spacing: context.setHeight(11.9),
       children: [
-        GestureDetector(
+        InkWell(
           onTap: onTap,
           child: CustomPaint(
             painter: DashedBorderPainter(),

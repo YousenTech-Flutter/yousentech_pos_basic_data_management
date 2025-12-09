@@ -53,97 +53,103 @@ void createEditeCategory({
   }
 
   _onPressed() async {
-    posCategoryController.isLoading.value = true;
-    posCategoryController.update();
-    PosCategoryService.posCategoryDataServiceInstance = null;
-    PosCategoryService.getInstance();
+    try {
+      posCategoryController.isLoading.value = true;
+      posCategoryController.update();
+      PosCategoryService.posCategoryDataServiceInstance = null;
+      PosCategoryService.getInstance();
 
-    countErrors = 0;
-    if (_formKey.currentState!.validate()) {
-      // posCategory!.categoryNotes = categoryNotes;
-      // (posCategory ??= PosCategory()).name =
-      //     posCategory!.id == null
-      //         ? PosCategoryName(
-      //           enUS: nameController.text,
-      //           ar001: nameController.text,
-      //         )
-      //         : PosCategoryName(
-      //           enUS:
-      //               SharedPr.lang == 'en'
-      //                   ? nameController.text
-      //                   : posCategory!.name!.enUS,
-      //           ar001:
-      //               SharedPr.lang == 'ar'
-      //                   ? nameController.text
-      //                   : posCategory!.name!.ar001,
-      //         );
-      // عيّن الملاحظات
-      posCategory!.categoryNotes = categoryNotes;
+      countErrors = 0;
+      if (_formKey.currentState!.validate()) {
+        // posCategory!.categoryNotes = categoryNotes;
+        // (posCategory ??= PosCategory()).name =
+        //     posCategory!.id == null
+        //         ? PosCategoryName(
+        //           enUS: nameController.text,
+        //           ar001: nameController.text,
+        //         )
+        //         : PosCategoryName(
+        //           enUS:
+        //               SharedPr.lang == 'en'
+        //                   ? nameController.text
+        //                   : posCategory!.name!.enUS,
+        //           ar001:
+        //               SharedPr.lang == 'ar'
+        //                   ? nameController.text
+        //                   : posCategory!.name!.ar001,
+        //         );
+        // عيّن الملاحظات
+        posCategory!.categoryNotes = categoryNotes;
 
-      // إذا الفئة جديدة (ما لها id بعد)
-      if (posCategory!.id == null) {
-        posCategory!.name = PosCategoryName(
-          enUS: nameController.text,
-          ar001: nameController.text,
-        );
-      } else {
-        // إذا كانت فئة موجودة مسبقاً — حدّث فقط الاسم حسب اللغة الحالية
-        posCategory!.name = PosCategoryName(
-          enUS: SharedPr.lang == 'en'
-              ? nameController.text
-              : posCategory!.name?.enUS ?? '',
-          ar001: SharedPr.lang == 'ar'
-              ? nameController.text
-              : posCategory!.name?.ar001 ?? '',
-        );
-      }
-
-      ResponseResult responseResult;
-      if (posCategory?.id == null) {
-        responseResult = await posCategoryController.createPosCategory(
-          posCategory: posCategory!,
-        );
-      } else {
-        // posCategory?.name = PosCategoryName(enUS: nameController.text, ar001: nameController.text);
-        // if (kDebugMode) {
-        //   print('posCategory?.name : ${posCategory?.name}');
-        // }
-        responseResult = await posCategoryController.updatePosCategory(
-          posCategory: posCategory!,
-        );
-      }
-      if (responseResult.status) {
-        if (objectToEdit == null) {
-          posCategoryController.posCategoryList.add(responseResult.data!);
+        // إذا الفئة جديدة (ما لها id بعد)
+        if (posCategory!.id == null) {
+          posCategory!.name = PosCategoryName(
+            enUS: nameController.text,
+            ar001: nameController.text,
+          );
+        } else {
+          // إذا كانت فئة موجودة مسبقاً — حدّث فقط الاسم حسب اللغة الحالية
+          posCategory!.name = PosCategoryName(
+            enUS: SharedPr.lang == 'en'
+                ? nameController.text
+                : posCategory!.name?.enUS ?? '',
+            ar001: SharedPr.lang == 'ar'
+                ? nameController.text
+                : posCategory!.name?.ar001 ?? '',
+          );
         }
 
-        var posCategoryIndex = posCategoryController.posCategoryList.indexWhere(
-          (item) => item.id == objectToEdit?.id,
-        );
-        if (posCategoryIndex != -1) {
-          posCategoryController.posCategoryList[posCategoryIndex] =
-              posCategory!;
+        ResponseResult responseResult;
+        if (posCategory?.id == null) {
+          responseResult = await posCategoryController.createPosCategory(
+            posCategory: posCategory!,
+          );
+        } else {
+          // posCategory?.name = PosCategoryName(enUS: nameController.text, ar001: nameController.text);
+          // if (kDebugMode) {
+          //   print('posCategory?.name : ${posCategory?.name}');
+          // }
+          responseResult = await posCategoryController.updatePosCategory(
+            posCategory: posCategory!,
+          );
         }
-        posCategoryController.update();
-        posCategory = null;
+        if (responseResult.status) {
+          if (objectToEdit == null) {
+            posCategoryController.posCategoryList.add(responseResult.data!);
+          }
+
+          var posCategoryIndex =
+              posCategoryController.posCategoryList.indexWhere(
+            (item) => item.id == objectToEdit?.id,
+          );
+          if (posCategoryIndex != -1) {
+            posCategoryController.posCategoryList[posCategoryIndex] =
+                posCategory!;
+          }
+          posCategoryController.update();
+          posCategory = null;
+          posCategoryController.isLoading.value = false;
+          posCategoryController.update();
+          appSnackBar(
+            messageType: MessageTypes.success,
+            message: responseResult.message,
+          );
+          back();
+        } else {
+          posCategoryController.isLoading.value = false;
+          posCategoryController.update();
+          appSnackBar(message: responseResult.message);
+        }
+      } else {
         posCategoryController.isLoading.value = false;
         posCategoryController.update();
         appSnackBar(
-          messageType: MessageTypes.success,
-          message: responseResult.message,
+          message: countErrors > 1 ? 'enter_required_info'.tr : errorMessage!,
         );
-        back();
-      } else {
-        posCategoryController.isLoading.value = false;
-        posCategoryController.update();
-        appSnackBar(message: responseResult.message);
       }
-    } else {
+    } catch (e) {
       posCategoryController.isLoading.value = false;
-      posCategoryController.update();
-      appSnackBar(
-        message: countErrors > 1 ? 'enter_required_info'.tr : errorMessage!,
-      );
+      appSnackBar(status: false , message: e.toString());
     }
   }
 
@@ -201,7 +207,7 @@ void createEditeCategory({
                                                 height: 1.42,
                                               ),
                                             ),
-                                            GestureDetector(
+                                            InkWell(
                                               onTap: () {
                                                 Get.back();
                                               },
@@ -485,7 +491,7 @@ void createEditeCategory({
                                                     )
                                                     .toList(),
                                               ),
-                                              GestureDetector(
+                                              InkWell(
                                                 onTap: () {
                                                   isOpen = !isOpen;
                                                   setState(() {});

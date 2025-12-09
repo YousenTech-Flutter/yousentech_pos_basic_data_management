@@ -401,7 +401,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                   ),
                                   
                                   
-                                  // GestureDetector(
+                                  // InkWell(
                                   //   onTap: () {},
                                   //   child: Container(
                                   //     width: context.setWidth(52),
@@ -560,7 +560,7 @@ class _PagnationWidgetState extends State<PagnationWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if(totalPages > 0)...[
-          GestureDetector(
+          InkWell(
             onTap: widget.pagesNumber > 0 ? () => _goToPage(widget.pagesNumber - 1) : null,
             child: Container(
               width: context.setWidth(39),
@@ -587,7 +587,7 @@ class _PagnationWidgetState extends State<PagnationWidget> {
           ),
           // الصفحات
           for (int i = startPage; i <= endPage-1; i++)
-            GestureDetector(
+            InkWell(
               onTap: () {
                 _goToPage(i);
               },
@@ -626,7 +626,7 @@ class _PagnationWidgetState extends State<PagnationWidget> {
                 ),
               ),
             ),
-          GestureDetector(
+          InkWell(
             onTap:
                 (widget.pagesNumber+1) < totalPages
                     ? () => _goToPage(widget.pagesNumber + 1)

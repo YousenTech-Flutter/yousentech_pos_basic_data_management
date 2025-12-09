@@ -162,7 +162,8 @@ void createEditeCustomer({
         customerController.update();
       }
     } catch (e) {
-      appSnackBar(status: false, message: e);
+      customerController.isLoading.value = false;
+      appSnackBar(status: false, message: e.toString());
     }
   }
 
@@ -220,7 +221,7 @@ void createEditeCustomer({
                                               height: 1.42,
                                             ),
                                           ),
-                                          GestureDetector(
+                                          InkWell(
                                             onTap: () {
                                               Get.back();
                                             },
@@ -1630,7 +1631,7 @@ class UploadImage extends StatelessWidget {
     return Column(
       spacing: context.setHeight(11.9),
       children: [
-        GestureDetector(
+        InkWell(
           onTap: onTap,
           child: CustomPaint(
             painter: DashedBorderPainter(),

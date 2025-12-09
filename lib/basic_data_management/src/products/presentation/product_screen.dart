@@ -474,7 +474,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     
                                   Builder(
                                     builder: (iconContext) {
-                                      return GestureDetector(
+                                      return InkWell(
                                         onTap: () async {
                                           searchController.text = '';
                                           productController.searchResults
@@ -692,7 +692,7 @@ class ButtonClick extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
         decoration: ShapeDecoration(
