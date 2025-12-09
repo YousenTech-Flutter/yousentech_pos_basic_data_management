@@ -267,6 +267,7 @@ void createEditeCategory({
                                                 ButtonClick(
                                                   color: null,
                                                   data: 'back'.tr,
+                                                  horizontal: 18,
                                                   borderColor: const Color(
                                                     0xFFD1D5DB,
                                                   ),
