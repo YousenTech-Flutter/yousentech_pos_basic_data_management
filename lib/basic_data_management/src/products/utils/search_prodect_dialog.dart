@@ -90,8 +90,7 @@ class _SearchableProductDialogState extends State<SearchableProductDialog> {
               focusNode: _focusNode,
               onKeyEvent: (KeyEvent event) {
                 if (event is KeyDownEvent) {
-                  if (event is RawKeyDownEvent && event.logicalKey == LogicalKeyboardKey.arrowDown) {
-                    
+                  if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
                     setState(() {
                       if (_selectedIndex <
                           _invoiceController.pagingController.itemList!.length -
@@ -100,14 +99,14 @@ class _SearchableProductDialogState extends State<SearchableProductDialog> {
                         _scrollToIndex();
                       }
                     });
-                  } else if (event is RawKeyDownEvent && event.logicalKey == LogicalKeyboardKey.arrowUp) {
+                  } else if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
                     setState(() {
                       if (_selectedIndex > 0) {
                         _selectedIndex--;
                         _scrollToIndex();
                       }
                     });
-                  } else if (event is RawKeyDownEvent && event.logicalKey == LogicalKeyboardKey.enter) {
+                  } else if (event.logicalKey == LogicalKeyboardKey.enter) {
                     if (_invoiceController
                         .pagingController
                         .itemList!
