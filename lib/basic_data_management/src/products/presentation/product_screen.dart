@@ -679,6 +679,7 @@ class ButtonClick extends StatelessWidget {
   String data;
   Function()? onTap;
   Color? color;
+  Color? borderColor;
   Color? textColor;
   bool isSync;
   ButtonClick({
@@ -686,6 +687,7 @@ class ButtonClick extends StatelessWidget {
     required this.data,
     required this.onTap,
     required this.color,
+    this.borderColor,
     this.isSync = false,
     this.textColor = Colors.white,
   });
@@ -699,6 +701,7 @@ class ButtonClick extends StatelessWidget {
           color: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6.63),
+            side:borderColor==null ? BorderSide.none : BorderSide(color: borderColor! )
           ),
         ),
         child: Padding(

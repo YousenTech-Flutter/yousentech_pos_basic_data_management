@@ -149,7 +149,7 @@ void createEditeCategory({
       }
     } catch (e) {
       posCategoryController.isLoading.value = false;
-      appSnackBar(status: false , message: e.toString());
+      appSnackBar(status: false, message: e.toString());
     }
   }
 
@@ -264,30 +264,40 @@ void createEditeCategory({
                                                       : 'edit_pos_category'.tr,
                                                   onTap: _onPressed,
                                                 ),
-                                                ButtonElevated(
-                                                  text: 'back'.tr,
-                                                  width: context.setWidth(100),
-                                                  borderRadius:
-                                                      context.setMinSize(9),
+                                                ButtonClick(
+                                                  color: null,
+                                                  data: 'back'.tr,
                                                   borderColor: const Color(
                                                     0xFFD1D5DB,
                                                   ),
-                                                  textStyle: TextStyle(
-                                                    color: SharedPr.isDarkMode!
-                                                        ? Colors.white
-                                                        : const Color(
-                                                            0xFF374151,
-                                                          ),
-                                                    fontSize: context.setSp(
-                                                      13.27,
-                                                    ),
-                                                    fontFamily: 'Tajawal',
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                  onPressed: () {
+                                                  onTap: () {
                                                     Get.back();
                                                   },
                                                 ),
+                                                // ButtonElevated(
+                                                //   text: 'back'.tr,
+                                                //   width: context.setWidth(100),
+                                                //   borderRadius:
+                                                //       context.setMinSize(9),
+                                                //   borderColor: const Color(
+                                                //     0xFFD1D5DB,
+                                                //   ),
+                                                //   textStyle: TextStyle(
+                                                //     color: SharedPr.isDarkMode!
+                                                //         ? Colors.white
+                                                //         : const Color(
+                                                //             0xFF374151,
+                                                //           ),
+                                                //     fontSize: context.setSp(
+                                                //       16,
+                                                //     ),
+                                                //     fontFamily: 'Tajawal',
+                                                //     fontWeight: FontWeight.w400,
+                                                //   ),
+                                                //   onPressed: () {
+                                                //     Get.back();
+                                                //   },
+                                                // ),
                                               ],
                                             ),
                                           ),
@@ -384,7 +394,7 @@ void createEditeCategory({
                                                     ),
                                                   ),
                                                   child: SvgPicture.asset(
-                                                    AppImages.productEmpty,
+                                                    AppImages.productEmptySvg,
                                                     package: 'shared_widgets',
                                                     color: const Color(
                                                       0xFF16A6B7,
@@ -670,7 +680,7 @@ void createEditeCategory({
                                                           child:
                                                               SvgPicture.asset(
                                                             AppImages
-                                                                .productEmpty,
+                                                                .productEmptySvg,
                                                             package:
                                                                 'shared_widgets',
                                                             color: const Color(
