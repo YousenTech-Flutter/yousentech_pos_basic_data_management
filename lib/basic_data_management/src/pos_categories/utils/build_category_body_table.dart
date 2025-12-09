@@ -100,7 +100,7 @@ buildCategoryBodyTable({
               
                 Expanded(
                   flex: 1,
-                  child: GestureDetector(
+                  child: InkWell(
                     onTap: () {
                       createEditeCategory(context: context , objectToEdit: item);
                     },

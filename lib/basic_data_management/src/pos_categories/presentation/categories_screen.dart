@@ -194,7 +194,53 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                               ),
                                               ButtonClick(
                                                 data: 'synchronization'.tr,
-                                                onTap: () async {},
+                                                onTap: () async {
+                                                  loadingDataController.isUpdate.value = true;
+
+                                                  var result =
+                                                      await synchronizeBasedOnModelType(
+                                                    type: Loaddata.categories
+                                                        .toString(),
+                                                  );
+
+                                                  if (result == true) {
+                                                    appSnackBar(
+                                                      message:
+                                                          'synchronized'.tr,
+                                                      messageType:
+                                                          MessageTypes.success,
+                                                      isDismissible: false,
+                                                    );
+                                                  } else if (result is String) {
+                                                    appSnackBar(
+                                                      message: result,
+                                                      messageType: MessageTypes
+                                                          .connectivityOff,
+                                                    );
+                                                  } else if (result == null) {
+                                                    appSnackBar(
+                                                      message:
+                                                          'synchronization_problem'
+                                                              .tr,
+                                                      isDismissible: false,
+                                                    );
+                                                  } else {
+                                                    appSnackBar(
+                                                      message:
+                                                          'synchronized_successfully'
+                                                              .tr,
+                                                      messageType:
+                                                          MessageTypes.success,
+                                                      isDismissible: false,
+                                                    );
+                                                  }
+
+                                                  loadingDataController.update([
+                                                    'card_loading_data',
+                                                  ]);
+
+                                                  loadingDataController.isUpdate.value = false;
+                                                },
                                                 color: const Color(0xFFF2AC57),
                                                 isSync: true,
                                               ),
