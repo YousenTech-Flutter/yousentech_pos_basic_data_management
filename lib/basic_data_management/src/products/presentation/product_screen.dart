@@ -681,6 +681,8 @@ class ButtonClick extends StatelessWidget {
   Color? color;
   Color? borderColor;
   Color? textColor;
+  double ? horizontal;
+  double ? vertical;
   bool isSync;
   ButtonClick({
     super.key,
@@ -688,6 +690,8 @@ class ButtonClick extends StatelessWidget {
     required this.onTap,
     required this.color,
     this.borderColor,
+    this.horizontal,
+    this.vertical,
     this.isSync = false,
     this.textColor = Colors.white,
   });
@@ -706,8 +710,8 @@ class ButtonClick extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-            vertical: context.setHeight(6),
-            horizontal: context.setWidth(16),
+            vertical: context.setHeight(vertical ?? 6),
+            horizontal: context.setWidth(horizontal ?? 16),
           ),
           child: Center(
             child: Row(
