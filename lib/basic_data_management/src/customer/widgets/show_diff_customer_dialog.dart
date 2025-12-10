@@ -5,7 +5,7 @@ import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/shared_widgets/app_dialog.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_provider.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/utils/build_product_body_table.dart';
+
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_basic_data_table.dart';
 
 import '../utils/build_customer_body_table.dart';
