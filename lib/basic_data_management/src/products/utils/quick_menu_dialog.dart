@@ -59,19 +59,19 @@ class _SearchableProductDialogState extends State<SearchableProductDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor:
-          SharedPr.isDarkMode!
-              ? const Color(0xFF1B1B1B)
-              : const Color(0xFFE3E3E3),
+      backgroundColor: SharedPr.isDarkMode!
+          ? const Color(0xFF1B1B1B)
+          : const Color(0xFFE3E3E3),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(width: 10),
-          Text('quick_menu'.tr, style: TextStyle(fontSize: context.setSp(14),
-          fontFamily: 'Tajawal',
-          color: SharedPr.isDarkMode! ? Colors.white : Colors.black,
-          
-          )),
+          Text('quick_menu'.tr,
+              style: TextStyle(
+                fontSize: context.setSp(14),
+                fontFamily: 'Tajawal',
+                color: SharedPr.isDarkMode! ? Colors.white : Colors.black,
+              )),
         ],
       ),
       content: IgnorePointer(
@@ -100,10 +100,8 @@ class _SearchableProductDialogState extends State<SearchableProductDialog> {
                 });
               } else if (event.logicalKey == LogicalKeyboardKey.enter) {
                 if (_invoiceController.pagingController.itemList!.isNotEmpty) {
-                  final selectedProduct =
-                      _invoiceController
-                          .pagingController
-                          .itemList![_selectedIndex];
+                  final selectedProduct = _invoiceController
+                      .pagingController.itemList![_selectedIndex];
                   _invoiceController.onSelectSearchItem(
                     selectedProduct: selectedProduct,
                   );
@@ -115,26 +113,23 @@ class _SearchableProductDialogState extends State<SearchableProductDialog> {
             }
           },
           child: SizedBox(
-                width: context.setWidth(400),
-                height: context.setHeight(300),
+            width: context.setWidth(400),
+            height: context.setHeight(300),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 ContainerTextField(
                   controller: _invoiceController.quickMenuController,
                   borderColor: !SharedPr.isDarkMode! ? Color(0xFFC2C3CB) : null,
-                  fillColor:
-                      !SharedPr.isDarkMode!
-                          ? Colors.white.withValues(alpha: 0.43)
-                          : const Color(0xFF2B2B2B),
-                  hintcolor:
-                      !SharedPr.isDarkMode!
-                          ? Color(0xFFC2C3CB)
-                          : const Color(0xFFC2C3CB),
-                  color:
-                      !SharedPr.isDarkMode!
-                          ? Color(0xFFC2C3CB)
-                          : const Color(0xFFC2C3CB),
+                  fillColor: !SharedPr.isDarkMode!
+                      ? Colors.white.withValues(alpha: 0.43)
+                      : const Color(0xFF2B2B2B),
+                  hintcolor: !SharedPr.isDarkMode!
+                      ? Color(0xFFC2C3CB)
+                      : const Color(0xFFC2C3CB),
+                  color: !SharedPr.isDarkMode!
+                      ? Color(0xFFC2C3CB)
+                      : const Color(0xFFC2C3CB),
                   focusNode: _invoiceController.quickFocus,
                   isAddOrEdit: true,
                   height: context.setHeight(40),
@@ -158,14 +153,11 @@ class _SearchableProductDialogState extends State<SearchableProductDialog> {
                     child: SvgPicture.asset(
                       AppImages.search,
                       package: 'shared_widgets',
-                      
-                      color:
-                          !SharedPr.isDarkMode!
-                              ? const Color(0xFF9CA3AF)
-                              : const Color(0xFF9CA3AF),
+                      color: !SharedPr.isDarkMode!
+                          ? const Color(0xFF9CA3AF)
+                          : const Color(0xFF9CA3AF),
                     ),
                   ),
-
                   onChanged: (qu) {
                     _invoiceController.pagingController.refresh();
                   },
@@ -182,11 +174,15 @@ class _SearchableProductDialogState extends State<SearchableProductDialog> {
                     pagingController: _invoiceController.pagingController,
                     builderDelegate: PagedChildBuilderDelegate<Product>(
                       noItemsFoundIndicatorBuilder: (BuildContext context) {
-                        return Center(child: Text("empty_filter".tr ,style: TextStyle(fontSize: context.setSp(14),
-          fontFamily: 'Tajawal',
-          color: SharedPr.isDarkMode! ? Colors.white : Colors.black,
-          
-          )));
+                        return Center(
+                            child: Text("empty_filter".tr,
+                                style: TextStyle(
+                                  fontSize: context.setSp(14),
+                                  fontFamily: 'Tajawal',
+                                  color: SharedPr.isDarkMode!
+                                      ? Colors.white
+                                      : Colors.black,
+                                )));
                       },
                       itemBuilder: (context, product, index) {
                         bool isSelected = _selectedIndex == index;
@@ -206,28 +202,25 @@ class _SearchableProductDialogState extends State<SearchableProductDialog> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
-                              color:
-                                  isSelected
-                                      ? AppColor.cyanTeal.withOpacity(0.15)
-                                      : null,
+                              color: isSelected
+                                  ? AppColor.cyanTeal.withOpacity(0.15)
+                                  : null,
                             ),
                             child: ListTile(
                               contentPadding: const EdgeInsets.symmetric(
                                 horizontal: 8.0,
                                 vertical: 0.0,
                               ),
-                              tileColor:
-                                  _selectedIndex == index
-                                      ? Colors.blue[100]
-                                      : null,
+                              tileColor: _selectedIndex == index
+                                  ? Colors.blue[100]
+                                  : null,
                               selected: _selectedIndex == index,
                               title: Text(
                                 product.getProductNameBasedOnLang.trim(),
                                 style: TextStyle(
-                                  color:
-                                      SharedPr.isDarkMode!
-                                          ? Colors.white
-                                          : Colors.black,
+                                  color: SharedPr.isDarkMode!
+                                      ? Colors.white
+                                      : Colors.black,
                                   fontSize: context.setSp(12),
                                   fontFamily: 'Tajawal',
                                   fontWeight: FontWeight.w700,
@@ -239,12 +232,13 @@ class _SearchableProductDialogState extends State<SearchableProductDialog> {
                                 children: [
                                   SvgPicture.asset(
                                     AppImages.price,
-                                                            package: 'shared_widgets',
-                                    
+                                    package: 'shared_widgets',
                                     clipBehavior: Clip.antiAlias,
                                     width: context.setMinSize(15),
                                     height: context.setMinSize(15),
-                                    color: Colors.white,
+                                    color: SharedPr.isDarkMode!
+                                        ? Colors.white
+                                        : Colors.black,
                                   ),
                                   RichText(
                                     textAlign: TextAlign.center,
@@ -270,9 +264,10 @@ class _SearchableProductDialogState extends State<SearchableProductDialog> {
                                       children: [
                                         SvgPicture.asset(
                                           AppImages.barcode,
-                                                            package: 'shared_widgets',
-                                          
-                                          color: Color(0xffCFCBC5),
+                                          package: 'shared_widgets',
+                                          color: SharedPr.isDarkMode!
+                                              ? Color(0xffCFCBC5)
+                                              : Colors.black,
                                           width: context.setMinSize(15),
                                           height: context.setMinSize(15),
                                         ),
@@ -295,9 +290,10 @@ class _SearchableProductDialogState extends State<SearchableProductDialog> {
                                       children: [
                                         SvgPicture.asset(
                                           AppImages.barcode,
-                                                            package: 'shared_widgets',
-                                          
-                                          color: Color(0xffCFCBC5),
+                                          package: 'shared_widgets',
+                                          color: SharedPr.isDarkMode!
+                                              ? Color(0xffCFCBC5)
+                                              : Colors.black,
                                           width: context.setMinSize(15),
                                           height: context.setMinSize(15),
                                         ),
