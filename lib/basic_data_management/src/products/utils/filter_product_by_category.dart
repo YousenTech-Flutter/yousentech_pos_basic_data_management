@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:popover/popover.dart';
-import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_colors.dart';
+import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_viewmodel.dart';
 import 'package:yousentech_pos_invoice/invoices/domain/invoice_viewmodel.dart';
@@ -15,7 +16,7 @@ filtterProductByCategory({
   return showPopover(
     direction: PopoverDirection.bottom,
     backgroundColor:
-        SharedPr.isDarkMode! ? const Color(0xFF2B2B2B) : AppColor.white,
+         Get.find<ThemeController>().isDarkMode.value  ? const Color(0xFF2B2B2B) : AppColor.white,
     context: context,
     width: context.setWidth(220),
     height: context.setHeight(220),
@@ -77,7 +78,7 @@ filtterProductByCategory({
                         title: Text(
                           item.getPosCategoryNameBasedOnLang,
                           style: TextStyle(
-                            color:SharedPr.isDarkMode! ? Colors.white : const Color(0xff6F6F6F),
+                            color: Get.find<ThemeController>().isDarkMode.value  ? Colors.white : const Color(0xff6F6F6F),
                             fontSize: context.setSp(13),
                           ),
                         ),

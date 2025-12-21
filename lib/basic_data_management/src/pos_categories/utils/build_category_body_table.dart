@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/config/app_images.dart';
+import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
 
 import '../presentation/create_edit_category.dart';
@@ -30,7 +32,7 @@ buildCategoryBodyTable({
                     : AppColor.red.withValues(alpha: 0.50)
                 : (index % 2 == 0
                     ? null
-                    : SharedPr.isDarkMode!
+                    :  Get.find<ThemeController>().isDarkMode.value 
                     ? const Color(0xFF1E1E1E)
                     : const Color(0xFFF3F2F2)),
         height: context.setHeight(35),
@@ -46,7 +48,7 @@ buildCategoryBodyTable({
                     style: TextStyle(
                       overflow: TextOverflow.ellipsis,
                       color:
-                          SharedPr.isDarkMode!
+                           Get.find<ThemeController>().isDarkMode.value 
                               ? const Color(0xFFE0E0E0)
                               : const Color(0xFF2B2B2B),
                       fontSize: context.setSp(16),
@@ -65,7 +67,7 @@ buildCategoryBodyTable({
                     style: TextStyle(
                       overflow: TextOverflow.ellipsis,
                       color:
-                          SharedPr.isDarkMode!
+                           Get.find<ThemeController>().isDarkMode.value 
                               ? const Color(0xFFE0E0E0)
                               : const Color(0xFF2B2B2B),
                       fontSize: context.setSp(16),
@@ -84,7 +86,7 @@ buildCategoryBodyTable({
                     style: TextStyle(
                       overflow: TextOverflow.ellipsis,
                       color:
-                          SharedPr.isDarkMode!
+                           Get.find<ThemeController>().isDarkMode.value 
                               ? const Color(0xFFE0E0E0)
                               : const Color(0xFF2B2B2B),
                       fontSize: context.setSp(16),
@@ -111,7 +113,7 @@ buildCategoryBodyTable({
                         width: context.setWidth(22),
                         height: context.setHeight(22),
                         color:
-                            SharedPr.isDarkMode!
+                             Get.find<ThemeController>().isDarkMode.value 
                                 ? null
                                 : const  Color(0xFFF2AC57),
                       ),

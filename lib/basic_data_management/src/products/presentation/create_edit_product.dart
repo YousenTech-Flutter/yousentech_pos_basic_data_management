@@ -16,6 +16,7 @@ import 'package:pos_shared_preferences/models/product_unit/data/product_unit.dar
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_enums.dart';
 import 'package:shared_widgets/config/app_images.dart';
+import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/shared_widgets/app_dialog.dart';
 import 'package:shared_widgets/shared_widgets/app_drop_down_field.dart';
 import 'package:shared_widgets/shared_widgets/app_loading.dart';
@@ -241,7 +242,7 @@ void createEditeProduct({
                                             : 'edit_product'.tr,
                                         style: TextStyle(
                                           color:
-                                              SharedPr.isDarkMode!
+                                              Get.find<ThemeController>().isDarkMode.value
                                                   ? Colors.white
                                                   : const Color(0xFF0C0C0C),
                                           fontSize: context.setSp(16),
@@ -260,7 +261,7 @@ void createEditeProduct({
                                           width: context.setWidth(13),
                                           height: context.setHeight(13),
                                           color:
-                                              SharedPr.isDarkMode!
+                                              Get.find<ThemeController>().isDarkMode.value
                                                   ? null
                                                   : const Color(0xFF0C0C0C),
                                         ),
@@ -321,23 +322,23 @@ void createEditeProduct({
                                                   ),
                                               showLable: true,
                                               borderColor:
-                                                  SharedPr.isDarkMode!
+                                                  Get.find<ThemeController>().isDarkMode.value
                                                       ? Colors.white.withValues(
                                                         alpha: 0.50,
                                                       )
                                                       : const Color(0xFFC2C3CB),
                                               fillColor:
-                                                  !SharedPr.isDarkMode!
+                                                  !Get.find<ThemeController>().isDarkMode.value
                                                       ? Colors.white.withValues(
                                                         alpha: 0.43,
                                                       )
                                                       : const Color(0xFF2B2B2B),
                                               hintcolor:
-                                                  !SharedPr.isDarkMode!
+                                                  !Get.find<ThemeController>().isDarkMode.value
                                                       ? const Color(0xFF404040)
                                                       : const Color(0xFF9CA3AF),
                                               color:
-                                                  !SharedPr.isDarkMode!
+                                                  !Get.find<ThemeController>().isDarkMode.value
                                                       ? const Color(0xFF404040)
                                                       : const Color(0xFF6B7280),
                                               isAddOrEdit: true,
@@ -418,7 +419,7 @@ void createEditeProduct({
                                                         ),
                                                     showLable: true,
                                                     borderColor:
-                                                        SharedPr.isDarkMode!
+                                                        Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.50,
@@ -427,7 +428,7 @@ void createEditeProduct({
                                                               0xFFC2C3CB,
                                                             ),
                                                     fillColor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.43,
@@ -436,7 +437,7 @@ void createEditeProduct({
                                                               0xFF2B2B2B,
                                                             ),
                                                     hintcolor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -444,7 +445,7 @@ void createEditeProduct({
                                                               0xFF9CA3AF,
                                                             ),
                                                     color:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -493,7 +494,7 @@ void createEditeProduct({
                                                       40,
                                                     ),
                                                     fillColor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.43,
@@ -502,7 +503,7 @@ void createEditeProduct({
                                                               0xFF2B2B2B,
                                                             ),
                                                     borderColor:
-                                                        SharedPr.isDarkMode!
+                                                        Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.50,
@@ -511,7 +512,7 @@ void createEditeProduct({
                                                               0xFFC2C3CB,
                                                             ),
                                                     hintcolor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -544,7 +545,7 @@ void createEditeProduct({
                                                                 .first
                                                             : product!.taxesId,
                                                     color:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -578,7 +579,7 @@ void createEditeProduct({
                                                                             .enUS)!,
                                                                     style: TextStyle(
                                                                       color:
-                                                                          SharedPr.isDarkMode!
+                                                                          Get.find<ThemeController>().isDarkMode.value
                                                                               ? Colors.white
                                                                               : Colors.black,
                                                                     ),
@@ -645,7 +646,7 @@ void createEditeProduct({
                                                         ),
                                                     showLable: true,
                                                     borderColor:
-                                                        SharedPr.isDarkMode!
+                                                        Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.50,
@@ -654,7 +655,7 @@ void createEditeProduct({
                                                               0xFFC2C3CB,
                                                             ),
                                                     fillColor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.43,
@@ -663,7 +664,7 @@ void createEditeProduct({
                                                               0xFF2B2B2B,
                                                             ),
                                                     hintcolor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -671,7 +672,7 @@ void createEditeProduct({
                                                               0xFF9CA3AF,
                                                             ),
                                                     color:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -729,7 +730,7 @@ void createEditeProduct({
                                                         ),
                                                     showLable: true,
                                                     borderColor:
-                                                        SharedPr.isDarkMode!
+                                                        Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.50,
@@ -738,7 +739,7 @@ void createEditeProduct({
                                                               0xFFC2C3CB,
                                                             ),
                                                     fillColor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.43,
@@ -747,7 +748,7 @@ void createEditeProduct({
                                                               0xFF2B2B2B,
                                                             ),
                                                     hintcolor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -755,7 +756,7 @@ void createEditeProduct({
                                                               0xFF9CA3AF,
                                                             ),
                                                     color:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -794,7 +795,7 @@ void createEditeProduct({
                                                       40,
                                                     ),
                                                     fillColor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.43,
@@ -803,7 +804,7 @@ void createEditeProduct({
                                                               0xFF2B2B2B,
                                                             ),
                                                     borderColor:
-                                                        SharedPr.isDarkMode!
+                                                        Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.50,
@@ -812,7 +813,7 @@ void createEditeProduct({
                                                               0xFFC2C3CB,
                                                             ),
                                                     hintcolor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -836,7 +837,7 @@ void createEditeProduct({
                                                             : product!
                                                                 .detailedType,
                                                     color:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -875,7 +876,7 @@ void createEditeProduct({
                                                                             .enUS),
                                                                     style: TextStyle(
                                                                       color:
-                                                                          SharedPr.isDarkMode!
+                                                                          Get.find<ThemeController>().isDarkMode.value
                                                                               ? Colors.white
                                                                               : Colors.black,
                                                                     ),
@@ -909,7 +910,7 @@ void createEditeProduct({
                                                       40,
                                                     ),
                                                     fillColor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.43,
@@ -918,7 +919,7 @@ void createEditeProduct({
                                                               0xFF2B2B2B,
                                                             ),
                                                     borderColor:
-                                                        SharedPr.isDarkMode!
+                                                        Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.50,
@@ -927,7 +928,7 @@ void createEditeProduct({
                                                               0xFFC2C3CB,
                                                             ),
                                                     hintcolor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -943,7 +944,7 @@ void createEditeProduct({
                                                     value:
                                                         product!.soPosCategId,
                                                     color:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -998,7 +999,7 @@ void createEditeProduct({
                                                                             .enUS)!,
                                                                     style: TextStyle(
                                                                       color:
-                                                                          SharedPr.isDarkMode!
+                                                                          Get.find<ThemeController>().isDarkMode.value
                                                                               ? Colors.white
                                                                               : Colors.black,
                                                                     ),
@@ -1032,7 +1033,7 @@ void createEditeProduct({
                                                       40,
                                                     ),
                                                     fillColor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.43,
@@ -1041,7 +1042,7 @@ void createEditeProduct({
                                                               0xFF2B2B2B,
                                                             ),
                                                     borderColor:
-                                                        SharedPr.isDarkMode!
+                                                        Get.find<ThemeController>().isDarkMode.value
                                                             ? Colors.white
                                                                 .withValues(
                                                                   alpha: 0.50,
@@ -1050,7 +1051,7 @@ void createEditeProduct({
                                                               0xFFC2C3CB,
                                                             ),
                                                     hintcolor:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -1064,7 +1065,7 @@ void createEditeProduct({
                                                         'product_unit'.tr,
                                                     value: product!.uomId,
                                                     color:
-                                                        !SharedPr.isDarkMode!
+                                                        !Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF404040,
                                                             )
@@ -1118,7 +1119,7 @@ void createEditeProduct({
                                                                             .enUS)!,
                                                                     style: TextStyle(
                                                                       color:
-                                                                          SharedPr.isDarkMode!
+                                                                          Get.find<ThemeController>().isDarkMode.value
                                                                               ? Colors.white
                                                                               : Colors.black,
                                                                     ),
@@ -1139,7 +1140,7 @@ void createEditeProduct({
                                                 border: Border(
                                                   top: BorderSide(
                                                     color:
-                                                        SharedPr.isDarkMode!
+                                                        Get.find<ThemeController>().isDarkMode.value
                                                             ? const Color(
                                                               0xFF3F3F3F,
                                                             )
@@ -1164,7 +1165,7 @@ void createEditeProduct({
                                                     'more_options'.tr,
                                                     style: TextStyle(
                                                       color:
-                                                          SharedPr.isDarkMode!
+                                                          Get.find<ThemeController>().isDarkMode.value
                                                               ? const Color(
                                                                 0xFFF7F7F8,
                                                               )
@@ -1218,7 +1219,7 @@ void createEditeProduct({
                                                               .tr,
                                                           style: TextStyle(
                                                             color:
-                                                                SharedPr.isDarkMode!
+                                                                Get.find<ThemeController>().isDarkMode.value
                                                                     ? const Color(
                                                                       0xFFB7B7B7,
                                                                     )
@@ -1246,17 +1247,17 @@ void createEditeProduct({
                                               width: context.screenWidth,
                                               height: context.setHeight(40),
                                               fillColor:
-                                                  !SharedPr.isDarkMode!
+                                                  !Get.find<ThemeController>().isDarkMode.value
                                                       ? Colors.white
                                                       : const Color(0xFF2B2B2B),
                                               borderColor:
-                                                  SharedPr.isDarkMode!
+                                                  Get.find<ThemeController>().isDarkMode.value
                                                       ? Colors.white.withValues(
                                                         alpha: 0.50,
                                                       )
                                                       : const Color(0xFFC2C3CB),
                                               hintcolor:
-                                                  !SharedPr.isDarkMode!
+                                                  !Get.find<ThemeController>().isDarkMode.value
                                                       ? const Color(0xFF404040)
                                                       : const Color(0xFF9CA3AF),
                                               borderRadius: context.setMinSize(
@@ -1266,7 +1267,7 @@ void createEditeProduct({
                                               labelText: 'product_note'.tr,
                                               value: null,
                                               color:
-                                                  !SharedPr.isDarkMode!
+                                                  !Get.find<ThemeController>().isDarkMode.value
                                                       ? const Color(0xFF404040)
                                                       : const Color(0xFF6B7280),
                                               iconcolor: const Color(
@@ -1289,7 +1290,7 @@ void createEditeProduct({
                                                               e.note!,
                                                               style: TextStyle(
                                                                 color:
-                                                                    SharedPr.isDarkMode!
+                                                                    Get.find<ThemeController>().isDarkMode.value
                                                                         ? Colors
                                                                             .white
                                                                         : Colors
@@ -1322,7 +1323,7 @@ void createEditeProduct({
                                                         shape: RoundedRectangleBorder(
                                                           side: BorderSide(
                                                             color:
-                                                                SharedPr.isDarkMode!
+                                                                Get.find<ThemeController>().isDarkMode.value
                                                                     ? const Color(
                                                                       0xFF1B1B1B,
                                                                     )
@@ -1355,7 +1356,7 @@ void createEditeProduct({
                                                               c.note!,
                                                               style: TextStyle(
                                                                 color:
-                                                                    SharedPr.isDarkMode!
+                                                                    Get.find<ThemeController>().isDarkMode.value
                                                                         ? Colors
                                                                             .white
                                                                         : const Color(
@@ -1409,7 +1410,7 @@ void createEditeProduct({
                                       border: Border(
                                         top: BorderSide(
                                           color:
-                                              SharedPr.isDarkMode!
+                                              Get.find<ThemeController>().isDarkMode.value
                                                   ? const Color(0xFF3F3F3F)
                                                   : const Color(0xFF374151),
                                           width: 1,

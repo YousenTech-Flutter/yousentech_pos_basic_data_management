@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_enums.dart';
 import 'package:shared_widgets/config/app_images.dart';
+import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/shared_widgets/app_loading.dart';
 import 'package:shared_widgets/shared_widgets/app_snack_bar.dart';
 import 'package:shared_widgets/shared_widgets/app_text_field.dart';
@@ -75,14 +76,14 @@ class _CustomerScreenState extends State<CustomerScreen> {
                   height: !Platform.isAndroid ?  double.infinity : null,
                   decoration: ShapeDecoration(
                     color:
-                        SharedPr.isDarkMode!
+                        Get.find<ThemeController>().isDarkMode.value
                             ? Colors.black.withValues(alpha: 0.17)
                             : Colors.white,
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
                         width: 1,
                         color:
-                            SharedPr.isDarkMode!
+                            Get.find<ThemeController>().isDarkMode.value
                                 ? Colors.white.withValues(alpha: 0.50)
                                 : Color(0x0C000000),
                       ),
@@ -110,7 +111,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                   border: Border(
                                     bottom: BorderSide(
                                       color:
-                                          SharedPr.isDarkMode!
+                                          Get.find<ThemeController>().isDarkMode.value
                                               ? const Color(0xFF3F3F3F)
                                               : const Color(0xFFDADADA),
                                       width: 1,
@@ -121,7 +122,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                   'customer_list'.tr,
                                   style: TextStyle(
                                     color:
-                                        SharedPr.isDarkMode!
+                                        Get.find<ThemeController>().isDarkMode.value
                                             ? Colors.white
                                             : const Color(0xFF0C0C0C),
                                     fontSize: context.setSp(25),
@@ -223,11 +224,11 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                           ]);
                                         },
                                         textColor:
-                                            SharedPr.isDarkMode!
+                                            Get.find<ThemeController>().isDarkMode.value
                                                 ? Colors.white
                                                 : const Color(0xFF0C0C0C),
                                         color:
-                                            SharedPr.isDarkMode!
+                                            Get.find<ThemeController>().isDarkMode.value
                                                 ? const Color(0xFF292929)
                                                 : const Color(0xFFD5D5D5),
                                       ),
@@ -257,11 +258,11 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                           }
                                         },
                                         textColor:
-                                            SharedPr.isDarkMode!
+                                            Get.find<ThemeController>().isDarkMode.value
                                                 ? Colors.white
                                                 : const Color(0xFF0C0C0C),
                                         color:
-                                            SharedPr.isDarkMode!
+                                            Get.find<ThemeController>().isDarkMode.value
                                                 ? const Color(0xFF292929)
                                                 : const Color(0xFFD5D5D5),
                                       ),
@@ -303,11 +304,11 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                                 9999,
                                               ),
                                               backgroundColor:
-                                                  SharedPr.isDarkMode!
+                                                  Get.find<ThemeController>().isDarkMode.value
                                                       ? const Color(0x26F7F7F7)
                                                       : const Color(0x268B8B8B),
                                               color:
-                                                  SharedPr.isDarkMode!
+                                                  Get.find<ThemeController>().isDarkMode.value
                                                       ? const Color(0xFF18BBCD)
                                                       : const Color(0xFF16A6B7),
                                             ),
@@ -317,7 +318,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                             textAlign: TextAlign.right,
                                             style: TextStyle(
                                               color:
-                                                  SharedPr.isDarkMode!
+                                                  Get.find<ThemeController>().isDarkMode.value
                                                       ? Colors.white
                                                       : const Color(0xFF0C0C0C),
                                               fontSize:context.setSp(15) ,
@@ -353,19 +354,19 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                       ),
                                       showLable: false,
                                       borderColor:
-                                          !SharedPr.isDarkMode!
+                                          !Get.find<ThemeController>().isDarkMode.value
                                               ? Color(0xFFC2C3CB)
                                               : null,
                                       fillColor:
-                                          !SharedPr.isDarkMode!
+                                          !Get.find<ThemeController>().isDarkMode.value
                                               ? Colors.white.withValues(alpha: 0.43)
                                               : const Color(0xFF2B2B2B),
                                       hintcolor:
-                                          !SharedPr.isDarkMode!
+                                          !Get.find<ThemeController>().isDarkMode.value
                                               ? Color(0xFFC2C3CB)
                                               : const Color(0xFF9CA3AF),
                                       color:
-                                          !SharedPr.isDarkMode!
+                                          !Get.find<ThemeController>().isDarkMode.value
                                               ? Color(0xFFC2C3CB)
                                               : const Color(0xFFC2C3CB),
                                       isAddOrEdit: true,
@@ -408,12 +409,12 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                   //     height: context.setHeight(44.3),
                                   //     decoration: ShapeDecoration(
                                   //       color:
-                                  //           SharedPr.isDarkMode!
+                                  //           Get.find<ThemeController>().isDarkMode.value
                                   //               ? const Color(0xFF292929)
                                   //               : const Color(0xFFF8F9FB),
                                   //       shape: RoundedRectangleBorder(
                                   //         side:
-                                  //             SharedPr.isDarkMode!
+                                  //             Get.find<ThemeController>().isDarkMode.value
                                   //                 ? BorderSide.none
                                   //                 : BorderSide(
                                   //                   width: 1,
@@ -430,7 +431,7 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                   //         width: context.setWidth(20),
                                   //         height: context.setHeight(20),
                                   //         color:
-                                  //             SharedPr.isDarkMode!
+                                  //             Get.find<ThemeController>().isDarkMode.value
                                   //                 ? null
                                   //                 : const Color(0xFF686868),
                                   //       ),
@@ -567,7 +568,7 @@ class _PagnationWidgetState extends State<PagnationWidget> {
               height: context.setHeight(35),
               decoration: ShapeDecoration(
                 color:
-                    SharedPr.isDarkMode!
+                    Get.find<ThemeController>().isDarkMode.value
                         ? const Color(0xFF292929)
                         : const Color(0xFFD5D5D5),
                 shape: RoundedRectangleBorder(
@@ -580,7 +581,7 @@ class _PagnationWidgetState extends State<PagnationWidget> {
                                                             package: 'shared_widgets',
                   width: context.setWidth(30),
                   height: context.setHeight(30),
-                  color: SharedPr.isDarkMode! ? null : const Color(0xFF2B2B2B),
+                  color: Get.find<ThemeController>().isDarkMode.value ? null : const Color(0xFF2B2B2B),
                 ),
               ),
             ),
@@ -598,7 +599,7 @@ class _PagnationWidgetState extends State<PagnationWidget> {
                   color:
                       i == widget.pagesNumber
                           ? const Color(0xFF16A6B7)
-                          : SharedPr.isDarkMode!
+                          : Get.find<ThemeController>().isDarkMode.value
                           ? const Color(0xFF292929)
                           : const Color(0xFFD5D5D5),
                   shape: RoundedRectangleBorder(
@@ -614,7 +615,7 @@ class _PagnationWidgetState extends State<PagnationWidget> {
                     style: TextStyle(
                       color:
                       i == widget.pagesNumber ? const Color(0xFFE0E0E0) :
-                      SharedPr.isDarkMode!
+                      Get.find<ThemeController>().isDarkMode.value
                         ? const Color(0xFFE0E0E0)
                         : const Color(0xFF292929),
                       fontSize: context.setSp(15),
@@ -636,7 +637,7 @@ class _PagnationWidgetState extends State<PagnationWidget> {
               height: context.setHeight(35),
               decoration: ShapeDecoration(
                 color:
-                    SharedPr.isDarkMode!
+                    Get.find<ThemeController>().isDarkMode.value
                         ? const Color(0xFF292929)
                         : const Color(0xFFD5D5D5),
                 shape: RoundedRectangleBorder(
@@ -649,7 +650,7 @@ class _PagnationWidgetState extends State<PagnationWidget> {
                                                             package: 'shared_widgets',
                   width: context.setWidth(30),
                   height: context.setHeight(30),
-                  color: SharedPr.isDarkMode! ? null : const Color(0xFF2B2B2B),
+                  color: Get.find<ThemeController>().isDarkMode.value ? null : const Color(0xFF2B2B2B),
                 ),
               ),
             ),

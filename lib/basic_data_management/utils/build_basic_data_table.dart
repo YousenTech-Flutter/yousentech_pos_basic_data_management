@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pos_shared_preferences/pos_shared_preferences.dart';
+import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
 
 buildBasicDataColumnHeader({
@@ -25,7 +25,7 @@ buildBasicDataColumnHeader({
                 '${data[index]["name"]}'.tr,
                 textAlign: TextAlign.right,
                 style: TextStyle(
-                  color:SharedPr.isDarkMode! ? Colors.white : const Color(0xFF0C0C0C),
+                  color:Get.find<ThemeController>().isDarkMode.value ? Colors.white : const Color(0xFF0C0C0C),
                   fontSize:context.setSp(fontSize?? 17) ,
                   fontFamily: 'Tajawal',
                   fontWeight: FontWeight.w500,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_colors.dart';
+import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/shared_widgets/app_dialog.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_provider.dart';
@@ -34,7 +34,7 @@ showDiffCategoriesDialog({required List items, required BuildContext context}) {
                       'pos_category_list'.tr,
                       style: TextStyle(
                         color:
-                            SharedPr.isDarkMode!
+                             Get.find<ThemeController>().isDarkMode.value 
                                 ? Colors.white
                                 : const Color(0xFF0C0C0C),
                         fontSize: context.setSp(22),

@@ -6,8 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:pos_shared_preferences/models/customer_model.dart';
-import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_images.dart';
+import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/shared_widgets/app_snack_bar.dart';
 import 'package:shared_widgets/shared_widgets/app_text_field.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
@@ -89,7 +89,7 @@ class _SearchableProductDialogState extends State<SearchableCustomerDialog> {
           absorbing: ignoring,
           child: AlertDialog(
             backgroundColor:
-                SharedPr.isDarkMode!
+                 Get.find<ThemeController>().isDarkMode.value 
                     ? const Color(0xFF1B1B1B)
                     : const Color(0xFFE3E3E3),
             title: Row(
@@ -100,7 +100,7 @@ class _SearchableProductDialogState extends State<SearchableCustomerDialog> {
                   'customers'.tr,
                   style: TextStyle(
                     color:
-                        SharedPr.isDarkMode!
+                         Get.find<ThemeController>().isDarkMode.value 
                             ? Colors.white
                             : const Color(0xFF2E2E2E),
                     fontSize: context.setSp(20.03),
@@ -171,17 +171,17 @@ class _SearchableProductDialogState extends State<SearchableCustomerDialog> {
                   children: [
                     ContainerTextField(
                       borderColor:
-                          !SharedPr.isDarkMode! ? Color(0xFFC2C3CB) : null,
+                          ! Get.find<ThemeController>().isDarkMode.value  ? Color(0xFFC2C3CB) : null,
                       fillColor:
-                          !SharedPr.isDarkMode!
+                          ! Get.find<ThemeController>().isDarkMode.value 
                               ? Colors.white.withValues(alpha: 0.43)
                               : const Color(0xFF2B2B2B),
                       hintcolor:
-                          !SharedPr.isDarkMode!
+                          ! Get.find<ThemeController>().isDarkMode.value 
                               ? Color(0xFFC2C3CB)
                               : const Color(0xFFC2C3CB),
                       color:
-                          !SharedPr.isDarkMode!
+                          ! Get.find<ThemeController>().isDarkMode.value 
                               ? Color(0xFFC2C3CB)
                               : const Color(0xFFC2C3CB),
                       focusNode: _invoiceController.searchItemsFocus,
@@ -280,7 +280,7 @@ class _SearchableProductDialogState extends State<SearchableCustomerDialog> {
                                                       .text,
                                               style: TextStyle(
                                                 color:
-                                                    SharedPr.isDarkMode!
+                                                     Get.find<ThemeController>().isDarkMode.value 
                                                         ? Colors.white
                                                         : Colors.black,
                                                 fontSize: context.setSp(16),
@@ -369,7 +369,7 @@ class _SearchableProductDialogState extends State<SearchableCustomerDialog> {
                                     customer.name!,
                                     style: TextStyle(
                                       color:
-                                          SharedPr.isDarkMode!
+                                           Get.find<ThemeController>().isDarkMode.value 
                                               ? Colors.white
                                               : Colors.black,
                                       fontSize: context.setSp(16),
