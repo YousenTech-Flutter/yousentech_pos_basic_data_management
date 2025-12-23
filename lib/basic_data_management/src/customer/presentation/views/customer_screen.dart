@@ -141,7 +141,13 @@ class _CustomerScreenState extends State<CustomerScreen> {
                                       ButtonClick(
                                         data: 'add_customer'.tr,
                                         onTap: () {
-                                          createEditeCustomer(context: context);
+                                          if(SharedPr.chosenUserObj!.allowCreateCustomers!){
+                                            createEditeCustomer(context: context);
+                                          }
+                                          else{
+                                            appSnackBar(messageType:MessageTypes.warning ,message: "permission_issue".tr);
+                                          }
+                                          
                                         },
                                         color: const Color(0xFF16A6B7),
                                       ),
