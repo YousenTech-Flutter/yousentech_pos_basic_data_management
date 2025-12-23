@@ -367,7 +367,7 @@ void createEditeCustomer({
                                                       : const Color(
                                                           0xFFC2C3CB,
                                                         ),
-                                                  fillColor: Get.find<ThemeController>().isDarkMode.value
+                                                  fillColor: !Get.find<ThemeController>().isDarkMode.value
                                                       ? Colors.white.withValues(
                                                           alpha: 0.43,
                                                         )
