@@ -91,6 +91,7 @@ void createEditeProduct({
   );
   _onPressed() async {
     try {
+      // for(int i=0 ; SharedPr.chosenUserObj.p)
       LoadingDataController loadingDataController =
           Get.find<LoadingDataController>();
       productController.isLoading.value = true;
