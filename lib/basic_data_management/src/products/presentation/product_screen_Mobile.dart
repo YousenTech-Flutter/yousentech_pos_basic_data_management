@@ -693,10 +693,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                           );
                         },
                       ),
-                      Obx(() {
-                        return Text(
-                            "${productController.productsViewMode.value}");
-                      })
                     ],
                   ),
                 );
