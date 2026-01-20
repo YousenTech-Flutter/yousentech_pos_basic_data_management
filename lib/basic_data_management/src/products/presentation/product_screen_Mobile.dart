@@ -75,7 +75,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
               tag: 'productControllerMain',
               builder: (controller) {
                 return Column(
-                  spacing: context.setHeight(8),
+                  spacing: context.setHeight(10),
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
@@ -144,49 +144,53 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                 ? (remote / (local == 0 ? 1 : local) * 100)
                                     .toStringAsFixed(0)
                                 : ((local / remote) * 100).toStringAsFixed(0));
-                        return Row(
-                          spacing: context.setWidth(13.27),
-                          children: [
-                            SizedBox(
-                              width: context.setWidth(200),
-                              height: context.setHeight(7),
-                              child: LinearProgressIndicator(
-                                value: double.parse(syncData) / 100,
-                                minHeight: 8,
-                                borderRadius: BorderRadius.circular(9999),
-                                backgroundColor:
-                                    Get.find<ThemeController>().isDarkMode.value
-                                        ? const Color(
-                                            0x26F7F7F7,
-                                          )
-                                        : const Color(
-                                            0x268B8B8B,
-                                          ),
-                                color:
-                                    Get.find<ThemeController>().isDarkMode.value
-                                        ? const Color(
-                                            0xFF18BBCD,
-                                          )
-                                        : AppColor.appColor,
+                        return Container(
+                          color: AppColor.white,
+                          child: Column(
+                            spacing: context.setHeight(10),
+                            children: [
+                              Text(
+                                '${'synchronization'.tr} $syncData %',
+                                textAlign: TextAlign.right,
+                                style: TextStyle(
+                                  color:
+                                      Get.find<ThemeController>().isDarkMode.value
+                                          ? Colors.white
+                                          : const Color(
+                                              0xFF0C0C0C,
+                                            ),
+                                  fontSize: context.setSp(12),
+                                  fontFamily: 'SansRegular',
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.50,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '${'synchronization'.tr} $syncData %',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                color:
-                                    Get.find<ThemeController>().isDarkMode.value
-                                        ? Colors.white
-                                        : const Color(
-                                            0xFF0C0C0C,
-                                          ),
-                                fontSize: context.setSp(15),
-                                fontFamily: 'Tajawal',
-                                fontWeight: FontWeight.w500,
-                                height: 1.50,
+                              SizedBox(
+                                width: double.infinity,
+                                height: context.setHeight(7),
+                                child: LinearProgressIndicator(
+                                  value: double.parse(syncData) / 100,
+                                  minHeight: 8,
+                                  borderRadius: BorderRadius.circular(9999),
+                                  backgroundColor:
+                                      Get.find<ThemeController>().isDarkMode.value
+                                          ? const Color(
+                                              0x26F7F7F7,
+                                            )
+                                          : const Color(
+                                              0x268B8B8B,
+                                            ),
+                                  color:
+                                      Get.find<ThemeController>().isDarkMode.value
+                                          ? const Color(
+                                              0xFF18BBCD,
+                                            )
+                                          : AppColor.appColor,
+                                ),
                               ),
-                            ),
-                          ],
+                              
+                            ],
+                          ),
                         );
                       },
                     ),
@@ -197,6 +201,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                           child: ButtonClick(
                             data: 'add_product'.tr,
                             fontSize: 12,
+                            horizontal: 10,
                             onTap: () {
                               createEditeProduct(
                                 context: context,
@@ -209,6 +214,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                           child: ButtonClick(
                             data: 'synchronization'.tr,
                             fontSize: 12,
+                            horizontal: 10,
                             onTap: () async {
                               loadingDataController.isUpdate.value = true;
                               var result = await synchronizeBasedOnModelType(
@@ -254,6 +260,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                           child: ButtonClick(
                             data: "Update_All".tr,
                             fontSize: 12,
+                            horizontal: 10,
                             onTap: () async {
                               var result =
                                   await loadingDataController.updateAll(
@@ -294,6 +301,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                           child: ButtonClick(
                             data: 'display'.tr,
                             fontSize: 12,
+                            horizontal: 10,
                             onTap: () async {
                               var result =
                                   await displayDataDiffBasedOnModelType(
