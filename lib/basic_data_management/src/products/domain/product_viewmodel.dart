@@ -22,7 +22,10 @@ import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domai
 import '../../item_history/domain/item_history_viewmodel.dart';
 import '../../pos_categories/domain/pos_category_service.dart';
 
+
+enum ProductsViewMode { list, grid }
 class ProductController extends GetxController {
+  
   ProductService productService = ProductService.getInstance();
   final ItemHistoryController _itemHistoryController = ItemHistoryController();
   
@@ -55,6 +58,7 @@ class ProductController extends GetxController {
   int skip = 0;
   int pagnationpagesNumber = 0;
   //==================for Pagnation  item================
+  final Rx<ProductsViewMode> productsViewMode = ProductsViewMode.list.obs;
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -583,4 +587,14 @@ class ProductController extends GetxController {
     update();
   }
 // # ===================================================== [ ACCOUNT TAX DATA ] =====================================================
+ 
+
+
+void toggleProductsViewMode() {
+  productsViewMode.value = 
+      productsViewMode.value == ProductsViewMode.list 
+          ? ProductsViewMode.grid 
+          : ProductsViewMode.list;
+}
+
 }

@@ -482,25 +482,34 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                         Text(
                           'قائمة المنتجات',
                           style: TextStyle(
-                            color:Get.find<ThemeController>().isDarkMode.value
-                                        ? Colors.white
-                                        : const Color(0xFF374151),
-                            fontSize:context.setSp(14.80) ,
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? Colors.white
+                                : const Color(0xFF374151),
+                            fontSize: context.setSp(14.80),
                             fontFamily: 'SansMedium',
                             fontWeight: FontWeight.w500,
                             height: 1.43,
                           ),
                         ),
-                        SvgPicture.asset(
-                          AppImages.menueGrid,
-                          color: Get.find<ThemeController>().isDarkMode.value
-                                        ? Colors.white
-                                        :null,
-                          width:context.setWidth(23.26) ,
-                          height: context.setHeight(23.26),
+                        GestureDetector(
+                          onTap: () {
+                            productController.toggleProductsViewMode();
+                          },
+                          child: SvgPicture.asset(
+                            AppImages.menueGrid,
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? Colors.white
+                                : null,
+                            width: context.setWidth(23.26),
+                            height: context.setHeight(23.26),
+                          ),
                         )
                       ],
-                    )
+                    ),
+                    Obx(() {
+                      return Text(
+                          "${productController.productsViewMode.value}");
+                    })
                   ],
                 );
               },
