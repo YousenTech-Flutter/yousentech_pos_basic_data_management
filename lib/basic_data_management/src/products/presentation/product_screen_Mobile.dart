@@ -215,7 +215,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                       },
                     ),
                     Row(
-                      spacing: context.setWidth(11),
+                      spacing: context.setWidth(8),
                       children: [
                         Expanded(
                           child: ButtonClick(
