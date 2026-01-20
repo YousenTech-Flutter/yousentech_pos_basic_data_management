@@ -147,7 +147,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                         ),
                                       ),
                                       ButtonElevated(
-                                        text: 'إدارة الفئات'.tr,
+                                        text: 'categories_management'.tr,
                                         width: context.setWidth(150),
                                         borderRadius: context.setMinSize(9),
                                         borderColor: AppColor.appColor,

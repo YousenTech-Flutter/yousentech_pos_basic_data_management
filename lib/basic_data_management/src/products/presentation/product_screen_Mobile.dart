@@ -113,7 +113,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               ),
                             ),
                             ButtonElevated(
-                              text: 'إدارة الفئات'.tr,
+                              text: 'categories_management'.tr,
                               height: context.setHeight(30),
                               width: context.setWidth(100),
                               borderRadius: context.setMinSize(9),
@@ -480,7 +480,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'قائمة المنتجات',
+                          'products_list'.tr,
                           style: TextStyle(
                             color: Get.find<ThemeController>().isDarkMode.value
                                 ? Colors.white
