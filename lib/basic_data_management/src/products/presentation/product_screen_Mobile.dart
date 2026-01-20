@@ -65,10 +65,12 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
     return IgnorePointer(
       ignoring: loadingDataController.isUpdate.value,
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: context.setHeight(16),
-          horizontal: context.setWidth(20.5),
-        ),
+        padding: EdgeInsets.only(
+            top: context.setHeight(16),
+            bottom: context.setHeight(5),
+            right: context.setWidth(10),
+            left: context.setWidth(10),
+          ),
         child: Stack(
           children: [
             GetBuilder<ProductController>(
@@ -112,7 +114,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                             ),
                             ButtonElevated(
                               text: 'إدارة الفئات'.tr,
-                              height:context.setHeight(100) ,
+                              height:context.setHeight(30) ,
                               width: context.setWidth(150),
                               borderRadius: context.setMinSize(9),
                               borderColor: AppColor.appColor,
@@ -147,51 +149,58 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                 : ((local / remote) * 100).toStringAsFixed(0));
                         return Container(
                           color: AppColor.white,
-                          child: Column(
-                            spacing: context.setHeight(10),
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                '${'synchronization'.tr} $syncData %',
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  color:
-                                      Get.find<ThemeController>().isDarkMode.value
-                                          ? Colors.white
-                                          : const Color(
-                                              0xFF0C0C0C,
-                                            ),
-                                  fontSize: context.setSp(12),
-                                  fontFamily: 'SansRegular',
-                                  fontWeight: FontWeight.w500,
-                                  height: 1.50,
+                          child: Padding(
+                            padding:  EdgeInsets.all(context.setMinSize(10)),
+                            child: Column(
+                              spacing: context.setHeight(10),
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '${'synchronization'.tr} $syncData %',
+                                      style: TextStyle(
+                                        color:
+                                            Get.find<ThemeController>().isDarkMode.value
+                                                ? Colors.white
+                                                : const Color(
+                                                    0xFF0C0C0C,
+                                                  ),
+                                        fontSize: context.setSp(12),
+                                        fontFamily: 'SansRegular',
+                                        fontWeight: FontWeight.w500,
+                                        height: 1.50,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              SizedBox(
-                                width: double.infinity,
-                                height: context.setHeight(7),
-                                child: LinearProgressIndicator(
-                                  value: double.parse(syncData) / 100,
-                                  minHeight: 8,
-                                  borderRadius: BorderRadius.circular(9999),
-                                  backgroundColor:
-                                      Get.find<ThemeController>().isDarkMode.value
-                                          ? const Color(
-                                              0x26F7F7F7,
-                                            )
-                                          : const Color(
-                                              0x268B8B8B,
-                                            ),
-                                  color:
-                                      Get.find<ThemeController>().isDarkMode.value
-                                          ? const Color(
-                                              0xFF18BBCD,
-                                            )
-                                          : AppColor.appColor,
+                                SizedBox(
+                                  width: double.infinity,
+                                  height: context.setHeight(7),
+                                  child: LinearProgressIndicator(
+                                    value: double.parse(syncData) / 100,
+                                    minHeight: 8,
+                                    borderRadius: BorderRadius.circular(9999),
+                                    backgroundColor:
+                                        Get.find<ThemeController>().isDarkMode.value
+                                            ? const Color(
+                                                0x26F7F7F7,
+                                              )
+                                            : const Color(
+                                                0x268B8B8B,
+                                              ),
+                                    color:
+                                        Get.find<ThemeController>().isDarkMode.value
+                                            ? const Color(
+                                                0xFF18BBCD,
+                                              )
+                                            : AppColor.appColor,
+                                  ),
                                 ),
-                              ),
-                              
-                            ],
+                                
+                              ],
+                            ),
                           ),
                         );
                       },
@@ -303,7 +312,8 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                           child: ButtonClick(
                             data: 'display'.tr,
                             fontSize: 12,
-                            horizontal: 10,
+                            horizontal: 0,
+                            vertical: 0,
                             onTap: () async {
                               var result =
                                   await displayDataDiffBasedOnModelType(
@@ -431,9 +441,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                         ? BorderSide.none
                                         : BorderSide(
                                             width: 1,
-                                            color: const Color(
-                                              0xFFF1F3F9,
-                                            ),
+                                            color:Color(0xFFC2C3CB),
                                           ),
                                     borderRadius: BorderRadius.circular(
                                       context.setMinSize(10),
