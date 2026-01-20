@@ -149,13 +149,12 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                 : ((local / remote) * 100).toStringAsFixed(0));
                         return Container(
                           decoration: ShapeDecoration(
-                            color:Get.find<ThemeController>()
-                                          .isDarkMode
-                                          .value
-                                      ? const Color(0xFF292929)
-                                      :  Colors.white.withValues(alpha: 0.84),
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? const Color(0xFF292929)
+                                : Colors.white.withValues(alpha: 0.84),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(context.setMinSize(8.46) ),
+                              borderRadius: BorderRadius.circular(
+                                  context.setMinSize(8.46)),
                             ),
                           ),
                           child: Padding(
@@ -204,7 +203,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                     color: Get.find<ThemeController>()
                                             .isDarkMode
                                             .value
-                                        ?AppColor.appColor
+                                        ? AppColor.appColor
                                         : AppColor.appColor,
                                   ),
                                 ),
@@ -477,6 +476,31 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                         ),
                       ],
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'قائمة المنتجات',
+                          style: TextStyle(
+                            color:Get.find<ThemeController>().isDarkMode.value
+                                        ? Colors.white
+                                        : const Color(0xFF374151),
+                            fontSize:context.setSp(14.80) ,
+                            fontFamily: 'SansMedium',
+                            fontWeight: FontWeight.w500,
+                            height: 1.43,
+                          ),
+                        ),
+                        SvgPicture.asset(
+                          AppImages.menueGrid,
+                          color: Get.find<ThemeController>().isDarkMode.value
+                                        ? Colors.white
+                                        :null,
+                          width:context.setWidth(23.26) ,
+                          height: context.setHeight(23.26),
+                        )
+                      ],
+                    )
                   ],
                 );
               },
