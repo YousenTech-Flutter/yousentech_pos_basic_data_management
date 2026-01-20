@@ -66,11 +66,11 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
       ignoring: loadingDataController.isUpdate.value,
       child: Padding(
         padding: EdgeInsets.only(
-            top: context.setHeight(16),
-            bottom: context.setHeight(5),
-            right: context.setWidth(10),
-            left: context.setWidth(10),
-          ),
+          top: context.setHeight(16),
+          bottom: context.setHeight(5),
+          right: context.setWidth(10),
+          left: context.setWidth(10),
+        ),
         child: Stack(
           children: [
             GetBuilder<ProductController>(
@@ -114,8 +114,8 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                             ),
                             ButtonElevated(
                               text: 'إدارة الفئات'.tr,
-                              height:context.setHeight(30) ,
-                              width: context.setWidth(150),
+                              height: context.setHeight(30),
+                              width: context.setWidth(100),
                               borderRadius: context.setMinSize(9),
                               borderColor: AppColor.appColor,
                               textStyle: TextStyle(
@@ -148,9 +148,18 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                     .toStringAsFixed(0)
                                 : ((local / remote) * 100).toStringAsFixed(0));
                         return Container(
-                          color: AppColor.white,
+                          decoration: ShapeDecoration(
+                            color:Get.find<ThemeController>()
+                                          .isDarkMode
+                                          .value
+                                      ? const Color(0xFF292929)
+                                      :  Colors.white.withValues(alpha: 0.84),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(context.setMinSize(8.46) ),
+                            ),
+                          ),
                           child: Padding(
-                            padding:  EdgeInsets.all(context.setMinSize(10)),
+                            padding: EdgeInsets.all(context.setMinSize(10)),
                             child: Column(
                               spacing: context.setHeight(10),
                               mainAxisSize: MainAxisSize.min,
@@ -161,12 +170,13 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                     Text(
                                       '${'synchronization'.tr} $syncData %',
                                       style: TextStyle(
-                                        color:
-                                            Get.find<ThemeController>().isDarkMode.value
-                                                ? Colors.white
-                                                : const Color(
-                                                    0xFF0C0C0C,
-                                                  ),
+                                        color: Get.find<ThemeController>()
+                                                .isDarkMode
+                                                .value
+                                            ? Colors.white
+                                            : const Color(
+                                                0xFF0C0C0C,
+                                              ),
                                         fontSize: context.setSp(12),
                                         fontFamily: 'SansRegular',
                                         fontWeight: FontWeight.w500,
@@ -182,23 +192,22 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                     value: double.parse(syncData) / 100,
                                     minHeight: 8,
                                     borderRadius: BorderRadius.circular(9999),
-                                    backgroundColor:
-                                        Get.find<ThemeController>().isDarkMode.value
-                                            ? const Color(
-                                                0x26F7F7F7,
-                                              )
-                                            : const Color(
-                                                0x268B8B8B,
-                                              ),
-                                    color:
-                                        Get.find<ThemeController>().isDarkMode.value
-                                            ? const Color(
-                                                0xFF18BBCD,
-                                              )
-                                            : AppColor.appColor,
+                                    backgroundColor: Get.find<ThemeController>()
+                                            .isDarkMode
+                                            .value
+                                        ? const Color(
+                                            0x26F7F7F7,
+                                          )
+                                        : const Color(
+                                            0x268B8B8B,
+                                          ),
+                                    color: Get.find<ThemeController>()
+                                            .isDarkMode
+                                            .value
+                                        ?AppColor.appColor
+                                        : AppColor.appColor,
                                   ),
                                 ),
-                                
                               ],
                             ),
                           ),
@@ -313,7 +322,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                             data: 'display'.tr,
                             fontSize: 12,
                             horizontal: 0,
-                            vertical: 0,
                             onTap: () async {
                               var result =
                                   await displayDataDiffBasedOnModelType(
@@ -441,7 +449,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                         ? BorderSide.none
                                         : BorderSide(
                                             width: 1,
-                                            color:Color(0xFFC2C3CB),
+                                            color: Color(0xFFC2C3CB),
                                           ),
                                     borderRadius: BorderRadius.circular(
                                       context.setMinSize(10),

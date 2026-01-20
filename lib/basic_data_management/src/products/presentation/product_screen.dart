@@ -719,6 +719,7 @@ class ButtonClick extends StatelessWidget {
           ),
           child: Center(
             child: Row(
+              mainAxisAlignment:isSync? MainAxisAlignment.start: MainAxisAlignment.center,
               spacing: context.setWidth(6.63),
               children: [
                 if (isSync) ...[
