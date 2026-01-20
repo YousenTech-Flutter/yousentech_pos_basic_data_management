@@ -148,6 +148,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                           color: AppColor.white,
                           child: Column(
                             spacing: context.setHeight(10),
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
                                 '${'synchronization'.tr} $syncData %',
