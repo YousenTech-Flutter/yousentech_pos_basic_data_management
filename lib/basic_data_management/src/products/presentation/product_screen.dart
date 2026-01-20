@@ -732,17 +732,19 @@ class ButtonClick extends StatelessWidget {
                   ),
                 ],
 
-                Text(
-                  data,
-                  textAlign: TextAlign.center,
-                   maxLines: 1,
-                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: textColor,
-                    fontSize: context.setSp(fontSize?? 16),
-                    fontFamily: DeviceUtils.isMobile(context) ? 'SansMedium' :'Tajawal',
-                    fontWeight: FontWeight.w400,
-                    height: 1.50,
+                FittedBox(
+                  child: Text(
+                    data,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: textColor,
+                      fontSize: context.setSp(fontSize?? 16),
+                      fontFamily: DeviceUtils.isMobile(context) ? 'SansMedium' :'Tajawal',
+                      fontWeight: FontWeight.w400,
+                      height: 1.50,
+                    ),
                   ),
                 ),
               ],
