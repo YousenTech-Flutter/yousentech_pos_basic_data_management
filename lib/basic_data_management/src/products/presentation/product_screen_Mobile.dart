@@ -549,18 +549,12 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               result.length,
                               (index) {
                                 var item = result[index];
-                                ProductUnit? unitObject =
-                                    productController.unitsList.firstWhere(
-                                        (element) => element.id == item.uomId,
-                                        orElse: () => ProductUnit());
                                 return Padding(
                                   padding: EdgeInsets.only(
                                       bottom: context.setHeight(10)),
                                   child: Container(
                                       width: double.infinity,
-                                      height: context.setHeight(60),
-                                      padding:
-                                          EdgeInsets.all(context.setMinSize(6)),
+                                      padding:EdgeInsets.all(context.setMinSize(6)),
                                       decoration: ShapeDecoration(
                                         color: Get.find<ThemeController>()
                                                 .isDarkMode
@@ -593,24 +587,21 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                         spacing: context.setWidth(12.69),
                                         children: [
                                           Container(
-                                            width: context.setWidth(28),
-                                            height: context.setHeight(28),
+                                            width: context.setWidth(50),
+                                            // height: context.setHeight(28),
                                             decoration: item.image == null ||
                                                     isSvg(
                                                         item.image!.toString())
                                                 ? BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    color: Get.find<
-                                                                ThemeController>()
-                                                            .isDarkMode
-                                                            .value
-                                                        ? const Color(
-                                                            0xFF4B5563)
-                                                        : const Color(
-                                                            0xFFE4E4E4),
+                                                    shape: BoxShape.rectangle,
+                                                    color:Get.find<
+                                                                    ThemeController>()
+                                                                .isDarkMode
+                                                                .value ?  const Color(0xFF292929):  const Color(
+                                                              0xFFECEFF2),
                                                   )
                                                 : BoxDecoration(
-                                                    shape: BoxShape.circle,
+                                                    shape: BoxShape.rectangle,
                                                     image: DecorationImage(
                                                       image: MemoryImage(
                                                         base64Decode(item.image!
@@ -681,10 +672,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                 ],
                                               ),
                                               Text(
-                                                unitObject.name == null
-                                                    ? ""
-                                                    : unitObject
-                                                        .getProductUnitBasedOnLang,
+                                                item.soPosCategName!,
                                                 style: TextStyle(
                                                   overflow:
                                                       TextOverflow.ellipsis,
