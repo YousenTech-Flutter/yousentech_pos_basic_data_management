@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
+import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/config/app_enums.dart';
 import 'package:shared_widgets/config/app_images.dart';
 import 'package:shared_widgets/config/theme_controller.dart';
@@ -12,6 +13,7 @@ import 'package:shared_widgets/shared_widgets/app_button.dart';
 import 'package:shared_widgets/shared_widgets/app_loading.dart';
 import 'package:shared_widgets/shared_widgets/app_snack_bar.dart';
 import 'package:shared_widgets/shared_widgets/app_text_field.dart';
+import 'package:shared_widgets/utils/responsive_helpers/device_utils.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/presentation/views/customer_screen.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/categories_screen.dart';
@@ -148,9 +150,9 @@ class _ProductScreenState extends State<ProductScreen> {
                                         text: 'إدارة الفئات'.tr,
                                         width: context.setWidth(150),
                                         borderRadius: context.setMinSize(9),
-                                        borderColor: const Color(0xFF16A6B7),
+                                        borderColor: AppColor.appColor,
                                         textStyle: TextStyle(
-                                          color: const Color(0xFF16A6B7),
+                                          color: AppColor.appColor,
                                           fontSize: context.setSp(13.27),
                                           fontFamily: 'Tajawal',
                                           fontWeight: FontWeight.w400,
@@ -173,12 +175,13 @@ class _ProductScreenState extends State<ProductScreen> {
                                     children: [
                                       ButtonClick(
                                         data: 'add_product'.tr,
+
                                         onTap: () {
                                           createEditeProduct(
                                             context: context,
                                           );
                                         },
-                                        color: const Color(0xFF16A6B7),
+                                        color: AppColor.appColor,
                                       ),
                                       ButtonClick(
                                         data: 'synchronization'.tr,
@@ -374,9 +377,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                                       ? const Color(
                                                         0xFF18BBCD,
                                                       )
-                                                      : const Color(
-                                                        0xFF16A6B7,
-                                                      ),
+                                                      : AppColor.appColor,
                                             ),
                                           ),
                                           Text(
@@ -684,6 +685,7 @@ class ButtonClick extends StatelessWidget {
   Color? textColor;
   double ? horizontal;
   double ? vertical;
+  double ? fontSize;
   bool isSync;
   ButtonClick({
     super.key,
@@ -695,6 +697,7 @@ class ButtonClick extends StatelessWidget {
     this.vertical,
     this.isSync = false,
     this.textColor = Colors.white,
+    this.fontSize
   });
 
   @override
@@ -733,8 +736,8 @@ class ButtonClick extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: textColor,
-                    fontSize: context.setSp(16),
-                    fontFamily: 'Tajawal',
+                    fontSize: context.setSp(fontSize?? 16),
+                    fontFamily: DeviceUtils.isMobile(context) ? 'SansMedium' :'Tajawal',
                     fontWeight: FontWeight.w400,
                     height: 1.50,
                   ),
