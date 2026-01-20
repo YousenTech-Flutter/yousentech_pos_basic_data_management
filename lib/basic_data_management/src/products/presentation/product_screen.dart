@@ -735,6 +735,8 @@ class ButtonClick extends StatelessWidget {
                 Text(
                   data,
                   textAlign: TextAlign.center,
+                   maxLines: 1,
+                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: textColor,
                     fontSize: context.setSp(fontSize?? 16),
