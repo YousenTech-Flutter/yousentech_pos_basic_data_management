@@ -121,7 +121,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               ),
                               ButtonElevated(
                                 text: 'categories_management'.tr,
-                                height: context.setHeight(30),
+                                height: context.setHeight(50),
                                 width: context.setWidth(100),
                                 borderRadius: context.setMinSize(9),
                                 borderColor: AppColor.appColor,
