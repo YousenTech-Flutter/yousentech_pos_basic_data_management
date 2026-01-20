@@ -587,10 +587,6 @@ class _ProductScreenState extends State<ProductScreen> {
                                 },
                               ),
                     
-                              // if(!Platform.isAndroid)...[
-                              //   SizedBox(height: context.setHeight(12),)
-                              // ]
-                              // ,
                             ],
                           ),
                         ),
