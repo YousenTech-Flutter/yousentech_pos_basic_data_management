@@ -112,6 +112,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                             ),
                             ButtonElevated(
                               text: 'إدارة الفئات'.tr,
+                              height:context.setHeight(100) ,
                               width: context.setWidth(150),
                               borderRadius: context.setMinSize(9),
                               borderColor: AppColor.appColor,
@@ -339,7 +340,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      spacing: context.setWidth(16),
+                      spacing: context.setWidth(10),
                       children: [
                         Expanded(
                           child: ContainerTextField(
@@ -422,7 +423,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                           .isDarkMode
                                           .value
                                       ? const Color(0xFF292929)
-                                      : const Color(0xFFF8F9FB),
+                                      : AppColor.white,
                                   shape: RoundedRectangleBorder(
                                     side: Get.find<ThemeController>()
                                             .isDarkMode
