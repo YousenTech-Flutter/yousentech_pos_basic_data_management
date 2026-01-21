@@ -53,7 +53,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       productController.disposeCategoriesCheckFiltter();
     });
-
+    print("initState============");
     scrollController.addListener(() {
       print("scrollController addListener======");
       if (scrollController.position.maxScrollExtent ==
@@ -65,6 +65,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
   }
 
   Future fetch() async {
+    print("start fetch============${productController.pagnationpagesNumber}");
     productController.selectedPagnation = 1;
     productController.pagnationpagesNumber++;
     await productController.displayProductList(
