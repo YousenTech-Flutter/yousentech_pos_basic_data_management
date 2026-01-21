@@ -511,6 +511,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                             },
                             child: SvgPicture.asset(
                               AppImages.menueGrid,
+                              package:'shared_widgets',
                               color:
                                   Get.find<ThemeController>().isDarkMode.value
                                       ? Colors.white
@@ -668,6 +669,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                   SvgPicture.asset(
                                                     AppImages.riyal,
                                                     color: AppColor.appColor,
+                                                    package:'shared_widgets',
                                                     width: context.setWidth(11.63),
                                                     height:context.setHeight(10.57) ,
                                                     )
