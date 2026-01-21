@@ -604,7 +604,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                         context.setMinSize(15)),
                                                 child: SizedBox(
                                                   width: context.setWidth(50),
-                                                  height: context.setWidth(60),
+                                                  height: context.setWidth(55),
                                                   child: item.image == null ||
                                                           isSvg(item.image!
                                                               .toString())
@@ -752,6 +752,8 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                 : productController
                                                     .seachFilterPagingList;
                                 return GridView.builder(
+                                    shrinkWrap: true, // ✅ الحل السحري
+                                    physics: NeverScrollableScrollPhysics(),
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2, // عدد الأعمدة
@@ -958,7 +960,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                       ),
                                     );
                                   },
-                                  shrinkWrap: true,
                                 );
                               }); // Return an empty widget when not loading
                         }
