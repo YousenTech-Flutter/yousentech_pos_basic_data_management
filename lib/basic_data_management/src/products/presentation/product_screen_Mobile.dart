@@ -511,7 +511,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                             },
                             child: SvgPicture.asset(
                               AppImages.menueGrid,
-                              package:'shared_widgets',
+                              package: 'shared_widgets',
                               color:
                                   Get.find<ThemeController>().isDarkMode.value
                                       ? Colors.white
@@ -522,181 +522,217 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                           )
                         ],
                       ),
-                      GetBuilder<LoadingDataController>(
-                        id: "pagin",
-                        builder: (controller) {
-                          var result = productController.selectedPagnation == 1
-                              ? (productController.filtterResults.isEmpty &
-                                      productController.searchResults.isEmpty)
-                                  ? productController.pagingList
-                                  : productController.seachFilterPagingList
-                              : productController.isHaveCheck.value &&
-                                      searchController.text == ''
-                                  ? productController.filtterResults
-                                  : (productController.isHaveCheck.value ||
-                                              !productController
-                                                  .isHaveCheck.value) &&
-                                          searchController.text != ''
-                                      ? productController.searchResults
-                                      : (productController
-                                                  .filtterResults.isEmpty &
-                                              productController
-                                                  .searchResults.isEmpty)
-                                          ? productController.pagingList
-                                          : productController
-                                              .seachFilterPagingList;
-                          return Column(
-                            children: List.generate(
-                              result.length,
-                              (index) {
-                                var item = result[index];
-                                return Padding(
-                                  padding: EdgeInsets.only(
-                                      bottom: context.setHeight(10)),
-                                  child: Container(
-                                      width: double.infinity,
-                                      padding:EdgeInsets.all(context.setMinSize(6)),
-                                      decoration: ShapeDecoration(
-                                        color: Get.find<ThemeController>()
-                                                .isDarkMode
-                                                .value
-                                            ? const Color(0xFF353535)
-                                            : AppColor.white,
-                                        shape: RoundedRectangleBorder(
-                                          side: BorderSide(
-                                            width: 1.06,
+                      Obx(() {
+                        if (productController.productsViewMode.value ==ProductsViewMode.list) {
+                          return GetBuilder<LoadingDataController>(
+                            id: "pagin",
+                            builder: (controller) {
+                              var result = productController
+                                          .selectedPagnation ==
+                                      1
+                                  ? (productController.filtterResults.isEmpty &
+                                          productController
+                                              .searchResults.isEmpty)
+                                      ? productController.pagingList
+                                      : productController.seachFilterPagingList
+                                  : productController.isHaveCheck.value &&
+                                          searchController.text == ''
+                                      ? productController.filtterResults
+                                      : (productController.isHaveCheck.value ||
+                                                  !productController
+                                                      .isHaveCheck.value) &&
+                                              searchController.text != ''
+                                          ? productController.searchResults
+                                          : (productController
+                                                      .filtterResults.isEmpty &
+                                                  productController
+                                                      .searchResults.isEmpty)
+                                              ? productController.pagingList
+                                              : productController
+                                                  .seachFilterPagingList;
+                              return Column(
+                                children: List.generate(
+                                  result.length,
+                                  (index) {
+                                    var item = result[index];
+                                    return Padding(
+                                      padding: EdgeInsets.only(
+                                          bottom: context.setHeight(10)),
+                                      child: Container(
+                                          width: double.infinity,
+                                          padding: EdgeInsets.all(
+                                              context.setMinSize(6)),
+                                          decoration: ShapeDecoration(
                                             color: Get.find<ThemeController>()
                                                     .isDarkMode
                                                     .value
                                                 ? const Color(0xFF353535)
-                                                : const Color(0xFFE8E8E8),
+                                                : AppColor.white,
+                                            shape: RoundedRectangleBorder(
+                                              side: BorderSide(
+                                                width: 1.06,
+                                                color: Get.find<
+                                                            ThemeController>()
+                                                        .isDarkMode
+                                                        .value
+                                                    ? const Color(0xFF353535)
+                                                    : const Color(0xFFE8E8E8),
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      context.setMinSize(10)),
+                                            ),
+                                            shadows: [
+                                              BoxShadow(
+                                                color: Color(0x00000000),
+                                                blurRadius: 10.57,
+                                                offset: Offset(0, 4.23),
+                                                spreadRadius: 0,
+                                              )
+                                            ],
                                           ),
-                                          borderRadius: BorderRadius.circular(
-                                              context.setMinSize(10)),
-                                        ),
-                                        shadows: [
-                                          BoxShadow(
-                                            color: Color(0x00000000),
-                                            blurRadius: 10.57,
-                                            offset: Offset(0, 4.23),
-                                            spreadRadius: 0,
-                                          )
-                                        ],
-                                      ),
-                                      child: Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        spacing: context.setWidth(12.69),
-                                        children: [
-                                          Container(
-                                            width: context.setWidth(50),
-                                             height: context.setHeight(28),
-                                            decoration: item.image == null ||
-                                                    isSvg(
-                                                        item.image!.toString())
-                                                ? BoxDecoration(
-                                                    shape: BoxShape.rectangle,
-                                                    color:Get.find<
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            spacing: context.setWidth(12.69),
+                                            children: [
+                                              Container(
+                                                width: context.setWidth(50),
+                                                height: context.setHeight(28),
+                                                decoration: item.image ==
+                                                            null ||
+                                                        isSvg(item.image!
+                                                            .toString())
+                                                    ? BoxDecoration(
+                                                        shape:
+                                                            BoxShape.rectangle,
+                                                        color: Get.find<
                                                                     ThemeController>()
                                                                 .isDarkMode
-                                                                .value ?  const Color(0xFF292929):  const Color(
-                                                              0xFFECEFF2),
-                                                  )
-                                                : BoxDecoration(
-                                                    shape: BoxShape.rectangle,
-                                                    image: DecorationImage(
-                                                      image: MemoryImage(
-                                                        base64Decode(item.image!
-                                                            .toString()),
+                                                                .value
+                                                            ? const Color(
+                                                                0xFF292929)
+                                                            : const Color(
+                                                                0xFFECEFF2),
+                                                      )
+                                                    : BoxDecoration(
+                                                        shape:
+                                                            BoxShape.rectangle,
+                                                        image: DecorationImage(
+                                                          image: MemoryImage(
+                                                            base64Decode(item
+                                                                .image!
+                                                                .toString()),
+                                                          ),
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ),
-                                            child: item.image == null ||
-                                                    isSvg(
-                                                        item.image!.toString())
-                                                ? Center(
-                                                    child: SvgPicture.asset(
-                                                      AppImages.productEmptySvg,
-                                                      package: 'shared_widgets',
+                                                child: item.image == null ||
+                                                        isSvg(item.image!
+                                                            .toString())
+                                                    ? Center(
+                                                        child: SvgPicture.asset(
+                                                          AppImages
+                                                              .productEmptySvg,
+                                                          package:
+                                                              'shared_widgets',
+                                                          color: Get.find<
+                                                                      ThemeController>()
+                                                                  .isDarkMode
+                                                                  .value
+                                                              ? null
+                                                              : const Color(
+                                                                  0xFF666C6D),
+                                                        ),
+                                                      )
+                                                    : null,
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                spacing: context.setHeight(5),
+                                                children: [
+                                                  Text(
+                                                    item.getProductNameBasedOnLang,
+                                                    style: TextStyle(
                                                       color: Get.find<
                                                                   ThemeController>()
                                                               .isDarkMode
                                                               .value
-                                                          ? null
-                                                          : const Color(
-                                                              0xFF666C6D),
+                                                          ? Colors.white
+                                                          : Colors.black,
+                                                      fontFamily: 'SansMedium',
+                                                      fontSize: context.setSp(
+                                                        12,
+                                                      ),
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      fontWeight:
+                                                          FontWeight.w700,
                                                     ),
-                                                  )
-                                                : null,
-                                          ),
-                                          
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            spacing: context.setHeight(5),
-                                            children: [
-                                              Text(
-                                                item.getProductNameBasedOnLang,
-                                                style: TextStyle(
-                                                  color: Get.find<
-                                                              ThemeController>()
-                                                          .isDarkMode
-                                                          .value
-                                                      ? Colors.white
-                                                      : Colors.black,
-                                                  fontFamily: 'SansMedium',
-                                                  fontSize: context.setSp(
-                                                    12,
                                                   ),
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  fontWeight: FontWeight.w700,
-                                                ),
-                                              ),
-                                              Row(
-                                                spacing: context.setWidth(8),
-                                                children: [
+                                                  Row(
+                                                    spacing:
+                                                        context.setWidth(8),
+                                                    children: [
+                                                      Text(
+                                                        '${item.unitPrice}',
+                                                        style: TextStyle(
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          color:
+                                                              AppColor.appColor,
+                                                          fontSize:
+                                                              context.setSp(14),
+                                                          fontFamily:
+                                                              'SansBold',
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          height: 1.50,
+                                                        ),
+                                                      ),
+                                                      SvgPicture.asset(
+                                                        AppImages.riyal,
+                                                        color:
+                                                            AppColor.appColor,
+                                                        package:
+                                                            'shared_widgets',
+                                                        width: context
+                                                            .setWidth(11.63),
+                                                        height: context
+                                                            .setHeight(10.57),
+                                                      )
+                                                    ],
+                                                  ),
                                                   Text(
-                                                    '${item.unitPrice}',
+                                                    item.soPosCategName!,
                                                     style: TextStyle(
                                                       overflow:
                                                           TextOverflow.ellipsis,
-                                                      color: AppColor.appColor,
-                                                      fontSize: context.setSp(14),
-                                                      fontFamily: 'SansBold',
-                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xFF6B7280),
+                                                      fontSize:
+                                                          context.setSp(12.69),
+                                                      fontFamily: 'SansRegular',
+                                                      fontWeight:
+                                                          FontWeight.w500,
                                                       height: 1.50,
                                                     ),
-                                                  ),
-                                                  SvgPicture.asset(
-                                                    AppImages.riyal,
-                                                    color: AppColor.appColor,
-                                                    package:'shared_widgets',
-                                                    width: context.setWidth(11.63),
-                                                    height:context.setHeight(10.57) ,
-                                                    )
+                                                  )
                                                 ],
-                                              ),
-                                              Text(
-                                                item.soPosCategName!,
-                                                style: TextStyle(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  color:const Color(0xFF6B7280),
-                                                  fontSize: context.setSp(12.69),
-                                                  fontFamily: 'SansRegular',
-                                                  fontWeight: FontWeight.w500,
-                                                  height: 1.50,
-                                                ),
                                               )
                                             ],
-                                          )
-                                        ],
-                                      )),
-                                );
-                              },
-                            ),
+                                          )),
+                                    );
+                                  },
+                                ),
+                              );
+                            },
                           );
-                        },
-                      ),
+                        } else {
+                          return const SizedBox
+                              .shrink(); // Return an empty widget when not loading
+                        }
+                      }),
                     ],
                   ),
                 );
