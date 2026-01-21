@@ -809,7 +809,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                             children: [
                                               Container(
                                                 width: context.setWidth(175),
-                                                height: context.setHeight(100),
+                                                height: context.setHeight(110),
                                                 decoration: ShapeDecoration(
                                                   image: DecorationImage(
                                                     image: item.image == null ||
