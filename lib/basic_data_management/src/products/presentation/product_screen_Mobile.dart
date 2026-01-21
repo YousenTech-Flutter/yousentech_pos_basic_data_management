@@ -572,6 +572,8 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               return Column(
                                 children: [
                                   ListView.builder(
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
                                     controller: scrollController,
                                     itemCount: result.length + 1,
                                     itemBuilder: (context, index) {
