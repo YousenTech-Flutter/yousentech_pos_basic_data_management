@@ -121,7 +121,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               ),
                               ButtonElevated(
                                 text: 'categories_management'.tr,
-                                height: context.setHeight(50),
+                                height: context.setHeight(40),
                                 width: context.setWidth(150),
                                 borderRadius: context.setMinSize(9),
                                 borderColor: AppColor.appColor,
@@ -598,7 +598,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                             children: [
                                               Container(
                                                 width: context.setWidth(50),
-                                                height: context.setHeight(28),
+                                                height:double.infinity ,
                                                 decoration: item.image ==
                                                             null ||
                                                         isSvg(item.image!
@@ -624,6 +624,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                                 .image!
                                                                 .toString()),
                                                           ),
+                                                          fit: BoxFit.cover, 
                                                         ),
                                                       ),
                                                 child: item.image == null ||
@@ -646,6 +647,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                       )
                                                     : null,
                                               ),
+                                              
                                               Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
