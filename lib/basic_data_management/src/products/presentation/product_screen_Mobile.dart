@@ -654,7 +654,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                           ),
                                                         )
                                                       : Image.memory(
-                                                          base64Decode(item
+                                                          base64.decode(item
                                                               .image!
                                                               .toString()),
                                                           fit: BoxFit.cover,
