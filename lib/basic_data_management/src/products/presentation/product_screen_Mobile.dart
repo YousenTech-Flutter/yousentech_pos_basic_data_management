@@ -104,6 +104,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
               tag: 'productControllerMain',
               builder: (controller) {
                 return SingleChildScrollView(
+                  controller: scrollController,
                   child: Column(
                     spacing: context.setHeight(10),
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -575,9 +576,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                               : productController
                                                   .seachFilterPagingList;
                               return ListView.builder(
-                                controller: scrollController,
+                                // controller: scrollController,
                                 shrinkWrap: true,
-                                // physics: NeverScrollableScrollPhysics(),
+                                physics: NeverScrollableScrollPhysics(),
                                 itemCount: result.length + 1,
                                 itemBuilder: (context, index) {
                                   if (index < result.length) {
