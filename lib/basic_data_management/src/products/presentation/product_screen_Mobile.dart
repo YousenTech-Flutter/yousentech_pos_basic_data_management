@@ -628,6 +628,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                 : null,
                                           ),
                                           Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             spacing: context.setHeight(5),
                                             children: [
                                               Text(
