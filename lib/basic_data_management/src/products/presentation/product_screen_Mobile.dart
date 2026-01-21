@@ -58,9 +58,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
       print("scrollController addListener======");
       if (scrollController.position.maxScrollExtent ==
           scrollController.offset) {
-            print("fetch====== ${productController.pagnationpagesNumber}");
-            fetch();
-          }
+        print("fetch====== ${productController.pagnationpagesNumber}");
+        fetch();
+      }
     });
   }
 
@@ -575,9 +575,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                               : productController
                                                   .seachFilterPagingList;
                               return ListView.builder(
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
                                 controller: scrollController,
+                                shrinkWrap: true,
+                                // physics: NeverScrollableScrollPhysics(),
                                 itemCount: result.length + 1,
                                 itemBuilder: (context, index) {
                                   if (index < result.length) {
@@ -590,13 +590,11 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                           padding: EdgeInsets.all(
                                               context.setMinSize(7)),
                                           decoration: ShapeDecoration(
-                                            color:
-                                                Get.find<ThemeController>()
-                                                        .isDarkMode
-                                                        .value
-                                                    ? const Color(
-                                                        0xFF353535)
-                                                    : AppColor.white,
+                                            color: Get.find<ThemeController>()
+                                                    .isDarkMode
+                                                    .value
+                                                ? const Color(0xFF353535)
+                                                : AppColor.white,
                                             shape: RoundedRectangleBorder(
                                               side: BorderSide(
                                                 width: 1.06,
@@ -604,15 +602,12 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                             ThemeController>()
                                                         .isDarkMode
                                                         .value
-                                                    ? const Color(
-                                                        0xFF353535)
-                                                    : const Color(
-                                                        0xFFE8E8E8),
+                                                    ? const Color(0xFF353535)
+                                                    : const Color(0xFFE8E8E8),
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(
-                                                      context
-                                                          .setMinSize(10)),
+                                                      context.setMinSize(10)),
                                             ),
                                             shadows: [
                                               BoxShadow(
@@ -626,26 +621,23 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                           child: Row(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
-                                            spacing:
-                                                context.setWidth(12.69),
+                                            spacing: context.setWidth(12.69),
                                             children: [
                                               ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(
-                                                        context.setMinSize(
-                                                            15)),
+                                                        context.setMinSize(15)),
                                                 child: SizedBox(
-                                                  width: context
-                                                      .setWidth(50.75),
-                                                  height: context
-                                                      .setWidth(50.75),
-                                                  child: item.image ==
-                                                              null ||
+                                                  width:
+                                                      context.setWidth(50.75),
+                                                  height:
+                                                      context.setWidth(50.75),
+                                                  child: item.image == null ||
                                                           isSvg(item.image!
                                                               .toString())
                                                       ? Center(
-                                                          child: SvgPicture
-                                                              .asset(
+                                                          child:
+                                                              SvgPicture.asset(
                                                             AppImages
                                                                 .productEmptySvg,
                                                             package:
@@ -664,10 +656,10 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                               .image!
                                                               .toString()),
                                                           fit: BoxFit.cover,
-                                                          width: double
-                                                              .infinity,
-                                                          height: double
-                                                              .infinity,
+                                                          width:
+                                                              double.infinity,
+                                                          height:
+                                                              double.infinity,
                                                           filterQuality:
                                                               FilterQuality
                                                                   .high,
@@ -676,10 +668,8 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                               ),
                                               Column(
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment
-                                                        .start,
-                                                spacing:
-                                                    context.setHeight(5),
+                                                    CrossAxisAlignment.start,
+                                                spacing: context.setHeight(5),
                                                 children: [
                                                   Text(
                                                     item.getProductNameBasedOnLang,
@@ -690,14 +680,12 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                               .value
                                                           ? AppColor.white
                                                           : AppColor.black,
-                                                      fontFamily:
-                                                          'SansMedium',
-                                                      fontSize:
-                                                          context.setSp(
+                                                      fontFamily: 'SansMedium',
+                                                      fontSize: context.setSp(
                                                         12,
                                                       ),
-                                                      overflow: TextOverflow
-                                                          .ellipsis,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                       fontWeight:
                                                           FontWeight.w700,
                                                     ),
@@ -709,47 +697,42 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                       Text(
                                                         '${item.unitPrice}',
                                                         style: TextStyle(
-                                                          overflow:
-                                                              TextOverflow
-                                                                  .ellipsis,
-                                                          color: AppColor
-                                                              .appColor,
-                                                          fontSize: context
-                                                              .setSp(14),
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          color:
+                                                              AppColor.appColor,
+                                                          fontSize:
+                                                              context.setSp(14),
                                                           fontFamily:
                                                               'SansBold',
                                                           fontWeight:
-                                                              FontWeight
-                                                                  .w500,
+                                                              FontWeight.w500,
                                                           height: 1.50,
                                                         ),
                                                       ),
                                                       SvgPicture.asset(
                                                         AppImages.riyal,
-                                                        color: AppColor
-                                                            .appColor,
+                                                        color:
+                                                            AppColor.appColor,
                                                         package:
                                                             'shared_widgets',
                                                         width: context
-                                                            .setWidth(
-                                                                11.63),
+                                                            .setWidth(11.63),
                                                         height: context
-                                                            .setHeight(
-                                                                10.57),
+                                                            .setHeight(10.57),
                                                       )
                                                     ],
                                                   ),
                                                   Text(
                                                     item.soPosCategName!,
                                                     style: TextStyle(
-                                                      overflow: TextOverflow
-                                                          .ellipsis,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                       color: const Color(
                                                           0xFF6B7280),
-                                                      fontSize: context
-                                                          .setSp(12.69),
-                                                      fontFamily:
-                                                          'SansRegular',
+                                                      fontSize:
+                                                          context.setSp(12.69),
+                                                      fontFamily: 'SansRegular',
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       height: 1.50,
