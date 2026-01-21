@@ -523,7 +523,8 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                         ],
                       ),
                       Obx(() {
-                        if (productController.productsViewMode.value ==ProductsViewMode.list) {
+                        if (productController.productsViewMode.value ==
+                            ProductsViewMode.list) {
                           return GetBuilder<LoadingDataController>(
                             id: "pagin",
                             builder: (controller) {
@@ -596,58 +597,77 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                 CrossAxisAlignment.start,
                                             spacing: context.setWidth(12.69),
                                             children: [
-                                              Container(
-                                                width: context.setWidth(50),
-                                                height:double.infinity ,
-                                                decoration: item.image ==
-                                                            null ||
-                                                        isSvg(item.image!
-                                                            .toString())
-                                                    ? BoxDecoration(
-                                                        shape:
-                                                            BoxShape.rectangle,
-                                                        color: Get.find<
-                                                                    ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? const Color(
-                                                                0xFF292929)
-                                                            : const Color(
-                                                                0xFFECEFF2),
-                                                      )
-                                                    : BoxDecoration(
-                                                        shape:
-                                                            BoxShape.rectangle,
-                                                        image: DecorationImage(
-                                                          image: MemoryImage(
-                                                            base64Decode(item
-                                                                .image!
-                                                                .toString()),
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        context
+                                                            .setMinSize(16.92)),
+                                                child: Container(
+                                                  width: context.setWidth(50),
+                                                  height: double.infinity,
+                                                  // decoration: item.image ==
+                                                  //             null ||
+                                                  //         isSvg(item.image!
+                                                  //             .toString())
+                                                  //     ? BoxDecoration(
+                                                  //         shape:
+                                                  //             BoxShape.rectangle,
+                                                  //         color: Get.find<
+                                                  //                     ThemeController>()
+                                                  //                 .isDarkMode
+                                                  //                 .value
+                                                  //             ? const Color(
+                                                  //                 0xFF292929)
+                                                  //             : const Color(
+                                                  //                 0xFFECEFF2),
+
+                                                  //       )
+                                                  //     : BoxDecoration(
+                                                  //         shape:
+                                                  //             BoxShape.rectangle,
+                                                  //         image: DecorationImage(
+                                                  //           image: MemoryImage(
+                                                  //             base64Decode(item
+                                                  //                 .image!
+                                                  //                 .toString()),
+                                                  //           ),
+                                                  //           fit: BoxFit.cover,
+                                                  //         ),
+                                                  //       ),
+                                                  child: item.image == null ||
+                                                          isSvg(item.image!
+                                                              .toString())
+                                                      ? Center(
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            AppImages
+                                                                .productEmptySvg,
+                                                            package:
+                                                                'shared_widgets',
+                                                            color: Get.find<
+                                                                        ThemeController>()
+                                                                    .isDarkMode
+                                                                    .value
+                                                                ? null
+                                                                : const Color(
+                                                                    0xFF666C6D),
                                                           ),
-                                                          fit: BoxFit.cover, 
+                                                        )
+                                                      : Image.memory(
+                                                          base64Decode(item
+                                                              .image!
+                                                              .toString()),
+                                                          fit: BoxFit.cover,
+                                                          width:
+                                                              double.infinity,
+                                                          height:
+                                                              double.infinity,
+                                                          filterQuality:
+                                                              FilterQuality
+                                                                  .high,
                                                         ),
-                                                      ),
-                                                child: item.image == null ||
-                                                        isSvg(item.image!
-                                                            .toString())
-                                                    ? Center(
-                                                        child: SvgPicture.asset(
-                                                          AppImages
-                                                              .productEmptySvg,
-                                                          package:
-                                                              'shared_widgets',
-                                                          color: Get.find<
-                                                                      ThemeController>()
-                                                                  .isDarkMode
-                                                                  .value
-                                                              ? null
-                                                              : const Color(
-                                                                  0xFF666C6D),
-                                                        ),
-                                                      )
-                                                    : null,
+                                                ),
                                               ),
-                                              
                                               Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
