@@ -122,7 +122,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               ButtonElevated(
                                 text: 'categories_management'.tr,
                                 height: context.setHeight(50),
-                                width: context.setWidth(120),
+                                width: context.setWidth(150),
                                 borderRadius: context.setMinSize(9),
                                 borderColor: AppColor.appColor,
                                 textStyle: TextStyle(
@@ -588,7 +588,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                         children: [
                                           Container(
                                             width: context.setWidth(50),
-                                            // height: context.setHeight(28),
+                                             height: context.setHeight(28),
                                             decoration: item.image == null ||
                                                     isSvg(
                                                         item.image!.toString())
@@ -627,6 +627,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                   )
                                                 : null,
                                           ),
+                                          
                                           Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             spacing: context.setHeight(5),
