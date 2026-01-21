@@ -603,8 +603,8 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                     BorderRadius.circular(
                                                         context.setMinSize(15)),
                                                 child: SizedBox(
-                                                  width: context.setWidth(50),
-                                                  height: context.setWidth(55),
+                                                  width: context.setWidth(50.75),
+                                                  height: context.setWidth(50.75),
                                                   child: item.image == null ||
                                                           isSvg(item.image!
                                                               .toString())
