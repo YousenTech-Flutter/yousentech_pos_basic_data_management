@@ -56,7 +56,10 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
 
     scrollController.addListener(() {
       if (scrollController.position.maxScrollExtent ==
-          scrollController.offset) {}
+          scrollController.offset) {
+            print("fetch====== ${productController.pagnationpagesNumber}");
+            fetch();
+          }
     });
   }
 
