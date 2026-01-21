@@ -604,7 +604,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                             .setMinSize(16.92)),
                                                 child: Container(
                                                   width: context.setWidth(50),
-                                                  height: context.setWidth(70),
+                                                  height: context.setWidth(50),
                                                   // decoration: item.image ==
                                                   //             null ||
                                                   //         isSvg(item.image!
