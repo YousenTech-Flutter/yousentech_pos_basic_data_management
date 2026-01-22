@@ -572,7 +572,7 @@ class ProductController extends GetxController {
   // # Output:
   // # - Resets the page to `0` and reloads the product list based on the selected page.
 
-  resetPagingList({required int selectedpag}) async {
+  resetPagingList({required int selectedpag , bool skipOffset = false,}) async {
     page.value = 0;
     await displayProductList(
         paging: true, type: "", pageselecteed: selectedpag);

@@ -472,6 +472,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                   filtterProductByCategory(
                                     context: iconContext,
                                     productController: productController,
+                                    skipOffset: true
                                   );
                                 },
                                 child: Container(
