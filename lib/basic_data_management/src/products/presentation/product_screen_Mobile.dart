@@ -755,7 +755,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                           )),
                                     );
                                   } else {
-                                    return productController.hasMore.value
+                                    return productController.hasMore.value && productController.isLoading.value
                                         ? Center(
                                             child: CircularProgressIndicator(
                                               color: AppColor.appColor,
@@ -1016,7 +1016,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                         ),
                                       );
                                     } else {
-                                      return productController.hasMore.value
+                                      return productController.hasMore.value && productController.isLoading.value
                                           ? Center(
                                               child: CircularProgressIndicator(
                                                 color: AppColor.appColor,
