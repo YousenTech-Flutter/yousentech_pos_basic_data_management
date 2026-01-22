@@ -267,10 +267,15 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               height: 1.43,
                                                             ),
                                                           ),
-                                                          ButtonClick(
-                                                            color: AppColor.appColor,
-                                                            data: 'select_image'.tr,
-                                                            onTap:null ,
+                                                          Align(
+                                                           alignment: Alignment.center,
+                                                            child: 
+                                                              ButtonClick(
+                                                                color: AppColor.appColor,
+                                                                data: 'select_image'.tr,
+                                                                onTap:null ,
+                                                              ),
+                                                            
                                                           )
                                                         ],
                                                       ),
@@ -338,7 +343,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'معلومات المنتج الأساسية',
+                                        'main_product_information'.tr,
                                         textAlign: TextAlign.right,
                                         style: TextStyle(
                                           color: Get.find<ThemeController>()
