@@ -202,6 +202,9 @@ class ProductController extends GetxController {
           page.value = pageselecteed;
         }
         if(skipOffset){
+          print("skipOffset=====${searchFiltterResult.length}");
+          print("take=====${((page.value==0?1 :page.value) * limit)}");
+          print("page.value=====${page.value} limit $limit");
           result = searchFiltterResult.isNotEmpty
             ? searchFiltterResult
                 .take((page.value==0?1 :page.value) * limit)
