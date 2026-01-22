@@ -9,7 +9,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pos_shared_preferences/models/customer_model.dart';
-import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_enums.dart';
 import 'package:shared_widgets/config/app_images.dart';
 import 'package:shared_widgets/config/theme_controller.dart';
@@ -521,6 +520,7 @@ void createEditeCustomer({
                                                         ),
                                                       ),
                                                     ),
+                                                    // email
                                                     Expanded(
                                                       child: ContainerTextField(
                                                         controller: email,
@@ -629,7 +629,8 @@ void createEditeCustomer({
                                                   children: [
                                                     // street
                                                     Expanded(
-                                                      child: ContainerTextField(
+                                                      child: 
+                                                      ContainerTextField(
                                                         controller: street,
                                                         labelText: 'street'.tr,
                                                         hintText: 'street'.tr,
@@ -729,6 +730,7 @@ void createEditeCustomer({
                                                           }
                                                         },
                                                       ),
+                                                    
                                                     ),
                                                     // district
                                                     Expanded(
@@ -833,6 +835,7 @@ void createEditeCustomer({
                                                           }
                                                         },
                                                       ),
+                                                    
                                                     ),
                                                     // city
                                                     Expanded(
@@ -919,6 +922,7 @@ void createEditeCustomer({
                                                           ),
                                                         ),
                                                       ),
+                                                    
                                                     ),
                                                   ],
                                                 ),
@@ -1030,6 +1034,7 @@ void createEditeCustomer({
                                                           }
                                                         },
                                                       ),
+                                                    
                                                     ),
                                                     // l10n_sa_edi_plot_identification
                                                     Expanded(
@@ -1410,7 +1415,7 @@ void createEditeCustomer({
                                                           ),
                                                         ),
                                                       ),
-
+                                                     //other_selleId
                                                       Expanded(
                                                         child:
                                                             ContainerTextField(

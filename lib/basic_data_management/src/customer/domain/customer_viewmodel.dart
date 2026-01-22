@@ -9,7 +9,7 @@ import 'package:shared_widgets/utils/response_result.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_service.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
-
+enum CustomersViewMode { list, grid }
 class CustomerController extends GetxController {
   final loading = false.obs;
   late CustomerService customerService = CustomerService.getInstance();
@@ -32,6 +32,8 @@ class CustomerController extends GetxController {
   int skip = 0;
   int pagnationpagesNumber = 0;
   //==================for Pagnation  item================
+  final Rx<CustomersViewMode> customersViewMode = CustomersViewMode.list.obs;
+  RxBool showCustomerOptionsInfo = false.obs;
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -187,7 +189,7 @@ class CustomerController extends GetxController {
   // # Returns:
   // # - ResponseResult: A response object containing the status of the operation (success or failure) and a message with customer data.
 
-  Future<ResponseResult> getAllCustomerLocal({bool paging = false,String type = "current",int pageselecteed = -1 , int  ? countSkip }) async {
+  Future<ResponseResult> getAllCustomerLocal({bool paging = false,String type = "current",int pageselecteed = -1 , int  ? countSkip , bool skipOffset = false}) async {
     
     dynamic result;
         RxList<Customer> searchFiltterResult =searchResults.isNotEmpty
@@ -208,9 +210,17 @@ class CustomerController extends GetxController {
         } else if (pageselecteed != -1) {
           page.value = pageselecteed;
         }
-        result = searchFiltterResult.isNotEmpty
+        if(skipOffset){
+          result = searchFiltterResult.isNotEmpty
+            ? searchFiltterResult.take((page.value==0?1 :page.value) * limit).toList()
+            : await customerService.getAllCustomersLocal(offset: 0, limit: (page.value==0?1 :page.value) * limit);
+        }
+        else{
+            result = searchFiltterResult.isNotEmpty
             ? searchFiltterResult.skip(countSkip ?? page.value * limit).take(limit).toList()
             : await customerService.getAllCustomersLocal(offset: countSkip ?? page.value * limit, limit: limit);
+        }
+
        
         if (result is List) {
           if ((type == "suffix" && hasMore.value)) {
@@ -464,5 +474,14 @@ class CustomerController extends GetxController {
     await getAllCustomerLocal(paging: true, type: "", pageselecteed: selectedpag);
   }
 //  ===================================================== [ RESET PAGING LIST ] =====================================================
+void toggleCustomersViewMode() {
+  customersViewMode.value = 
+      customersViewMode.value == CustomersViewMode.list 
+          ? CustomersViewMode.grid 
+          : CustomersViewMode.list;
+}
 
+  void toggleCustomerViewOptionsInfo()  {
+    showCustomerOptionsInfo.value =  !showCustomerOptionsInfo.value;
+  }
 }

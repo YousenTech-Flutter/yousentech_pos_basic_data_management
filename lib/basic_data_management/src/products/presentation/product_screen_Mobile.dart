@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:pos_shared_preferences/models/product_unit/data/product_unit.dart';
 import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/config/app_enums.dart';
@@ -20,7 +19,6 @@ import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/categories_screen.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_service.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_viewmodel.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/create_edit_product.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/create_edit_product_mobile.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/product_screen.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/utils/filter_product_by_category.dart';
@@ -74,9 +72,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
       pageselecteed: productController.pagnationpagesNumber,
     );
   }
-  //   Future refresh() async {
-  //   await productController.productsData();
-  // }
+
 
   @override
   void dispose() {
@@ -166,6 +162,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                           ),
                         ),
                       ),
+                      
                       GetBuilder<LoadingDataController>(
                         id: 'card_loading_data',
                         builder: (controller) {
@@ -248,6 +245,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               ),
                             ),
                           );
+                        
                         },
                       ),
                       Row(
@@ -1047,6 +1045,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               }); // Return an empty widget when not loading
                         }
                       }),
+                    
                     ],
                   ),
                 );
