@@ -12,6 +12,7 @@ filtterProductByCategory({
   required ProductController productController,
   bool isProductPage = true,
   InvoiceController? invoiceController,
+  bool skipOffset = false
 }) {
   return showPopover(
     direction: PopoverDirection.bottom,
@@ -67,6 +68,7 @@ filtterProductByCategory({
                             );
                             await productController.resetPagingList(
                               selectedpag: 0,
+                              skipOffset: skipOffset
                             );
                           } else {
                             productController.update();

@@ -62,13 +62,10 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
   }
 
   Future fetch() async {
-    print("hasMore==========${productController.hasMore.value}");
-    print("pagnationpagesNumber============${productController.pagnationpagesNumber}");
     productController.selectedPagnation = 1;
     // if(productController.hasMore.value){
       productController.pagnationpagesNumber++;
     // }
-    print("Number============${productController.pagnationpagesNumber}");
     await productController.displayProductList(
       skipOffset: true,
       paging: true,
@@ -472,6 +469,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                   filtterProductByCategory(
                                     context: iconContext,
                                     productController: productController,
+                                    skipOffset: true
                                   );
                                 },
                                 child: Container(
