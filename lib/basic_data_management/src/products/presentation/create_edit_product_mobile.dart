@@ -129,45 +129,34 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                           : AppColor.white,
                                   borderRadius: BorderRadius.circular(
                                         context.setMinSize(11.17)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0x0C000000),
-                                      blurRadius: 2.11,
-                                      offset: Offset(0, 1.06),
-                                      spreadRadius: 0,
-                                    )
-                                  ],
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(context.setMinSize(20)),
-                                  child: Row(
-                                    spacing: context.setWidth(10),
-                                    children: [
-                                      BackButton(
+                                child: Row(
+                                  spacing: context.setWidth(10),
+                                  children: [
+                                    BackButton(
+                                      color: Get.find<ThemeController>()
+                                              .isDarkMode
+                                              .value
+                                          ? Colors.white
+                                          : const Color(0xFF0C0C0C),
+                                    ),
+                                    Text(
+                                      product?.id == null
+                                          ? "add_new_product".tr
+                                          : 'edit_product'.tr,
+                                      style: TextStyle(
                                         color: Get.find<ThemeController>()
                                                 .isDarkMode
                                                 .value
-                                            ? Colors.white
-                                            : const Color(0xFF0C0C0C),
+                                            ? AppColor.white
+                                            : AppColor.black,
+                                        fontSize: context.setSp(14),
+                                        fontFamily: 'SansBold',
+                                        fontWeight: FontWeight.w600,
+                                        height: 1.56,
                                       ),
-                                      Text(
-                                        product?.id == null
-                                            ? "add_new_product".tr
-                                            : 'edit_product'.tr,
-                                        style: TextStyle(
-                                          color: Get.find<ThemeController>()
-                                                  .isDarkMode
-                                                  .value
-                                              ? AppColor.white
-                                              : AppColor.black,
-                                          fontSize: context.setSp(14),
-                                          fontFamily: 'SansBold',
-                                          fontWeight: FontWeight.w600,
-                                          height: 1.56,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               Container(
@@ -549,7 +538,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       .value
                                                   ? AppColor.white
                                                   : AppColor.black,
-                                              fontSize: context.setSp(19.03),
+                                              fontSize: context.setSp(14),
                                               fontFamily: 'SansBold',
                                               fontWeight: FontWeight.w600,
                                               height: 1.56,
@@ -725,6 +714,134 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       return null;
                                                     },
                                                   ),
+                                                                                                        // product_category
+                                                  ContainerDropDownField(
+                                                                                                                fontSize:
+                                                        context.setSp(14),
+                                                                                                                width:
+                                                        context.screenWidth,
+                                                                                                                height: context.setHeight(
+                                                      40,
+                                                                                                                ),
+                                                                                                                fillColor: !Get.find<
+                                                                ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? Colors.white
+                                                            .withValues(
+                                                            alpha: 0.43,
+                                                          )
+                                                        : const Color(
+                                                            0xFF2B2B2B,
+                                                          ),
+                                                                                                                borderColor: Get.find<
+                                                                ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? Colors.white
+                                                            .withValues(
+                                                            alpha: 0.50,
+                                                          )
+                                                        : const Color(
+                                                            0xFFC2C3CB,
+                                                          ),
+                                                                                                                hintcolor: !Get.find<
+                                                                ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? const Color(
+                                                            0xFF404040,
+                                                          )
+                                                        : const Color(
+                                                            0xFF9CA3AF,
+                                                          ),
+                                                                                                                borderRadius:
+                                                        context.setMinSize(8),
+                                                                                                                hintText:
+                                                        'product_category',
+                                                                                                                labelText:
+                                                        'product_category'.tr,
+                                                                                                                value:
+                                                        product!.soPosCategId,
+                                                                                                                color: !Get.find<
+                                                                ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? const Color(
+                                                            0xFF404040,
+                                                          )
+                                                        : const Color(
+                                                            0xFF6B7280,
+                                                          ),
+                                                                                                                iconcolor: const Color(
+                                                      0xFF9CA3AF,
+                                                                                                                ),
+                                                                                                                onChanged: (val) {
+                                                      product!.soPosCategId =
+                                                          val;
+                                                      PosCategory
+                                                          posCategory =
+                                                          productController
+                                                              .categoriesList
+                                                              .firstWhere(
+                                                        (element) =>
+                                                            element.id == val,
+                                                        orElse: () =>
+                                                            PosCategory(),
+                                                      );
+                                                      product!.soPosCategName =
+                                                          (SharedPr.lang ==
+                                                                  'ar'
+                                                              ? posCategory
+                                                                  .name!.ar001
+                                                              : posCategory
+                                                                  .name!
+                                                                  .enUS);
+                                                                                                                },
+                                                                                                                items:
+                                                        productController
+                                                            .categoriesList
+                                                            .map(
+                                                              (
+                                                                e,
+                                                              ) =>
+                                                                  DropdownMenuItem(
+                                                                value: e.id,
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    (SharedPr.lang ==
+                                                                            'ar'
+                                                                        ? e.name!
+                                                                            .ar001
+                                                                        : e.name!
+                                                                            .enUS)!,
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Get.find<ThemeController>().isDarkMode.value
+                                                                          ? Colors.white
+                                                                          : Colors.black,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            )
+                                                            .toList(),
+                                                                                                                validator: (value) {
+                                                      if (value == null) {
+                                                        errorMessage =
+                                                            'required_message'
+                                                                .trParams({
+                                                          'field_name':
+                                                              'product_category'
+                                                                  .tr,
+                                                        });
+                                                        countErrors++;
+                                                        return "";
+                                                      }
+                                                      return null;
+                                                                                                                },
+                                                                                                              ),
+                                                      
                                                   Row(
                                                     spacing: context.setWidth(16),
                                                     children: [
@@ -1055,136 +1172,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           },
                                                         ),
                                                       ),
-                                                      // product_category
-                                                      Expanded(
-                                                        child:
-                                                            ContainerDropDownField(
-                                                          fontSize:
-                                                              context.setSp(14),
-                                                          width:
-                                                              context.screenWidth,
-                                                          height: context.setHeight(
-                                                            40,
-                                                          ),
-                                                          fillColor: !Get.find<
-                                                                      ThemeController>()
-                                                                  .isDarkMode
-                                                                  .value
-                                                              ? Colors.white
-                                                                  .withValues(
-                                                                  alpha: 0.43,
-                                                                )
-                                                              : const Color(
-                                                                  0xFF2B2B2B,
-                                                                ),
-                                                          borderColor: Get.find<
-                                                                      ThemeController>()
-                                                                  .isDarkMode
-                                                                  .value
-                                                              ? Colors.white
-                                                                  .withValues(
-                                                                  alpha: 0.50,
-                                                                )
-                                                              : const Color(
-                                                                  0xFFC2C3CB,
-                                                                ),
-                                                          hintcolor: !Get.find<
-                                                                      ThemeController>()
-                                                                  .isDarkMode
-                                                                  .value
-                                                              ? const Color(
-                                                                  0xFF404040,
-                                                                )
-                                                              : const Color(
-                                                                  0xFF9CA3AF,
-                                                                ),
-                                                          borderRadius:
-                                                              context.setMinSize(8),
-                                                          hintText:
-                                                              'product_category',
-                                                          labelText:
-                                                              'product_category'.tr,
-                                                          value:
-                                                              product!.soPosCategId,
-                                                          color: !Get.find<
-                                                                      ThemeController>()
-                                                                  .isDarkMode
-                                                                  .value
-                                                              ? const Color(
-                                                                  0xFF404040,
-                                                                )
-                                                              : const Color(
-                                                                  0xFF6B7280,
-                                                                ),
-                                                          iconcolor: const Color(
-                                                            0xFF9CA3AF,
-                                                          ),
-                                                          onChanged: (val) {
-                                                            product!.soPosCategId =
-                                                                val;
-                                                            PosCategory
-                                                                posCategory =
-                                                                productController
-                                                                    .categoriesList
-                                                                    .firstWhere(
-                                                              (element) =>
-                                                                  element.id == val,
-                                                              orElse: () =>
-                                                                  PosCategory(),
-                                                            );
-                                                            product!.soPosCategName =
-                                                                (SharedPr.lang ==
-                                                                        'ar'
-                                                                    ? posCategory
-                                                                        .name!.ar001
-                                                                    : posCategory
-                                                                        .name!
-                                                                        .enUS);
-                                                          },
-                                                          items:
-                                                              productController
-                                                                  .categoriesList
-                                                                  .map(
-                                                                    (
-                                                                      e,
-                                                                    ) =>
-                                                                        DropdownMenuItem(
-                                                                      value: e.id,
-                                                                      child: Center(
-                                                                        child: Text(
-                                                                          (SharedPr.lang ==
-                                                                                  'ar'
-                                                                              ? e.name!
-                                                                                  .ar001
-                                                                              : e.name!
-                                                                                  .enUS)!,
-                                                                          style:
-                                                                              TextStyle(
-                                                                            color: Get.find<ThemeController>().isDarkMode.value
-                                                                                ? Colors.white
-                                                                                : Colors.black,
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  )
-                                                                  .toList(),
-                                                          validator: (value) {
-                                                            if (value == null) {
-                                                              errorMessage =
-                                                                  'required_message'
-                                                                      .trParams({
-                                                                'field_name':
-                                                                    'product_category'
-                                                                        .tr,
-                                                              });
-                                                              countErrors++;
-                                                              return "";
-                                                            }
-                                                            return null;
-                                                          },
-                                                        ),
-                                                      ),
+
                                                       // product_unit
                                                       Expanded(
                                                         child:
@@ -1302,7 +1290,6 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                   ),
                                                   Container(
                                                     width: double.infinity,
-                                                    height: context.setHeight(60),
                                                     decoration: BoxDecoration(
                                                       border: Border(
                                                         top: BorderSide(
@@ -1346,7 +1333,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                             fontSize: context.setSp(
                                                               15,
                                                             ),
-                                                            fontFamily: 'Cairo',
+                                                            fontFamily: 'SansMedium',
                                                             fontWeight:
                                                                 FontWeight.w600,
                                                             height: 2,
