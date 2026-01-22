@@ -628,7 +628,14 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         context.setMinSize(15)),
-                                                child: SizedBox(
+                                                child: Container(
+                                                  color:item.image == null ||
+                                                          isSvg(item.image!
+                                                              .toString())? Get.find<ThemeController>()
+                                                    .isDarkMode
+                                                    .value
+                                                ? const Color(0xFF2A2A2A)
+                                                : Color(0xFFECEFF2):null ,
                                                   width:
                                                       context.setWidth(50.75),
                                                   height:
@@ -674,6 +681,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                 children: [
                                                   Text(
                                                     "${index+1} ${item.getProductNameBasedOnLang}",
+                                                    maxLines: 1,
                                                     style: TextStyle(
                                                       color: Get.find<
                                                                   ThemeController>()
@@ -685,6 +693,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                       fontSize: context.setSp(
                                                         12,
                                                       ),
+                                                      
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       fontWeight:
@@ -745,9 +754,10 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                           )),
                                     );
                                   } else {
-                                    return Center(
-                                      child: CircularProgressIndicator(),
-                                    );
+                                    return  productController.hasMore.value ? Center(
+                                      child: CircularProgressIndicator(color: AppColor.appColor,),
+                                    ):Container();
+                                    
                                   }
                                 },
                               );
@@ -793,9 +803,10 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                     mainAxisSpacing: context.setHeight(10),
                                     childAspectRatio: 1,
                                   ),
-                                  itemCount: result.length,
+                                  itemCount: result.length + 1,
                                   itemBuilder: (context, index) {
-                                    var item = result[index];
+                                    if (index < result.length) {
+                                                                          var item = result[index];
                                     return GestureDetector(
                                       onTap: () async {},
                                       child: Container(
@@ -989,6 +1000,15 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                         ),
                                       ),
                                     );
+                                  
+                                    }
+                                    else {
+                                    return  productController.hasMore.value ? Center(
+                                      child: CircularProgressIndicator(color: AppColor.appColor,),
+                                    ):Container();
+                                    
+                                  }
+
                                   },
                                 );
                               }); // Return an empty widget when not loading
