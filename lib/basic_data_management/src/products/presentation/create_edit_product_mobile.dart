@@ -127,6 +127,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                       Get.find<ThemeController>().isDarkMode.value
                                           ? const Color(0xFF2B2B2B)
                                           : AppColor.white,
+                                  borderRadius: BorderRadius.circular(
+                                        context.setMinSize(11.17)),
                                   boxShadow: [
                                     BoxShadow(
                                       color: Color(0x0C000000),
@@ -137,7 +139,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                   ],
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(context.setMinSize(14.8)),
+                                  padding: EdgeInsets.all(context.setMinSize(20)),
                                   child: Row(
                                     spacing: context.setWidth(10),
                                     children: [
@@ -158,7 +160,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                   .value
                                               ? AppColor.white
                                               : AppColor.black,
-                                          fontSize: context.setSp(19.03),
+                                          fontSize: context.setSp(14),
                                           fontFamily: 'SansBold',
                                           fontWeight: FontWeight.w600,
                                           height: 1.56,
@@ -188,22 +190,11 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                     borderRadius: BorderRadius.circular(
                                         context.setMinSize(11.17)),
                                   ),
-                                  shadows: [
-                                    BoxShadow(
-                                      color: Get.find<ThemeController>()
-                                              .isDarkMode
-                                              .value
-                                          ? Color(0x19000000)
-                                          : Color(0x0C000000),
-                                      blurRadius: 11.17,
-                                      offset: Offset(0, 4.47),
-                                      spreadRadius: 0,
-                                    )
-                                  ],
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.all(context.setMinSize(20)),
                                   child: Column(
+                                    spacing: context.setHeight(10),
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
@@ -215,7 +206,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                   .value
                                               ? AppColor.white
                                               : AppColor.black,
-                                          fontSize: context.setSp(19.03),
+                                          fontSize: context.setSp(14),
                                           fontFamily: 'SansBold',
                                           fontWeight: FontWeight.w600,
                                           height: 1.56,
@@ -327,18 +318,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                     borderRadius: BorderRadius.circular(
                                         context.setMinSize(11.17)),
                                   ),
-                                  shadows: [
-                                    BoxShadow(
-                                      color: Get.find<ThemeController>()
-                                              .isDarkMode
-                                              .value
-                                          ? Color(0x19000000)
-                                          : Color(0x0C000000),
-                                      blurRadius: 11.17,
-                                      offset: Offset(0, 4.47),
-                                      spreadRadius: 0,
-                                    )
-                                  ],
+                                 
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.all(context.setMinSize(20)),
@@ -355,7 +335,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                   .value
                                               ? AppColor.white
                                               : AppColor.black,
-                                          fontSize: context.setSp(19.03),
+                                          fontSize: context.setSp(14),
                                           fontFamily: 'SansBold',
                                           fontWeight: FontWeight.w600,
                                           height: 1.56,
@@ -532,7 +512,6 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                               ),
                               Container(
                                 width: double.infinity,
-                                height: context.setHeight(240.01),
                                 decoration: ShapeDecoration(
                                   color:
                                       Get.find<ThemeController>().isDarkMode.value
@@ -550,18 +529,6 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                     borderRadius: BorderRadius.circular(
                                         context.setMinSize(11.17)),
                                   ),
-                                  shadows: [
-                                    BoxShadow(
-                                      color: Get.find<ThemeController>()
-                                              .isDarkMode
-                                              .value
-                                          ? Color(0x19000000)
-                                          : Color(0x0C000000),
-                                      blurRadius: 11.17,
-                                      offset: Offset(0, 4.47),
-                                      spreadRadius: 0,
-                                    )
-                                  ],
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.all(context.setMinSize(20)),
