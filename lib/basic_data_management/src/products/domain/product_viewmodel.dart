@@ -276,7 +276,7 @@ class ProductController extends GetxController {
       }
       isLoading.value = false;
     }
-
+    print("result=======${hasMore.value}");
     return result;
   }
 // # ===================================================== [ DISPLAY PRODUCT LIST WITH PAGINATION ] =====================================================
