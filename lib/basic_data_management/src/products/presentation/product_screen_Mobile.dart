@@ -62,7 +62,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
   }
 
   Future fetch() async {
-    print("start fetch============${productController.pagnationpagesNumber}");
     productController.selectedPagnation = 1;
     if(productController.hasMore.value){
       productController.pagnationpagesNumber++;
@@ -676,77 +675,78 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                         ),
                                                 ),
                                               ),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                spacing: context.setHeight(5),
-                                                children: [
-                                                  Text(
-                                                    "${index + 1} ${item.getProductNameBasedOnLang}",
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: TextStyle(
-                                                      color: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? AppColor.white
-                                                          : AppColor.black,
-                                                      fontFamily: 'SansMedium',
-                                                      fontSize: context.setSp(
-                                                        12,
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  spacing: context.setHeight(5),
+                                                  children: [
+                                                    Text(
+                                                      "${index + 1} ${item.getProductNameBasedOnLang}",
+                                                      overflow:TextOverflow.ellipsis,
+                                                      style: TextStyle(
+                                                        color: Get.find<
+                                                                    ThemeController>()
+                                                                .isDarkMode
+                                                                .value
+                                                            ? AppColor.white
+                                                            : AppColor.black,
+                                                        fontFamily: 'SansMedium',
+                                                        fontSize: context.setSp(
+                                                          12,
+                                                        ),
+                                                        fontWeight:
+                                                            FontWeight.w700,
                                                       ),
-                                                      fontWeight:
-                                                          FontWeight.w700,
                                                     ),
-                                                  ),
-                                                  Row(
-                                                    spacing:
-                                                        context.setWidth(8),
-                                                    children: [
-                                                      Text(
-                                                        '${item.unitPrice}',
-                                                        style: TextStyle(
+                                                    Row(
+                                                      spacing:
+                                                          context.setWidth(8),
+                                                      children: [
+                                                        Text(
+                                                          '${item.unitPrice}',
+                                                          style: TextStyle(
+                                                            color:
+                                                                AppColor.appColor,
+                                                            fontSize:
+                                                                context.setSp(14),
+                                                            fontFamily:
+                                                                'SansBold',
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            height: 1.50,
+                                                          ),
+                                                        ),
+                                                        SvgPicture.asset(
+                                                          AppImages.riyal,
                                                           color:
                                                               AppColor.appColor,
-                                                          fontSize:
-                                                              context.setSp(14),
-                                                          fontFamily:
-                                                              'SansBold',
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          height: 1.50,
-                                                        ),
-                                                      ),
-                                                      SvgPicture.asset(
-                                                        AppImages.riyal,
-                                                        color:
-                                                            AppColor.appColor,
-                                                        package:
-                                                            'shared_widgets',
-                                                        width: context
-                                                            .setWidth(11.63),
-                                                        height: context
-                                                            .setHeight(10.57),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  Text(
-                                                    item.soPosCategName!,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: TextStyle(
-                                                      color: const Color(
-                                                          0xFF6B7280),
-                                                      fontSize:
-                                                          context.setSp(12.69),
-                                                      fontFamily: 'SansRegular',
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      height: 1.50,
+                                                          package:
+                                                              'shared_widgets',
+                                                          width: context
+                                                              .setWidth(11.63),
+                                                          height: context
+                                                              .setHeight(10.57),
+                                                        )
+                                                      ],
                                                     ),
-                                                  )
-                                                ],
+                                                    Text(
+                                                      item.soPosCategName!,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: TextStyle(
+                                                        color: const Color(
+                                                            0xFF6B7280),
+                                                        fontSize:
+                                                            context.setSp(12.69),
+                                                        fontFamily: 'SansRegular',
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        height: 1.50,
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
                                               )
                                             ],
                                           )),
