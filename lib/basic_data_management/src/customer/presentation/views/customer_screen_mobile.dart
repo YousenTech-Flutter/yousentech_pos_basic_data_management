@@ -20,11 +20,8 @@ import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_service.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_viewmodel.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/presentation/views/createEditeCustomerMobile.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/presentation/views/create_edit_customer.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/utils/build_customer_body_table.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/widgets/show_diff_customer_dialog.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/product_screen.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/build_basic_data_table.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/define_type_function.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
