@@ -59,6 +59,7 @@ class ProductController extends GetxController {
   int pagnationpagesNumber = 0;
   //==================for Pagnation  item================
   final Rx<ProductsViewMode> productsViewMode = ProductsViewMode.list.obs;
+  RxBool showProductOptionsInfo = false.obs;
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -606,5 +607,9 @@ void toggleProductsViewMode() {
           ? ProductsViewMode.grid 
           : ProductsViewMode.list;
 }
+
+  void toggleProductViewOptionsInfo()  {
+    showProductOptionsInfo.value =  !showProductOptionsInfo.value;
+  }
 
 }

@@ -21,6 +21,7 @@ import 'package:yousentech_pos_basic_data_management/basic_data_management/src/p
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_service.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_viewmodel.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/create_edit_product.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/create_edit_product_mobile.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/product_screen.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/utils/filter_product_by_category.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/widgets/show_diff_product_dialog.dart';
@@ -258,9 +259,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               fontSize: 12,
                               horizontal: 10,
                               onTap: () {
-                                createEditeProduct(
-                                  context: context,
-                                );
+                                Get.to(()=>CreateEditeProductMobile());
                               },
                               color: AppColor.appColor,
                             ),

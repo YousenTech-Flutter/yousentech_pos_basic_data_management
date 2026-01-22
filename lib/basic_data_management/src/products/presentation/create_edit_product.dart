@@ -379,6 +379,7 @@ void createEditeProduct({
                                                 return null;
                                               },
                                             ),
+                                            
                                             Row(
                                               spacing: context.setWidth(16),
                                               children: [
@@ -485,6 +486,7 @@ void createEditeProduct({
                                                       return "";
                                                     },
                                                   ),
+                                                
                                                 ),
                                                 //taxes
                                                 Expanded(
@@ -602,7 +604,9 @@ void createEditeProduct({
                                                       return null;
                                                     },
                                                   ),
+                                                
                                                 ),
+                                              
                                               ],
                                             ),
 
@@ -1400,6 +1404,7 @@ void createEditeProduct({
                                                     );
                                                   }).toList(),
                                             ),
+                                          
                                           ],
                                         ),
                                       ),
@@ -1445,6 +1450,7 @@ void createEditeProduct({
                                       ),
                                     ),
                                   ),
+                                
                                 ],
                               ),
                             ),
