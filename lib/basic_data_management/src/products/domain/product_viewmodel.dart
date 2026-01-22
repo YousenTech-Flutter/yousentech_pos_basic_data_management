@@ -168,11 +168,12 @@ class ProductController extends GetxController {
   // # Output:
   // # - The result of the product data fetch, either a list of products or an error message.
 
-  Future<dynamic> displayProductList(
-      {bool paging = false,
+  Future<dynamic> displayProductList({bool paging = false,
       String type = "current",
       int pageselecteed = -1,
-      int? countSkip}) async {
+      int? countSkip,
+      bool skipOffset = false
+      }) async {
     RxList<Product> searchFiltterResult =
         filtterResults.isNotEmpty && searchResults.isEmpty
             ? filtterResults
@@ -200,13 +201,22 @@ class ProductController extends GetxController {
         } else if (pageselecteed != -1) {
           page.value = pageselecteed;
         }
-        result = searchFiltterResult.isNotEmpty
+        if(skipOffset){
+          result = searchFiltterResult.isNotEmpty
+            ? searchFiltterResult
+                .take(limit)
+                .toList()
+            : await productService.index(limit: limit);
+        }
+        else{
+          result = searchFiltterResult.isNotEmpty
             ? searchFiltterResult
                 .skip(countSkip ?? page.value * limit)
                 .take(limit)
                 .toList()
             : await productService.index(
                 offset: countSkip ?? page.value * limit, limit: limit);
+        }
         if (result is List) {
           if ((type == "suffix" && hasMore.value)) {
             if (result.length < limit) {

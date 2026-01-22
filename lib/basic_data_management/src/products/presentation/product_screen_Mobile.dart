@@ -69,6 +69,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
     productController.selectedPagnation = 1;
     productController.pagnationpagesNumber++;
     await productController.displayProductList(
+      skipOffset: true,
       paging: true,
       type: "",
       pageselecteed: productController.pagnationpagesNumber,
@@ -576,7 +577,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                               : productController
                                                   .seachFilterPagingList;
                               return ListView.builder(
-                                // controller: scrollController,
                                 shrinkWrap: true,
                                 physics: NeverScrollableScrollPhysics(),
                                 itemCount: result.length + 1,
@@ -673,7 +673,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                 spacing: context.setHeight(5),
                                                 children: [
                                                   Text(
-                                                    item.getProductNameBasedOnLang,
+                                                    "${index+1} ${item.getProductNameBasedOnLang}",
                                                     style: TextStyle(
                                                       color: Get.find<
                                                                   ThemeController>()
