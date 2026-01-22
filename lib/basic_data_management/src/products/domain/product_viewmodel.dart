@@ -209,7 +209,7 @@ class ProductController extends GetxController {
             ? searchFiltterResult
                 .take((page.value==0?1 :page.value) * limit)
                 .toList()
-            : await productService.index(limit: (page.value==0?1 :page.value) * limit);
+            : await productService.index(offset: 0, limit: (page.value==0?1 :page.value) * limit);
           print("result of product =====${result.length}");
         }
         else{
