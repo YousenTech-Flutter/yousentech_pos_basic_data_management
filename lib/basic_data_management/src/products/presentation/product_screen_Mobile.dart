@@ -68,6 +68,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
     if(productController.hasMore.value){
       productController.pagnationpagesNumber++;
     }
+    print("Number============${productController.pagnationpagesNumber}");
     await productController.displayProductList(
       skipOffset: true,
       paging: true,
