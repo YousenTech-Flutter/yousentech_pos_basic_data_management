@@ -102,6 +102,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
           left: context.setWidth(10),
         ),
         child: RefreshIndicator(
+          color: AppColor.appColor,
           onRefresh:refresh,
           child: Stack(
             children: [
