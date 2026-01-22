@@ -1376,12 +1376,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           CrossAxisAlignment
                                                               .start,
                                                       children: [
-                                                        SizedBox(
-                                                          height:
-                                                              context.setHeight(
-                                                            5,
-                                                          ),
-                                                        ),
+                                                        
                                                         Text(
                                                           'more_options'.tr,
                                                           style: TextStyle(
@@ -1406,73 +1401,71 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                             height: 2,
                                                           ),
                                                         ),
-                                                        Expanded(
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            children: [
-                                                              Checkbox(
-                                                                shape:
-                                                                    RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                    context
-                                                                        .setMinSize(
-                                                                      6.94,
-                                                                    ),
-                                                                  ), // هنا نتحكم بالدائرة أو الحواف
-                                                                ),
-                                                                value: product!
-                                                                        .quickMenuAvailability ??
-                                                                    false,
-                                                                onChanged:
-                                                                    (val) {
-                                                                  product?.quickMenuAvailability =
-                                                                      val!;
-                                                                  setState(
-                                                                      () {});
-                                                                },
-                                                                fillColor:
-                                                                    WidgetStateProperty
-                                                                        .all(
-                                                                  const Color(
-                                                                    0xFFFDFDFD,
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize
+                                                                  .min,
+                                                          children: [
+                                                            Checkbox(
+                                                              shape:
+                                                                  RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                  context
+                                                                      .setMinSize(
+                                                                    6.94,
                                                                   ),
-                                                                ),
-                                                                checkColor:
-                                                                    Colors
-                                                                        .black,
+                                                                ), // هنا نتحكم بالدائرة أو الحواف
                                                               ),
-                                                              Text(
-                                                                'quick_menu_availability'
-                                                                    .tr,
-                                                                style:
-                                                                    TextStyle(
-                                                                  color: Get.find<
-                                                                              ThemeController>()
-                                                                          .isDarkMode
-                                                                          .value
-                                                                      ? const Color(
-                                                                          0xFFB7B7B7,
-                                                                        )
-                                                                      : const Color(
-                                                                          0xFF404040,
-                                                                        ),
-                                                                  fontSize: context
-                                                                      .setSp(
-                                                                          13),
-                                                                  fontFamily:
-                                                                      'Tajawal',
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  height: 1.5,
+                                                              value: product!
+                                                                      .quickMenuAvailability ??
+                                                                  false,
+                                                              onChanged:
+                                                                  (val) {
+                                                                product?.quickMenuAvailability =
+                                                                    val!;
+                                                                setState(
+                                                                    () {});
+                                                              },
+                                                              fillColor:
+                                                                  WidgetStateProperty
+                                                                      .all(
+                                                                const Color(
+                                                                  0xFFFDFDFD,
                                                                 ),
                                                               ),
-                                                            ],
-                                                          ),
+                                                              checkColor:
+                                                                  Colors
+                                                                      .black,
+                                                            ),
+                                                            Text(
+                                                              'quick_menu_availability'
+                                                                  .tr,
+                                                              style:
+                                                                  TextStyle(
+                                                                color: Get.find<
+                                                                            ThemeController>()
+                                                                        .isDarkMode
+                                                                        .value
+                                                                    ? const Color(
+                                                                        0xFFB7B7B7,
+                                                                      )
+                                                                    : const Color(
+                                                                        0xFF404040,
+                                                                      ),
+                                                                fontSize: context
+                                                                    .setSp(
+                                                                        13),
+                                                                fontFamily:
+                                                                    'Tajawal',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                height: 1.5,
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
                                                       ],
                                                     ),
