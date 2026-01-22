@@ -267,16 +267,16 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               height: 1.43,
                                                             ),
                                                           ),
-                                                          Align(
-                                                           alignment: Alignment.center,
-                                                            child: 
-                                                              ButtonClick(
-                                                                color: AppColor.appColor,
-                                                                data: 'select_image'.tr,
-                                                                onTap:null ,
-                                                              ),
+                                                          // Align(
+                                                          //  alignment: Alignment.center,
+                                                          //   child: 
+                                                          //     ButtonClick(
+                                                          //       color: AppColor.appColor,
+                                                          //       data: 'select_image'.tr,
+                                                          //       onTap:null ,
+                                                          //     ),
                                                             
-                                                          )
+                                                          // )
                                                         ],
                                                       ),
                                                     )
