@@ -60,7 +60,7 @@ filtterProductByCategory({
                                 value!;
                           });
                           if (isProductPage) {
-                            productController.selectedPagnation = 0;
+                            productController.selectedPagnation = 1;
                             productController.pagnationpagesNumber = 0;
                             await productController.searchByCateg(
                               query: productController.categoriesCheckFiltter,
