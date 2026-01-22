@@ -123,12 +123,13 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  color:
-                                      Get.find<ThemeController>().isDarkMode.value
-                                          ? const Color(0xFF2B2B2B)
-                                          : AppColor.white,
+                                  color: Get.find<ThemeController>()
+                                          .isDarkMode
+                                          .value
+                                      ? const Color(0xFF2B2B2B)
+                                      : AppColor.white,
                                   borderRadius: BorderRadius.circular(
-                                        context.setMinSize(11.17)),
+                                      context.setMinSize(11.17)),
                                 ),
                                 child: Row(
                                   spacing: context.setWidth(10),
@@ -163,10 +164,11 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                 width: double.infinity,
                                 height: context.setHeight(240.01),
                                 decoration: ShapeDecoration(
-                                  color:
-                                      Get.find<ThemeController>().isDarkMode.value
-                                          ? const Color(0xFF232323)
-                                          : AppColor.white,
+                                  color: Get.find<ThemeController>()
+                                          .isDarkMode
+                                          .value
+                                      ? const Color(0xFF232323)
+                                      : AppColor.white,
                                   shape: RoundedRectangleBorder(
                                     side: BorderSide(
                                       width: 1.06,
@@ -181,13 +183,15 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(context.setMinSize(20)),
+                                  padding:
+                                      EdgeInsets.all(context.setMinSize(20)),
                                   child: Column(
                                     spacing: context.setHeight(10),
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'صورة المنتج',
+                                        'product_image'.tr,
                                         textAlign: TextAlign.right,
                                         style: TextStyle(
                                           color: Get.find<ThemeController>()
@@ -203,7 +207,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                       ),
                                       GestureDetector(
                                         onTap: () async {
-                                          final ImagePicker picker = ImagePicker();
+                                          final ImagePicker picker =
+                                              ImagePicker();
                                           final XFile? image =
                                               await picker.pickImage(
                                             source: ImageSource.gallery,
@@ -223,10 +228,12 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                         child: CustomPaint(
                                           painter: DashedBorderPainter(),
                                           child: ClipRRect(
-                                            borderRadius: BorderRadius.circular(12),
+                                            borderRadius:
+                                                BorderRadius.circular(12),
                                             child: Container(
                                               width: double.infinity,
-                                              height: context.setMinSize(143.80),
+                                              height:
+                                                  context.setMinSize(143.80),
                                               alignment: Alignment.center,
                                               child: product == null ||
                                                       product!.image == null ||
@@ -241,7 +248,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           Icon(
                                                             Icons.camera_alt,
                                                             size: context
-                                                                .setMinSize(25.64),
+                                                                .setMinSize(
+                                                                    25.64),
                                                             color: Colors.grey,
                                                           ),
                                                           Text(
@@ -249,14 +257,21 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                             style: TextStyle(
                                                               color: const Color(
                                                                   0xFF9CA3AF),
-                                                              fontSize:
-                                                                  context.setSp(12),
-                                                              fontFamily: 'Tajawal',
+                                                              fontSize: context
+                                                                  .setSp(12),
+                                                              fontFamily:
+                                                                  'Tajawal',
                                                               fontWeight:
-                                                                  FontWeight.w400,
+                                                                  FontWeight
+                                                                      .w400,
                                                               height: 1.43,
                                                             ),
                                                           ),
+                                                          ButtonClick(
+                                                            color: AppColor.appColor,
+                                                            data: 'select_image'.tr,
+                                                            onTap:null ,
+                                                          )
                                                         ],
                                                       ),
                                                     )
@@ -267,18 +282,23 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               .image!
                                                               .toString()),
                                                           fit: BoxFit.cover,
-                                                          width: double.infinity,
-                                                          height: double.infinity,
+                                                          width:
+                                                              double.infinity,
+                                                          height:
+                                                              double.infinity,
                                                         )
                                                       : Image.memory(
                                                           base64Decode(product!
                                                               .image!
                                                               .toString()),
                                                           fit: BoxFit.cover,
-                                                          width: double.infinity,
-                                                          height: double.infinity,
+                                                          width:
+                                                              double.infinity,
+                                                          height:
+                                                              double.infinity,
                                                           filterQuality:
-                                                              FilterQuality.high,
+                                                              FilterQuality
+                                                                  .high,
                                                         ),
                                             ),
                                           ),
@@ -291,10 +311,11 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                               Container(
                                 width: double.infinity,
                                 decoration: ShapeDecoration(
-                                  color:
-                                      Get.find<ThemeController>().isDarkMode.value
-                                          ? const Color(0xFF232323)
-                                          : AppColor.white,
+                                  color: Get.find<ThemeController>()
+                                          .isDarkMode
+                                          .value
+                                      ? const Color(0xFF232323)
+                                      : AppColor.white,
                                   shape: RoundedRectangleBorder(
                                     side: BorderSide(
                                       width: 1.06,
@@ -307,13 +328,14 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                     borderRadius: BorderRadius.circular(
                                         context.setMinSize(11.17)),
                                   ),
-                                 
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(context.setMinSize(20)),
+                                  padding:
+                                      EdgeInsets.all(context.setMinSize(20)),
                                   child: Column(
                                     spacing: context.setHeight(10),
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'معلومات المنتج الأساسية',
@@ -502,10 +524,11 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                               Container(
                                 width: double.infinity,
                                 decoration: ShapeDecoration(
-                                  color:
-                                      Get.find<ThemeController>().isDarkMode.value
-                                          ? const Color(0xFF232323)
-                                          : AppColor.white,
+                                  color: Get.find<ThemeController>()
+                                          .isDarkMode
+                                          .value
+                                      ? const Color(0xFF232323)
+                                      : AppColor.white,
                                   shape: RoundedRectangleBorder(
                                     side: BorderSide(
                                       width: 1.06,
@@ -520,17 +543,19 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(context.setMinSize(20)),
+                                  padding:
+                                      EdgeInsets.all(context.setMinSize(20)),
                                   child: Column(
                                     spacing: context.setHeight(10),
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            'خيارات اظافية',
+                                            'more_options'.tr,
                                             textAlign: TextAlign.right,
                                             style: TextStyle(
                                               color: Get.find<ThemeController>()
@@ -551,9 +576,11 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                             },
                                             child: Container(
                                                 width: context.setWidth(21.15),
-                                                height: context.setHeight(21.15),
+                                                height:
+                                                    context.setHeight(21.15),
                                                 decoration: ShapeDecoration(
-                                                  color: Get.find<ThemeController>()
+                                                  color: Get.find<
+                                                              ThemeController>()
                                                           .isDarkMode
                                                           .value
                                                       ? const Color(0xFF202020)
@@ -561,13 +588,13 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                   shape: RoundedRectangleBorder(
                                                     side: BorderSide(
                                                       width: 1.06,
-                                                      color:
-                                                          const Color(0x21848484),
+                                                      color: const Color(
+                                                          0x21848484),
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            context
-                                                                .setMinSize(6.34)),
+                                                            context.setMinSize(
+                                                                6.34)),
                                                   ),
                                                 ),
                                                 child: Center(
@@ -583,9 +610,10 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                   child: SvgPicture.asset(
                                                     AppImages.arrowDown,
                                                     package: 'shared_widgets',
-                                                    width: context.setWidth(14.84),
-                                                    height:
-                                                        context.setHeight(14.84),
+                                                    width:
+                                                        context.setWidth(14.84),
+                                                    height: context
+                                                        .setHeight(14.84),
                                                   ),
                                                 ))),
                                           )
@@ -605,125 +633,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                     height: context.setHeight(
                                                       40,
                                                     ),
-                                                    fillColor:
-                                                        !Get.find<ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? Colors.white
-                                                                .withValues(
-                                                                alpha: 0.43,
-                                                              )
-                                                            : const Color(
-                                                                0xFF2B2B2B,
-                                                              ),
-                                                    borderColor:
-                                                        Get.find<ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? Colors.white
-                                                                .withValues(
-                                                                alpha: 0.50,
-                                                              )
-                                                            : const Color(
-                                                                0xFFC2C3CB,
-                                                              ),
-                                                    hintcolor:
-                                                        !Get.find<ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? const Color(
-                                                                0xFF404040,
-                                                              )
-                                                            : const Color(
-                                                                0xFF9CA3AF,
-                                                              ),
-                                                    borderRadius:
-                                                        context.setMinSize(8),
-                                                    hintText: 'taxes',
-                                                    labelText: 'taxes'.tr,
-                                                    prefixIcon: Padding(
-                                                      padding: EdgeInsets.symmetric(
-                                                        horizontal:
-                                                            context.setWidth(6.3),
-                                                        vertical:
-                                                            context.setHeight(6.3),
-                                                      ),
-                                                      child: SvgPicture.asset(
-                                                        AppImages.tax,
-                                                        package: 'shared_widgets',
-                                                      ),
-                                                    ),
-                                                    value: (product!.taxesId
-                                                            is List)
-                                                        ? product!.taxesId!.first
-                                                        : product!.taxesId,
-                                                    color:
-                                                        !Get.find<ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? const Color(
-                                                                0xFF404040,
-                                                              )
-                                                            : const Color(
-                                                                0xFF6B7280,
-                                                              ),
-                                                    iconcolor: const Color(
-                                                      0xFF9CA3AF,
-                                                    ),
-                                                    onChanged: (val) {
-                                                      product!.taxesId = [val];
-                                                    },
-                                                    items: productController
-                                                        .taxesList
-                                                        .map(
-                                                          (
-                                                            e,
-                                                          ) =>
-                                                              DropdownMenuItem(
-                                                            value: e.id,
-                                                            child: Center(
-                                                              child: Text(
-                                                                (SharedPr.lang ==
-                                                                        'ar'
-                                                                    ? e.name!.ar001
-                                                                    : e.name!
-                                                                        .enUS)!,
-                                                                style: TextStyle(
-                                                                  color: Get.find<
-                                                                              ThemeController>()
-                                                                          .isDarkMode
-                                                                          .value
-                                                                      ? Colors.white
-                                                                      : Colors
-                                                                          .black,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        )
-                                                        .toList(),
-                                                    validator: (value) {
-                                                      if (value == null) {
-                                                        errorMessage =
-                                                            'taxes'.trParams({
-                                                          'field_name': 'taxes'.tr,
-                                                        });
-                                                        countErrors++;
-                                                        return "";
-                                                      }
-                                                      return null;
-                                                    },
-                                                  ),
-                                                                                                        // product_category
-                                                  ContainerDropDownField(
-                                                                                                                fontSize:
-                                                        context.setSp(14),
-                                                                                                                width:
-                                                        context.screenWidth,
-                                                                                                                height: context.setHeight(
-                                                      40,
-                                                                                                                ),
-                                                                                                                fillColor: !Get.find<
+                                                    fillColor: !Get.find<
                                                                 ThemeController>()
                                                             .isDarkMode
                                                             .value
@@ -734,7 +644,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                         : const Color(
                                                             0xFF2B2B2B,
                                                           ),
-                                                                                                                borderColor: Get.find<
+                                                    borderColor: Get.find<
                                                                 ThemeController>()
                                                             .isDarkMode
                                                             .value
@@ -745,7 +655,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                         : const Color(
                                                             0xFFC2C3CB,
                                                           ),
-                                                                                                                hintcolor: !Get.find<
+                                                    hintcolor: !Get.find<
                                                                 ThemeController>()
                                                             .isDarkMode
                                                             .value
@@ -755,15 +665,30 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                         : const Color(
                                                             0xFF9CA3AF,
                                                           ),
-                                                                                                                borderRadius:
+                                                    borderRadius:
                                                         context.setMinSize(8),
-                                                                                                                hintText:
-                                                        'product_category',
-                                                                                                                labelText:
-                                                        'product_category'.tr,
-                                                                                                                value:
-                                                        product!.soPosCategId,
-                                                                                                                color: !Get.find<
+                                                    hintText: 'taxes',
+                                                    labelText: 'taxes'.tr,
+                                                    prefixIcon: Padding(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                        horizontal: context
+                                                            .setWidth(6.3),
+                                                        vertical: context
+                                                            .setHeight(6.3),
+                                                      ),
+                                                      child: SvgPicture.asset(
+                                                        AppImages.tax,
+                                                        package:
+                                                            'shared_widgets',
+                                                      ),
+                                                    ),
+                                                    value: (product!.taxesId
+                                                            is List)
+                                                        ? product!
+                                                            .taxesId!.first
+                                                        : product!.taxesId,
+                                                    color: !Get.find<
                                                                 ThemeController>()
                                                             .isDarkMode
                                                             .value
@@ -773,14 +698,121 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                         : const Color(
                                                             0xFF6B7280,
                                                           ),
-                                                                                                                iconcolor: const Color(
+                                                    iconcolor: const Color(
                                                       0xFF9CA3AF,
-                                                                                                                ),
-                                                                                                                onChanged: (val) {
+                                                    ),
+                                                    onChanged: (val) {
+                                                      product!.taxesId = [val];
+                                                    },
+                                                    items:
+                                                        productController
+                                                            .taxesList
+                                                            .map(
+                                                              (
+                                                                e,
+                                                              ) =>
+                                                                  DropdownMenuItem(
+                                                                value: e.id,
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    (SharedPr.lang ==
+                                                                            'ar'
+                                                                        ? e.name!
+                                                                            .ar001
+                                                                        : e.name!
+                                                                            .enUS)!,
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Get.find<ThemeController>()
+                                                                              .isDarkMode
+                                                                              .value
+                                                                          ? Colors
+                                                                              .white
+                                                                          : Colors
+                                                                              .black,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            )
+                                                            .toList(),
+                                                    validator: (value) {
+                                                      if (value == null) {
+                                                        errorMessage =
+                                                            'taxes'.trParams({
+                                                          'field_name':
+                                                              'taxes'.tr,
+                                                        });
+                                                        countErrors++;
+                                                        return "";
+                                                      }
+                                                      return null;
+                                                    },
+                                                  ),
+                                                  // product_category
+                                                  ContainerDropDownField(
+                                                    fontSize: context.setSp(14),
+                                                    width: context.screenWidth,
+                                                    height: context.setHeight(
+                                                      40,
+                                                    ),
+                                                    fillColor: !Get.find<
+                                                                ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? Colors.white
+                                                            .withValues(
+                                                            alpha: 0.43,
+                                                          )
+                                                        : const Color(
+                                                            0xFF2B2B2B,
+                                                          ),
+                                                    borderColor: Get.find<
+                                                                ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? Colors.white
+                                                            .withValues(
+                                                            alpha: 0.50,
+                                                          )
+                                                        : const Color(
+                                                            0xFFC2C3CB,
+                                                          ),
+                                                    hintcolor: !Get.find<
+                                                                ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? const Color(
+                                                            0xFF404040,
+                                                          )
+                                                        : const Color(
+                                                            0xFF9CA3AF,
+                                                          ),
+                                                    borderRadius:
+                                                        context.setMinSize(8),
+                                                    hintText:
+                                                        'product_category',
+                                                    labelText:
+                                                        'product_category'.tr,
+                                                    value:
+                                                        product!.soPosCategId,
+                                                    color: !Get.find<
+                                                                ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? const Color(
+                                                            0xFF404040,
+                                                          )
+                                                        : const Color(
+                                                            0xFF6B7280,
+                                                          ),
+                                                    iconcolor: const Color(
+                                                      0xFF9CA3AF,
+                                                    ),
+                                                    onChanged: (val) {
                                                       product!.soPosCategId =
                                                           val;
-                                                      PosCategory
-                                                          posCategory =
+                                                      PosCategory posCategory =
                                                           productController
                                                               .categoriesList
                                                               .firstWhere(
@@ -790,15 +822,13 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                             PosCategory(),
                                                       );
                                                       product!.soPosCategName =
-                                                          (SharedPr.lang ==
-                                                                  'ar'
+                                                          (SharedPr.lang == 'ar'
                                                               ? posCategory
                                                                   .name!.ar001
                                                               : posCategory
-                                                                  .name!
-                                                                  .enUS);
-                                                                                                                },
-                                                                                                                items:
+                                                                  .name!.enUS);
+                                                    },
+                                                    items:
                                                         productController
                                                             .categoriesList
                                                             .map(
@@ -817,16 +847,20 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                             .enUS)!,
                                                                     style:
                                                                         TextStyle(
-                                                                      color: Get.find<ThemeController>().isDarkMode.value
-                                                                          ? Colors.white
-                                                                          : Colors.black,
+                                                                      color: Get.find<ThemeController>()
+                                                                              .isDarkMode
+                                                                              .value
+                                                                          ? Colors
+                                                                              .white
+                                                                          : Colors
+                                                                              .black,
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ),
                                                             )
                                                             .toList(),
-                                                                                                                validator: (value) {
+                                                    validator: (value) {
                                                       if (value == null) {
                                                         errorMessage =
                                                             'required_message'
@@ -839,38 +873,46 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                         return "";
                                                       }
                                                       return null;
-                                                                                                                },
-                                                                                                              ),
-                                                      
+                                                    },
+                                                  ),
+
                                                   Row(
-                                                    spacing: context.setWidth(16),
+                                                    spacing:
+                                                        context.setWidth(16),
                                                     children: [
                                                       // product_barcode
                                                       Expanded(
-                                                        child: ContainerTextField(
+                                                        child:
+                                                            ContainerTextField(
                                                           controller:
                                                               barcodeController,
                                                           labelText:
-                                                              'product_barcode'.tr,
+                                                              'product_barcode'
+                                                                  .tr,
                                                           hintText:
-                                                              'product_barcode'.tr,
+                                                              'product_barcode'
+                                                                  .tr,
                                                           keyboardType:
-                                                              TextInputType.number,
+                                                              TextInputType
+                                                                  .number,
                                                           inputFormatters: [
                                                             FilteringTextInputFormatter
                                                                 .allow(
-                                                              RegExp('[0-9\$]+'),
+                                                              RegExp(
+                                                                  '[0-9\$]+'),
                                                             ),
                                                           ],
-                                                          width:
-                                                              context.screenWidth,
-                                                          height: context.setHeight(
+                                                          width: context
+                                                              .screenWidth,
+                                                          height:
+                                                              context.setHeight(
                                                             40,
                                                           ),
                                                           fontSize:
                                                               context.setSp(14),
                                                           contentPadding:
-                                                              EdgeInsets.fromLTRB(
+                                                              EdgeInsets
+                                                                  .fromLTRB(
                                                             context.setWidth(
                                                               9.36,
                                                             ),
@@ -928,17 +970,21 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                   0xFF6B7280,
                                                                 ),
                                                           isAddOrEdit: true,
-                                                          borderRadius:
-                                                              context.setMinSize(8),
+                                                          borderRadius: context
+                                                              .setMinSize(8),
                                                           prefixIcon: Padding(
                                                             padding: EdgeInsets
                                                                 .symmetric(
-                                                              horizontal: context
-                                                                  .setWidth(6.3),
+                                                              horizontal:
+                                                                  context
+                                                                      .setWidth(
+                                                                          6.3),
                                                               vertical: context
-                                                                  .setHeight(6.3),
+                                                                  .setHeight(
+                                                                      6.3),
                                                             ),
-                                                            child: SvgPicture.asset(
+                                                            child: SvgPicture
+                                                                .asset(
                                                               AppImages.barcode,
                                                               package:
                                                                   'shared_widgets',
@@ -948,7 +994,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       ),
                                                       //default_code
                                                       Expanded(
-                                                        child: ContainerTextField(
+                                                        child:
+                                                            ContainerTextField(
                                                           controller:
                                                               defaultCodeController,
                                                           labelText:
@@ -956,17 +1003,20 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           hintText:
                                                               'default_code'.tr,
                                                           keyboardType:
-                                                              TextInputType.text,
+                                                              TextInputType
+                                                                  .text,
                                                           // textAlign: TextAlign.justify,
-                                                          width:
-                                                              context.screenWidth,
-                                                          height: context.setHeight(
+                                                          width: context
+                                                              .screenWidth,
+                                                          height:
+                                                              context.setHeight(
                                                             40,
                                                           ),
                                                           fontSize:
                                                               context.setSp(14),
                                                           contentPadding:
-                                                              EdgeInsets.fromLTRB(
+                                                              EdgeInsets
+                                                                  .fromLTRB(
                                                             context.setWidth(
                                                               9.36,
                                                             ),
@@ -1024,17 +1074,21 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                   0xFF6B7280,
                                                                 ),
                                                           isAddOrEdit: true,
-                                                          borderRadius:
-                                                              context.setMinSize(8),
+                                                          borderRadius: context
+                                                              .setMinSize(8),
                                                           prefixIcon: Padding(
                                                             padding: EdgeInsets
                                                                 .symmetric(
-                                                              horizontal: context
-                                                                  .setWidth(10),
+                                                              horizontal:
+                                                                  context
+                                                                      .setWidth(
+                                                                          10),
                                                               vertical: context
-                                                                  .setHeight(10),
+                                                                  .setHeight(
+                                                                      10),
                                                             ),
-                                                            child: SvgPicture.asset(
+                                                            child: SvgPicture
+                                                                .asset(
                                                               AppImages.barcode,
                                                               package:
                                                                   'shared_widgets',
@@ -1045,16 +1099,18 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                     ],
                                                   ),
                                                   Row(
-                                                    spacing: context.setWidth(16),
+                                                    spacing:
+                                                        context.setWidth(16),
                                                     children: [
                                                       Expanded(
                                                         child:
                                                             ContainerDropDownField(
                                                           fontSize:
                                                               context.setSp(14),
-                                                          width:
-                                                              context.screenWidth,
-                                                          height: context.setHeight(
+                                                          width: context
+                                                              .screenWidth,
+                                                          height:
+                                                              context.setHeight(
                                                             40,
                                                           ),
                                                           fillColor: !Get.find<
@@ -1089,12 +1145,14 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               : const Color(
                                                                   0xFF9CA3AF,
                                                                 ),
-                                                          borderRadius:
-                                                              context.setMinSize(8),
-                                                          hintText: 'product_type',
+                                                          borderRadius: context
+                                                              .setMinSize(8),
+                                                          hintText:
+                                                              'product_type',
                                                           labelText:
                                                               'product_type'.tr,
-                                                          value: !SharedPr.userObj!
+                                                          value: !SharedPr
+                                                                      .userObj!
                                                                       .isPosInventoryModuleInstalled! &&
                                                                   product!.detailedType ==
                                                                       DetailedType
@@ -1113,14 +1171,16 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               : const Color(
                                                                   0xFF6B7280,
                                                                 ),
-                                                          iconcolor: const Color(
+                                                          iconcolor:
+                                                              const Color(
                                                             0xFF9CA3AF,
                                                           ),
                                                           onChanged: (val) {
                                                             product!.detailedType =
                                                                 val;
                                                           },
-                                                          items: (!SharedPr.userObj!
+                                                          items: (!SharedPr
+                                                                      .userObj!
                                                                       .isPosInventoryModuleInstalled!
                                                                   ? productDetailedType
                                                                       .take(2)
@@ -1143,13 +1203,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                               .enUS),
                                                                       style:
                                                                           TextStyle(
-                                                                        color: Get.find<ThemeController>()
-                                                                                .isDarkMode
-                                                                                .value
-                                                                            ? Colors
-                                                                                .white
-                                                                            : Colors
-                                                                                .black,
+                                                                        color: Get.find<ThemeController>().isDarkMode.value
+                                                                            ? Colors.white
+                                                                            : Colors.black,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1179,9 +1235,10 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                             ContainerDropDownField(
                                                           fontSize:
                                                               context.setSp(14),
-                                                          width:
-                                                              context.screenWidth,
-                                                          height: context.setHeight(
+                                                          width: context
+                                                              .screenWidth,
+                                                          height:
+                                                              context.setHeight(
                                                             40,
                                                           ),
                                                           fillColor: !Get.find<
@@ -1216,9 +1273,10 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               : const Color(
                                                                   0xFF9CA3AF,
                                                                 ),
-                                                          borderRadius:
-                                                              context.setMinSize(8),
-                                                          hintText: 'product_unit',
+                                                          borderRadius: context
+                                                              .setMinSize(8),
+                                                          hintText:
+                                                              'product_unit',
                                                           labelText:
                                                               'product_unit'.tr,
                                                           value: product!.uomId,
@@ -1232,18 +1290,21 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               : const Color(
                                                                   0xFF6B7280,
                                                                 ),
-                                                          iconcolor: const Color(
+                                                          iconcolor:
+                                                              const Color(
                                                             0xFF9CA3AF,
                                                           ),
                                                           onChanged: (val) {
-                                                            product!.uomId = val;
+                                                            product!.uomId =
+                                                                val;
                                                             ProductUnit
                                                                 productUnit =
                                                                 productController
                                                                     .unitsList
                                                                     .firstWhere(
                                                               (element) =>
-                                                                  element.id == val,
+                                                                  element.id ==
+                                                                  val,
                                                               orElse: () =>
                                                                   ProductUnit(),
                                                             );
@@ -1251,7 +1312,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                 (SharedPr.lang ==
                                                                         'ar'
                                                                     ? productUnit
-                                                                        .name!.ar001
+                                                                        .name!
+                                                                        .ar001
                                                                     : productUnit
                                                                         .name!
                                                                         .enUS);
@@ -1264,15 +1326,15 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                       e,
                                                                     ) =>
                                                                         DropdownMenuItem(
-                                                                      value: e.id,
-                                                                      child: Center(
-                                                                        child: Text(
-                                                                          (SharedPr.lang ==
-                                                                                  'ar'
-                                                                              ? e.name!
-                                                                                  .ar001
-                                                                              : e.name!
-                                                                                  .enUS)!,
+                                                                      value:
+                                                                          e.id,
+                                                                      child:
+                                                                          Center(
+                                                                        child:
+                                                                            Text(
+                                                                          (SharedPr.lang == 'ar'
+                                                                              ? e.name!.ar001
+                                                                              : e.name!.enUS)!,
                                                                           style:
                                                                               TextStyle(
                                                                             color: Get.find<ThemeController>().isDarkMode.value
@@ -1308,12 +1370,15 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       ),
                                                     ),
                                                     child: Column(
-                                                      spacing: context.setHeight(5),
+                                                      spacing:
+                                                          context.setHeight(5),
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment.start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         SizedBox(
-                                                          height: context.setHeight(
+                                                          height:
+                                                              context.setHeight(
                                                             5,
                                                           ),
                                                         ),
@@ -1330,10 +1395,12 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                 : const Color(
                                                                     0xFF2F343C,
                                                                   ),
-                                                            fontSize: context.setSp(
+                                                            fontSize:
+                                                                context.setSp(
                                                               12,
                                                             ),
-                                                            fontFamily: 'SansMedium',
+                                                            fontFamily:
+                                                                'SansMedium',
                                                             fontWeight:
                                                                 FontWeight.w600,
                                                             height: 2,
@@ -1342,7 +1409,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                         Expanded(
                                                           child: Row(
                                                             mainAxisSize:
-                                                                MainAxisSize.min,
+                                                                MainAxisSize
+                                                                    .min,
                                                             children: [
                                                               Checkbox(
                                                                 shape:
@@ -1359,10 +1427,12 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                 value: product!
                                                                         .quickMenuAvailability ??
                                                                     false,
-                                                                onChanged: (val) {
+                                                                onChanged:
+                                                                    (val) {
                                                                   product?.quickMenuAvailability =
                                                                       val!;
-                                                                  setState(() {});
+                                                                  setState(
+                                                                      () {});
                                                                 },
                                                                 fillColor:
                                                                     WidgetStateProperty
@@ -1372,12 +1442,14 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                   ),
                                                                 ),
                                                                 checkColor:
-                                                                    Colors.black,
+                                                                    Colors
+                                                                        .black,
                                                               ),
                                                               Text(
                                                                 'quick_menu_availability'
                                                                     .tr,
-                                                                style: TextStyle(
+                                                                style:
+                                                                    TextStyle(
                                                                   color: Get.find<
                                                                               ThemeController>()
                                                                           .isDarkMode
@@ -1389,7 +1461,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                           0xFF404040,
                                                                         ),
                                                                   fontSize: context
-                                                                      .setSp(13),
+                                                                      .setSp(
+                                                                          13),
                                                                   fontFamily:
                                                                       'Tajawal',
                                                                   fontWeight:
@@ -1407,41 +1480,49 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                   ContainerDropDownField(
                                                     fontSize: context.setSp(14),
                                                     width: context.screenWidth,
-                                                    height: context.setHeight(40),
-                                                    fillColor:
-                                                        !Get.find<ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? Colors.white
-                                                            : const Color(
-                                                                0xFF2B2B2B),
+                                                    height:
+                                                        context.setHeight(40),
+                                                    fillColor: !Get.find<
+                                                                ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? Colors.white
+                                                        : const Color(
+                                                            0xFF2B2B2B),
                                                     borderColor: Get.find<
                                                                 ThemeController>()
                                                             .isDarkMode
                                                             .value
-                                                        ? Colors.white.withValues(
+                                                        ? Colors.white
+                                                            .withValues(
                                                             alpha: 0.50,
                                                           )
-                                                        : const Color(0xFFC2C3CB),
+                                                        : const Color(
+                                                            0xFFC2C3CB),
                                                     hintcolor: !Get.find<
                                                                 ThemeController>()
                                                             .isDarkMode
                                                             .value
-                                                        ? const Color(0xFF404040)
-                                                        : const Color(0xFF9CA3AF),
+                                                        ? const Color(
+                                                            0xFF404040)
+                                                        : const Color(
+                                                            0xFF9CA3AF),
                                                     borderRadius:
                                                         context.setMinSize(
                                                       8,
                                                     ),
                                                     hintText: 'product_note',
-                                                    labelText: 'product_note'.tr,
+                                                    labelText:
+                                                        'product_note'.tr,
                                                     value: null,
                                                     color: !Get.find<
                                                                 ThemeController>()
                                                             .isDarkMode
                                                             .value
-                                                        ? const Color(0xFF404040)
-                                                        : const Color(0xFF6B7280),
+                                                        ? const Color(
+                                                            0xFF404040)
+                                                        : const Color(
+                                                            0xFF6B7280),
                                                     iconcolor: const Color(
                                                       0xFF9CA3AF,
                                                     ),
@@ -1449,28 +1530,31 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       categoryNotes.add(val);
                                                       setState(() {});
                                                     },
-                                                    items: product?.productCategory
-                                                        ?.categoryNotes
-                                                        ?.map(
-                                                          (e) => DropdownMenuItem(
-                                                            value: e,
-                                                            child: Center(
-                                                              child: Text(
-                                                                e.note!,
-                                                                style: TextStyle(
-                                                                  color: Get.find<
-                                                                              ThemeController>()
-                                                                          .isDarkMode
-                                                                          .value
-                                                                      ? Colors.white
-                                                                      : Colors
-                                                                          .black,
+                                                    items:
+                                                        product?.productCategory
+                                                            ?.categoryNotes
+                                                            ?.map(
+                                                              (e) =>
+                                                                  DropdownMenuItem(
+                                                                value: e,
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    e.note!,
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Get.find<ThemeController>()
+                                                                              .isDarkMode
+                                                                              .value
+                                                                          ? Colors
+                                                                              .white
+                                                                          : Colors
+                                                                              .black,
+                                                                    ),
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ),
-                                                        )
-                                                        .toList(),
+                                                            )
+                                                            .toList(),
                                                   ),
                                                   Wrap(
                                                     spacing: 8.0,
@@ -1478,16 +1562,17 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                     children:
                                                         categoryNotes.map((c) {
                                                       return Container(
-                                                        decoration: ShapeDecoration(
-                                                          color:
-                                                              !SharedPr.isDarkMode!
-                                                                  ? Colors.white
-                                                                      .withValues(
-                                                                      alpha: 0.43,
-                                                                    )
-                                                                  : const Color(
-                                                                      0xFF2B2B2B,
-                                                                    ),
+                                                        decoration:
+                                                            ShapeDecoration(
+                                                          color: !SharedPr
+                                                                  .isDarkMode!
+                                                              ? Colors.white
+                                                                  .withValues(
+                                                                  alpha: 0.43,
+                                                                )
+                                                              : const Color(
+                                                                  0xFF2B2B2B,
+                                                                ),
                                                           shape:
                                                               RoundedRectangleBorder(
                                                             side: BorderSide(
@@ -1505,37 +1590,43 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                              context.setMinSize(
+                                                              context
+                                                                  .setMinSize(
                                                                 16,
                                                               ),
                                                             ),
                                                           ),
                                                         ),
                                                         child: Padding(
-                                                          padding: EdgeInsets.all(
+                                                          padding:
+                                                              EdgeInsets.all(
                                                             context.setMinSize(
                                                               10,
                                                             ),
                                                           ),
                                                           child: Row(
                                                             mainAxisSize:
-                                                                MainAxisSize.min,
+                                                                MainAxisSize
+                                                                    .min,
                                                             spacing: context
                                                                 .setWidth(25),
                                                             children: [
                                                               Text(
                                                                 c.note!,
-                                                                style: TextStyle(
+                                                                style:
+                                                                    TextStyle(
                                                                   color: Get.find<
                                                                               ThemeController>()
                                                                           .isDarkMode
                                                                           .value
-                                                                      ? Colors.white
+                                                                      ? Colors
+                                                                          .white
                                                                       : const Color(
                                                                           0xFF4B5563,
                                                                         ),
                                                                   fontSize:
-                                                                      context.setSp(
+                                                                      context
+                                                                          .setSp(
                                                                     14,
                                                                   ),
                                                                   fontFamily:
@@ -1549,8 +1640,10 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               InkWell(
                                                                 onTap: () {
                                                                   categoryNotes
-                                                                      .remove(c);
-                                                                  setState(() {});
+                                                                      .remove(
+                                                                          c);
+                                                                  setState(
+                                                                      () {});
                                                                 },
                                                                 child: Icon(
                                                                   Icons.clear,
@@ -1583,7 +1676,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                 children: [
                                   Expanded(
                                     child: ButtonClick(
-                                      color: const Color(0xFF16A6B7),
+                                      color: AppColor.appColor,
                                       data: (product!.id != null
                                               ? 'edit_product'
                                               : 'add_product')
@@ -1607,15 +1700,14 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                         ),
                       );
                     }),
-              productController.isLoading.value
-                            ? const LoadingWidget()
-                            : Container(),
+                productController.isLoading.value
+                    ? const LoadingWidget()
+                    : Container(),
               ],
             )),
       );
     }));
   }
-
 
   _onPressed() async {
     try {
@@ -1637,14 +1729,12 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
           );
         } else {
           processedProductName = ProductName(
-            enUS:
-                SharedPr.lang == 'en'
-                    ? nameController.text
-                    : product!.productName!.enUS,
-            ar001:
-                SharedPr.lang == 'ar'
-                    ? nameController.text
-                    : product!.productName!.ar001,
+            enUS: SharedPr.lang == 'en'
+                ? nameController.text
+                : product!.productName!.enUS,
+            ar001: SharedPr.lang == 'ar'
+                ? nameController.text
+                : product!.productName!.ar001,
           );
         }
         product!
@@ -1652,10 +1742,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
           ..barcode =
               barcodeController.text == "" ? null : barcodeController.text
           ..unitPrice = double.parse(unitPriceController.text)
-          ..defaultCode =
-              defaultCodeController.text == ""
-                  ? null
-                  : defaultCodeController.text
+          ..defaultCode = defaultCodeController.text == ""
+              ? null
+              : defaultCodeController.text
           ..uomId = 1
           ..productNotes = categoryNotes;
 
@@ -1727,5 +1816,4 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
       appSnackBar(status: false, message: e.toString());
     }
   }
-
 }
