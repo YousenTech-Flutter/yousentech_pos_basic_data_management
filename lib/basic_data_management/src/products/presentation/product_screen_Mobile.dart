@@ -65,9 +65,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
     print("hasMore==========${productController.hasMore.value}");
     print("pagnationpagesNumber============${productController.pagnationpagesNumber}");
     productController.selectedPagnation = 1;
-    if(productController.hasMore.value){
+    // if(productController.hasMore.value){
       productController.pagnationpagesNumber++;
-    }
+    // }
     print("Number============${productController.pagnationpagesNumber}");
     await productController.displayProductList(
       skipOffset: true,
@@ -758,7 +758,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                           )),
                                     );
                                   } else {
-                                    return productController.hasMore.value && productController.isLoading.value
+                                    return productController.isLoading.value
                                         ? Center(
                                             child: CircularProgressIndicator(
                                               color: AppColor.appColor,
@@ -1019,7 +1019,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                         ),
                                       );
                                     } else {
-                                      return productController.hasMore.value && productController.isLoading.value
+                                      return productController.isLoading.value
                                           ? Center(
                                               child: CircularProgressIndicator(
                                                 color: AppColor.appColor,
