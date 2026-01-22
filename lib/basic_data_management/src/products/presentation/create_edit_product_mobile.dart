@@ -1331,7 +1331,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                     0xFF2F343C,
                                                                   ),
                                                             fontSize: context.setSp(
-                                                              15,
+                                                              12,
                                                             ),
                                                             fontFamily: 'SansMedium',
                                                             fontWeight:
