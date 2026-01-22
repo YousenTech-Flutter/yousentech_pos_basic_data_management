@@ -204,9 +204,9 @@ class ProductController extends GetxController {
         if(skipOffset){
           result = searchFiltterResult.isNotEmpty
             ? searchFiltterResult
-                .take(limit)
+                .take((page.value==0?1 :page.value) * limit)
                 .toList()
-            : await productService.index(limit: limit);
+            : await productService.index(limit: (page.value==0?1 :page.value) * limit);
         }
         else{
           result = searchFiltterResult.isNotEmpty
@@ -572,7 +572,7 @@ class ProductController extends GetxController {
   // # Output:
   // # - Resets the page to `0` and reloads the product list based on the selected page.
 
-  resetPagingList({required int selectedpag , bool skipOffset = false,}) async {
+  resetPagingList({required int selectedpag}) async {
     page.value = 0;
     await displayProductList(
         paging: true, type: "", pageselecteed: selectedpag);
