@@ -210,6 +210,7 @@ class ProductController extends GetxController {
                 .take((page.value==0?1 :page.value) * limit)
                 .toList()
             : await productService.index(limit: (page.value==0?1 :page.value) * limit);
+          print("result of product =====${result.length}");
         }
         else{
           result = searchFiltterResult.isNotEmpty
