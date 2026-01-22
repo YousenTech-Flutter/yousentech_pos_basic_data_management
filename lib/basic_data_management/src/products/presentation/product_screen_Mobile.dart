@@ -681,7 +681,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                 children: [
                                                   Text(
                                                     "${index+1} ${item.getProductNameBasedOnLang}",
-                                                    maxLines: 1,
+                                                    overflow:TextOverflow.ellipsis,
                                                     style: TextStyle(
                                                       color: Get.find<
                                                                   ThemeController>()
@@ -694,8 +694,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                         12,
                                                       ),
                                                       
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
+                                                      
                                                       fontWeight:
                                                           FontWeight.w700,
                                                     ),
@@ -707,8 +706,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                       Text(
                                                         '${item.unitPrice}',
                                                         style: TextStyle(
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
                                                           color:
                                                               AppColor.appColor,
                                                           fontSize:
@@ -735,9 +732,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                   ),
                                                   Text(
                                                     item.soPosCategName!,
+                                                    overflow:TextOverflow.ellipsis,
                                                     style: TextStyle(
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
+                                                      
                                                       color: const Color(
                                                           0xFF6B7280),
                                                       fontSize:
@@ -806,7 +803,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                   itemCount: result.length + 1,
                                   itemBuilder: (context, index) {
                                     if (index < result.length) {
-                                                                          var item = result[index];
+                                    var item = result[index];
                                     return GestureDetector(
                                       onTap: () async {},
                                       child: Container(
@@ -983,9 +980,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                               ),
                                               Text(
                                                 item.soPosCategName!,
+                                                overflow:TextOverflow.ellipsis,
                                                 style: TextStyle(
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
+                                                  
                                                   color:
                                                       const Color(0xFF6B7280),
                                                   fontSize:
