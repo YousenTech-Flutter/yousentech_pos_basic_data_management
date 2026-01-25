@@ -10,6 +10,7 @@ import 'package:pos_shared_preferences/models/pos_categories_data/pos_category.d
 import 'package:pos_shared_preferences/models/product_data/product.dart';
 import 'package:pos_shared_preferences/models/product_data/product_more_details.dart';
 import 'package:pos_shared_preferences/models/product_unit/data/product_unit.dart';
+import 'package:shared_widgets/config/app_enums.dart';
 import 'package:shared_widgets/config/app_odoo_models.dart';
 import 'package:shared_widgets/utils/mac_address_helper.dart';
 import 'package:shared_widgets/utils/response_result.dart';
@@ -22,8 +23,6 @@ import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domai
 import '../../item_history/domain/item_history_viewmodel.dart';
 import '../../pos_categories/domain/pos_category_service.dart';
 
-
-enum ProductsViewMode { list, grid }
 class ProductController extends GetxController {
   
   ProductService productService = ProductService.getInstance();
@@ -58,7 +57,7 @@ class ProductController extends GetxController {
   int skip = 0;
   int pagnationpagesNumber = 0;
   //==================for Pagnation  item================
-  final Rx<ProductsViewMode> productsViewMode = ProductsViewMode.list.obs;
+  final Rx<PagesViewMode> productsViewMode = PagesViewMode.list.obs;
   RxBool showProductOptionsInfo = false.obs;
   @override
   Future<void> onInit() async {
@@ -603,9 +602,9 @@ class ProductController extends GetxController {
 
 void toggleProductsViewMode() {
   productsViewMode.value = 
-      productsViewMode.value == ProductsViewMode.list 
-          ? ProductsViewMode.grid 
-          : ProductsViewMode.list;
+      productsViewMode.value == PagesViewMode.list 
+          ? PagesViewMode.grid 
+          : PagesViewMode.list;
 }
 
   void toggleProductViewOptionsInfo()  {

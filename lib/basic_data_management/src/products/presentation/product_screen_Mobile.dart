@@ -547,7 +547,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                       ),
                       Obx(() {
                         if (productController.productsViewMode.value ==
-                            ProductsViewMode.list) {
+                            PagesViewMode.list) {
                           return GetBuilder<LoadingDataController>(
                             id: "pagin",
                             builder: (controller) {

@@ -2,8 +2,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
-import 'dart:io';
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -454,7 +452,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                       ),
                       Obx(() {
                         if (customerController.customersViewMode.value ==
-                            CustomersViewMode.list) {
+                            PagesViewMode.list) {
                           var result = customerController.selectedPagnation == 1
                               ? customerController.searchResults.isNotEmpty
                                   ? customerController.seachCustomerPagingList

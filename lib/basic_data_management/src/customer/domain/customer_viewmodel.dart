@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:pos_shared_preferences/models/customer_model.dart';
+import 'package:shared_widgets/config/app_enums.dart';
 import 'package:shared_widgets/config/app_odoo_models.dart';
 import 'package:shared_widgets/shared_widgets/handle_exception_helper.dart';
 import 'package:shared_widgets/shared_widgets/odoo_connection_helper.dart';
@@ -9,7 +10,6 @@ import 'package:shared_widgets/utils/response_result.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_service.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/config/app_enums.dart';
 import 'package:yousentech_pos_loading_synchronizing_data/loading_sync/src/domain/loading_synchronizing_data_viewmodel.dart';
-enum CustomersViewMode { list, grid }
 class CustomerController extends GetxController {
   final loading = false.obs;
   late CustomerService customerService = CustomerService.getInstance();
@@ -32,7 +32,7 @@ class CustomerController extends GetxController {
   int skip = 0;
   int pagnationpagesNumber = 0;
   //==================for Pagnation  item================
-  final Rx<CustomersViewMode> customersViewMode = CustomersViewMode.list.obs;
+  final Rx<PagesViewMode> customersViewMode = PagesViewMode.list.obs;
   RxBool showCustomerOptionsInfo = false.obs;
   @override
   Future<void> onInit() async {
@@ -476,9 +476,9 @@ class CustomerController extends GetxController {
 //  ===================================================== [ RESET PAGING LIST ] =====================================================
 void toggleCustomersViewMode() {
   customersViewMode.value = 
-      customersViewMode.value == CustomersViewMode.list 
-          ? CustomersViewMode.grid 
-          : CustomersViewMode.list;
+      customersViewMode.value == PagesViewMode.list 
+          ? PagesViewMode.grid 
+          : PagesViewMode.list;
 }
 
   void toggleCustomerViewOptionsInfo()  {
