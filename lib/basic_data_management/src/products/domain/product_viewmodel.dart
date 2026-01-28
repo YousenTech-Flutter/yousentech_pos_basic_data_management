@@ -30,7 +30,7 @@ class ProductController extends GetxController {
   
   LoadingSynchronizingDataService loadingSynchronizingDataService =
       LoadingSynchronizingDataService(type: Product);
-  LoadingDataController loadingDataController =  Get.find<LoadingDataController>();
+  LoadingDataController loadingDataController = Get.isRegistered<LoadingDataController>() ?  Get.find<LoadingDataController>() : Get.put(LoadingDataController());
   var isLoading = false.obs;
   var hideMainScreen = false.obs;
   RxList<Product> productList = <Product>[].obs;

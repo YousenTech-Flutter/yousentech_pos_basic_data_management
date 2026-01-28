@@ -18,7 +18,7 @@ class PosCategoryController extends GetxController {
   final ItemHistoryController _itemHistoryController = ItemHistoryController();
   LoadingSynchronizingDataService loadingSynchronizingDataService =
       LoadingSynchronizingDataService(type: PosCategory);
-  LoadingDataController loadingDataController =  Get.find<LoadingDataController>();
+  LoadingDataController loadingDataController =  Get.isRegistered<LoadingDataController>() ?  Get.find<LoadingDataController>() : Get.put(LoadingDataController());
   var isLoading = false.obs;
   var hideMainScreen = false.obs;
   RxList<PosCategory> posCategoryList = <PosCategory>[].obs;

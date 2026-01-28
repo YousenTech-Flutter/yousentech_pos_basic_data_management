@@ -21,7 +21,7 @@ class CustomerController extends GetxController {
   RxList<Customer> searchResults = RxList<Customer>();
   Customer? object;
 
-  LoadingDataController loadingDataController =  Get.find<LoadingDataController>();
+  LoadingDataController loadingDataController =  Get.isRegistered<LoadingDataController>() ?  Get.find<LoadingDataController>() : Get.put(LoadingDataController());
 
   var page = 0.obs;
   int limit = Platform.isWindows ? 18 : 10;
