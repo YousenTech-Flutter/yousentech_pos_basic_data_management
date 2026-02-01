@@ -599,6 +599,8 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                                             item.getPosParentCategoryNameBasedOnLang ??
                                                                 "-",
                                                             style: TextStyle(
+                                                              overflow: TextOverflow
+                                                            .ellipsis,
                                                               color: AppColor
                                                                   .appColor,
                                                               fontSize: context
