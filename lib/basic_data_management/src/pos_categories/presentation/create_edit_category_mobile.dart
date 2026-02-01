@@ -150,7 +150,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
             child: Scaffold(
                 backgroundColor: Get.find<ThemeController>().isDarkMode.value
                     ? AppColor.darkModeBackgroundColor
-                    : const Color(0xFFF6F6F6),
+                    : const Color(0xFFE3E3E3),
                 appBar: customAppBar(
                   context: context,
                   isMobile: true,
