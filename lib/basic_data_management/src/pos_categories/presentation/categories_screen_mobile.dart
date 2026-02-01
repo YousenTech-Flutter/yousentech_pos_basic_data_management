@@ -13,6 +13,7 @@ import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/domain/pos_category_service.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/domain/pos_category_viewmodel.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/create_edit_category.dart';
+import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/create_edit_category_mobile.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/widgets/show_diff_category_dialog.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/presentation/product_screen.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/utils/define_type_function.dart';
@@ -234,9 +235,9 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                         fontSize: 12,
                                         horizontal: 10,
                                         onTap: () {
-                                          createEditeCategory(context: context);
+                                          Get.to(()=> CreateEditeCategoryMobile());
                                         },
-                                        color: const Color(0xFF16A6B7),
+                                        color: AppColor.appColor,
                                       ),
                                     ),
                                     Expanded(
@@ -446,7 +447,7 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                   },
                                 ),
                                 Text(
-                                  'products_list'.tr,
+                                  'categorys_list'.tr,
                                   style: TextStyle(
                                     color: Get.find<ThemeController>()
                                             .isDarkMode
@@ -472,7 +473,7 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                       : posCategoryController.posCategoryList)[index];
                                     return GestureDetector(
                                       onTap: () {
-                                        createEditeCategory(context: context , objectToEdit: item);
+                                        Get.to(()=> CreateEditeCategoryMobile(objectToEdit: item,));
                                       },
                                       child: Padding(
                                         padding: EdgeInsets.only(
@@ -577,12 +578,12 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                                             context.setWidth(8),
                                                         children: [
                                                           Text(
-                                                            item.getPosParentCategoryNameBasedOnLang?? "-",
+                                                            "${"parent_category".tr} :",
                                                             style: TextStyle(
-                                                              color: AppColor
-                                                                  .appColor,
+                                                              color: const Color(
+                                                              0xFF6B7280),
                                                               fontSize: context
-                                                                  .setSp(14),
+                                                                  .setSp(12),
                                                               fontFamily:
                                                                   'SansBold',
                                                               fontWeight:
@@ -591,19 +592,22 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                                               height: 1.50,
                                                             ),
                                                           ),
-                                                          SvgPicture.asset(
-                                                            AppImages.riyal,
-                                                            color: AppColor
-                                                                .appColor,
-                                                            package:
-                                                                'shared_widgets',
-                                                            width: context
-                                                                .setWidth(
-                                                                    11.63),
-                                                            height: context
-                                                                .setHeight(
-                                                                    10.57),
-                                                          )
+                                                          Text(
+                                                            item.getPosParentCategoryNameBasedOnLang?? "-",
+                                                            style: TextStyle(
+                                                              color: AppColor
+                                                                  .appColor,
+                                                              fontSize: context
+                                                                  .setSp(12),
+                                                              fontFamily:
+                                                                  'SansBold',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              height: 1.50,
+                                                            ),
+                                                          ),
+                                                          
                                                         ],
                                                       ),
                                                       

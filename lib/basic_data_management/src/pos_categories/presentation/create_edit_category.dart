@@ -276,30 +276,7 @@ void createEditeCategory({
                                                     Get.back();
                                                   },
                                                 ),
-                                                // ButtonElevated(
-                                                //   text: 'back'.tr,
-                                                //   width: context.setWidth(100),
-                                                //   borderRadius:
-                                                //       context.setMinSize(9),
-                                                //   borderColor: const Color(
-                                                //     0xFFD1D5DB,
-                                                //   ),
-                                                //   textStyle: TextStyle(
-                                                //     color:  Get.find<ThemeController>().isDarkMode.value 
-                                                //         ? Colors.white
-                                                //         : const Color(
-                                                //             0xFF374151,
-                                                //           ),
-                                                //     fontSize: context.setSp(
-                                                //       16,
-                                                //     ),
-                                                //     fontFamily: 'Tajawal',
-                                                //     fontWeight: FontWeight.w400,
-                                                //   ),
-                                                //   onPressed: () {
-                                                //     Get.back();
-                                                //   },
-                                                // ),
+                                                
                                               ],
                                             ),
                                           ),
@@ -500,6 +477,7 @@ void createEditeCategory({
                                                     )
                                                     .toList(),
                                               ),
+                                              
                                               InkWell(
                                                 onTap: () {
                                                   isOpen = !isOpen;
@@ -826,6 +804,7 @@ void createEditeCategory({
                                                   }).toList(),
                                                 ),
                                               ],
+                                            
                                             ],
                                           ),
                                         ),
