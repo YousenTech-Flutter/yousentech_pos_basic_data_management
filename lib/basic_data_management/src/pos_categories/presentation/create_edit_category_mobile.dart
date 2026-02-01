@@ -420,6 +420,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
+                                                spacing: context.setHeight(10),
                                                 children: [
                                                   Row(
                                                     mainAxisAlignment:
@@ -655,9 +656,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                                 ? const Color(
                                                                     0xFF1B1B1B,
                                                                   )
-                                                                : const Color(
-                                                                    0xFFF3F3F3,
-                                                                  ),
+                                                                : const Color(0xFFD5D5D5),
                                                             shape:
                                                                 RoundedRectangleBorder(
                                                               side: BorderSide(
