@@ -417,242 +417,19 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                               padding: EdgeInsets.all(
                                                 context.setMinSize(10),
                                               ),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
-                                                    'additional_notes'.tr,
-                                                    textAlign: TextAlign.right,
-                                                    style: TextStyle(
-                                                      color: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                          : const Color(
-                                                              0xFF0C0C0C,
-                                                            ),
-                                                      fontSize:
-                                                          context.setSp(12),
-                                                      fontFamily: 'SansMedium',
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      height: 1.50,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: context.setWidth(30),
-                                                    height:
-                                                        context.setHeight(30),
-                                                    child: Transform(
-                                                      alignment:
-                                                          Alignment.center,
-                                                      transform: isOpen
-                                                          ? Matrix4.rotationX(
-                                                              3.14,
-                                                            )
-                                                          : Matrix4.rotationZ(
-                                                              90 * 3.1416 / 180,
-                                                            ),
-                                                      child: SvgPicture.asset(
-                                                        AppImages.arrowDown,
-                                                        package:
-                                                            'shared_widgets',
-                                                        color: const Color(
-                                                          0xFF9CA3AF,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        if (isOpen) ...[
-                                          Row(
-                                            spacing: context.setWidth(16),
-                                            children: [
-                                              Expanded(
-                                                child: ContainerTextField(
-                                                  controller: noteController,
-                                                  labelText: 'add_note'.tr,
-                                                  hintText: 'add_note'.tr,
-                                                  keyboardType:
-                                                      TextInputType.text,
-                                                  width: context.screenWidth,
-                                                  height: context.setHeight(40),
-                                                  fontSize: context.setSp(
-                                                    12,
-                                                  ),
-                                                  contentPadding:
-                                                      EdgeInsets.fromLTRB(
-                                                    context.setWidth(
-                                                      9.36,
-                                                    ),
-                                                    context.setHeight(
-                                                      10.29,
-                                                    ),
-                                                    context.setWidth(
-                                                      7.86,
-                                                    ),
-                                                    context.setHeight(
-                                                      4.71,
-                                                    ),
-                                                  ),
-                                                  showLable: false,
-                                                  borderColor: Get.find<
-                                                              ThemeController>()
-                                                          .isDarkMode
-                                                          .value
-                                                      ? Colors.white.withValues(
-                                                          alpha: 0.50,
-                                                        )
-                                                      : const Color(
-                                                          0xFFC2C3CB,
-                                                        ),
-                                                  fillColor: !Get.find<
-                                                              ThemeController>()
-                                                          .isDarkMode
-                                                          .value
-                                                      ? Colors.white.withValues(
-                                                          alpha: 0.43,
-                                                        )
-                                                      : const Color(
-                                                          0xFF2B2B2B,
-                                                        ),
-                                                  hintcolor: !Get.find<
-                                                              ThemeController>()
-                                                          .isDarkMode
-                                                          .value
-                                                      ? const Color(
-                                                          0xFF6B7280,
-                                                        )
-                                                      : const Color(
-                                                          0xFF9CA3AF,
-                                                        ),
-                                                  color: !Get.find<
-                                                              ThemeController>()
-                                                          .isDarkMode
-                                                          .value
-                                                      ? const Color(
-                                                          0xFF6B7280,
-                                                        )
-                                                      : const Color(
-                                                          0xFF6B7280,
-                                                        ),
-                                                  isAddOrEdit: true,
-                                                  borderRadius:
-                                                      context.setMinSize(8),
-                                                  prefixIcon: Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                      horizontal:
-                                                          context.setWidth(
-                                                        10,
-                                                      ),
-                                                      vertical:
-                                                          context.setHeight(
-                                                        10,
-                                                      ),
-                                                    ),
-                                                    child: SvgPicture.asset(
-                                                      AppImages.productEmptySvg,
-                                                      package: 'shared_widgets',
-                                                      color: AppColor.appColor,
-                                                    ),
-                                                  ),
-                                                  validator: (value) {
-                                                    return null;
-                                                  },
-                                                ),
-                                              ),
-                                              ButtonElevated(
-                                                text: 'addition'.tr,
-                                                height: context.setHeight(40),
-                                                width: context.setWidth(
-                                                  100,
-                                                ),
-                                                borderRadius:
-                                                    context.setMinSize(9),
-                                                borderColor: AppColor.appColor,
-                                                textStyle: TextStyle(
-                                                  color: AppColor.appColor,
-                                                  fontSize: context.setSp(
-                                                    12,
-                                                  ),
-                                                  fontFamily: 'SansMedium',
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                                onPressed: () {
-                                                  if (noteController
-                                                      .text.isNotEmpty) {
-                                                    categoryNotes.add(
-                                                      CategoryNote(
-                                                        note:
-                                                            noteController.text,
-                                                      ),
-                                                    );
-                                                    noteController.text = '';
-                                                    setState(() {});
-                                                  }
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                          Wrap(
-                                            spacing: 8.0,
-                                            runSpacing: 4.0,
-                                            children: (categoryNotes).map((c) {
-                                              return Container(
-                                                decoration: ShapeDecoration(
-                                                  color: Get.find<
-                                                              ThemeController>()
-                                                          .isDarkMode
-                                                          .value
-                                                      ? const Color(
-                                                          0xFF1B1B1B,
-                                                        )
-                                                      : const Color(
-                                                          0xFFF3F3F3,
-                                                        ),
-                                                  shape: RoundedRectangleBorder(
-                                                    side: BorderSide(
-                                                      color: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF1B1B1B,
-                                                            )
-                                                          : const Color(
-                                                              0xFFF3F3F3,
-                                                            ),
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                      context.setMinSize(
-                                                        16,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsets.all(
-                                                    context.setMinSize(
-                                                      10,
-                                                    ),
-                                                  ),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    spacing:
-                                                        context.setWidth(25),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
                                                     children: [
                                                       Text(
-                                                        c.note!,
+                                                        'additional_notes'.tr,
+                                                        textAlign:
+                                                            TextAlign.right,
                                                         style: TextStyle(
                                                           color: Get.find<
                                                                       ThemeController>()
@@ -660,46 +437,326 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                                   .value
                                                               ? Colors.white
                                                               : const Color(
-                                                                  0xFF4B5563,
+                                                                  0xFF0C0C0C,
                                                                 ),
                                                           fontSize:
-                                                              context.setSp(
-                                                            12,
-                                                          ),
+                                                              context.setSp(12),
                                                           fontFamily:
                                                               'SansMedium',
                                                           fontWeight:
-                                                              FontWeight.w400,
-                                                          height: 1.43,
+                                                              FontWeight.w500,
+                                                          height: 1.50,
                                                         ),
                                                       ),
-                                                      InkWell(
-                                                        onTap: () {
-                                                          categoryNotes.remove(
-                                                            c,
-                                                          );
-                                                          setState(
-                                                            () {},
-                                                          );
-                                                        },
-                                                        child: Icon(
-                                                          Icons.clear,
-                                                          size: context
-                                                              .setMinSize(
-                                                            16,
-                                                          ),
-                                                          color: const Color(
-                                                            0xFF6B7280,
+                                                      SizedBox(
+                                                        width: context
+                                                            .setWidth(30),
+                                                        height: context
+                                                            .setHeight(30),
+                                                        child: Transform(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          transform: isOpen
+                                                              ? Matrix4
+                                                                  .rotationX(
+                                                                  3.14,
+                                                                )
+                                                              : Matrix4
+                                                                  .rotationZ(
+                                                                  90 *
+                                                                      3.1416 /
+                                                                      180,
+                                                                ),
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            AppImages.arrowDown,
+                                                            package:
+                                                                'shared_widgets',
+                                                            color: const Color(
+                                                              0xFF9CA3AF,
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
                                                     ],
                                                   ),
-                                                ),
-                                              );
-                                            }).toList(),
+                                                  if (isOpen) ...[
+                                                    Row(
+                                                      spacing:
+                                                          context.setWidth(16),
+                                                      children: [
+                                                        Expanded(
+                                                          child:
+                                                              ContainerTextField(
+                                                            controller:
+                                                                noteController,
+                                                            labelText:
+                                                                'add_note'.tr,
+                                                            hintText:
+                                                                'add_note'.tr,
+                                                            keyboardType:
+                                                                TextInputType
+                                                                    .text,
+                                                            width: context
+                                                                .screenWidth,
+                                                            height: context
+                                                                .setHeight(40),
+                                                            fontSize:
+                                                                context.setSp(
+                                                              12,
+                                                            ),
+                                                            contentPadding:
+                                                                EdgeInsets
+                                                                    .fromLTRB(
+                                                              context.setWidth(
+                                                                9.36,
+                                                              ),
+                                                              context.setHeight(
+                                                                10.29,
+                                                              ),
+                                                              context.setWidth(
+                                                                7.86,
+                                                              ),
+                                                              context.setHeight(
+                                                                4.71,
+                                                              ),
+                                                            ),
+                                                            showLable: false,
+                                                            borderColor: Get.find<
+                                                                        ThemeController>()
+                                                                    .isDarkMode
+                                                                    .value
+                                                                ? Colors.white
+                                                                    .withValues(
+                                                                    alpha: 0.50,
+                                                                  )
+                                                                : const Color(
+                                                                    0xFFC2C3CB,
+                                                                  ),
+                                                            fillColor: !Get.find<
+                                                                        ThemeController>()
+                                                                    .isDarkMode
+                                                                    .value
+                                                                ? Colors.white
+                                                                    .withValues(
+                                                                    alpha: 0.43,
+                                                                  )
+                                                                : const Color(
+                                                                    0xFF2B2B2B,
+                                                                  ),
+                                                            hintcolor: !Get.find<
+                                                                        ThemeController>()
+                                                                    .isDarkMode
+                                                                    .value
+                                                                ? const Color(
+                                                                    0xFF6B7280,
+                                                                  )
+                                                                : const Color(
+                                                                    0xFF9CA3AF,
+                                                                  ),
+                                                            color: !Get.find<
+                                                                        ThemeController>()
+                                                                    .isDarkMode
+                                                                    .value
+                                                                ? const Color(
+                                                                    0xFF6B7280,
+                                                                  )
+                                                                : const Color(
+                                                                    0xFF6B7280,
+                                                                  ),
+                                                            isAddOrEdit: true,
+                                                            borderRadius:
+                                                                context
+                                                                    .setMinSize(
+                                                                        8),
+                                                            prefixIcon: Padding(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                horizontal:
+                                                                    context
+                                                                        .setWidth(
+                                                                  10,
+                                                                ),
+                                                                vertical: context
+                                                                    .setHeight(
+                                                                  10,
+                                                                ),
+                                                              ),
+                                                              child: SvgPicture
+                                                                  .asset(
+                                                                AppImages
+                                                                    .productEmptySvg,
+                                                                package:
+                                                                    'shared_widgets',
+                                                                color: AppColor
+                                                                    .appColor,
+                                                              ),
+                                                            ),
+                                                            validator: (value) {
+                                                              return null;
+                                                            },
+                                                          ),
+                                                        ),
+                                                        ButtonElevated(
+                                                          text: 'addition'.tr,
+                                                          height: context
+                                                              .setHeight(40),
+                                                          width:
+                                                              context.setWidth(
+                                                            100,
+                                                          ),
+                                                          borderRadius: context
+                                                              .setMinSize(9),
+                                                          borderColor:
+                                                              AppColor.appColor,
+                                                          textStyle: TextStyle(
+                                                            color: AppColor
+                                                                .appColor,
+                                                            fontSize:
+                                                                context.setSp(
+                                                              12,
+                                                            ),
+                                                            fontFamily:
+                                                                'SansMedium',
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                          ),
+                                                          onPressed: () {
+                                                            if (noteController
+                                                                .text
+                                                                .isNotEmpty) {
+                                                              categoryNotes.add(
+                                                                CategoryNote(
+                                                                  note:
+                                                                      noteController
+                                                                          .text,
+                                                                ),
+                                                              );
+                                                              noteController
+                                                                  .text = '';
+                                                              setState(() {});
+                                                            }
+                                                          },
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Wrap(
+                                                      spacing: 8.0,
+                                                      runSpacing: 4.0,
+                                                      children: (categoryNotes)
+                                                          .map((c) {
+                                                        return Container(
+                                                          decoration:
+                                                              ShapeDecoration(
+                                                            color: Get.find<
+                                                                        ThemeController>()
+                                                                    .isDarkMode
+                                                                    .value
+                                                                ? const Color(
+                                                                    0xFF1B1B1B,
+                                                                  )
+                                                                : const Color(
+                                                                    0xFFF3F3F3,
+                                                                  ),
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              side: BorderSide(
+                                                                color: Get.find<
+                                                                            ThemeController>()
+                                                                        .isDarkMode
+                                                                        .value
+                                                                    ? const Color(
+                                                                        0xFF1B1B1B,
+                                                                      )
+                                                                    : const Color(
+                                                                        0xFFF3F3F3,
+                                                                      ),
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                context
+                                                                    .setMinSize(
+                                                                  16,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                              context
+                                                                  .setMinSize(
+                                                                10,
+                                                              ),
+                                                            ),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              spacing: context
+                                                                  .setWidth(25),
+                                                              children: [
+                                                                Text(
+                                                                  c.note!,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Get.find<ThemeController>()
+                                                                            .isDarkMode
+                                                                            .value
+                                                                        ? Colors
+                                                                            .white
+                                                                        : const Color(
+                                                                            0xFF4B5563,
+                                                                          ),
+                                                                    fontSize:
+                                                                        context
+                                                                            .setSp(
+                                                                      12,
+                                                                    ),
+                                                                    fontFamily:
+                                                                        'SansMedium',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    height:
+                                                                        1.43,
+                                                                  ),
+                                                                ),
+                                                                InkWell(
+                                                                  onTap: () {
+                                                                    categoryNotes
+                                                                        .remove(
+                                                                      c,
+                                                                    );
+                                                                    setState(
+                                                                      () {},
+                                                                    );
+                                                                  },
+                                                                  child: Icon(
+                                                                    Icons.clear,
+                                                                    size: context
+                                                                        .setMinSize(
+                                                                      16,
+                                                                    ),
+                                                                    color:
+                                                                        const Color(
+                                                                      0xFF6B7280,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }).toList(),
+                                                    ),
+                                                  ],
+                                                ],
+                                              ),
+                                            ),
                                           ),
-                                        ],
+                                        ),
                                       ],
                                     ),
                                   ),
