@@ -595,22 +595,24 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                                               height: 1.50,
                                                             ),
                                                           ),
-                                                          Text(
-                                                            item.getPosParentCategoryNameBasedOnLang ??
-                                                                "-",
-                                                            style: TextStyle(
-                                                              overflow: TextOverflow
-                                                            .ellipsis,
-                                                              color: AppColor
-                                                                  .appColor,
-                                                              fontSize: context
-                                                                  .setSp(12),
-                                                              fontFamily:
-                                                                  'SansBold',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              height: 1.50,
+                                                          Expanded(
+                                                            child: Text(
+                                                              item.getPosParentCategoryNameBasedOnLang ??
+                                                                  "-",
+                                                              style: TextStyle(
+                                                                overflow: TextOverflow
+                                                              .ellipsis,
+                                                                color: AppColor
+                                                                    .appColor,
+                                                                fontSize: context
+                                                                    .setSp(12),
+                                                                fontFamily:
+                                                                    'SansBold',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                height: 1.50,
+                                                              ),
                                                             ),
                                                           ),
                                                         ],
