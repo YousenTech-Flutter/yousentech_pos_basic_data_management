@@ -483,46 +483,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                                 : posCategoryController
                                                     .posCategoryList,
                                           ),
-        
-                                          // GetBuilder<LoadingDataController>(
-                                          //   id: "pagin",
-                                          //   builder: (loadingDataController) {
-                                          //     return PagnationWidget(
-                                          //       pagesNumber:
-                                          //           customerController
-                                          //               .pagnationpagesNumber,
-                                          //       totalItems:
-                                          //           searchController.text != ''
-                                          //               ? customerController
-                                          //                   .searchResults
-                                          //                   .length
-                                          //               : customerController
-                                          //                   .searchResults
-                                          //                   .isNotEmpty
-                                          //               ? customerController
-                                          //                   .seachCustomerPagingList
-                                          //                   .length
-                                          //               : loadingDataController
-                                          //                   .itemdata[Loaddata
-                                          //                   .customers
-                                          //                   .name
-                                          //                   .toString()]["local"],
-                                          //       itemsPerPage: 10,
-                                          //       onPageChanged: (page) async {
-                                          //         customerController.selectedPagnation =
-                                          //             1;
-                                          //         customerController
-                                          //             .pagnationpagesNumber = page;
-                                          //         await customerController
-                                          //             .getAllCustomerLocal(
-                                          //               paging: true,
-                                          //               type: "",
-                                          //               pageselecteed: page,
-                                          //             );
-                                          //       },
-                                          //     );
-                                          //   },
-                                          // ),
                                         ],
                                       ),
                                     ),
