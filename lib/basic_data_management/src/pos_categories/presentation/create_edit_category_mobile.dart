@@ -150,7 +150,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
             child: Scaffold(
                 backgroundColor: Get.find<ThemeController>().isDarkMode.value
                     ? AppColor.darkModeBackgroundColor
-                    : Color(0xFFDDDDDD),
+                    : const Color(0xFFF6F6F6),
                 appBar: customAppBar(
                   context: context,
                   isMobile: true,
@@ -159,7 +159,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                 body: Padding(
                   padding: EdgeInsets.only(
                     top: context.setHeight(16),
-                    bottom: context.setHeight(5),
+                    bottom: context.setHeight(10),
                     right: context.setWidth(10),
                     left: context.setWidth(10),
                   ),
@@ -169,6 +169,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                         return Stack(
                           children: [
                             Column(
+                              spacing: context.setHeight(10),
                               children: [
                                 Container(
                                   width: double.infinity,
@@ -211,6 +212,8 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                   child: Form(
                                     key: _formKey,
                                     child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       spacing: context.setHeight(10),
                                       children: [
                                         ContainerTextField(
@@ -717,13 +720,19 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                     ),
                                     Expanded(
                                       child: ButtonClick(
-                                        color: null,
                                         data: 'back'.tr,
                                         fontSize: 12,
                                         horizontal: 10,
-                                        borderColor: const Color(
-                                          0xFFD1D5DB,
-                                        ),
+                                        textColor: Get.find<ThemeController>()
+                                                .isDarkMode
+                                                .value
+                                            ? Colors.white
+                                            : const Color(0xFF0C0C0C),
+                                        color: Get.find<ThemeController>()
+                                                .isDarkMode
+                                                .value
+                                            ? const Color(0xFF292929)
+                                            : const Color(0xFFD5D5D5),
                                         onTap: () {
                                           Get.back();
                                         },

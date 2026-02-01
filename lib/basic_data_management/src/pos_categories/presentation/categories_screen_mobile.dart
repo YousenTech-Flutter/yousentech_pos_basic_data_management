@@ -64,8 +64,8 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
           child: Scaffold(
             resizeToAvoidBottomInset: false,
             backgroundColor: Get.find<ThemeController>().isDarkMode.value
-                ? AppColor.darkModeBackgroundColor
-                : Color(0xFFDDDDDD),
+              ? AppColor.darkModeBackgroundColor
+              :  const Color(0xFFF6F6F6),
             appBar: customAppBar(
               context: context,
               isMobile: true,
@@ -235,7 +235,8 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                         fontSize: 12,
                                         horizontal: 10,
                                         onTap: () {
-                                          Get.to(()=> CreateEditeCategoryMobile());
+                                          Get.to(() =>
+                                              CreateEditeCategoryMobile());
                                         },
                                         color: AppColor.appColor,
                                       ),
@@ -461,19 +462,23 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                   ),
                                 ),
                                 ListView.builder(
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                itemCount: (searchController.text.isNotEmpty
-                                      ? posCategoryController.searchResults
-                                      : posCategoryController.posCategoryList).length,
-                                itemBuilder: (context, index) {
-                                  
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  itemCount: (searchController.text.isNotEmpty
+                                          ? posCategoryController.searchResults
+                                          : posCategoryController
+                                              .posCategoryList)
+                                      .length,
+                                  itemBuilder: (context, index) {
                                     var item = (searchController.text.isNotEmpty
-                                      ? posCategoryController.searchResults
-                                      : posCategoryController.posCategoryList)[index];
+                                        ? posCategoryController.searchResults
+                                        : posCategoryController
+                                            .posCategoryList)[index];
                                     return GestureDetector(
                                       onTap: () {
-                                        Get.to(()=> CreateEditeCategoryMobile(objectToEdit: item,));
+                                        Get.to(() => CreateEditeCategoryMobile(
+                                              objectToEdit: item,
+                                            ));
                                       },
                                       child: Padding(
                                         padding: EdgeInsets.only(
@@ -514,34 +519,32 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                                           context
                                                               .setMinSize(15)),
                                                   child: Container(
-                                                    color:Get.find<ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? const Color(
-                                                                0xFF2A2A2A)
-                                                            : Color(0xFFECEFF2)
-                                                        ,
+                                                    color: Get.find<
+                                                                ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? const Color(
+                                                            0xFF2A2A2A)
+                                                        : Color(0xFFECEFF2),
                                                     width:
                                                         context.setWidth(50.75),
                                                     height:
                                                         context.setWidth(50.75),
-                                                    child:Center(
-                                                            child: SvgPicture
-                                                                .asset(
-                                                              AppImages
-                                                                  .productEmptySvg,
-                                                              package:
-                                                                  'shared_widgets',
-                                                              color: Get.find<
-                                                                          ThemeController>()
-                                                                      .isDarkMode
-                                                                      .value
-                                                                  ? null
-                                                                  : const Color(
-                                                                      0xFF666C6D),
-                                                            ),
-                                                          )
-                                                        ,
+                                                    child: Center(
+                                                      child: SvgPicture.asset(
+                                                        AppImages
+                                                            .productEmptySvg,
+                                                        package:
+                                                            'shared_widgets',
+                                                        color: Get.find<
+                                                                    ThemeController>()
+                                                                .isDarkMode
+                                                                .value
+                                                            ? null
+                                                            : const Color(
+                                                                0xFF666C6D),
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
                                                 Expanded(
@@ -581,7 +584,7 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                                             "${"parent_category".tr} :",
                                                             style: TextStyle(
                                                               color: const Color(
-                                                              0xFF6B7280),
+                                                                  0xFF6B7280),
                                                               fontSize: context
                                                                   .setSp(12),
                                                               fontFamily:
@@ -593,7 +596,8 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                                             ),
                                                           ),
                                                           Text(
-                                                            item.getPosParentCategoryNameBasedOnLang?? "-",
+                                                            item.getPosParentCategoryNameBasedOnLang ??
+                                                                "-",
                                                             style: TextStyle(
                                                               color: AppColor
                                                                   .appColor,
@@ -607,10 +611,8 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                                               height: 1.50,
                                                             ),
                                                           ),
-                                                          
                                                         ],
                                                       ),
-                                                      
                                                     ],
                                                   ),
                                                 )
@@ -618,12 +620,8 @@ class _CategoriesScreenMobileState extends State<CategoriesScreenMobile> {
                                             )),
                                       ),
                                     );
-
-                                },
-                              )
-                            
-                                
-                                
+                                  },
+                                )
                               ],
                             ),
                           );
