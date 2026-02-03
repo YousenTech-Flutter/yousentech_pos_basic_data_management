@@ -727,8 +727,7 @@ class ButtonClick extends StatelessWidget {
                   ),
                 ],
 
-                FittedBox(
-                  fit: BoxFit.scaleDown, 
+                Expanded( 
                   child: Text(
                     data,
                     textAlign: TextAlign.center,
