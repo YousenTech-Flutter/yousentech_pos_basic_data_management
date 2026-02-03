@@ -536,7 +536,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                     ? Center(
                                                         child: SvgPicture.asset(
                                                           AppImages
-                                                              .customers,
+                                                              .partner,
                                                           package:
                                                               'shared_widgets',
                                                           color: Get.find<
