@@ -169,163 +169,174 @@ class _ProductScreenState extends State<ProductScreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Row(
-                                    spacing: context.setWidth(11),
-                                    children: [
-                                      ButtonClick(
-                                        data: 'add_product'.tr,
-
-                                        onTap: () {
-                                          createEditeProduct(
-                                            context: context,
-                                          );
-                                        },
-                                        color: AppColor.appColor,
-                                      ),
-                                      ButtonClick(
-                                        data: 'synchronization'.tr,
-                                        onTap: () async {
-                                          loadingDataController
-                                              .isUpdate
-                                              .value = true;
-                                          var result =
-                                              await synchronizeBasedOnModelType(
-                                                type:
-                                                    Loaddata.products
-                                                        .toString(),
+                                  Expanded(
+                                    child: Row(
+                                      
+                                      spacing: context.setWidth(11),
+                                      children: [
+                                        Expanded(
+                                          child: ButtonClick(
+                                            data: 'add_product'.tr,
+                                          
+                                            onTap: () {
+                                              createEditeProduct(
+                                                context: context,
                                               );
-                    
-                                          if (result == true) {
-                                            appSnackBar(
-                                              message: 'synchronized'.tr,
-                                              messageType:
-                                                  MessageTypes.success,
-                                              isDismissible: false,
-                                            );
-                                          } else if (result == false) {
-                                            appSnackBar(
-                                              message:
-                                                  'synchronized_successfully'
-                                                      .tr,
-                                              messageType:
-                                                  MessageTypes.success,
-                                              isDismissible: false,
-                                            );
-                                          } else if (result is String) {
-                                            appSnackBar(
-                                              message: result,
-                                              messageType:
-                                                  MessageTypes
-                                                      .connectivityOff,
-                                            );
-                                          } else {
-                                            appSnackBar(
-                                              message:
-                                                  'synchronization_problem'
-                                                      .tr,
-                                              isDismissible: false,
-                                            );
-                                          }
-                                          loadingDataController
-                                              .isUpdate
-                                              .value = false;
-                                          loadingDataController.update([
-                                            'card_loading_data',
-                                          ]);
-                                          loadingDataController.update([
-                                            'loading',
-                                          ]);
-                                        },
-                                        color: const Color(0xFFF2AC57),
-                                        isSync: true,
-                                      ),
-                                      ButtonClick(
-                                        data: "Update_All".tr,
-                                        onTap: () async {
-                                          var result =
-                                              await loadingDataController
-                                                  .updateAll(
-                                                    name:
+                                            },
+                                            color: AppColor.appColor,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: ButtonClick(
+                                            data: 'synchronization'.tr,
+                                            onTap: () async {
+                                              loadingDataController
+                                                  .isUpdate
+                                                  .value = true;
+                                              var result =
+                                                  await synchronizeBasedOnModelType(
+                                                    type:
                                                         Loaddata.products
                                                             .toString(),
                                                   );
-                                          if (result == true) {
-                                            appSnackBar(
-                                              message: 'update_success'.tr,
-                                              messageType:
-                                                  MessageTypes.success,
-                                              isDismissible: false,
-                                            );
-                                          } else if (result is String) {
-                                            appSnackBar(
-                                              message: result,
-                                              messageType:
-                                                  MessageTypes
-                                                      .connectivityOff,
-                                            );
-                                          } else {
-                                            appSnackBar(
-                                              message: 'update_Failed'.tr,
-                                              messageType: MessageTypes.error,
-                                              isDismissible: false,
-                                            );
-                                          }
-                                          loadingDataController.update([
-                                            'card_loading_data',
-                                          ]);
-                                        },
-                                        textColor:
-                                            Get.find<ThemeController>().isDarkMode.value
-                                                ? Colors.white
-                                                : const Color(0xFF0C0C0C),
-                                        color:
-                                            Get.find<ThemeController>().isDarkMode.value
-                                                ? const Color(0xFF292929)
-                                                : const Color(0xFFD5D5D5),
-                                      ),
-                                      ButtonClick(
-                                        data: 'display'.tr,
-                                        onTap: () async {
-                                          var result =
-                                              await displayDataDiffBasedOnModelType(
-                                                type:
-                                                    Loaddata.products
-                                                        .toString(),
-                                              );
-                                          if (result is List &&
-                                              result.isNotEmpty) {
-                                            showDiffProductsDialog(
-                                              items: result,
-                                              context: context,
-                                            );
-                                          } else if (result is String) {
-                                            appSnackBar(
-                                              message: result,
-                                              messageType:
-                                                  MessageTypes
-                                                      .connectivityOff,
-                                            );
-                                          } else {
-                                            appSnackBar(
-                                              message: "empty_filter".tr,
-                                              messageType:
-                                                  MessageTypes.success,
-                                            );
-                                          }
-                                          loadingDataController
-                                              .isUpdate
-                                              .value = false;
-                                        },
-                                        textColor:
-                                            Get.find<ThemeController>().isDarkMode.value
-                                                ? Colors.white
-                                                : const Color(0xFF0C0C0C),
-                                        color:
-                                            Get.find<ThemeController>().isDarkMode.value
-                                                ? const Color(0xFF292929)
-                                                : const Color(0xFFD5D5D5),
-                                      ),
-                                    ],
+                                                              
+                                              if (result == true) {
+                                                appSnackBar(
+                                                  message: 'synchronized'.tr,
+                                                  messageType:
+                                                      MessageTypes.success,
+                                                  isDismissible: false,
+                                                );
+                                              } else if (result == false) {
+                                                appSnackBar(
+                                                  message:
+                                                      'synchronized_successfully'
+                                                          .tr,
+                                                  messageType:
+                                                      MessageTypes.success,
+                                                  isDismissible: false,
+                                                );
+                                              } else if (result is String) {
+                                                appSnackBar(
+                                                  message: result,
+                                                  messageType:
+                                                      MessageTypes
+                                                          .connectivityOff,
+                                                );
+                                              } else {
+                                                appSnackBar(
+                                                  message:
+                                                      'synchronization_problem'
+                                                          .tr,
+                                                  isDismissible: false,
+                                                );
+                                              }
+                                              loadingDataController
+                                                  .isUpdate
+                                                  .value = false;
+                                              loadingDataController.update([
+                                                'card_loading_data',
+                                              ]);
+                                              loadingDataController.update([
+                                                'loading',
+                                              ]);
+                                            },
+                                            color: const Color(0xFFF2AC57),
+                                            isSync: true,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: ButtonClick(
+                                            data: "Update_All".tr,
+                                            onTap: () async {
+                                              var result =
+                                                  await loadingDataController
+                                                      .updateAll(
+                                                        name:
+                                                            Loaddata.products
+                                                                .toString(),
+                                                      );
+                                              if (result == true) {
+                                                appSnackBar(
+                                                  message: 'update_success'.tr,
+                                                  messageType:
+                                                      MessageTypes.success,
+                                                  isDismissible: false,
+                                                );
+                                              } else if (result is String) {
+                                                appSnackBar(
+                                                  message: result,
+                                                  messageType:
+                                                      MessageTypes
+                                                          .connectivityOff,
+                                                );
+                                              } else {
+                                                appSnackBar(
+                                                  message: 'update_Failed'.tr,
+                                                  messageType: MessageTypes.error,
+                                                  isDismissible: false,
+                                                );
+                                              }
+                                              loadingDataController.update([
+                                                'card_loading_data',
+                                              ]);
+                                            },
+                                            textColor:
+                                                Get.find<ThemeController>().isDarkMode.value
+                                                    ? Colors.white
+                                                    : const Color(0xFF0C0C0C),
+                                            color:
+                                                Get.find<ThemeController>().isDarkMode.value
+                                                    ? const Color(0xFF292929)
+                                                    : const Color(0xFFD5D5D5),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: ButtonClick(
+                                            data: 'display'.tr,
+                                            onTap: () async {
+                                              var result =
+                                                  await displayDataDiffBasedOnModelType(
+                                                    type:
+                                                        Loaddata.products
+                                                            .toString(),
+                                                  );
+                                              if (result is List &&
+                                                  result.isNotEmpty) {
+                                                showDiffProductsDialog(
+                                                  items: result,
+                                                  context: context,
+                                                );
+                                              } else if (result is String) {
+                                                appSnackBar(
+                                                  message: result,
+                                                  messageType:
+                                                      MessageTypes
+                                                          .connectivityOff,
+                                                );
+                                              } else {
+                                                appSnackBar(
+                                                  message: "empty_filter".tr,
+                                                  messageType:
+                                                      MessageTypes.success,
+                                                );
+                                              }
+                                              loadingDataController
+                                                  .isUpdate
+                                                  .value = false;
+                                            },
+                                            textColor:
+                                                Get.find<ThemeController>().isDarkMode.value
+                                                    ? Colors.white
+                                                    : const Color(0xFF0C0C0C),
+                                            color:
+                                                Get.find<ThemeController>().isDarkMode.value
+                                                    ? const Color(0xFF292929)
+                                                    : const Color(0xFFD5D5D5),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   GetBuilder<LoadingDataController>(
                                     id: 'card_loading_data',
