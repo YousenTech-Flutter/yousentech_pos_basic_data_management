@@ -536,7 +536,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                     ? Center(
                                                         child: SvgPicture.asset(
                                                           AppImages
-                                                              .productEmptySvg,
+                                                              .customers,
                                                           package:
                                                               'shared_widgets',
                                                           color: Get.find<
@@ -695,6 +695,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                         vertical: context.setHeight(8),
                                       ),
                                       child: Column(
+                                        // crossAxisAlignment: CrossAxisAlignment.start,
                                         spacing: context.setHeight(10),
                                         children: [
                                           Text(
@@ -713,6 +714,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                             ),
                                           ),
                                           Row(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             spacing: context.setWidth(10),
                                             children: [
                                               SvgPicture.asset(
