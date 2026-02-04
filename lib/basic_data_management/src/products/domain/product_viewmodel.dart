@@ -27,7 +27,9 @@ class ProductController extends GetxController {
   
   ProductService productService = ProductService.getInstance();
   final ItemHistoryController _itemHistoryController = ItemHistoryController();
-  
+  ProductController() {
+    print("🚀 ProductController تم استدعاؤه من: ${StackTrace.current}");
+  }
   LoadingSynchronizingDataService loadingSynchronizingDataService =
       LoadingSynchronizingDataService(type: Product);
   LoadingDataController loadingDataController = Get.isRegistered<LoadingDataController>() ?  Get.find<LoadingDataController>() : Get.put(LoadingDataController());
