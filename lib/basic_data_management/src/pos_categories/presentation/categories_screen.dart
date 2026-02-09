@@ -290,7 +290,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                                         : const Color(0xFFD5D5D5),
                                                   ),
                                                   ButtonClick(
-                                                    data: 'display'.tr,
+                                                    data: 'difference'.tr,
                                                     onTap: () async {
                                                       var result =
                                                           await displayDataDiffBasedOnModelType(

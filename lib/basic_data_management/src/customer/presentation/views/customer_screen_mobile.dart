@@ -325,7 +325,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                           ),
                           Expanded(
                             child: ButtonClick(
-                              data: 'display'.tr,
+                              data: 'difference'.tr,
                               fontSize: 12,
                               horizontal: 0,
                               onTap: () async {

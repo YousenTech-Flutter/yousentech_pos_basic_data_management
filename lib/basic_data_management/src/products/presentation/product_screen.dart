@@ -285,7 +285,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                                 : const Color(0xFFD5D5D5),
                                       ),
                                       ButtonClick(
-                                        data: 'display'.tr,
+                                        data: 'difference'.tr,
                                         onTap: () async {
                                           var result =
                                               await displayDataDiffBasedOnModelType(
