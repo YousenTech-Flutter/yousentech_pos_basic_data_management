@@ -436,34 +436,34 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                             ),
                           ),
                           Obx(() {
-                              return GestureDetector(
-                                onTap: () {
-                                  customerController.toggleCustomersViewMode();
-                                },
-                                child: customerController.customersViewMode.value ==
-                                        PagesViewMode.list
-                                    ? Icon(
-                                        Icons.menu,
-                                        color: Get.find<ThemeController>()
-                                                .isDarkMode
-                                                .value
-                                            ? Colors.white
-                                            : Color(0xFF9CA3AF),
-                                      )
-                                    : SvgPicture.asset(
-                                        AppImages.menueGrid,
-                                        package: 'shared_widgets',
-                                        color: Get.find<ThemeController>()
-                                                .isDarkMode
-                                                .value
-                                            ? Colors.white
-                                            : null,
-                                        width: context.setWidth(23.26),
-                                        height: context.setHeight(23.26),
-                                      ),
-                              );
-                            }
-                          )
+                            return GestureDetector(
+                              onTap: () {
+                                customerController.toggleCustomersViewMode();
+                              },
+                              child:
+                                  customerController.customersViewMode.value ==
+                                          PagesViewMode.list
+                                      ? Icon(
+                                          Icons.menu,
+                                          color: Get.find<ThemeController>()
+                                                  .isDarkMode
+                                                  .value
+                                              ? Colors.white
+                                              : Color(0xFF9CA3AF),
+                                        )
+                                      : SvgPicture.asset(
+                                          AppImages.menueGrid,
+                                          package: 'shared_widgets',
+                                          color: Get.find<ThemeController>()
+                                                  .isDarkMode
+                                                  .value
+                                              ? Colors.white
+                                              : null,
+                                          width: context.setWidth(23.26),
+                                          height: context.setHeight(23.26),
+                                        ),
+                            );
+                          })
                         ],
                       ),
                       Obx(() {
@@ -528,7 +528,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                         child: Row(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           spacing: context.setWidth(12.69),
                                           children: [
                                             ClipRRect(
@@ -716,6 +717,34 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                         // crossAxisAlignment: CrossAxisAlignment.start,
                                         spacing: context.setHeight(10),
                                         children: [
+                                          Container(
+                                            width: context.setWidth(175),
+                                            height: context.setHeight(110),
+                                            decoration: ShapeDecoration(
+                                              image: DecorationImage(
+                                                image: item.image == null ||
+                                                        isSvg(item.image
+                                                            .toString())
+                                                    ? AssetImage(AppImages
+                                                                .partner,
+                                                        package:
+                                                            'shared_widgets',
+                                                      )
+                                                    : MemoryImage(
+                                                        base64Decode(item.image
+                                                            .toString()),
+                                                      ),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                  context.setMinSize(9.70),
+                                                ),
+                                              ),
+                                            ),
+                                            
+                                          ),
                                           Text(
                                             item.name!,
                                             overflow: TextOverflow.ellipsis,
@@ -731,53 +760,31 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                               height: 1.43,
                                             ),
                                           ),
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            spacing: context.setWidth(10),
-                                            children: [
-                                              SvgPicture.asset(
-                                                AppImages.emaill,
-                                                package: 'shared_widgets',
-                                                color: const Color(0xFF6B7280),
-                                              ),
-                                              Text(
-                                                item.email ?? "-",
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                  color:
-                                                      const Color(0xFF6B7280),
-                                                  fontSize:
-                                                      context.setSp(12.69),
-                                                  fontFamily: 'SansRegular',
-                                                  fontWeight: FontWeight.w500,
-                                                  height: 1.50,
-                                                ),
-                                              ),
-                                            ],
+                                          Text(
+                                            item.email ?? "",
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              color:
+                                                  const Color(0xFF6B7280),
+                                              fontSize:
+                                                  context.setSp(12),
+                                              fontFamily: 'SansRegular',
+                                              fontWeight: FontWeight.w500,
+                                              height: 1.50,
+                                            ),
                                           ),
-                                          Row(
-                                            spacing: context.setWidth(10),
-                                            children: [
-                                              SvgPicture.asset(
-                                                AppImages.dIV59,
-                                                package: 'shared_widgets',
-                                                color: const Color(0xFF6B7280),
-                                              ),
-                                              Text(
-                                                item.phone ?? "-",
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                  color:
-                                                      const Color(0xFF6B7280),
-                                                  fontSize:
-                                                      context.setSp(12.69),
-                                                  fontFamily: 'SansRegular',
-                                                  fontWeight: FontWeight.w500,
-                                                  height: 1.50,
-                                                ),
-                                              ),
-                                            ],
+                                          Text(
+                                            item.phone ?? "",
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              color:
+                                                  const Color(0xFF6B7280),
+                                              fontSize:
+                                                  context.setSp(12),
+                                              fontFamily: 'SansRegular',
+                                              fontWeight: FontWeight.w500,
+                                              height: 1.50,
+                                            ),
                                           )
                                         ],
                                       ),

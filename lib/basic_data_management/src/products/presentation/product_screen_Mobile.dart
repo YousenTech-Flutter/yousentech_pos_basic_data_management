@@ -998,6 +998,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                     ],
                                                   ),
                                                 ),
+                                                
                                                 Text(
                                                   item.getProductNameBasedOnLang,
                                                   overflow:
