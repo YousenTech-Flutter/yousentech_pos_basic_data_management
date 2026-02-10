@@ -217,6 +217,7 @@ class ProductController extends GetxController {
             : await productService.index(
                 offset: (countSkip ?? page.value) * limit, limit: limit);
         }
+        print("result.length ${result.length}");
         if (result is List) {
           if ((type == "suffix" && hasMore.value)) {
             if (result.length < limit) {
