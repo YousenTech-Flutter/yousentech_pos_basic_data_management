@@ -720,7 +720,6 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                           Expanded(
                                             child: Container(
                                               width: context.setWidth(175),
-                                              
                                               decoration: ShapeDecoration(
                                                 image: DecorationImage(
                                                   image: item.image == null ||
