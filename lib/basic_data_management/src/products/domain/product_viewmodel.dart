@@ -208,13 +208,14 @@ class ProductController extends GetxController {
             : await productService.index(offset: 0, limit: (page.value==0?1 :page.value) * limit);
         }
         else{
+          print("searchFiltterResult.isNotEmpty ${searchFiltterResult.isNotEmpty}");
           result = searchFiltterResult.isNotEmpty
             ? searchFiltterResult
-                .skip(countSkip ?? page.value * limit)
+                .skip((countSkip ?? page.value) * limit)
                 .take(limit)
                 .toList()
             : await productService.index(
-                offset: countSkip ?? page.value * limit, limit: limit);
+                offset: (countSkip ?? page.value) * limit, limit: limit);
         }
         if (result is List) {
           if ((type == "suffix" && hasMore.value)) {
