@@ -67,7 +67,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
     productController.pagnationpagesNumber++;
     // }
     await productController.displayProductList(
-      skipOffset: true,
+      // skipOffset: true,
       paging: true,
       type: "",
       pageselecteed: productController.pagnationpagesNumber,
