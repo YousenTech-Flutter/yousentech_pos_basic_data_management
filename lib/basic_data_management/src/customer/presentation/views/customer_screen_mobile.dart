@@ -224,7 +224,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                               onTap: () {
                                 if (SharedPr
                                     .chosenUserObj!.allowCreateCustomers!) {
-                                  Get.to(()=>CreateEditeCustomerMobile());
+                                  Get.to(() => CreateEditeCustomerMobile());
                                 } else {
                                   appSnackBar(
                                       messageType: MessageTypes.warning,
@@ -408,7 +408,9 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                             customerController.searchResults.clear();
                             await customerController.getAllCustomerLocal(
                                 skipOffset: true,
-                                paging: true, type: "", pageselecteed: 0);
+                                paging: true,
+                                type: "",
+                                pageselecteed: 0);
                             customerController.update();
                           } else {
                             await customerController
@@ -433,20 +435,34 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                               height: 1.43,
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              customerController.toggleCustomersViewMode();
-                            },
-                            child: SvgPicture.asset(
-                              AppImages.menueGrid,
-                              package: 'shared_widgets',
-                              color:
-                                  Get.find<ThemeController>().isDarkMode.value
-                                      ? Colors.white
-                                      : null,
-                              width: context.setWidth(23.26),
-                              height: context.setHeight(23.26),
-                            ),
+                          Obx(() {
+                              return GestureDetector(
+                                onTap: () {
+                                  customerController.toggleCustomersViewMode();
+                                },
+                                child: customerController.customersViewMode.value ==
+                                        PagesViewMode.list
+                                    ? Icon(
+                                        Icons.menu,
+                                        color: Get.find<ThemeController>()
+                                                .isDarkMode
+                                                .value
+                                            ? Colors.white
+                                            : null,
+                                      )
+                                    : SvgPicture.asset(
+                                        AppImages.menueGrid,
+                                        package: 'shared_widgets',
+                                        color: Get.find<ThemeController>()
+                                                .isDarkMode
+                                                .value
+                                            ? Colors.white
+                                            : null,
+                                        width: context.setWidth(23.26),
+                                        height: context.setHeight(23.26),
+                                      ),
+                              );
+                            }
                           )
                         ],
                       ),
@@ -472,7 +488,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                 var item = result[index];
                                 return GestureDetector(
                                   onTap: () {
-                                    Get.to(()=>CreateEditeCustomerMobile(objectToEdit: item));
+                                    Get.to(() => CreateEditeCustomerMobile(
+                                        objectToEdit: item));
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.only(
@@ -535,8 +552,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                             .toString())
                                                     ? Center(
                                                         child: SvgPicture.asset(
-                                                          AppImages
-                                                              .partner,
+                                                          AppImages.partner,
                                                           package:
                                                               'shared_widgets',
                                                           color: Get.find<
@@ -657,7 +673,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                 var item = result[index];
                                 return GestureDetector(
                                   onTap: () {
-                                    Get.to(()=>CreateEditeCustomerMobile(objectToEdit: item));
+                                    Get.to(() => CreateEditeCustomerMobile(
+                                        objectToEdit: item));
                                   },
                                   child: Container(
                                     decoration: ShapeDecoration(
@@ -714,7 +731,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                             ),
                                           ),
                                           Row(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             spacing: context.setWidth(10),
                                             children: [
                                               SvgPicture.asset(
