@@ -53,29 +53,27 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
       productController.disposeCategoriesCheckFiltter();
     });
     scrollController.addListener(() {
-      if (scrollController.position.maxScrollExtent == scrollController.offset) {
-      // if (scrollController.position.pixels >=
-      //     scrollController.position.maxScrollExtent - 100) {
+      if (scrollController.position.maxScrollExtent ==
+          scrollController.offset) {
+        // if (scrollController.position.pixels >=
+        //     scrollController.position.maxScrollExtent - 100) {
         if (productController.hasMore.value) {
           fetch();
         }
       }
     });
-    
   }
 
   Future fetch() async {
     print("start fetch=============");
     productController.selectedPagnation = 1;
     // if(productController.hasMore.value){
-    // productController.pagnationpagesNumber++;
+    productController.pagnationpagesNumber++;
     // }
     await productController.displayProductList(
-      // skipOffset: true,
-      paging: true,
-      type: "suffix",
-      pageselecteed: productController.pagnationpagesNumber,
-    );
+        paging: true,
+        type: "suffix",
+        countSkip: productController.pagnationpagesNumber);
   }
 
   @override
@@ -115,10 +113,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                       decoration: BoxDecoration(
                         border: Border(
                           bottom: BorderSide(
-                            color:
-                                Get.find<ThemeController>().isDarkMode.value
-                                    ? const Color(0xFF3F3F3F)
-                                    : const Color(0xFFDADADA),
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? const Color(0xFF3F3F3F)
+                                : const Color(0xFFDADADA),
                             width: 1,
                           ),
                         ),
@@ -133,11 +130,10 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                             Text(
                               'product_list'.tr,
                               style: TextStyle(
-                                color: Get.find<ThemeController>()
-                                        .isDarkMode
-                                        .value
-                                    ? Colors.white
-                                    : const Color(0xFF0C0C0C),
+                                color:
+                                    Get.find<ThemeController>().isDarkMode.value
+                                        ? Colors.white
+                                        : const Color(0xFF0C0C0C),
                                 fontSize: context.setSp(16),
                                 fontFamily: 'SansBold',
                                 fontWeight: FontWeight.w700,
@@ -178,14 +174,12 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                             : local > remote
                                 ? (remote / (local == 0 ? 1 : local) * 100)
                                     .toStringAsFixed(0)
-                                : ((local / remote) * 100)
-                                    .toStringAsFixed(0));
+                                : ((local / remote) * 100).toStringAsFixed(0));
                         return Container(
                           decoration: ShapeDecoration(
-                            color:
-                                Get.find<ThemeController>().isDarkMode.value
-                                    ? const Color(0xFF292929)
-                                    : Colors.white.withValues(alpha: 0.84),
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? const Color(0xFF292929)
+                                : Colors.white.withValues(alpha: 0.84),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                   context.setMinSize(8.46)),
@@ -225,16 +219,15 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                     value: double.parse(syncData) / 100,
                                     minHeight: 8,
                                     borderRadius: BorderRadius.circular(9999),
-                                    backgroundColor:
-                                        Get.find<ThemeController>()
-                                                .isDarkMode
-                                                .value
-                                            ? const Color(
-                                                0x26F7F7F7,
-                                              )
-                                            : const Color(
-                                                0x268B8B8B,
-                                              ),
+                                    backgroundColor: Get.find<ThemeController>()
+                                            .isDarkMode
+                                            .value
+                                        ? const Color(
+                                            0x26F7F7F7,
+                                          )
+                                        : const Color(
+                                            0x268B8B8B,
+                                          ),
                                     color: Get.find<ThemeController>()
                                             .isDarkMode
                                             .value
@@ -272,7 +265,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               var result = await synchronizeBasedOnModelType(
                                 type: Loaddata.products.toString(),
                               );
-                
+
                               if (result == true) {
                                 appSnackBar(
                                   message: 'synchronized'.tr,
@@ -344,10 +337,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                 Get.find<ThemeController>().isDarkMode.value
                                     ? Colors.white
                                     : const Color(0xFF0C0C0C),
-                            color:
-                                Get.find<ThemeController>().isDarkMode.value
-                                    ? const Color(0xFF292929)
-                                    : const Color(0xFFD5D5D5),
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? const Color(0xFF292929)
+                                : const Color(0xFFD5D5D5),
                           ),
                         ),
                         Expanded(
@@ -382,10 +374,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                 Get.find<ThemeController>().isDarkMode.value
                                     ? Colors.white
                                     : const Color(0xFF0C0C0C),
-                            color:
-                                Get.find<ThemeController>().isDarkMode.value
-                                    ? const Color(0xFF292929)
-                                    : const Color(0xFFD5D5D5),
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? const Color(0xFF292929)
+                                : const Color(0xFFD5D5D5),
                           ),
                         ),
                       ],
@@ -424,10 +415,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                 !Get.find<ThemeController>().isDarkMode.value
                                     ? Color(0xFFC2C3CB)
                                     : const Color(0xFF9CA3AF),
-                            color:
-                                !Get.find<ThemeController>().isDarkMode.value
-                                    ? Color(0xFFC2C3CB)
-                                    : const Color(0xFFC2C3CB),
+                            color: !Get.find<ThemeController>().isDarkMode.value
+                                ? Color(0xFFC2C3CB)
+                                : const Color(0xFFC2C3CB),
                             isAddOrEdit: true,
                             borderRadius: context.setMinSize(10),
                             prefixIcon: Padding(
@@ -518,10 +508,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                         Text(
                           'products_list'.tr,
                           style: TextStyle(
-                            color:
-                                Get.find<ThemeController>().isDarkMode.value
-                                    ? Colors.white
-                                    : const Color(0xFF374151),
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? Colors.white
+                                : const Color(0xFF374151),
                             fontSize: context.setSp(14.80),
                             fontFamily: 'SansMedium',
                             fontWeight: FontWeight.w500,
@@ -795,24 +784,21 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               var result = productController
                                           .selectedPagnation ==
                                       1
-                                  ? (productController
-                                              .filtterResults.isEmpty &
+                                  ? (productController.filtterResults.isEmpty &
                                           productController
                                               .searchResults.isEmpty)
                                       ? productController.productList
-                                      : productController
-                                          .seachFilterPagingList
+                                      : productController.seachFilterPagingList
                                   : productController.isHaveCheck.value &&
                                           searchController.text == ''
                                       ? productController.filtterResults
-                                      : (productController
-                                                      .isHaveCheck.value ||
+                                      : (productController.isHaveCheck.value ||
                                                   !productController
                                                       .isHaveCheck.value) &&
                                               searchController.text != ''
                                           ? productController.searchResults
-                                          : (productController.filtterResults
-                                                      .isEmpty &
+                                          : (productController
+                                                      .filtterResults.isEmpty &
                                                   productController
                                                       .searchResults.isEmpty)
                                               ? productController.productList
@@ -851,8 +837,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                               color: Colors.white
                                                   .withValues(alpha: 0.50),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(
+                                            borderRadius: BorderRadius.circular(
                                               context.setMinSize(12.93),
                                             ),
                                           ),
@@ -879,12 +864,10 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                             children: [
                                               Container(
                                                 width: context.setWidth(175),
-                                                height:
-                                                    context.setHeight(110),
+                                                height: context.setHeight(110),
                                                 decoration: ShapeDecoration(
                                                   image: DecorationImage(
-                                                    image: item.image ==
-                                                                null ||
+                                                    image: item.image == null ||
                                                             isSvg(item.image
                                                                 .toString())
                                                         ? AssetImage(
@@ -905,12 +888,10 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                           ),
                                                     fit: BoxFit.cover,
                                                   ),
-                                                  shape:
-                                                      RoundedRectangleBorder(
+                                                  shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                      context
-                                                          .setMinSize(9.70),
+                                                      context.setMinSize(9.70),
                                                     ),
                                                   ),
                                                 ),
@@ -918,14 +899,14 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                   children: [
                                                     Positioned(
                                                       top: 4,
-                                                      right: SharedPr.lang ==
-                                                              "ar"
-                                                          ? 5
-                                                          : null,
-                                                      left: SharedPr.lang ==
-                                                              "ar"
-                                                          ? null
-                                                          : 5,
+                                                      right:
+                                                          SharedPr.lang == "ar"
+                                                              ? 5
+                                                              : null,
+                                                      left:
+                                                          SharedPr.lang == "ar"
+                                                              ? null
+                                                              : 5,
                                                       child: Container(
                                                         height: context
                                                             .setHeight(25),
@@ -947,10 +928,8 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                         child: Padding(
                                                           padding: EdgeInsets
                                                               .symmetric(
-                                                            horizontal:
-                                                                context
-                                                                    .setWidth(
-                                                                        10),
+                                                            horizontal: context
+                                                                .setWidth(10),
                                                           ),
                                                           child: Row(
                                                             spacing: context
@@ -976,14 +955,11 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w700,
-                                                                  height:
-                                                                      1.56,
+                                                                  height: 1.56,
                                                                 ),
                                                               ),
-                                                              SvgPicture
-                                                                  .asset(
-                                                                AppImages
-                                                                    .riyal,
+                                                              SvgPicture.asset(
+                                                                AppImages.riyal,
                                                                 package:
                                                                     'shared_widgets',
                                                                 color: AppColor
@@ -1005,8 +981,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                               ),
                                               Text(
                                                 item.getProductNameBasedOnLang,
-                                                overflow:
-                                                    TextOverflow.ellipsis,
+                                                overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
                                                   color: Get.find<
                                                               ThemeController>()
@@ -1022,8 +997,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                               ),
                                               Text(
                                                 item.soPosCategName!,
-                                                overflow:
-                                                    TextOverflow.ellipsis,
+                                                overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
                                                   color:
                                                       const Color(0xFF6B7280),

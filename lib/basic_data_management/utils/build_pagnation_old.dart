@@ -107,7 +107,8 @@
 //                                             .displayProductList(
 //                                                 paging: true,
 //                                                 type: "prefix",
-//                                                 countSkip: 0);
+//                                                 countSkip: 0
+// );
 //                                       } else {
 //                                         await widget.controller
 //                                             .getAllCustomerLocal(
