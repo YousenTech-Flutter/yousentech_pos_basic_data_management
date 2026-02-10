@@ -717,33 +717,35 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                         // crossAxisAlignment: CrossAxisAlignment.start,
                                         spacing: context.setHeight(10),
                                         children: [
-                                          Container(
-                                            width: context.setWidth(175),
-                                            height: context.setHeight(100),
-                                            decoration: ShapeDecoration(
-                                              image: DecorationImage(
-                                                image: item.image == null ||
-                                                        isSvg(item.image
-                                                            .toString())
-                                                    ? AssetImage(AppImages
-                                                                .partner,
-                                                        package:
-                                                            'shared_widgets',
-                                                      )
-                                                    : MemoryImage(
-                                                        base64Decode(item.image
-                                                            .toString()),
-                                                      ),
-                                                fit: BoxFit.cover,
-                                              ),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  context.setMinSize(9.70),
+                                          Expanded(
+                                            child: Container(
+                                              width: context.setWidth(175),
+                                              
+                                              decoration: ShapeDecoration(
+                                                image: DecorationImage(
+                                                  image: item.image == null ||
+                                                          isSvg(item.image
+                                                              .toString())
+                                                      ? AssetImage(AppImages
+                                                                  .partner,
+                                                          package:
+                                                              'shared_widgets',
+                                                        )
+                                                      : MemoryImage(
+                                                          base64Decode(item.image
+                                                              .toString()),
+                                                        ),
+                                                  fit: BoxFit.cover,
+                                                ),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    context.setMinSize(9.70),
+                                                  ),
                                                 ),
                                               ),
+                                              
                                             ),
-                                            
                                           ),
                                           Text(
                                             item.name!,
