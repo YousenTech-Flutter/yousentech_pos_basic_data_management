@@ -246,7 +246,9 @@ class ProductController extends GetxController {
 
           ProductController productController =
               Get.find(tag: 'productControllerMain');
+          print("befor productController.productList ${productController.productList.length}");
           productController.productList.addAll(result as List<Product>);
+          print("after productController.productList ${productController.productList.length}");
           if (searchFiltterResult.isNotEmpty) {
             seachFilterPagingList.clear();
             seachFilterPagingList.addAll(result);
