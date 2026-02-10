@@ -16,7 +16,6 @@ import 'package:shared_widgets/shared_widgets/app_snack_bar.dart';
 import 'package:shared_widgets/shared_widgets/app_text_field.dart';
 import 'package:shared_widgets/shared_widgets/custom_app_bar.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
-import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/categories_screen.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/pos_categories/presentation/categories_screen_mobile.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_service.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/domain/product_viewmodel.dart';
@@ -62,6 +61,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
   }
 
   Future fetch() async {
+    print("start fetch=============");
     productController.selectedPagnation = 1;
     // if(productController.hasMore.value){
     productController.pagnationpagesNumber++;
