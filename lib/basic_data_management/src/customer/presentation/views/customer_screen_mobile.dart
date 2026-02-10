@@ -527,7 +527,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                         ),
                                         child: Row(
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
                                           spacing: context.setWidth(12.69),
                                           children: [
                                             ClipRRect(
@@ -602,7 +603,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                     ),
                                                   ),
                                                   Text(
-                                                    item.email ?? "-",
+                                                    item.email ?? "",
                                                     style: TextStyle(
                                                       color: AppColor.appColor,
                                                       fontSize:
@@ -614,7 +615,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                     ),
                                                   ),
                                                   Text(
-                                                    item.phone ?? "-",
+                                                    item.phone ?? "",
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: TextStyle(
