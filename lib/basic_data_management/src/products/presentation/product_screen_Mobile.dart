@@ -53,9 +53,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
       productController.disposeCategoriesCheckFiltter();
     });
     scrollController.addListener(() {
-      // if (scrollController.position.maxScrollExtent == scrollController.offset) {
-      if (scrollController.position.pixels >=
-          scrollController.position.maxScrollExtent - 100) {
+      if (scrollController.position.maxScrollExtent == scrollController.offset) {
+      // if (scrollController.position.pixels >=
+      //     scrollController.position.maxScrollExtent - 100) {
         if (productController.hasMore.value) {
           fetch();
         }
