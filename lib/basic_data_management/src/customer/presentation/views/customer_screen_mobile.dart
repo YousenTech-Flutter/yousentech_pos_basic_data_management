@@ -422,19 +422,53 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'customers_list'.tr,
-                            style: TextStyle(
-                              color:
-                                  Get.find<ThemeController>().isDarkMode.value
-                                      ? Colors.white
-                                      : const Color(0xFF374151),
-                              fontSize: context.setSp(14.80),
-                              fontFamily: 'SansMedium',
-                              fontWeight: FontWeight.w500,
-                              height: 1.43,
-                            ),
-                          ),
+                          Builder(builder: (context) {
+                            var result = customerController.selectedPagnation ==
+                                    1
+                                ? customerController.searchResults.isNotEmpty
+                                    ? customerController.seachCustomerPagingList
+                                    : customerController.customerpagingList
+                                : searchController.text != ''
+                                    ? customerController.searchResults
+                                    : customerController
+                                            .searchResults.isNotEmpty
+                                        ? customerController
+                                            .seachCustomerPagingList
+                                        : customerController.customerpagingList;
+                            return Row(
+                              spacing: context.setWidth(10),
+                              children: [
+                                Text(
+                                  'customers_list'.tr,
+                                  style: TextStyle(
+                                    color: Get.find<ThemeController>()
+                                            .isDarkMode
+                                            .value
+                                        ? Colors.white
+                                        : const Color(0xFF374151),
+                                    fontSize: context.setSp(14.80),
+                                    fontFamily: 'SansMedium',
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.43,
+                                  ),
+                                ),
+                                Text(
+                                  '(${'count'.tr} ${result.length})',
+                                  style: TextStyle(
+                                    color: Get.find<ThemeController>()
+                                            .isDarkMode
+                                            .value
+                                        ? Colors.white
+                                        : const Color(0xFF374151),
+                                    fontSize: context.setSp(12),
+                                    fontFamily: 'SansMedium',
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.43,
+                                  ),
+                                ),
+                              ],
+                            );
+                          }),
                           Obx(() {
                             return GestureDetector(
                               onTap: () {
@@ -725,12 +759,14 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                   image: item.image == null ||
                                                           isSvg(item.image
                                                               .toString())
-                                                      ? AssetImage(AppImages.personPng,
+                                                      ? AssetImage(
+                                                          AppImages.personPng,
                                                           package:
                                                               'shared_widgets',
                                                         )
                                                       : MemoryImage(
-                                                          base64Decode(item.image
+                                                          base64Decode(item
+                                                              .image
                                                               .toString()),
                                                         ),
                                                   fit: BoxFit.cover,
@@ -742,7 +778,6 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                   ),
                                                 ),
                                               ),
-                                              
                                             ),
                                           ),
                                           Text(
@@ -764,10 +799,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                             item.email ?? "",
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
-                                              color:
-                                                  const Color(0xFF6B7280),
-                                              fontSize:
-                                                  context.setSp(12),
+                                              color: const Color(0xFF6B7280),
+                                              fontSize: context.setSp(12),
                                               fontFamily: 'SansRegular',
                                               fontWeight: FontWeight.w500,
                                               height: 1.50,
@@ -777,10 +810,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                             item.phone ?? "",
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
-                                              color:
-                                                  const Color(0xFF6B7280),
-                                              fontSize:
-                                                  context.setSp(12),
+                                              color: const Color(0xFF6B7280),
+                                              fontSize: context.setSp(12),
                                               fontFamily: 'SansRegular',
                                               fontWeight: FontWeight.w500,
                                               height: 1.50,

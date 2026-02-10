@@ -560,7 +560,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                       ),
                                     ),
                                     Text(
-                                     '${'count'.tr} ${result.length}',
+                                     '(${'count'.tr} ${result.length})',
                                       style: TextStyle(
                                         color: Get.find<ThemeController>()
                                                 .isDarkMode
