@@ -55,7 +55,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
     scrollController.addListener(() {
       // if (scrollController.position.maxScrollExtent == scrollController.offset) {
       if (scrollController.position.pixels >=
-          scrollController.position.maxScrollExtent - 50) {
+          scrollController.position.maxScrollExtent - 10) {
         if (productController.hasMore.value) {
           fetch();
         }
