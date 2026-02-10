@@ -781,7 +781,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                               color: AppColor
                                                                   .appColor,
                                                               fontSize: context
-                                                                  .setSp(16),
+                                                                  .setSp(14),
                                                               fontFamily:
                                                                   'SansBold',
                                                               fontWeight:
