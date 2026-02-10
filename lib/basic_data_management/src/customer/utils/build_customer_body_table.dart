@@ -6,6 +6,7 @@ import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/config/app_images.dart';
 import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/shared_widgets/custom_app_bar.dart';
+import 'package:shared_widgets/utils/responsive_helpers/device_utils.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/domain/customer_viewmodel.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/customer/presentation/views/create_edit_customer.dart';
@@ -59,14 +60,15 @@ buildCustomerBodyTable({
                       color:  Get.find<ThemeController>().isDarkMode.value 
                           ? const Color(0xFFE0E0E0)
                           : const Color(0xFF2B2B2B),
-                      fontSize: context.setSp(16),
-                      fontFamily: 'Tajawal',
+                      fontSize: context.setSp(DeviceUtils.isMobile(context) ? 12 : 16),
+                      fontFamily:DeviceUtils.isMobile(context) ? 'SansMedium': 'Tajawal',
                       fontWeight: FontWeight.w500,
                       height: 1.50,
                     ),
                   ),
                 ),
               ),
+              if(!DeviceUtils.isMobile(context))
               Expanded(
                 flex: 1,
                 child: Container(
@@ -111,8 +113,8 @@ buildCustomerBodyTable({
                       color:  Get.find<ThemeController>().isDarkMode.value 
                           ? const Color(0xFFE0E0E0)
                           : const Color(0xFF2B2B2B),
-                      fontSize: context.setSp(16),
-                      fontFamily: 'Tajawal',
+                      fontSize: context.setSp(DeviceUtils.isMobile(context) ? 12 : 16),
+                       fontFamily:DeviceUtils.isMobile(context) ? 'SansMedium': 'Tajawal',
                       fontWeight: FontWeight.w500,
                       height: 1.50,
                     ),
@@ -129,8 +131,8 @@ buildCustomerBodyTable({
                       color:  Get.find<ThemeController>().isDarkMode.value 
                           ? const Color(0xFFE0E0E0)
                           : const Color(0xFF2B2B2B),
-                      fontSize: context.setSp(16),
-                      fontFamily: 'Tajawal',
+                      fontSize: context.setSp(DeviceUtils.isMobile(context) ? 12 : 16),
+                       fontFamily:DeviceUtils.isMobile(context) ? 'SansMedium': 'Tajawal',
                       fontWeight: FontWeight.w500,
                       height: 1.50,
                     ),
@@ -147,8 +149,8 @@ buildCustomerBodyTable({
                       color:  Get.find<ThemeController>().isDarkMode.value 
                           ? const Color(0xFFE0E0E0)
                           : const Color(0xFF2B2B2B),
-                      fontSize: context.setSp(16),
-                      fontFamily: 'Tajawal',
+                      fontSize: context.setSp(DeviceUtils.isMobile(context) ? 12 : 16),
+                       fontFamily:DeviceUtils.isMobile(context) ? 'SansMedium': 'Tajawal',
                       fontWeight: FontWeight.w500,
                       height: 1.50,
                     ),

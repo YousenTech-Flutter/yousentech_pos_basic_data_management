@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/shared_widgets/app_dialog.dart';
+import 'package:shared_widgets/utils/responsive_helpers/device_utils.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_provider.dart';
 import 'package:yousentech_pos_basic_data_management/basic_data_management/src/products/utils/build_product_body_table.dart';
@@ -33,12 +34,14 @@ showDiffProductsDialog({required List items, required BuildContext context}) {
                     Text(
                       'product_list'.tr,
                       style: TextStyle(
-                        color:
-                             Get.find<ThemeController>().isDarkMode.value 
-                                ? Colors.white
-                                : const Color(0xFF0C0C0C),
-                        fontSize: context.setSp(22),
-                        fontFamily: 'Tajawal',
+                        color: Get.find<ThemeController>().isDarkMode.value
+                            ? Colors.white
+                            : const Color(0xFF0C0C0C),
+                        fontSize: context
+                            .setSp(DeviceUtils.isMobile(context) ? 14 : 22),
+                        fontFamily: DeviceUtils.isMobile(context)
+                            ? "SansMedium"
+                            : 'Tajawal',
                         fontWeight: FontWeight.w700,
                         height: 1.45,
                       ),
@@ -46,61 +49,26 @@ showDiffProductsDialog({required List items, required BuildContext context}) {
                     definitionColorTable(context: context),
                     buildBasicDataColumnHeader(
                       context: context,
-                      data: [
-                        {"name": "number", "flex": 1},
-                        {"name": "product_image", "flex": 1},
-                        {"name": "product_name", "flex": 2},
-                        {"name": "product_unit_price", "flex": 2},
-                        {"name": "unit", "flex": 1},
-                        // {"name": "actions", "flex": 1},
-                      ],
+                      data: DeviceUtils.isMobile(context)
+                          ? [
+                              {"name": "number", "flex": 1},
+                              {"name": "product_name", "flex": 2},
+                              {"name": "product_unit_price", "flex": 2},
+                              {"name": "unit", "flex": 1},
+                            ]
+                          : [
+                              {"name": "number", "flex": 1},
+                              {"name": "product_image", "flex": 1},
+                              {"name": "product_name", "flex": 2},
+                              {"name": "product_unit_price", "flex": 2},
+                              {"name": "unit", "flex": 1},
+                            ],
                     ),
                     buildProductBodyTable(
-                      context: context,
-                      showActions: false,
-                      isShowDiffItems: true,
-                      data: items
-                      // [
-                      //   {
-                      //     "item": Product(
-                      //       id: 001,
-                      //       productName: ProductName(
-                      //         ar001: "رز روان",
-                      //         enUS: "رز روان",
-                      //       ),
-                      //       unitPrice: 250,
-                      //       uomName: "الوحدة",
-                      //     ),
-
-                      //     "vale": 0,
-                      //   },
-                      //   {
-                      //     "item": Product(
-                      //       id: 002,
-                      //       productName: ProductName(
-                      //         ar001: "دقيق حضرموت",
-                      //         enUS: "دقيق حضرموت",
-                      //       ),
-                      //       unitPrice: 250,
-                      //       uomName: "الوحدة",
-                      //     ),
-
-                      //     "vale": 1,
-                      //   },
-                      //   {
-                      //     "item": Product(
-                      //       id: 002,
-                      //       productName: ProductName(
-                      //         ar001: "دقيق حضرموت",
-                      //         enUS: "دقيق حضرموت",
-                      //       ),
-                      //       unitPrice: 250,
-                      //       uomName: "الوحدة",
-                      //     ),
-                      //     "vale": -1,
-                      //   },
-                      // ],
-                    ),
+                        context: context,
+                        showActions: false,
+                        isShowDiffItems: true,
+                        data: items),
                   ],
                 ),
               ),

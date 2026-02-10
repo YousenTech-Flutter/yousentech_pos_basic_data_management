@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/shared_widgets/app_dialog.dart';
+import 'package:shared_widgets/utils/responsive_helpers/device_utils.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_helper_extenstions.dart';
 import 'package:shared_widgets/utils/responsive_helpers/size_provider.dart';
 
@@ -49,7 +50,14 @@ showDiffCustomersDialog({required List items, required BuildContext context}) {
                     buildBasicDataColumnHeader(
                       context: context,
 
-                      data: [
+                      data:
+                      DeviceUtils.isMobile(context) ? [
+                        {"name": "number", "flex": 1},
+                        {"name": "name", "flex": 2},
+                        {"name": "email", "flex": 2},
+                        {"name": "phone", "flex": 1},
+                      ]:
+                       [
                         {"name": "number", "flex": 1},
                         {"name": "customer_image", "flex": 1},
                         {"name": "name", "flex": 2},
