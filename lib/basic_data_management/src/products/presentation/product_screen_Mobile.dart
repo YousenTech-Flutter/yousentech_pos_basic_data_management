@@ -531,19 +531,27 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               onTap: () {
                                 productController.toggleProductsViewMode();
                               },
-                              child: SvgPicture.asset(
-                                productController.productsViewMode.value ==
-                                        PagesViewMode.list
-                                    ? AppImages.menu
-                                    : AppImages.menueGrid,
-                                package: 'shared_widgets',
-                                color:
-                                    Get.find<ThemeController>().isDarkMode.value
-                                        ? Colors.white
-                                        : null,
-                                width: context.setWidth(23.26),
-                                height: context.setHeight(23.26),
-                              ),
+                              child: productController.productsViewMode.value ==
+                                      PagesViewMode.list
+                                  ? Icon(
+                                      Icons.menu,
+                                      color: Get.find<ThemeController>()
+                                              .isDarkMode
+                                              .value
+                                          ? Colors.white
+                                          : null,
+                                    )
+                                  : SvgPicture.asset(
+                                      AppImages.menueGrid,
+                                      package: 'shared_widgets',
+                                      color: Get.find<ThemeController>()
+                                              .isDarkMode
+                                              .value
+                                          ? Colors.white
+                                          : null,
+                                      width: context.setWidth(23.26),
+                                      height: context.setHeight(23.26),
+                                    ),
                             );
                           })
                         ],
