@@ -760,7 +760,13 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                           isSvg(item.image
                                                               .toString())
                                                       ? AssetImage(
-                                                          AppImages.personPng,
+                                                          Get.find<ThemeController>()
+                                                                      .isDarkMode
+                                                                      .value
+                                                                  ? AppImages
+                                                                      .personEmptyDark
+                                                                  : AppImages
+                                                                      .personEmptyLight,
                                                           package:
                                                               'shared_widgets',
                                                         )
