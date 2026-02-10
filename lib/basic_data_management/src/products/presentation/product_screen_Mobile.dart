@@ -53,9 +53,12 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
       productController.disposeCategoriesCheckFiltter();
     });
     scrollController.addListener(() {
-      if (scrollController.position.maxScrollExtent ==
-          scrollController.offset) {
-        fetch();
+      // if (scrollController.position.maxScrollExtent == scrollController.offset) {
+      if (scrollController.position.pixels >=
+          scrollController.position.maxScrollExtent - 50) {
+        if (productController.hasMore.value) {
+          fetch();
+        }
       }
     });
   }
@@ -998,7 +1001,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                     ],
                                                   ),
                                                 ),
-                                                
                                                 Text(
                                                   item.getProductNameBasedOnLang,
                                                   overflow:
