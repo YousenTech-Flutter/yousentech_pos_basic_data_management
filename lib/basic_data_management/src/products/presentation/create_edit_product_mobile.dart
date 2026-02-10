@@ -132,20 +132,27 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                   borderRadius: BorderRadius.circular(
                                       context.setMinSize(11.17)),
                                 ),
-                                child: Text(
-                                  product?.id == null
-                                      ? "add_new_product".tr
-                                      : 'edit_product'.tr,
-                                  style: TextStyle(
-                                    color: Get.find<ThemeController>()
-                                            .isDarkMode
-                                            .value
-                                        ? AppColor.white
-                                        : AppColor.black,
-                                    fontSize: context.setSp(14),
-                                    fontFamily: 'SansBold',
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.56,
+                                child: Padding(
+                                  padding:  EdgeInsets.all(context.setMinSize(10)),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        product?.id == null
+                                            ? "add_new_product".tr
+                                            : 'edit_product'.tr,
+                                        style: TextStyle(
+                                          color: Get.find<ThemeController>()
+                                                  .isDarkMode
+                                                  .value
+                                              ? AppColor.white
+                                              : AppColor.black,
+                                          fontSize: context.setSp(14),
+                                          fontFamily: 'SansBold',
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.56,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
