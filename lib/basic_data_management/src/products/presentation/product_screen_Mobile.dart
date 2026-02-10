@@ -74,7 +74,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
     );
   }
 
-
   @override
   void dispose() {
     searchController.text = '';
@@ -163,7 +162,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                           ),
                         ),
                       ),
-                      
                       GetBuilder<LoadingDataController>(
                         id: 'card_loading_data',
                         builder: (controller) {
@@ -246,7 +244,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               ),
                             ),
                           );
-                        
                         },
                       ),
                       Row(
@@ -529,21 +526,26 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               height: 1.43,
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              productController.toggleProductsViewMode();
-                            },
-                            child: SvgPicture.asset(
-                              AppImages.menueGrid,
-                              package: 'shared_widgets',
-                              color:
-                                  Get.find<ThemeController>().isDarkMode.value
-                                      ? Colors.white
-                                      : null,
-                              width: context.setWidth(23.26),
-                              height: context.setHeight(23.26),
-                            ),
-                          )
+                          Obx(() {
+                            return GestureDetector(
+                              onTap: () {
+                                productController.toggleProductsViewMode();
+                              },
+                              child: SvgPicture.asset(
+                                productController.productsViewMode.value ==
+                                        PagesViewMode.list
+                                    ? AppImages.menu
+                                    : AppImages.menueGrid,
+                                package: 'shared_widgets',
+                                color:
+                                    Get.find<ThemeController>().isDarkMode.value
+                                        ? Colors.white
+                                        : null,
+                                width: context.setWidth(23.26),
+                                height: context.setHeight(23.26),
+                              ),
+                            );
+                          })
                         ],
                       ),
                       Obx(() {
@@ -779,7 +781,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                   }
                                 },
                               );
-                            
                             },
                           );
                         } else {
@@ -1047,7 +1048,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               }); // Return an empty widget when not loading
                         }
                       }),
-                    
                     ],
                   ),
                 );
