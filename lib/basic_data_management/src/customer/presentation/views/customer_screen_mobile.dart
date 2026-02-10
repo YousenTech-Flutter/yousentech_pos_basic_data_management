@@ -725,7 +725,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                   image: item.image == null ||
                                                           isSvg(item.image
                                                               .toString())
-                                                      ? AssetImage(AppImages.productEmptySvg,
+                                                      ? AssetImage(AppImages.personPng,
                                                           package:
                                                               'shared_widgets',
                                                         )
