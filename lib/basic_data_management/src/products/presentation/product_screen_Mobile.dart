@@ -68,12 +68,12 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
     print("start fetch=============");
     productController.selectedPagnation = 1;
     // if(productController.hasMore.value){
-    productController.pagnationpagesNumber++;
+    // productController.pagnationpagesNumber++;
     // }
     await productController.displayProductList(
       // skipOffset: true,
       paging: true,
-      type: "",
+      type: "suffix",
       pageselecteed: productController.pagnationpagesNumber,
     );
   }
