@@ -634,8 +634,10 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                               ],
                                             ),
                                             child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.center,
                                               spacing: context.setWidth(12.69),
                                               children: [
                                                 ClipRRect(
@@ -700,6 +702,46 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                     spacing:
                                                         context.setHeight(5),
                                                     children: [
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Text(
+                                                            item.soPosCategName!,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            style: TextStyle(
+                                                              color: const Color(
+                                                                  0xFF6B7280),
+                                                              fontSize: context
+                                                                  .setSp(12.69),
+                                                              fontFamily:
+                                                                  'SansRegular',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              height: 1.50,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            '${item.unitPrice}',
+                                                            style: TextStyle(
+                                                              color: AppColor
+                                                                  .appColor,
+                                                              fontSize: context
+                                                                  .setSp(14),
+                                                              fontFamily:
+                                                                  'SansBold',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              height: 1.50,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                       Text(
                                                         item.getProductNameBasedOnLang,
                                                         overflow: TextOverflow
@@ -721,56 +763,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                               FontWeight.w700,
                                                         ),
                                                       ),
-                                                      Row(
-                                                        spacing:
-                                                            context.setWidth(8),
-                                                        children: [
-                                                          Text(
-                                                            '${item.unitPrice}',
-                                                            style: TextStyle(
-                                                              color: AppColor
-                                                                  .appColor,
-                                                              fontSize: context
-                                                                  .setSp(14),
-                                                              fontFamily:
-                                                                  'SansBold',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              height: 1.50,
-                                                            ),
-                                                          ),
-                                                          SvgPicture.asset(
-                                                            AppImages.riyal,
-                                                            color: AppColor
-                                                                .appColor,
-                                                            package:
-                                                                'shared_widgets',
-                                                            width: context
-                                                                .setWidth(
-                                                                    11.63),
-                                                            height: context
-                                                                .setHeight(
-                                                                    10.57),
-                                                          )
-                                                        ],
-                                                      ),
-                                                      Text(
-                                                        item.soPosCategName!,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        style: TextStyle(
-                                                          color: const Color(
-                                                              0xFF6B7280),
-                                                          fontSize: context
-                                                              .setSp(12.69),
-                                                          fontFamily:
-                                                              'SansRegular',
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          height: 1.50,
-                                                        ),
-                                                      )
                                                     ],
                                                   ),
                                                 )
