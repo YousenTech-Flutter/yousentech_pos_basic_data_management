@@ -448,7 +448,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                 .isDarkMode
                                                 .value
                                             ? Colors.white
-                                            : null,
+                                            : Color(0xFF9CA3AF),
                                       )
                                     : SvgPicture.asset(
                                         AppImages.menueGrid,

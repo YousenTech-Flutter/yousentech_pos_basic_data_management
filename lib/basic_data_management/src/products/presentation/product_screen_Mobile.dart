@@ -539,7 +539,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                               .isDarkMode
                                               .value
                                           ? Colors.white
-                                          : null,
+                                          : Color(0xFF9CA3AF),
                                     )
                                   : SvgPicture.asset(
                                       AppImages.menueGrid,
