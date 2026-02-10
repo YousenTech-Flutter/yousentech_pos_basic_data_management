@@ -568,7 +568,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                   ? (productController.filtterResults.isEmpty &
                                           productController
                                               .searchResults.isEmpty)
-                                      ? productController.pagingList
+                                      ? productController.productList
                                       : productController.seachFilterPagingList
                                   : productController.isHaveCheck.value &&
                                           searchController.text == ''
@@ -582,7 +582,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                       .filtterResults.isEmpty &
                                                   productController
                                                       .searchResults.isEmpty)
-                                              ? productController.pagingList
+                                              ? productController.productList
                                               : productController
                                                   .seachFilterPagingList;
                               return ListView.builder(
@@ -794,7 +794,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                 .filtterResults.isEmpty &
                                             productController
                                                 .searchResults.isEmpty)
-                                        ? productController.pagingList
+                                        ? productController.productList
                                         : productController
                                             .seachFilterPagingList
                                     : productController.isHaveCheck.value &&
@@ -810,7 +810,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                         .isEmpty &
                                                     productController
                                                         .searchResults.isEmpty)
-                                                ? productController.pagingList
+                                                ? productController.productList
                                                 : productController
                                                     .seachFilterPagingList;
                                 return GridView.builder(
