@@ -208,7 +208,7 @@ class ProductController extends GetxController {
             : await productService.index(offset: 0, limit: (page.value==0?1 :page.value) * limit);
         }
         else{
-          print("searchFiltterResult.isNotEmpty ${searchFiltterResult.isNotEmpty}");
+          // print("searchFiltterResult.isNotEmpty ${searchFiltterResult.isNotEmpty}");
           result = searchFiltterResult.isNotEmpty
             ? searchFiltterResult
                 .skip((countSkip ?? page.value) * limit)
@@ -217,7 +217,7 @@ class ProductController extends GetxController {
             : await productService.index(
                 offset: (countSkip ?? page.value) * limit, limit: limit);
         }
-        print("result.length ${result.length}");
+        // print("result.length ${result.length}");
         if (result is List) {
           if ((type == "suffix" && hasMore.value)) {
             if (result.length < limit) {
@@ -248,11 +248,11 @@ class ProductController extends GetxController {
 
           ProductController productController =
               Get.find(tag: 'productControllerMain');
-          print("countSkip ?? page.value ${countSkip ?? page.value}");
-          print("countSkip $countSkip  page.value ${page.value}");
-          print("befor productController.productList ${productController.productList.length}");
+          // print("countSkip ?? page.value ${countSkip ?? page.value}");
+          // print("countSkip $countSkip  page.value ${page.value}");
+          // print("befor productController.productList ${productController.productList.length}");
           productController.productList.addAll(result as List<Product>);
-          print("after productController.productList ${productController.productList.length}");
+          // print("after productController.productList ${productController.productList.length}");
           if (searchFiltterResult.isNotEmpty) {
             seachFilterPagingList.clear();
             seachFilterPagingList.addAll(result);
