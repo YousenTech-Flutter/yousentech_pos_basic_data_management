@@ -246,6 +246,8 @@ class ProductController extends GetxController {
 
           ProductController productController =
               Get.find(tag: 'productControllerMain');
+          print("countSkip ?? page.value ${countSkip ?? page.value}");
+          print("countSkip $countSkip  page.value ${page.value}");
           print("befor productController.productList ${productController.productList.length}");
           productController.productList.addAll(result as List<Product>);
           print("after productController.productList ${productController.productList.length}");
