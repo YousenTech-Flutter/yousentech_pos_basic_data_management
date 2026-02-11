@@ -616,230 +616,232 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                       Obx(() {
                         if (productController.productsViewMode.value ==
                             PagesViewMode.list) {
-                          return GetBuilder<LoadingDataController>(
-                            id: "pagin",
-                            builder: (controller) {
-                              var result = productController
-                                          .selectedPagnation ==
-                                      1
-                                  ? (productController.filtterResults.isEmpty &
-                                          productController
-                                              .searchResults.isEmpty)
-                                      ? productController.pagingList
-                                      : productController.seachFilterPagingList
-                                  : productController.isHaveCheck.value &&
-                                          searchController.text == ''
-                                      ? productController.filtterResults
-                                      : (productController.isHaveCheck.value ||
-                                                  !productController
-                                                      .isHaveCheck.value) &&
-                                              searchController.text != ''
-                                          ? productController.searchResults
-                                          : (productController
-                                                      .filtterResults.isEmpty &
-                                                  productController
-                                                      .searchResults.isEmpty)
-                                              ? productController.pagingList
-                                              : productController
-                                                  .seachFilterPagingList;
-                              return ListView.builder(
-                                controller: scrollController,
-                                // shrinkWrap: true,
-                                // physics: NeverScrollableScrollPhysics(),
-                                itemCount: result.length + 1,
-                                itemBuilder: (context, index) {
-                                  if (index < result.length) {
-                                    var item = result[index];
-                                    return GestureDetector(
-                                      onTap: () {
-                                        Get.to(() => CreateEditeProductMobile(
-                                            objectToEdit: item));
-                                      },
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            bottom: context.setHeight(10)),
-                                        child: Container(
-                                            width: double.infinity,
-                                            padding: EdgeInsets.all(
-                                                context.setMinSize(7)),
-                                            decoration: ShapeDecoration(
-                                              color: Get.find<ThemeController>()
-                                                      .isDarkMode
-                                                      .value
-                                                  ? const Color(0xFF353535)
-                                                  : AppColor.white,
-                                              shape: RoundedRectangleBorder(
-                                                side: BorderSide(
-                                                  width: 1.06,
-                                                  color: Get.find<
-                                                              ThemeController>()
-                                                          .isDarkMode
-                                                          .value
-                                                      ? const Color(0xFF353535)
-                                                      : const Color(0xFFE8E8E8),
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        context.setMinSize(10)),
-                                              ),
-                                              shadows: [
-                                                BoxShadow(
-                                                  color: Color(0x00000000),
-                                                  blurRadius: 10.57,
-                                                  offset: Offset(0, 4.23),
-                                                  spreadRadius: 0,
-                                                )
-                                              ],
-                                            ),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              spacing: context.setWidth(12.69),
-                                              children: [
-                                                ClipRRect(
+                          return Expanded(
+                            child: GetBuilder<LoadingDataController>(
+                              id: "pagin",
+                              builder: (controller) {
+                                var result = productController
+                                            .selectedPagnation ==
+                                        1
+                                    ? (productController.filtterResults.isEmpty &
+                                            productController
+                                                .searchResults.isEmpty)
+                                        ? productController.pagingList
+                                        : productController.seachFilterPagingList
+                                    : productController.isHaveCheck.value &&
+                                            searchController.text == ''
+                                        ? productController.filtterResults
+                                        : (productController.isHaveCheck.value ||
+                                                    !productController
+                                                        .isHaveCheck.value) &&
+                                                searchController.text != ''
+                                            ? productController.searchResults
+                                            : (productController
+                                                        .filtterResults.isEmpty &
+                                                    productController
+                                                        .searchResults.isEmpty)
+                                                ? productController.pagingList
+                                                : productController
+                                                    .seachFilterPagingList;
+                                return ListView.builder(
+                                  controller: scrollController,
+                                  // shrinkWrap: true,
+                                  // physics: NeverScrollableScrollPhysics(),
+                                  itemCount: result.length + 1,
+                                  itemBuilder: (context, index) {
+                                    if (index < result.length) {
+                                      var item = result[index];
+                                      return GestureDetector(
+                                        onTap: () {
+                                          Get.to(() => CreateEditeProductMobile(
+                                              objectToEdit: item));
+                                        },
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              bottom: context.setHeight(10)),
+                                          child: Container(
+                                              width: double.infinity,
+                                              padding: EdgeInsets.all(
+                                                  context.setMinSize(7)),
+                                              decoration: ShapeDecoration(
+                                                color: Get.find<ThemeController>()
+                                                        .isDarkMode
+                                                        .value
+                                                    ? const Color(0xFF353535)
+                                                    : AppColor.white,
+                                                shape: RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                    width: 1.06,
+                                                    color: Get.find<
+                                                                ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? const Color(0xFF353535)
+                                                        : const Color(0xFFE8E8E8),
+                                                  ),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          context
-                                                              .setMinSize(15)),
-                                                  child: Container(
-                                                    color: item.image == null ||
-                                                            isSvg(item.image!
-                                                                .toString())
-                                                        ? Get.find<ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? const Color(
-                                                                0xFF2A2A2A)
-                                                            : Color(0xFFECEFF2)
-                                                        : null,
-                                                    width:
-                                                        context.setWidth(50.75),
-                                                    height:
-                                                        context.setWidth(50.75),
-                                                    child: item.image == null ||
-                                                            isSvg(item.image!
-                                                                .toString())
-                                                        ? Center(
-                                                            child: SvgPicture
-                                                                .asset(
-                                                              AppImages
-                                                                  .productEmptySvg,
-                                                              package:
-                                                                  'shared_widgets',
-                                                              color: Get.find<
-                                                                          ThemeController>()
-                                                                      .isDarkMode
-                                                                      .value
-                                                                  ? null
-                                                                  : const Color(
-                                                                      0xFF666C6D),
-                                                            ),
-                                                          )
-                                                        : Image.memory(
-                                                            base64.decode(item
-                                                                .image!
-                                                                .toString()),
-                                                            fit: BoxFit.cover,
-                                                            width:
-                                                                double.infinity,
-                                                            height:
-                                                                double.infinity,
-                                                            filterQuality:
-                                                                FilterQuality
-                                                                    .high,
-                                                          ),
-                                                  ),
+                                                          context.setMinSize(10)),
                                                 ),
-                                                Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    spacing:
-                                                        context.setHeight(5),
-                                                    children: [
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Text(
-                                                            item.soPosCategName!,
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            style: TextStyle(
-                                                              color: const Color(
-                                                                  0xFF6B7280),
-                                                              fontSize: context
-                                                                  .setSp(12),
-                                                              fontFamily:
-                                                                  'SansRegular',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              height: 1.50,
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            '${item.unitPrice}',
-                                                            style: TextStyle(
-                                                              color: AppColor
-                                                                  .appColor,
-                                                              fontSize: context
-                                                                  .setSp(14),
-                                                              fontFamily:
-                                                                  'SansBold',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              height: 1.50,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Text(
-                                                        item.getProductNameBasedOnLang,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        style: TextStyle(
-                                                          color: Get.find<
-                                                                      ThemeController>()
+                                                shadows: [
+                                                  BoxShadow(
+                                                    color: Color(0x00000000),
+                                                    blurRadius: 10.57,
+                                                    offset: Offset(0, 4.23),
+                                                    spreadRadius: 0,
+                                                  )
+                                                ],
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                spacing: context.setWidth(12.69),
+                                                children: [
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            context
+                                                                .setMinSize(15)),
+                                                    child: Container(
+                                                      color: item.image == null ||
+                                                              isSvg(item.image!
+                                                                  .toString())
+                                                          ? Get.find<ThemeController>()
                                                                   .isDarkMode
                                                                   .value
-                                                              ? AppColor.white
-                                                              : AppColor.black,
-                                                          fontFamily:
-                                                              'SansMedium',
-                                                          fontSize:
-                                                              context.setSp(
-                                                            12,
-                                                          ),
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                        ),
-                                                      ),
-                                                    ],
+                                                              ? const Color(
+                                                                  0xFF2A2A2A)
+                                                              : Color(0xFFECEFF2)
+                                                          : null,
+                                                      width:
+                                                          context.setWidth(50.75),
+                                                      height:
+                                                          context.setWidth(50.75),
+                                                      child: item.image == null ||
+                                                              isSvg(item.image!
+                                                                  .toString())
+                                                          ? Center(
+                                                              child: SvgPicture
+                                                                  .asset(
+                                                                AppImages
+                                                                    .productEmptySvg,
+                                                                package:
+                                                                    'shared_widgets',
+                                                                color: Get.find<
+                                                                            ThemeController>()
+                                                                        .isDarkMode
+                                                                        .value
+                                                                    ? null
+                                                                    : const Color(
+                                                                        0xFF666C6D),
+                                                              ),
+                                                            )
+                                                          : Image.memory(
+                                                              base64.decode(item
+                                                                  .image!
+                                                                  .toString()),
+                                                              fit: BoxFit.cover,
+                                                              width:
+                                                                  double.infinity,
+                                                              height:
+                                                                  double.infinity,
+                                                              filterQuality:
+                                                                  FilterQuality
+                                                                      .high,
+                                                            ),
+                                                    ),
                                                   ),
-                                                )
-                                              ],
-                                            )),
-                                      ),
-                                    );
-                                  } else {
-                                    return productController.isLoading.value
-                                        ? Center(
-                                            child: CircularProgressIndicator(
-                                              color: AppColor.appColor,
-                                            ),
-                                          )
-                                        : Container();
-                                  }
-                                },
-                              );
-                            },
+                                                  Expanded(
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      spacing:
+                                                          context.setHeight(5),
+                                                      children: [
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Text(
+                                                              item.soPosCategName!,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: TextStyle(
+                                                                color: const Color(
+                                                                    0xFF6B7280),
+                                                                fontSize: context
+                                                                    .setSp(12),
+                                                                fontFamily:
+                                                                    'SansRegular',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                height: 1.50,
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              '${item.unitPrice}',
+                                                              style: TextStyle(
+                                                                color: AppColor
+                                                                    .appColor,
+                                                                fontSize: context
+                                                                    .setSp(14),
+                                                                fontFamily:
+                                                                    'SansBold',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                height: 1.50,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Text(
+                                                          item.getProductNameBasedOnLang,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          style: TextStyle(
+                                                            color: Get.find<
+                                                                        ThemeController>()
+                                                                    .isDarkMode
+                                                                    .value
+                                                                ? AppColor.white
+                                                                : AppColor.black,
+                                                            fontFamily:
+                                                                'SansMedium',
+                                                            fontSize:
+                                                                context.setSp(
+                                                              12,
+                                                            ),
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              )),
+                                        ),
+                                      );
+                                    } else {
+                                      return productController.isLoading.value
+                                          ? Center(
+                                              child: CircularProgressIndicator(
+                                                color: AppColor.appColor,
+                                              ),
+                                            )
+                                          : Container();
+                                    }
+                                  },
+                                );
+                              },
+                            ),
                           );
                         } else {
                           return GetBuilder<LoadingDataController>(
