@@ -54,9 +54,14 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
       productController.disposeCategoriesCheckFiltter();
     });
     scrollController.addListener(() {
+      // if (scrollController.position.maxScrollExtent == scrollController.offset) {
+      //   fetch();
+      // }
       if (scrollController.position.maxScrollExtent ==
-          scrollController.offset) {
-        fetch();
+          scrollController.position.pixels) {
+        if (!productController.isLoading.value && productController.hasMore.value) {
+          fetch();
+        }
       }
     });
   }
@@ -102,9 +107,11 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
             GetBuilder<ProductController>(
               tag: 'productControllerMain',
               builder: (controller) {
-                return SingleChildScrollView(
-                  controller: scrollController,
-                  child: Column(
+                return 
+                // SingleChildScrollView(
+                //   controller: scrollController,
+                //   child: 
+                  Column(
                     spacing: context.setHeight(10),
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -560,7 +567,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                       ),
                                     ),
                                     Text(
-                                     '(${'count'.tr} ${result.length})',
+                                      '(${'count'.tr} ${result.length})',
                                       style: TextStyle(
                                         color: Get.find<ThemeController>()
                                                 .isDarkMode
@@ -636,8 +643,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                               : productController
                                                   .seachFilterPagingList;
                               return ListView.builder(
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                controller: scrollController,
+                                // shrinkWrap: true,
+                                // physics: NeverScrollableScrollPhysics(),
                                 itemCount: result.length + 1,
                                 itemBuilder: (context, index) {
                                   if (index < result.length) {
@@ -1099,8 +1107,8 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                         }
                       }),
                     ],
-                  ),
-                );
+                  );
+                // );
               },
             ),
             Obx(() {
