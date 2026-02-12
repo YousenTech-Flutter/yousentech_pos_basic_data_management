@@ -54,15 +54,15 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
       productController.disposeCategoriesCheckFiltter();
     });
     scrollController.addListener(() {
-      // if (scrollController.position.maxScrollExtent == scrollController.offset) {
-      //   fetch();
-      // }
-      if (scrollController.position.maxScrollExtent ==
-          scrollController.position.pixels) {
-        if (!productController.isLoading.value && productController.hasMore.value) {
-          fetch();
-        }
+      if (scrollController.position.maxScrollExtent == scrollController.offset) {
+        fetch();
       }
+      // if (scrollController.position.maxScrollExtent ==
+      //     scrollController.position.pixels) {
+      //   if (!productController.isLoading.value) {
+      //     fetch();
+      //   }
+      // }
     });
   }
 
