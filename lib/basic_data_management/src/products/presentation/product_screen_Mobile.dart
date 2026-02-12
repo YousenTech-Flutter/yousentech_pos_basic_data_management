@@ -874,8 +874,9 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                                                 : productController
                                                     .seachFilterPagingList;
                                 return GridView.builder(
-                                  shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  // shrinkWrap: true,
+                                  // physics: NeverScrollableScrollPhysics(),
+                                  controller: scrollController,
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
