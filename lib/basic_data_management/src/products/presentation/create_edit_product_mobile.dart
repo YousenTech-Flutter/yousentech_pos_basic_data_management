@@ -655,6 +655,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                   spacing:
                                                       context.setHeight(15),
                                                   children: [
+                                                    // product_taxes
                                                     ContainerDropDownField(
                                                       fontSize:
                                                           context.setSp(14),
@@ -699,20 +700,20 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           context.setMinSize(8),
                                                       hintText: 'taxes',
                                                       labelText: 'taxes'.tr,
-                                                      prefixIcon: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          horizontal: context
-                                                              .setWidth(6.3),
-                                                          vertical: context
-                                                              .setHeight(6.3),
-                                                        ),
-                                                        child: SvgPicture.asset(
-                                                          AppImages.tax,
-                                                          package:
-                                                              'shared_widgets',
-                                                        ),
-                                                      ),
+                                                      // prefixIcon: Padding(
+                                                      //   padding: EdgeInsets
+                                                      //       .symmetric(
+                                                      //     horizontal: context
+                                                      //         .setWidth(6.3),
+                                                      //     vertical: context
+                                                      //         .setHeight(6.3),
+                                                      //   ),
+                                                      //   child: SvgPicture.asset(
+                                                      //     AppImages.tax,
+                                                      //     package:
+                                                      //         'shared_widgets',
+                                                      //   ),
+                                                      // ),
                                                       value: (product!.taxesId
                                                               is List)
                                                           ? product!
@@ -976,26 +977,26 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       isAddOrEdit: true,
                                                       borderRadius:
                                                           context.setMinSize(8),
-                                                      prefixIcon: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          horizontal: context
-                                                              .setWidth(6.3),
-                                                          vertical: context
-                                                              .setHeight(6.3),
-                                                        ),
-                                                        child: SvgPicture.asset(
-                                                          AppImages.barcode,
-                                                          package:
-                                                              'shared_widgets',
-                                                        ),
-                                                      ),
+                                                      // prefixIcon: Padding(
+                                                      //   padding: EdgeInsets
+                                                      //       .symmetric(
+                                                      //     horizontal: context
+                                                      //         .setWidth(6.3),
+                                                      //     vertical: context
+                                                      //         .setHeight(6.3),
+                                                      //   ),
+                                                      //   child: SvgPicture.asset(
+                                                      //     AppImages.barcode,
+                                                      //     package:
+                                                      //         'shared_widgets',
+                                                      //   ),
+                                                      // ),
                                                     ),
                                                     //default_code
                                                     ContainerTextField(
                                                       controller:
                                                           defaultCodeController,
-                                                      textAlign:TextAlign.center ,
+                                                      textAlign:TextAlign.center,
                                                       labelText:
                                                           'default_code'.tr,
                                                       hintText:
@@ -1057,20 +1058,20 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       isAddOrEdit: true,
                                                       borderRadius:
                                                           context.setMinSize(8),
-                                                      prefixIcon: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          horizontal: context
-                                                              .setWidth(6.3),
-                                                          vertical: context
-                                                              .setHeight(6.3),
-                                                        ),
-                                                        child: SvgPicture.asset(
-                                                          AppImages.barcode,
-                                                          package:
-                                                              'shared_widgets',
-                                                        ),
-                                                      ),
+                                                      // prefixIcon: Padding(
+                                                      //   padding: EdgeInsets
+                                                      //       .symmetric(
+                                                      //     horizontal: context
+                                                      //         .setWidth(6.3),
+                                                      //     vertical: context
+                                                      //         .setHeight(6.3),
+                                                      //   ),
+                                                      //   child: SvgPicture.asset(
+                                                      //     AppImages.barcode,
+                                                      //     package:
+                                                      //         'shared_widgets',
+                                                      //   ),
+                                                      // ),
                                                     ),
 
                                                     // product_type
