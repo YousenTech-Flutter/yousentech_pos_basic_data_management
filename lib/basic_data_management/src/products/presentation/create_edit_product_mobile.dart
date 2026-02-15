@@ -593,10 +593,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       .toggleProductViewOptionsInfo();
                                                 },
                                                 child: Container(
-                                                    width:
-                                                        context.setWidth(30),
-                                                    height: context
-                                                        .setHeight(30),
+                                                    width: context.setWidth(30),
+                                                    height:
+                                                        context.setHeight(30),
                                                     decoration: ShapeDecoration(
                                                       color: Get.find<
                                                                   ThemeController>()
@@ -909,8 +908,10 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                     ContainerTextField(
                                                       controller:
                                                           barcodeController,
-                                                      textAlign:TextAlign.center,
-                                                      textDirection: TextDirection.ltr,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      textDirection:
+                                                          TextDirection.ltr,
                                                       labelText:
                                                           'product_barcode'.tr,
                                                       hintText:
@@ -930,7 +931,10 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       ),
                                                       fontSize:
                                                           context.setSp(14),
-                                                      contentPadding: const EdgeInsets.fromLTRB(12, 10.0, 12, 10.0),
+                                                      contentPadding:
+                                                          const EdgeInsets
+                                                              .fromLTRB(12,
+                                                              10.0, 12, 10.0),
 
                                                       showLable: true,
                                                       borderColor: Get.find<
@@ -965,16 +969,12 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           : const Color(
                                                               0xFF9CA3AF,
                                                             ),
-                                                      color: !Get.find<
+                                                      color: Get.find<
                                                                   ThemeController>()
                                                               .isDarkMode
                                                               .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
+                                                          ? Colors.white
+                                                          : Colors.black,
                                                       isAddOrEdit: true,
                                                       borderRadius:
                                                           context.setMinSize(8),
@@ -997,8 +997,10 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                     ContainerTextField(
                                                       controller:
                                                           defaultCodeController,
-                                                      textAlign:TextAlign.center,
-                                                      textDirection: TextDirection.ltr,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      textDirection:
+                                                          TextDirection.ltr,
                                                       labelText:
                                                           'default_code'.tr,
                                                       hintText:
@@ -1013,7 +1015,10 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       ),
                                                       fontSize:
                                                           context.setSp(14),
-                                                      contentPadding: const EdgeInsets.fromLTRB(12, 10.0, 12, 10.0),
+                                                      contentPadding:
+                                                          const EdgeInsets
+                                                              .fromLTRB(12,
+                                                              10.0, 12, 10.0),
                                                       showLable: true,
                                                       borderColor: Get.find<
                                                                   ThemeController>()
@@ -1047,16 +1052,12 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           : const Color(
                                                               0xFF9CA3AF,
                                                             ),
-                                                      color: !Get.find<
+                                                      color: Get.find<
                                                                   ThemeController>()
                                                               .isDarkMode
                                                               .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
+                                                          ? Colors.white
+                                                          : Colors.black,
                                                       isAddOrEdit: true,
                                                       borderRadius:
                                                           context.setMinSize(8),
