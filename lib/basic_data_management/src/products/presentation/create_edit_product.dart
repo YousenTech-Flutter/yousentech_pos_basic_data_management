@@ -1432,11 +1432,11 @@ void createEditeProduct({
                                         children: [
                                           ButtonClick(
                                             color: const Color(0xFF16A6B7),
-                                            data:
-                                                (product!.id != null
-                                                        ? 'edit_product'
-                                                        : 'add_product')
-                                                    .tr,
+                                            data:'save'.tr,
+                                                // (product!.id != null
+                                                //         ? 'edit_product'
+                                                //         : 'add_product')
+                                                //     .tr,
                                             onTap: _onPressed,
                                           ),
                                           ButtonClick(

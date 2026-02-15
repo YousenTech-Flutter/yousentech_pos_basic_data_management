@@ -1548,9 +1548,10 @@ void createEditeCustomer({
                                             children: [
                                               ButtonClick(
                                                 color: const Color(0xFF16A6B7),
-                                                data: (customer?.id != null)
-                                                    ? 'edit_customer'.tr
-                                                    : 'add_new_customer'.tr,
+                                                data: 'save'.tr
+                                                // (customer?.id != null)
+                                                //     ? 'edit_customer'.tr
+                                                //     : 'add_new_customer'.tr,
                                                 onTap: _onPressed,
                                               ),
                                               ButtonClick(

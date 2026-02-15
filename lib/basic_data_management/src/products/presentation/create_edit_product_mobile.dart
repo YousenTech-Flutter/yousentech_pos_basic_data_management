@@ -1652,10 +1652,11 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                     Expanded(
                                       child: ButtonClick(
                                         color: AppColor.appColor,
-                                        data: (product!.id != null
-                                                ? 'edit_product'
-                                                : 'add_product')
-                                            .tr,
+                                        data: 'save'.tr,
+                                        // (product!.id != null
+                                        //         ? 'edit_product'
+                                        //         : 'add_product')
+                                        //     .tr,
                                         onTap: _onPressed,
                                       ),
                                     ),
