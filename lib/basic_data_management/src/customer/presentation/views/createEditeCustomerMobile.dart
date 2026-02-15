@@ -859,9 +859,9 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                         .toggleCustomerViewOptionsInfo();
                                                   },
                                                   child: Container(
-                                                      width: context.setWidth(21.15),
+                                                      width: context.setWidth(30),
                                                       height:
-                                                          context.setHeight(21.15),
+                                                          context.setHeight(30),
                                                       decoration: ShapeDecoration(
                                                         color: Get.find<
                                                                     ThemeController>()
@@ -895,9 +895,9 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                           AppImages.arrowDown,
                                                           package: 'shared_widgets',
                                                           width:
-                                                              context.setWidth(14.84),
+                                                              context.setWidth(20),
                                                           height: context
-                                                              .setHeight(14.84),
+                                                              .setHeight(20),
                                                         ),
                                                       ))),
                                                 );
