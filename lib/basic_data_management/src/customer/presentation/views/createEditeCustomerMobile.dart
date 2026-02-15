@@ -1790,7 +1790,7 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                     Expanded(
                                       child: ButtonClick(
                                         color: AppColor.appColor,
-                                        data: 'save'.tr
+                                        data: 'save'.tr,
                                         // (customer?.id != null)
                                         //               ? 'edit_customer'.tr
                                         //               : 'add_new_customer'.tr,
