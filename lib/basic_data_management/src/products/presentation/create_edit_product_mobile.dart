@@ -635,10 +635,10 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                         AppImages.arrowDown,
                                                         package:
                                                             'shared_widgets',
-                                                        width: context
-                                                            .setWidth(19),
-                                                        height: context
-                                                            .setHeight(19),
+                                                        // width: context
+                                                        //     .setWidth(19),
+                                                        // height: context
+                                                        //     .setHeight(19),
                                                       ),
                                                     ))),
                                               );
