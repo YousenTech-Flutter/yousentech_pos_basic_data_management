@@ -636,9 +636,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                         package:
                                                             'shared_widgets',
                                                         width: context
-                                                            .setWidth(16),
+                                                            .setWidth(19),
                                                         height: context
-                                                            .setHeight(16),
+                                                            .setHeight(19),
                                                       ),
                                                     ))),
                                               );
