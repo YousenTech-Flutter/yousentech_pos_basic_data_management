@@ -562,7 +562,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                     padding:
                                         EdgeInsets.all(context.setMinSize(20)),
                                     child: Column(
-                                      spacing: context.setHeight(10),
+                                      spacing: context.setHeight(15),
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
@@ -594,9 +594,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                 },
                                                 child: Container(
                                                     width:
-                                                        context.setWidth(21.15),
+                                                        context.setWidth(30),
                                                     height: context
-                                                        .setHeight(21.15),
+                                                        .setHeight(30),
                                                     decoration: ShapeDecoration(
                                                       color: Get.find<
                                                                   ThemeController>()
@@ -637,9 +637,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                         package:
                                                             'shared_widgets',
                                                         width: context
-                                                            .setWidth(14.84),
+                                                            .setWidth(16),
                                                         height: context
-                                                            .setHeight(14.84),
+                                                            .setHeight(16),
                                                       ),
                                                     ))),
                                               );
@@ -653,7 +653,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   spacing:
-                                                      context.setHeight(10),
+                                                      context.setHeight(15),
                                                   children: [
                                                     ContainerDropDownField(
                                                       fontSize:
@@ -908,6 +908,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                     ContainerTextField(
                                                       controller:
                                                           barcodeController,
+                                                      textAlign:TextAlign.center ,
                                                       labelText:
                                                           'product_barcode'.tr,
                                                       hintText:
@@ -927,21 +928,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       ),
                                                       fontSize:
                                                           context.setSp(14),
-                                                      contentPadding:
-                                                          EdgeInsets.fromLTRB(
-                                                        context.setWidth(
-                                                          9.36,
-                                                        ),
-                                                        context.setHeight(
-                                                          10.29,
-                                                        ),
-                                                        context.setWidth(
-                                                          7.86,
-                                                        ),
-                                                        context.setHeight(
-                                                          4.71,
-                                                        ),
-                                                      ),
+                                                      contentPadding: const EdgeInsets.fromLTRB(12, 10.0, 12, 10.0),
+
                                                       showLable: true,
                                                       borderColor: Get.find<
                                                                   ThemeController>()
@@ -1007,6 +995,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                     ContainerTextField(
                                                       controller:
                                                           defaultCodeController,
+                                                      textAlign:TextAlign.center ,
                                                       labelText:
                                                           'default_code'.tr,
                                                       hintText:
@@ -1021,21 +1010,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       ),
                                                       fontSize:
                                                           context.setSp(14),
-                                                      contentPadding:
-                                                          EdgeInsets.fromLTRB(
-                                                        context.setWidth(
-                                                          9.36,
-                                                        ),
-                                                        context.setHeight(
-                                                          10.29,
-                                                        ),
-                                                        context.setWidth(
-                                                          7.86,
-                                                        ),
-                                                        context.setHeight(
-                                                          4.71,
-                                                        ),
-                                                      ),
+                                                      contentPadding: const EdgeInsets.fromLTRB(12, 10.0, 12, 10.0),
                                                       showLable: true,
                                                       borderColor: Get.find<
                                                                   ThemeController>()
@@ -1086,9 +1061,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                         padding: EdgeInsets
                                                             .symmetric(
                                                           horizontal: context
-                                                              .setWidth(10),
+                                                              .setWidth(6.3),
                                                           vertical: context
-                                                              .setHeight(10),
+                                                              .setHeight(6.3),
                                                         ),
                                                         child: SvgPicture.asset(
                                                           AppImages.barcode,
