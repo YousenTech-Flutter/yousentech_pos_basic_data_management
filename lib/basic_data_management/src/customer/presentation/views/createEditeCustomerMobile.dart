@@ -894,10 +894,10 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                         child: SvgPicture.asset(
                                                           AppImages.arrowDown,
                                                           package: 'shared_widgets',
-                                                          width:
-                                                              context.setWidth(20),
-                                                          height: context
-                                                              .setHeight(20),
+                                                          // width:
+                                                          //     context.setWidth(20),
+                                                          // height: context
+                                                          //     .setHeight(20),
                                                         ),
                                                       ))),
                                                 );
