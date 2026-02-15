@@ -909,7 +909,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                     ContainerTextField(
                                                       controller:
                                                           barcodeController,
-                                                      textAlign:TextAlign.center ,
+                                                      textAlign:TextAlign.center,
+                                                      textDirection: TextDirection.ltr,
                                                       labelText:
                                                           'product_barcode'.tr,
                                                       hintText:
@@ -997,6 +998,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       controller:
                                                           defaultCodeController,
                                                       textAlign:TextAlign.center,
+                                                      textDirection: TextDirection.ltr,
                                                       labelText:
                                                           'default_code'.tr,
                                                       hintText:
