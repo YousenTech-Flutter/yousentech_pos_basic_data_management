@@ -450,9 +450,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                           ],
                                           keyboardType: TextInputType.number,
                                           width: context.screenWidth,
-                                          height: context.setHeight(
-                                            40,
-                                          ),
+                                          // height: context.setHeight(
+                                          //   40,
+                                          // ),
                                           fontSize: context.setSp(14),
                                           contentPadding: EdgeInsets.fromLTRB(
                                             context.setWidth(
@@ -660,9 +660,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           context.setSp(14),
                                                       width:
                                                           context.screenWidth,
-                                                      height: context.setHeight(
-                                                        40,
-                                                      ),
+                                                      // height: context.setHeight(
+                                                      //   40,
+                                                      // ),
                                                       fillColor: !Get.find<
                                                                   ThemeController>()
                                                               .isDarkMode
@@ -783,9 +783,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           context.setSp(14),
                                                       width:
                                                           context.screenWidth,
-                                                      height: context.setHeight(
-                                                        40,
-                                                      ),
+                                                      // height: context.setHeight(
+                                                      //   40,
+                                                      // ),
                                                       fillColor: !Get.find<
                                                                   ThemeController>()
                                                               .isDarkMode
@@ -926,9 +926,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       ],
                                                       width:
                                                           context.screenWidth,
-                                                      height: context.setHeight(
-                                                        40,
-                                                      ),
+                                                      // height: context.setHeight(
+                                                      //   40,
+                                                      // ),
                                                       fontSize:
                                                           context.setSp(14),
                                                       contentPadding:
@@ -1010,9 +1010,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       // textAlign: TextAlign.justify,
                                                       width:
                                                           context.screenWidth,
-                                                      height: context.setHeight(
-                                                        40,
-                                                      ),
+                                                      // height: context.setHeight(
+                                                      //   40,
+                                                      // ),
                                                       fontSize:
                                                           context.setSp(14),
                                                       contentPadding:
@@ -1083,9 +1083,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           context.setSp(14),
                                                       width:
                                                           context.screenWidth,
-                                                      height: context.setHeight(
-                                                        40,
-                                                      ),
+                                                      // height: context.setHeight(
+                                                      //   40,
+                                                      // ),
                                                       fillColor: !Get.find<
                                                                   ThemeController>()
                                                               .isDarkMode
@@ -1207,9 +1207,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           context.setSp(14),
                                                       width:
                                                           context.screenWidth,
-                                                      height: context.setHeight(
-                                                        40,
-                                                      ),
+                                                      // height: context.setHeight(
+                                                      //   40,
+                                                      // ),
                                                       fillColor: !Get.find<
                                                                   ThemeController>()
                                                               .isDarkMode
@@ -1436,8 +1436,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           context.setSp(14),
                                                       width:
                                                           context.screenWidth,
-                                                      height:
-                                                          context.setHeight(40),
+                                                      // height:
+                                                      //     context.setHeight(40),
                                                       fillColor: !Get.find<
                                                                   ThemeController>()
                                                               .isDarkMode
