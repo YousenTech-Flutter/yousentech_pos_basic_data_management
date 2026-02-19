@@ -1085,9 +1085,6 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               .isDarkMode
                                                               .value
                                                           ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.43,
-                                                            )
                                                           : const Color(
                                                               0xFF2B2B2B,
                                                             ),
@@ -1209,9 +1206,6 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               .isDarkMode
                                                               .value
                                                           ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.43,
-                                                            )
                                                           : const Color(
                                                               0xFF2B2B2B,
                                                             ),
