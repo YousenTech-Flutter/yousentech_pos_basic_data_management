@@ -769,7 +769,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                         data: (posCategory?.id == null)
                                             ? "add_new_pos_category".tr
                                             : 'edit_pos_category'.tr,
-                                        fontSize: 12,
+                                        fontSize: 17,
                                         horizontal: 10,
                                         onTap: _onPressed,
                                       ),
@@ -777,7 +777,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                     Expanded(
                                       child: ButtonClick(
                                         data: 'back'.tr,
-                                        fontSize: 12,
+                                        fontSize: 14,
                                         horizontal: 10,
                                         textColor: Get.find<ThemeController>()
                                                 .isDarkMode
