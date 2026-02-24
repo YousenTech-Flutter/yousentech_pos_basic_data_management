@@ -199,7 +199,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                 .value
                                             ? Colors.white
                                             : const Color(0xFF0C0C0C),
-                                        fontSize: context.setSp(16),
+                                        fontSize: context.setSp(24),
                                         fontFamily: 'SansBold',
                                         fontWeight: FontWeight.w700,
                                         height: 1.45,
@@ -222,14 +222,18 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                           hintText: 'pos_category_name'.tr,
                                           keyboardType: TextInputType.text,
                                           width: context.screenWidth,
-                                          height: context.setHeight(40),
-                                          fontSize: context.setSp(12),
-                                          contentPadding: EdgeInsets.fromLTRB(
-                                            context.setWidth(9.36),
-                                            context.setHeight(10.29),
-                                            context.setWidth(7.86),
-                                            context.setHeight(4.71),
-                                          ),
+                                          height: context.setHeight(51.28),
+                                          fontSize: context.setSp(14),
+                                          testFontSize: context.setSp(18),
+                                          // contentPadding: EdgeInsets.fromLTRB(
+                                          //   context.setWidth(9.36),
+                                          //   context.setHeight(10.29),
+                                          //   context.setWidth(7.86),
+                                          //   context.setHeight(4.71),
+                                          // ),
+                                          contentPadding: EdgeInsets.symmetric(
+                                              vertical: 18, horizontal: 16),
+
                                           showLable: false,
                                           borderColor:
                                               Get.find<ThemeController>()
@@ -300,9 +304,10 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                           },
                                         ),
                                         ContainerDropDownField(
-                                          fontSize: context.setSp(12),
+                                          // fontSize: context.setSp(12),
                                           width: context.screenWidth,
-                                          height: context.setHeight(40),
+                                          // height: context.setHeight(40),
+                                          fontSize: context.setSp(14),
                                           fillColor:
                                               !Get.find<ThemeController>()
                                                       .isDarkMode
@@ -440,8 +445,11 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                               : const Color(
                                                                   0xFF0C0C0C,
                                                                 ),
+                                                          // fontSize:
+                                                          //     context.setSp(12),
                                                           fontSize:
-                                                              context.setSp(12),
+                                                              context.setSp(14),
+
                                                           fontFamily:
                                                               'SansMedium',
                                                           fontWeight:
@@ -500,28 +508,41 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                                     .text,
                                                             width: context
                                                                 .screenWidth,
-                                                            height: context
-                                                                .setHeight(40),
-                                                            fontSize:
-                                                                context.setSp(
-                                                              12,
-                                                            ),
+                                                            // height: context
+                                                            //     .setHeight(40),
+                                                            // fontSize:
+                                                            //     context.setSp(
+                                                            //   12,
+                                                            // ),
+                                                            fontSize: context
+                                                                .setSp(14),
+                                                            testFontSize:
+                                                                context
+                                                                    .setSp(18),
+                                                            // contentPadding:
+                                                            //     EdgeInsets
+                                                            //         .fromLTRB(
+                                                            //   context.setWidth(
+                                                            //     9.36,
+                                                            //   ),
+                                                            //   context.setHeight(
+                                                            //     10.29,
+                                                            //   ),
+                                                            //   context.setWidth(
+                                                            //     7.86,
+                                                            //   ),
+                                                            //   context.setHeight(
+                                                            //     4.71,
+                                                            //   ),
+                                                            // ),
                                                             contentPadding:
                                                                 EdgeInsets
-                                                                    .fromLTRB(
-                                                              context.setWidth(
-                                                                9.36,
-                                                              ),
-                                                              context.setHeight(
-                                                                10.29,
-                                                              ),
-                                                              context.setWidth(
-                                                                7.86,
-                                                              ),
-                                                              context.setHeight(
-                                                                4.71,
-                                                              ),
-                                                            ),
+                                                                    .symmetric(
+                                                                        vertical:
+                                                                            18,
+                                                                        horizontal:
+                                                                            16),
+
                                                             showLable: false,
                                                             borderColor: Get.find<
                                                                         ThemeController>()
@@ -613,10 +634,11 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                           textStyle: TextStyle(
                                                             color: AppColor
                                                                 .appColor,
-                                                            fontSize:
-                                                                context.setSp(
-                                                              12,
-                                                            ),
+                                                            // fontSize:
+                                                            //     context.setSp(
+                                                            //   12,
+                                                            // ),
+                                                            fontSize: context.setSp(17),
                                                             fontFamily:
                                                                 'SansMedium',
                                                             fontWeight:
@@ -656,7 +678,8 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                                 ? const Color(
                                                                     0xFF1B1B1B,
                                                                   )
-                                                                : const Color(0xFFD5D5D5),
+                                                                : const Color(
+                                                                    0xFFD5D5D5),
                                                             shape:
                                                                 RoundedRectangleBorder(
                                                               side: BorderSide(
@@ -708,11 +731,12 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                                         : const Color(
                                                                             0xFF4B5563,
                                                                           ),
-                                                                    fontSize:
-                                                                        context
-                                                                            .setSp(
-                                                                      12,
-                                                                    ),
+                                                                    // fontSize:
+                                                                    //     context
+                                                                    //         .setSp(
+                                                                    //   12,
+                                                                    // ),
+                                                                    fontSize: context.setSp(14),
                                                                     fontFamily:
                                                                         'SansMedium',
                                                                     fontWeight:
