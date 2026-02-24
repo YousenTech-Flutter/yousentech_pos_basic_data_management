@@ -199,7 +199,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                 .value
                                             ? Colors.white
                                             : const Color(0xFF0C0C0C),
-                                        fontSize: context.setSp(24),
+                                        fontSize: context.setSp(22),
                                         fontFamily: 'SansBold',
                                         fontWeight: FontWeight.w700,
                                         height: 1.45,
@@ -214,7 +214,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      spacing: context.setHeight(10),
+                                      spacing: context.setHeight(15),
                                       children: [
                                         ContainerTextField(
                                           controller: nameController,
@@ -380,6 +380,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                           ? e.name!.ar001
                                                           : e.name!.enUS)!,
                                                       style: TextStyle(
+                                                        fontSize: context.setSp(14),
                                                         color: Get.find<
                                                                     ThemeController>()
                                                                 .isDarkMode
@@ -491,6 +492,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                   ),
                                                   if (isOpen) ...[
                                                     Row(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
                                                       spacing:
                                                           context.setWidth(16),
                                                       children: [
@@ -508,8 +510,8 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                                                     .text,
                                                             width: context
                                                                 .screenWidth,
-                                                            // height: context
-                                                            //     .setHeight(40),
+                                                            height: context
+                                                                .setHeight(40),
                                                             // fontSize:
                                                             //     context.setSp(
                                                             //   12,
