@@ -777,7 +777,7 @@ class _CreateEditeCategoryMobileState extends State<CreateEditeCategoryMobile> {
                                     Expanded(
                                       child: ButtonClick(
                                         data: 'back'.tr,
-                                        fontSize: 14,
+                                        fontSize: 17,
                                         horizontal: 10,
                                         textColor: Get.find<ThemeController>()
                                                 .isDarkMode

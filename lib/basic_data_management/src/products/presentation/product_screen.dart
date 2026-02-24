@@ -736,7 +736,7 @@ class ButtonClick extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: textColor,
-                      fontSize: context.setSp(fontSize?? 16),
+                      fontSize: context.setSp(fontSize?? 17),
                       fontFamily: DeviceUtils.isMobile(context) ? 'SansMedium' :'Tajawal',
                       fontWeight: FontWeight.w400,
                       height: 1.50,
