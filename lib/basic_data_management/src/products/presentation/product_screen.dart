@@ -683,6 +683,7 @@ class ButtonClick extends StatelessWidget {
   double ? horizontal;
   double ? vertical;
   double ? fontSize;
+  double ? height;
   bool isSync;
   ButtonClick({
     super.key,
@@ -694,7 +695,8 @@ class ButtonClick extends StatelessWidget {
     this.vertical,
     this.isSync = false,
     this.textColor = Colors.white,
-    this.fontSize
+    this.fontSize,
+    this.height,
   });
 
   @override
@@ -702,6 +704,7 @@ class ButtonClick extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
+        height: height,
         decoration: ShapeDecoration(
           color: color,
           shape: RoundedRectangleBorder(
@@ -711,8 +714,8 @@ class ButtonClick extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-            vertical: context.setHeight(vertical ?? 6),
-            horizontal: context.setWidth(horizontal ?? 16),
+            vertical:height != null ? context.setHeight(vertical ?? 6) :0.0,
+            horizontal:height != null ? context.setWidth(horizontal ?? 16) :0.0,
           ),
           child: Center(
             child: Row(
