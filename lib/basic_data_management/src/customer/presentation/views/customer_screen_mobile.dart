@@ -174,7 +174,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                             : const Color(
                                                 0xFF0C0C0C,
                                               ),
-                                        fontSize: context.setSp(12),
+                                        fontSize: context.setSp(AppSizes.text),
                                         fontFamily: 'SansRegular',
                                         fontWeight: FontWeight.w500,
                                         height: 1.50,
@@ -218,7 +218,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                         Expanded(
                           child: ButtonClick(
                             data: 'add_customer'.tr,
-                            fontSize: 12,
+                            fontSize: AppSizes.text,
                             horizontal: 10,
                             onTap: () {
                               if (SharedPr
@@ -236,7 +236,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                         Expanded(
                           child: ButtonClick(
                             data: 'synchronization'.tr,
-                            fontSize: 12,
+                            fontSize: AppSizes.text,
                             horizontal: 10,
                             onTap: () async {
                               loadingDataController.isUpdate.value = true;
@@ -283,7 +283,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                         Expanded(
                           child: ButtonClick(
                             data: "Update_All".tr,
-                            fontSize: 12,
+                            fontSize: AppSizes.text,
                             horizontal: 10,
                             onTap: () async {
                               var result =
@@ -325,7 +325,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                         Expanded(
                           child: ButtonClick(
                             data: 'difference'.tr,
-                            fontSize: 12,
+                            fontSize: AppSizes.text,
                             horizontal: 0,
                             onTap: () async {
                               var result =
@@ -366,15 +366,15 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                       labelText: "${'search_customers'.tr} .....",
                       hintText: "${'search_customers'.tr} .....",
                       keyboardType: TextInputType.text,
-                      width: context.screenWidth,
-                      height: context.setHeight(35),
-                      fontSize: context.setSp(14),
-                      contentPadding: EdgeInsets.fromLTRB(
-                        context.setWidth(9.36),
-                        context.setHeight(10.29),
-                        context.setWidth(7.86),
-                        context.setHeight(4.71),
-                      ),
+                      // width: context.screenWidth,
+                      // height: context.setHeight(AppSizes.textFieldHeight),
+                      // fontSize: context.setSp(AppSizes.text),
+                      // contentPadding: EdgeInsets.fromLTRB(
+                      //   context.setWidth(9.36),
+                      //   context.setHeight(10.29),
+                      //   context.setWidth(7.86),
+                      //   context.setHeight(4.71),
+                      // ),
                       showLable: false,
                       borderColor:
                           !Get.find<ThemeController>().isDarkMode.value
@@ -390,16 +390,12 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                           ? Color(0xFFC2C3CB)
                           : const Color(0xFFC2C3CB),
                       isAddOrEdit: true,
-                      borderRadius: context.setMinSize(10),
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: context.setWidth(9.96),
-                          vertical: context.setHeight(5.95),
-                        ),
-                        child: SvgPicture.asset(
-                          AppImages.search,
-                          package: 'shared_widgets',
-                        ),
+                      // borderRadius: context.setMinSize(10),
+                      prefixIcon: SvgPicture.asset(
+                        AppImages.search,
+                        package: 'shared_widgets',
+                        height: AppSizes.iconTextField,
+                        width:AppSizes.iconTextField ,
                       ),
                       onChanged: (text) async {
                         customerController.selectedPagnation = 0;
@@ -445,7 +441,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                           .value
                                       ? Colors.white
                                       : const Color(0xFF374151),
-                                  fontSize: context.setSp(14.80),
+                                  fontSize: context.setSp(AppSizes.subTitle),
                                   fontFamily: 'SansMedium',
                                   fontWeight: FontWeight.w500,
                                   height: 1.43,
@@ -459,7 +455,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                           .value
                                       ? Colors.white
                                       : const Color(0xFF374151),
-                                  fontSize: context.setSp(12),
+                                  fontSize: context.setSp(AppSizes.subTitle),
                                   fontFamily: 'SansMedium',
                                   fontWeight: FontWeight.w500,
                                   height: 1.43,
@@ -632,7 +628,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                           : AppColor.black,
                                                       fontFamily: 'SansMedium',
                                                       fontSize: context.setSp(
-                                                        12,
+                                                        AppSizes.text,
                                                       ),
                                                       fontWeight:
                                                           FontWeight.w700,
@@ -643,7 +639,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                     style: TextStyle(
                                                       color: AppColor.appColor,
                                                       fontSize:
-                                                          context.setSp(14),
+                                                          context.setSp(AppSizes.text),
                                                       fontFamily: 'SansBold',
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -658,7 +654,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                       color: const Color(
                                                           0xFF6B7280),
                                                       fontSize:
-                                                          context.setSp(12.69),
+                                                          context.setSp(AppSizes.text),
                                                       fontFamily: 'SansRegular',
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -799,7 +795,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                       .value
                                                   ? AppColor.white
                                                   : AppColor.black,
-                                              fontSize: context.setSp(12),
+                                              fontSize: context.setSp(AppSizes.text),
                                               fontFamily: 'SansMedium',
                                               fontWeight: FontWeight.w700,
                                               height: 1.43,
@@ -810,7 +806,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                               color: const Color(0xFF6B7280),
-                                              fontSize: context.setSp(12),
+                                              fontSize: context.setSp(AppSizes.text),
                                               fontFamily: 'SansRegular',
                                               fontWeight: FontWeight.w500,
                                               height: 1.50,
@@ -821,7 +817,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                               color: const Color(0xFF6B7280),
-                                              fontSize: context.setSp(12),
+                                              fontSize: context.setSp(AppSizes.text),
                                               fontFamily: 'SansRegular',
                                               fontWeight: FontWeight.w500,
                                               height: 1.50,
