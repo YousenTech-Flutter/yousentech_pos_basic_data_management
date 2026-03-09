@@ -9,6 +9,7 @@ import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/config/app_enums.dart';
 import 'package:shared_widgets/config/app_images.dart';
+import 'package:shared_widgets/config/app_sizes.dart';
 import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/shared_widgets/app_loading.dart';
 import 'package:shared_widgets/shared_widgets/app_snack_bar.dart';
@@ -83,8 +84,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
         padding: EdgeInsets.only(
           top: context.setHeight(16),
           bottom: context.setHeight(5),
-          right: context.setWidth(10),
-          left: context.setWidth(10),
+          right: context.setWidth(AppSizes.pagePadding),
+          left: context.setWidth(AppSizes.pagePadding),
         ),
         child: Stack(
           children: [
@@ -119,7 +120,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                 Get.find<ThemeController>().isDarkMode.value
                                     ? Colors.white
                                     : const Color(0xFF0C0C0C),
-                            fontSize: context.setSp(16),
+                            fontSize: context.setSp(AppSizes.title),
                             fontFamily: 'SansBold',
                             fontWeight: FontWeight.w700,
                             height: 1.45,
