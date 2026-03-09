@@ -11,6 +11,7 @@ import 'package:pos_shared_preferences/models/customer_model.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/config/app_enums.dart';
 import 'package:shared_widgets/config/app_images.dart';
+import 'package:shared_widgets/config/app_sizes.dart';
 import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/shared_widgets/app_loading.dart';
 import 'package:shared_widgets/shared_widgets/app_snack_bar.dart';
@@ -109,7 +110,8 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                         key: _formKey,
                         child: SingleChildScrollView(
                           child: Padding(
-                            padding: EdgeInsets.all(context.setMinSize(16.92)),
+                            padding: EdgeInsets.all(
+                                context.setMinSize(AppSizes.pagePadding)),
                             child: Column(
                               spacing: context.setHeight(19),
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,7 +127,8 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                         context.setMinSize(11.17)),
                                   ),
                                   child: Padding(
-                                    padding:  EdgeInsets.all(context.setMinSize(10)),
+                                    padding:
+                                        EdgeInsets.all(context.setMinSize(10)),
                                     child: Row(
                                       spacing: context.setWidth(10),
                                       children: [
@@ -139,7 +142,8 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                     .value
                                                 ? AppColor.white
                                                 : AppColor.black,
-                                            fontSize: context.setSp(14),
+                                            fontSize:
+                                                context.setSp(AppSizes.title),
                                             fontFamily: 'SansBold',
                                             fontWeight: FontWeight.w600,
                                             height: 1.56,
@@ -195,7 +199,8 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                             ),
                                             activeColor: AppColor.appColor,
                                             value: option.isCompany,
-                                            groupValue: _selectedOption ?? false,
+                                            groupValue:
+                                                _selectedOption ?? false,
                                             onChanged: (
                                               value,
                                             ) {
@@ -216,7 +221,7 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                       0xFF2F343C,
                                                     ),
                                               fontSize: context.setSp(
-                                                12,
+                                                AppSizes.text,
                                               ),
                                               fontFamily: 'SansMedium',
                                               fontWeight: FontWeight.w500,
@@ -287,7 +292,8 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                               File imageFile = File(imagePath);
                                               Uint8List bytes =
                                                   await imageFile.readAsBytes();
-                                              String base64String = base64.encode(
+                                              String base64String =
+                                                  base64.encode(
                                                 bytes,
                                               );
                                               customer!.image = base64String;
@@ -305,7 +311,8 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                     context.setMinSize(143.80),
                                                 alignment: Alignment.center,
                                                 child: customer == null ||
-                                                        customer!.image == null ||
+                                                        customer!.image ==
+                                                            null ||
                                                         customer!.image == ''
                                                     ? Center(
                                                         child: Column(
@@ -318,8 +325,10 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                               Icons.camera_alt,
                                                               size: context
                                                                   .setMinSize(
-                                                                      25.64),
-                                                              color: Colors.grey,
+                                                                      AppSizes
+                                                                          .titleIcon),
+                                                              color:
+                                                                  Colors.grey,
                                                             ),
                                                             Text(
                                                               "upload".tr,
@@ -327,9 +336,10 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                                 color: const Color(
                                                                     0xFF9CA3AF),
                                                                 fontSize: context
-                                                                    .setSp(12),
+                                                                    .setSp(AppSizes
+                                                                        .text),
                                                                 fontFamily:
-                                                                    'Tajawal',
+                                                                    'SansMedium',
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w400,
@@ -344,7 +354,7 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                             //       data: 'select_image'.tr,
                                                             //       onTap:null ,
                                                             //     ),
-                        
+
                                                             // )
                                                           ],
                                                         ),
@@ -362,9 +372,9 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                                 double.infinity,
                                                           )
                                                         : Image.memory(
-                                                            base64Decode(customer!
-                                                                .image!
-                                                                .toString()),
+                                                            base64Decode(
+                                                                customer!.image!
+                                                                    .toString()),
                                                             fit: BoxFit.cover,
                                                             width:
                                                                 double.infinity,
@@ -420,7 +430,8 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                     .value
                                                 ? AppColor.white
                                                 : AppColor.black,
-                                            fontSize: context.setSp(14),
+                                            fontSize: context
+                                                .setSp(AppSizes.subTitle),
                                             fontFamily: 'SansBold',
                                             fontWeight: FontWeight.w600,
                                             height: 1.56,
@@ -432,72 +443,27 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                           labelText: 'customer_name'.tr,
                                           hintText: 'customer_name'.tr,
                                           keyboardType: TextInputType.text,
-                                          width: context.screenWidth,
-                                          height: context.setHeight(40),
-                                          fontSize: context.setSp(14),
-                                          contentPadding: EdgeInsets.fromLTRB(
-                                            context.setWidth(9.36),
-                                            context.setHeight(
-                                              10.29,
-                                            ),
-                                            context.setWidth(7.86),
-                                            context.setHeight(4.71),
-                                          ),
                                           showLable: false,
-                                          borderColor: Get.find<ThemeController>()
-                                                  .isDarkMode
-                                                  .value
-                                              ? Colors.white.withValues(
-                                                  alpha: 0.50,
-                                                )
-                                              : const Color(
-                                                  0xFFC2C3CB,
-                                                ),
-                                          fillColor: !Get.find<ThemeController>()
-                                                  .isDarkMode
-                                                  .value
-                                              ? Colors.white.withValues(
-                                                  alpha: 0.43,
-                                                )
-                                              : const Color(
-                                                  0xFF2B2B2B,
-                                                ),
-                                          hintcolor: !Get.find<ThemeController>()
-                                                  .isDarkMode
-                                                  .value
-                                              ? const Color(
-                                                  0xFF6B7280,
-                                                )
-                                              : const Color(
-                                                  0xFF9CA3AF,
-                                                ),
-                                          color: !Get.find<ThemeController>()
-                                                  .isDarkMode
-                                                  .value
-                                              ? const Color(
-                                                  0xFF6B7280,
-                                                )
-                                              : const Color(
-                                                  0xFF6B7280,
-                                                ),
                                           isAddOrEdit: true,
-                                          borderRadius: context.setMinSize(8),
-                                          prefixIcon: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: context.setWidth(10),
-                                              vertical: context.setHeight(10),
+                                          prefixIcon: SvgPicture.asset(
+                                            AppImages.partner,
+                                            package: 'shared_widgets',
+                                            color: AppColor.appColor,
+                                            width: context.setWidth(
+                                              AppSizes.iconTextField,
                                             ),
-                                            child: SvgPicture.asset(
-                                              AppImages.partner,
-                                              package: 'shared_widgets',
-                                              color: AppColor.appColor,
+                                            height: context.setHeight(
+                                              AppSizes.iconTextField,
                                             ),
                                           ),
                                           validator: (value) {
-                                            if (value == null || value.isEmpty) {
+                                            if (value == null ||
+                                                value.isEmpty) {
                                               errorMessage =
-                                                  'required_message_f'.trParams({
-                                                'field_name': 'customer_name'.tr,
+                                                  'required_message_f'
+                                                      .trParams({
+                                                'field_name':
+                                                    'customer_name'.tr,
                                               });
                                               countErrors++;
                                               return "";
@@ -514,79 +480,16 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                             labelText: 'street'.tr,
                                             hintText: 'street'.tr,
                                             keyboardType: TextInputType.text,
-                                            width: context.screenWidth,
-                                            height: context.setHeight(40),
-                                            fontSize: context.setSp(
-                                              14,
-                                            ),
-                                            contentPadding: EdgeInsets.fromLTRB(
-                                              context.setWidth(
-                                                9.36,
-                                              ),
-                                              context.setHeight(
-                                                10.29,
-                                              ),
-                                              context.setWidth(
-                                                7.86,
-                                              ),
-                                              context.setHeight(
-                                                4.71,
-                                              ),
-                                            ),
                                             showLable: false,
-                                            borderColor:
-                                                Get.find<ThemeController>()
-                                                        .isDarkMode
-                                                        .value
-                                                    ? Colors.white.withValues(
-                                                        alpha: 0.50,
-                                                      )
-                                                    : const Color(
-                                                        0xFFC2C3CB,
-                                                      ),
-                                            fillColor:
-                                                !Get.find<ThemeController>()
-                                                        .isDarkMode
-                                                        .value
-                                                    ? Colors.white.withValues(
-                                                        alpha: 0.43,
-                                                      )
-                                                    : const Color(
-                                                        0xFF2B2B2B,
-                                                      ),
-                                            hintcolor:
-                                                !Get.find<ThemeController>()
-                                                        .isDarkMode
-                                                        .value
-                                                    ? const Color(
-                                                        0xFF6B7280,
-                                                      )
-                                                    : const Color(
-                                                        0xFF9CA3AF,
-                                                      ),
-                                            color: !Get.find<ThemeController>()
-                                                    .isDarkMode
-                                                    .value
-                                                ? const Color(
-                                                    0xFF6B7280,
-                                                  )
-                                                : const Color(
-                                                    0xFF6B7280,
-                                                  ),
                                             isAddOrEdit: true,
-                                            borderRadius: context.setMinSize(8),
-                                            prefixIcon: Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                horizontal: context.setWidth(
-                                                  6.3,
-                                                ),
-                                                vertical: context.setHeight(
-                                                  6.3,
-                                                ),
+                                            prefixIcon: SvgPicture.asset(
+                                              AppImages.dIV59,
+                                              package: 'shared_widgets',
+                                              width: context.setWidth(
+                                                AppSizes.iconTextField,
                                               ),
-                                              child: SvgPicture.asset(
-                                                AppImages.dIV59,
-                                                package: 'shared_widgets',
+                                              height: context.setHeight(
+                                                AppSizes.iconTextField,
                                               ),
                                             ),
                                             validator: (value) {
@@ -611,79 +514,16 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                             labelText: 'district'.tr,
                                             hintText: 'district'.tr,
                                             keyboardType: TextInputType.text,
-                                            width: context.screenWidth,
-                                            height: context.setHeight(40),
-                                            fontSize: context.setSp(
-                                              14,
-                                            ),
-                                            contentPadding: EdgeInsets.fromLTRB(
-                                              context.setWidth(
-                                                9.36,
-                                              ),
-                                              context.setHeight(
-                                                10.29,
-                                              ),
-                                              context.setWidth(
-                                                7.86,
-                                              ),
-                                              context.setHeight(
-                                                4.71,
-                                              ),
-                                            ),
                                             showLable: false,
-                                            borderColor:
-                                                Get.find<ThemeController>()
-                                                        .isDarkMode
-                                                        .value
-                                                    ? Colors.white.withValues(
-                                                        alpha: 0.50,
-                                                      )
-                                                    : const Color(
-                                                        0xFFC2C3CB,
-                                                      ),
-                                            fillColor:
-                                                !Get.find<ThemeController>()
-                                                        .isDarkMode
-                                                        .value
-                                                    ? Colors.white.withValues(
-                                                        alpha: 0.43,
-                                                      )
-                                                    : const Color(
-                                                        0xFF2B2B2B,
-                                                      ),
-                                            hintcolor:
-                                                !Get.find<ThemeController>()
-                                                        .isDarkMode
-                                                        .value
-                                                    ? const Color(
-                                                        0xFF6B7280,
-                                                      )
-                                                    : const Color(
-                                                        0xFF9CA3AF,
-                                                      ),
-                                            color: !Get.find<ThemeController>()
-                                                    .isDarkMode
-                                                    .value
-                                                ? const Color(
-                                                    0xFF6B7280,
-                                                  )
-                                                : const Color(
-                                                    0xFF6B7280,
-                                                  ),
                                             isAddOrEdit: true,
-                                            borderRadius: context.setMinSize(8),
-                                            prefixIcon: Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                horizontal: context.setWidth(
-                                                  6.3,
-                                                ),
-                                                vertical: context.setHeight(
-                                                  6.3,
-                                                ),
+                                            prefixIcon: SvgPicture.asset(
+                                              AppImages.dIV59,
+                                              package: 'shared_widgets',
+                                              width: context.setWidth(
+                                                AppSizes.iconTextField,
                                               ),
-                                              child: SvgPicture.asset(
-                                                AppImages.dIV59,
-                                                package: 'shared_widgets',
+                                              height: context.setHeight(
+                                                AppSizes.iconTextField,
                                               ),
                                             ),
                                             validator: (value) {
@@ -708,79 +548,16 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                             labelText: 'building_no'.tr,
                                             hintText: 'building_no'.tr,
                                             keyboardType: TextInputType.text,
-                                            width: context.screenWidth,
-                                            height: context.setHeight(40),
-                                            fontSize: context.setSp(
-                                              14,
-                                            ),
-                                            contentPadding: EdgeInsets.fromLTRB(
-                                              context.setWidth(
-                                                9.36,
-                                              ),
-                                              context.setHeight(
-                                                10.29,
-                                              ),
-                                              context.setWidth(
-                                                7.86,
-                                              ),
-                                              context.setHeight(
-                                                4.71,
-                                              ),
-                                            ),
                                             showLable: false,
-                                            borderColor:
-                                                Get.find<ThemeController>()
-                                                        .isDarkMode
-                                                        .value
-                                                    ? Colors.white.withValues(
-                                                        alpha: 0.50,
-                                                      )
-                                                    : const Color(
-                                                        0xFFC2C3CB,
-                                                      ),
-                                            fillColor:
-                                                !Get.find<ThemeController>()
-                                                        .isDarkMode
-                                                        .value
-                                                    ? Colors.white.withValues(
-                                                        alpha: 0.43,
-                                                      )
-                                                    : const Color(
-                                                        0xFF2B2B2B,
-                                                      ),
-                                            hintcolor:
-                                                !Get.find<ThemeController>()
-                                                        .isDarkMode
-                                                        .value
-                                                    ? const Color(
-                                                        0xFF6B7280,
-                                                      )
-                                                    : const Color(
-                                                        0xFF9CA3AF,
-                                                      ),
-                                            color: !Get.find<ThemeController>()
-                                                    .isDarkMode
-                                                    .value
-                                                ? const Color(
-                                                    0xFF6B7280,
-                                                  )
-                                                : const Color(
-                                                    0xFF6B7280,
-                                                  ),
                                             isAddOrEdit: true,
-                                            borderRadius: context.setMinSize(8),
-                                            prefixIcon: Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                horizontal: context.setWidth(
-                                                  6.3,
-                                                ),
-                                                vertical: context.setHeight(
-                                                  6.3,
-                                                ),
+                                            prefixIcon: SvgPicture.asset(
+                                              AppImages.dIV59,
+                                              package: 'shared_widgets',
+                                              width: context.setWidth(
+                                                AppSizes.iconTextField,
                                               ),
-                                              child: SvgPicture.asset(
-                                                AppImages.dIV59,
-                                                package: 'shared_widgets',
+                                              height: context.setHeight(
+                                                AppSizes.iconTextField,
                                               ),
                                             ),
                                             validator: (value) {
@@ -790,7 +567,8 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                 errorMessage =
                                                     'required_message_f'
                                                         .trParams({
-                                                  'field_name': 'building_no'.tr,
+                                                  'field_name':
+                                                      'building_no'.tr,
                                                 });
                                                 countErrors++;
                                                 return "";
@@ -841,68 +619,72 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                               'more_options'.tr,
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
-                                                color: Get.find<ThemeController>()
-                                                        .isDarkMode
-                                                        .value
-                                                    ? AppColor.white
-                                                    : AppColor.black,
-                                                fontSize: context.setSp(14),
+                                                color:
+                                                    Get.find<ThemeController>()
+                                                            .isDarkMode
+                                                            .value
+                                                        ? AppColor.white
+                                                        : AppColor.black,
+                                                fontSize: context
+                                                    .setSp(AppSizes.subTitle),
                                                 fontFamily: 'SansBold',
                                                 fontWeight: FontWeight.w600,
                                                 height: 1.56,
                                               ),
                                             ),
                                             Obx(() {
-                                                return GestureDetector(
-                                                  onTap: () {
-                                                    customerController
-                                                        .toggleCustomerViewOptionsInfo();
-                                                  },
-                                                  child: Container(
-                                                      width: context.setWidth(30),
-                                                      height:
-                                                          context.setHeight(30),
-                                                      decoration: ShapeDecoration(
-                                                        color: Get.find<
-                                                                    ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? const Color(0xFF202020)
-                                                            : const Color(0xFFF1F1F1),
-                                                        shape: RoundedRectangleBorder(
-                                                          side: BorderSide(
-                                                            width: 1.06,
-                                                            color: const Color(
-                                                                0x21848484),
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius.circular(
-                                                                  context.setMinSize(
-                                                                      6.34)),
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  customerController
+                                                      .toggleCustomerViewOptionsInfo();
+                                                },
+                                                child: Container(
+                                                    width: context.setWidth(30),
+                                                    height:
+                                                        context.setHeight(30),
+                                                    decoration: ShapeDecoration(
+                                                      color: Get.find<
+                                                                  ThemeController>()
+                                                              .isDarkMode
+                                                              .value
+                                                          ? const Color(
+                                                              0xFF202020)
+                                                          : const Color(
+                                                              0xFFF1F1F1),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        side: BorderSide(
+                                                          width: 1.06,
+                                                          color: const Color(
+                                                              0x21848484),
                                                         ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(context
+                                                                    .setMinSize(
+                                                                        6.34)),
                                                       ),
-                                                      child: Center(
-                                                          child: Transform(
-                                                        alignment: Alignment.center,
-                                                        transform: Matrix4.rotationX(
-                                                          customerController
-                                                                  .showCustomerOptionsInfo
-                                                                  .value
-                                                              ? 0
-                                                              : 3.14,
-                                                        ),
-                                                        child: SvgPicture.asset(
-                                                          AppImages.arrowDown,
-                                                          package: 'shared_widgets',
-                                                          // width:
-                                                          //     context.setWidth(20),
-                                                          // height: context
-                                                          //     .setHeight(20),
-                                                        ),
-                                                      ))),
-                                                );
-                                              }
-                                            )
+                                                    ),
+                                                    child: Center(
+                                                        child: Transform(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      transform:
+                                                          Matrix4.rotationX(
+                                                        customerController
+                                                                .showCustomerOptionsInfo
+                                                                .value
+                                                            ? 0
+                                                            : 3.14,
+                                                      ),
+                                                      child: SvgPicture.asset(
+                                                        AppImages.arrowDown,
+                                                        package:
+                                                            'shared_widgets',
+                                                      ),
+                                                    ))),
+                                              );
+                                            })
                                           ],
                                         ),
                                         Obx(() {
@@ -911,213 +693,66 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                               ? Column(
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
-                                                  spacing: context.setHeight(10),
+                                                  spacing:
+                                                      context.setHeight(10),
                                                   children: [
-                                                    
-                                                        // phone
-                                                        ContainerTextField(
-                                                                                                                  controller: phone,
-                                                                                                                  labelText: 'phone'.tr,
-                                                                                                                  hintText: 'phone'.tr,
-                                                                                                                  inputFormatters: [
+                                                    // phone
+                                                    ContainerTextField(
+                                                      controller: phone,
+                                                      labelText: 'phone'.tr,
+                                                      hintText: 'phone'.tr,
+                                                      inputFormatters: [
                                                         FilteringTextInputFormatter
                                                             .allow(
                                                           RegExp(r'[0-9]+'),
                                                         ),
-                                                                                                                  ],
-                                                                                                                  keyboardType:
-                                                          TextInputType
-                                                              .number,
-                                                                                                                  width: context
-                                                          .screenWidth,
-                                                                                                                  height: context
-                                                          .setHeight(40),
-                                                                                                                  fontSize:
-                                                          context.setSp(
-                                                        14,
-                                                                                                                  ),
-                                                                                                                  contentPadding:
-                                                          EdgeInsets
-                                                              .fromLTRB(
-                                                        context.setWidth(
-                                                          9.36,
+                                                      ],
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      showLable: false,
+                                                      isAddOrEdit: true,
+                                                      prefixIcon:
+                                                          SvgPicture.asset(
+                                                        AppImages.dIV59,
+                                                        package:
+                                                            'shared_widgets',
+                                                        width: context.setWidth(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                        context.setHeight(
-                                                          10.29,
+                                                        height:
+                                                            context.setHeight(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                        context.setWidth(
-                                                          7.86,
-                                                        ),
-                                                        context.setHeight(
-                                                          4.71,
-                                                        ),
-                                                                                                                  ),
-                                                                                                                  showLable: false,
-                                                                                                                  borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                                                                                  fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.43,
-                                                            )
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                                                                                  hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                                                                                  color: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
-                                                                                                                  isAddOrEdit: true,
-                                                                                                                  borderRadius: context
-                                                          .setMinSize(8),
-                                                                                                                  prefixIcon: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          horizontal:
-                                                              context
-                                                                  .setWidth(
-                                                            6.3,
-                                                          ),
-                                                          vertical: context
-                                                              .setHeight(
-                                                            6.3,
-                                                          ),
-                                                        ),
-                                                        child: SvgPicture
-                                                            .asset(
-                                                          AppImages.dIV59,
-                                                          package:
-                                                              'shared_widgets',
-                                                        ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                        // email
-                                                        ContainerTextField(
-                                                                                                                  controller: email,
-                                                                                                                  labelText: 'email'.tr,
-                                                                                                                  hintText: 'email'.tr,
-                                                                                                                  keyboardType:
+                                                      ),
+                                                    ),
+                                                    // email
+                                                    ContainerTextField(
+                                                      controller: email,
+                                                      labelText: 'email'.tr,
+                                                      hintText: 'email'.tr,
+                                                      keyboardType:
                                                           TextInputType
                                                               .emailAddress,
-                                                                                                                  width: context
-                                                          .screenWidth,
-                                                                                                                  height: context
-                                                          .setHeight(40),
-                                                                                                                  fontSize:
-                                                          context.setSp(
-                                                        14,
-                                                                                                                  ),
-                                                                                                                  contentPadding:
-                                                          EdgeInsets
-                                                              .fromLTRB(
-                                                        context.setWidth(
-                                                          9.36,
+                                                      showLable: false,
+                                                      isAddOrEdit: true,
+                                                      prefixIcon:
+                                                          SvgPicture.asset(
+                                                        AppImages.dIV59,
+                                                        package:
+                                                            'shared_widgets',
+                                                        width: context.setWidth(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                        context.setHeight(
-                                                          10.29,
+                                                        height:
+                                                            context.setHeight(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                        context.setWidth(
-                                                          7.86,
-                                                        ),
-                                                        context.setHeight(
-                                                          4.71,
-                                                        ),
-                                                                                                                  ),
-                                                                                                                  showLable: false,
-                                                                                                                  borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                                                                                  fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.43,
-                                                            )
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                                                                                  hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                                                                                  color: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
-                                                                                                                  isAddOrEdit: true,
-                                                                                                                  borderRadius: context
-                                                          .setMinSize(8),
-                                                                                                                  prefixIcon: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          horizontal:
-                                                              context
-                                                                  .setWidth(
-                                                            6.3,
-                                                          ),
-                                                          vertical: context
-                                                              .setHeight(
-                                                            6.3,
-                                                          ),
-                                                        ),
-                                                        child: SvgPicture
-                                                            .asset(
-                                                          AppImages.dIV59,
-                                                          package:
-                                                              'shared_widgets',
-                                                        ),
-                                                                                                                  ),
-                                                                                                                  validator: (value) {
+                                                      ),
+                                                      validator: (value) {
                                                         var message =
                                                             ValidatorHelper
                                                                 .emailValidation(
@@ -1127,654 +762,198 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                         if (message == "") {
                                                           return null;
                                                         }
-                                                        errorMessage =
-                                                            message;
+                                                        errorMessage = message;
                                                         countErrors++;
                                                         return "";
-                                                                                                                  },
-                                                                                                                ),
-                                                    
-                                                    
-                                                        // city
-                                                        ContainerTextField(
-                                                                                                                  controller: city,
-                                                                                                                  labelText: 'city'.tr,
-                                                                                                                  hintText: 'city'.tr,
-                                                                                                                  keyboardType:
-                                                          TextInputType
-                                                              .text,
-                                                                                                                  width: context
-                                                          .screenWidth,
-                                                                                                                  height: context
-                                                          .setHeight(40),
-                                                                                                                  fontSize:
-                                                          context.setSp(
-                                                        14,
-                                                                                                                  ),
-                                                                                                                  contentPadding:
-                                                          EdgeInsets
-                                                              .fromLTRB(
-                                                        context.setWidth(
-                                                          9.36,
+                                                      },
+                                                    ),
+
+                                                    // city
+                                                    ContainerTextField(
+                                                      controller: city,
+                                                      labelText: 'city'.tr,
+                                                      hintText: 'city'.tr,
+                                                      keyboardType:
+                                                          TextInputType.text,
+                                                      showLable: false,
+                                                      isAddOrEdit: true,
+                                                      prefixIcon:
+                                                          SvgPicture.asset(
+                                                        AppImages.dIV59,
+                                                        package:
+                                                            'shared_widgets',
+                                                        width: context.setWidth(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                        context.setHeight(
-                                                          10.29,
+                                                        height:
+                                                            context.setHeight(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                        context.setWidth(
-                                                          7.86,
-                                                        ),
-                                                        context.setHeight(
-                                                          4.71,
-                                                        ),
-                                                                                                                  ),
-                                                                                                                  showLable: false,
-                                                                                                                  borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                                                                                  fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.43,
-                                                            )
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                                                                                  hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                                                                                  color: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
-                                                                                                                  isAddOrEdit: true,
-                                                                                                                  borderRadius: context
-                                                          .setMinSize(8),
-                                                                                                                  prefixIcon: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          horizontal:
-                                                              context
-                                                                  .setWidth(
-                                                            6.3,
-                                                          ),
-                                                          vertical: context
-                                                              .setHeight(
-                                                            6.3,
-                                                          ),
-                                                        ),
-                                                        child: SvgPicture
-                                                            .asset(
-                                                          AppImages.dIV59,
-                                                          package:
-                                                              'shared_widgets',
-                                                        ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                        // l10n_sa_edi_plot_identification
-                                                        ContainerTextField(
-                                                                                                                  controller:
+                                                      ),
+                                                    ),
+                                                    // l10n_sa_edi_plot_identification
+                                                    ContainerTextField(
+                                                      controller:
                                                           l10nSaEdiPlotIdentification,
-                                                                                                                  labelText:
+                                                      labelText:
                                                           'l10n_sa_edi_plot_identification'
                                                               .tr,
-                                                                                                                  hintText:
+                                                      hintText:
                                                           'l10n_sa_edi_plot_identification'
                                                               .tr,
-                                                                                                                  keyboardType:
-                                                          TextInputType
-                                                              .text,
-                                                                                                                  width: context
-                                                          .screenWidth,
-                                                                                                                  height: context
-                                                          .setHeight(40),
-                                                                                                                  fontSize:
-                                                          context.setSp(
-                                                        14,
-                                                                                                                  ),
-                                                                                                                  contentPadding:
-                                                          EdgeInsets
-                                                              .fromLTRB(
-                                                        context.setWidth(
-                                                          9.36,
+                                                      keyboardType:
+                                                          TextInputType.text,
+                                                      showLable: false,
+                                                      isAddOrEdit: true,
+                                                      prefixIcon:
+                                                          SvgPicture.asset(
+                                                        AppImages.dIV59,
+                                                        package:
+                                                            'shared_widgets',
+                                                        width: context.setWidth(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                        context.setHeight(
-                                                          10.29,
+                                                        height:
+                                                            context.setHeight(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                        context.setWidth(
-                                                          7.86,
+                                                      ),
+                                                    ),
+
+                                                    // additional_no
+                                                    ContainerTextField(
+                                                      controller: additionalNo,
+                                                      labelText:
+                                                          'additional_no'.tr,
+                                                      hintText:
+                                                          'additional_no'.tr,
+                                                      keyboardType:
+                                                          TextInputType.text,
+                                                      showLable: false,
+                                                      isAddOrEdit: true,
+                                                      prefixIcon:
+                                                          SvgPicture.asset(
+                                                        AppImages.dIV59,
+                                                        package:
+                                                            'shared_widgets',
+                                                        width: context.setWidth(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                        context.setHeight(
-                                                          4.71,
+                                                        height:
+                                                            context.setHeight(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                                                                                  ),
-                                                                                                                  showLable: false,
-                                                                                                                  borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                                                                                  fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.43,
-                                                            )
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                                                                                  hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                                                                                  color: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
-                                                                                                                  isAddOrEdit: true,
-                                                                                                                  borderRadius: context
-                                                          .setMinSize(8),
-                                                                                                                  prefixIcon: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          horizontal:
-                                                              context
-                                                                  .setWidth(
-                                                            6.3,
-                                                          ),
-                                                          vertical: context
-                                                              .setHeight(
-                                                            6.3,
-                                                          ),
-                                                        ),
-                                                        child: SvgPicture
-                                                            .asset(
-                                                          AppImages.dIV59,
-                                                          package:
-                                                              'shared_widgets',
-                                                        ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                    
-                                                    
-                                                        // additional_no
-                                                        ContainerTextField(
-                                                                                                                  controller:
-                                                          additionalNo,
-                                                                                                                  labelText:
-                                                          'additional_no'
-                                                              .tr,
-                                                                                                                  hintText:
-                                                          'additional_no'
-                                                              .tr,
-                                                                                                                  keyboardType:
-                                                          TextInputType
-                                                              .text,
-                                                                                                                  width: context
-                                                          .screenWidth,
-                                                                                                                  height: context
-                                                          .setHeight(40),
-                                                                                                                  fontSize:
-                                                          context.setSp(
-                                                        14,
-                                                                                                                  ),
-                                                                                                                  contentPadding:
-                                                          EdgeInsets
-                                                              .fromLTRB(
-                                                        context.setWidth(
-                                                          9.36,
-                                                        ),
-                                                        context.setHeight(
-                                                          10.29,
-                                                        ),
-                                                        context.setWidth(
-                                                          7.86,
-                                                        ),
-                                                        context.setHeight(
-                                                          4.71,
-                                                        ),
-                                                                                                                  ),
-                                                                                                                  showLable: false,
-                                                                                                                  borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                                                                                  fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.43,
-                                                            )
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                                                                                  hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                                                                                  color: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
-                                                                                                                  isAddOrEdit: true,
-                                                                                                                  borderRadius: context
-                                                          .setMinSize(8),
-                                                                                                                  prefixIcon: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          horizontal:
-                                                              context
-                                                                  .setWidth(
-                                                            6.3,
-                                                          ),
-                                                          vertical: context
-                                                              .setHeight(
-                                                            6.3,
-                                                          ),
-                                                        ),
-                                                        child: SvgPicture
-                                                            .asset(
-                                                          AppImages.dIV59,
-                                                          package:
-                                                              'shared_widgets',
-                                                        ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                        // postal_code
-                                                        ContainerTextField(
-                                                                                                                  controller:
-                                                          postalCode,
-                                                                                                                  labelText:
+                                                      ),
+                                                    ),
+                                                    // postal_code
+                                                    ContainerTextField(
+                                                      controller: postalCode,
+                                                      labelText:
                                                           'postal_code'.tr,
-                                                                                                                  hintText:
+                                                      hintText:
                                                           'postal_code'.tr,
-                                                                                                                  keyboardType:
-                                                          TextInputType
-                                                              .text,
-                                                                                                                  width: context
-                                                          .screenWidth,
-                                                                                                                  height: context
-                                                          .setHeight(40),
-                                                                                                                  fontSize:
-                                                          context.setSp(
-                                                        14,
-                                                                                                                  ),
-                                                                                                                  contentPadding:
-                                                          EdgeInsets
-                                                              .fromLTRB(
-                                                        context.setWidth(
-                                                          9.36,
+                                                      keyboardType:
+                                                          TextInputType.text,
+                                                      showLable: false,
+                                                      isAddOrEdit: true,
+                                                      prefixIcon:
+                                                          SvgPicture.asset(
+                                                        AppImages.dIV59,
+                                                        package:
+                                                            'shared_widgets',
+                                                        width: context.setWidth(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                        context.setHeight(
-                                                          10.29,
+                                                        height:
+                                                            context.setHeight(
+                                                          AppSizes
+                                                              .iconTextField,
                                                         ),
-                                                        context.setWidth(
-                                                          7.86,
-                                                        ),
-                                                        context.setHeight(
-                                                          4.71,
-                                                        ),
-                                                                                                                  ),
-                                                                                                                  showLable: false,
-                                                                                                                  borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                                                                                  fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.43,
-                                                            )
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                                                                                  hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                                                                                  color: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF6B7280,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
-                                                                                                                  isAddOrEdit: true,
-                                                                                                                  borderRadius: context
-                                                          .setMinSize(8),
-                                                                                                                  prefixIcon: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          horizontal:
-                                                              context
-                                                                  .setWidth(
-                                                            6.3,
-                                                          ),
-                                                          vertical: context
-                                                              .setHeight(
-                                                            6.3,
-                                                          ),
-                                                        ),
-                                                        child: SvgPicture
-                                                            .asset(
-                                                          AppImages.dIV59,
-                                                          package:
-                                                              'shared_widgets',
-                                                        ),
-                                                                                                                  ),
-                                                                                                                ),
-                                                    
-                                                    if (_selectedOption != null &&
+                                                      ),
+                                                    ),
+
+                                                    if (_selectedOption !=
+                                                            null &&
                                                         _selectedOption!) ...[
-                                                      
-                                                          // tax_number
-                                                          ContainerTextField(
-                                                                                                                      controller:
-                                                            taxNumber,
-                                                                                                                      labelText:
+                                                      // tax_number
+                                                      ContainerTextField(
+                                                        controller: taxNumber,
+                                                        labelText:
                                                             'tax_number'.tr,
-                                                                                                                      hintText:
+                                                        hintText:
                                                             'tax_number'.tr,
-                                                                                                                      inputFormatters: [
+                                                        inputFormatters: [
                                                           FilteringTextInputFormatter
                                                               .allow(
                                                             RegExp('[0-9]'),
                                                           ),
-                                                                                                                      ],
-                                                                                                                      keyboardType:
-                                                            TextInputType
-                                                                .name,
-                                                                                                                      width: context
-                                                            .screenWidth,
-                                                                                                                      height: context
-                                                            .setHeight(40),
-                                                                                                                      fontSize: context
-                                                            .setSp(14),
-                                                                                                                      contentPadding:
-                                                            EdgeInsets
-                                                                .fromLTRB(
-                                                          context.setWidth(
-                                                            9.36,
+                                                        ],
+                                                        keyboardType:
+                                                            TextInputType.name,
+                                                        showLable: false,
+                                                        isAddOrEdit: true,
+                                                        prefixIcon:
+                                                            SvgPicture.asset(
+                                                          AppImages.dIV59,
+                                                          package:
+                                                              'shared_widgets',
+                                                          width:
+                                                              context.setWidth(
+                                                            AppSizes
+                                                                .iconTextField,
                                                           ),
-                                                          context.setHeight(
-                                                            10.29,
+                                                          height:
+                                                              context.setHeight(
+                                                            AppSizes
+                                                                .iconTextField,
                                                           ),
-                                                          context.setWidth(
-                                                            7.86,
-                                                          ),
-                                                          context.setHeight(
-                                                            4.71,
-                                                          ),
-                                                                                                                      ),
-                                                                                                                      showLable: false,
-                                                                                                                      borderColor: Get.find<
-                                                                    ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? Colors.white
-                                                                .withValues(
-                                                                alpha: 0.50,
-                                                              )
-                                                            : const Color(
-                                                                0xFFC2C3CB,
-                                                              ),
-                                                                                                                      fillColor: !Get.find<
-                                                                    ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? Colors.white
-                                                                .withValues(
-                                                                alpha: 0.43,
-                                                              )
-                                                            : const Color(
-                                                                0xFF2B2B2B,
-                                                              ),
-                                                                                                                      hintcolor: !Get.find<
-                                                                    ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? const Color(
-                                                                0xFF6B7280,
-                                                              )
-                                                            : const Color(
-                                                                0xFF9CA3AF,
-                                                              ),
-                                                                                                                      color: !Get.find<
-                                                                    ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? const Color(
-                                                                0xFF6B7280,
-                                                              )
-                                                            : const Color(
-                                                                0xFF6B7280,
-                                                              ),
-                                                                                                                      isAddOrEdit: true,
-                                                                                                                      borderRadius:
-                                                            context
-                                                                .setMinSize(
-                                                                    8),
-                                                                                                                      prefixIcon: Padding(
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                            horizontal:
-                                                                context
-                                                                    .setWidth(
-                                                              6.3,
-                                                            ),
-                                                            vertical: context
-                                                                .setHeight(
-                                                              6.3,
-                                                            ),
-                                                          ),
-                                                          child: SvgPicture
-                                                              .asset(
-                                                            AppImages.dIV59,
-                                                            package:
-                                                                'shared_widgets',
-                                                          ),
-                                                                                                                      ),
-                                                                                                                    ),
-                                                          //other_selleId
-                                                          ContainerTextField(
-                                                                                                                      controller:
+                                                        ),
+                                                      ),
+                                                      //other_selleId
+                                                      ContainerTextField(
+                                                        controller:
                                                             otherSelleId,
-                                                                                                                      labelText:
-                                                            'other_selleId'
-                                                                .tr,
-                                                                                                                      hintText:
-                                                            'other_selleId'
-                                                                .tr,
-                                                                                                                      inputFormatters: [
+                                                        labelText:
+                                                            'other_selleId'.tr,
+                                                        hintText:
+                                                            'other_selleId'.tr,
+                                                        inputFormatters: [
                                                           FilteringTextInputFormatter
                                                               .allow(
                                                             RegExp('[0-9]'),
                                                           ),
-                                                                                                                      ],
-                                                                                                                      keyboardType:
+                                                        ],
+                                                        keyboardType:
                                                             TextInputType
                                                                 .number,
-                                                                                                                      // textAlign: TextAlign.justify,
-                                                                                                                      width: context
-                                                            .screenWidth,
-                                                                                                                      height: context
-                                                            .setHeight(40),
-                                                                                                                      fontSize: context
-                                                            .setSp(14),
-                                                                                                                      contentPadding:
-                                                            EdgeInsets
-                                                                .fromLTRB(
-                                                          context.setWidth(
-                                                            9.36,
+                                                        showLable: false,
+                                                        isAddOrEdit: true,
+                                                        prefixIcon:
+                                                            SvgPicture.asset(
+                                                          AppImages.partner,
+                                                          package:
+                                                              'shared_widgets',
+                                                          color:
+                                                              AppColor.appColor,
+                                                          width:
+                                                              context.setWidth(
+                                                            AppSizes
+                                                                .iconTextField,
                                                           ),
-                                                          context.setHeight(
-                                                            10.29,
+                                                          height:
+                                                              context.setHeight(
+                                                            AppSizes
+                                                                .iconTextField,
                                                           ),
-                                                          context.setWidth(
-                                                            7.86,
-                                                          ),
-                                                          context.setHeight(
-                                                            4.71,
-                                                          ),
-                                                                                                                      ),
-                                                                                                                      showLable: false,
-                                                                                                                      borderColor: Get.find<
-                                                                    ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? Colors.white
-                                                                .withValues(
-                                                                alpha: 0.50,
-                                                              )
-                                                            : const Color(
-                                                                0xFFC2C3CB,
-                                                              ),
-                                                                                                                      fillColor: !Get.find<
-                                                                    ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? Colors.white
-                                                                .withValues(
-                                                                alpha: 0.43,
-                                                              )
-                                                            : const Color(
-                                                                0xFF2B2B2B,
-                                                              ),
-                                                                                                                      hintcolor: !Get.find<
-                                                                    ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? const Color(
-                                                                0xFF6B7280,
-                                                              )
-                                                            : const Color(
-                                                                0xFF9CA3AF,
-                                                              ),
-                                                                                                                      color: !Get.find<
-                                                                    ThemeController>()
-                                                                .isDarkMode
-                                                                .value
-                                                            ? const Color(
-                                                                0xFF6B7280,
-                                                              )
-                                                            : const Color(
-                                                                0xFF6B7280,
-                                                              ),
-                                                                                                                      isAddOrEdit: true,
-                                                                                                                      borderRadius:
-                                                            context
-                                                                .setMinSize(
-                                                                    8),
-                                                                                                                      prefixIcon: Padding(
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                            horizontal:
-                                                                context
-                                                                    .setWidth(
-                                                              10,
-                                                            ),
-                                                            vertical: context
-                                                                .setHeight(
-                                                              10,
-                                                            ),
-                                                          ),
-                                                          child: SvgPicture
-                                                              .asset(
-                                                            AppImages
-                                                                .partner,
-                                                            package:
-                                                                'shared_widgets',
-                                                            color:
-                                                                const Color(
-                                                              0xFF16A6B7,
-                                                            ),
-                                                          ),
-                                                                                                                      ),
-                                                                                                                    ),
-                                                      
+                                                        ),
+                                                      ),
                                                     ],
                                                   ],
                                                 )
@@ -1785,10 +964,11 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                   ),
                                 ),
                                 Row(
-                                  spacing: context.setWidth(16),
+                                  spacing: context.setWidth(AppSizes.spacingBetweenButtons),
                                   children: [
                                     Expanded(
                                       child: ButtonClick(
+                                        
                                         color: AppColor.appColor,
                                         data: 'save'.tr,
                                         // (customer?.id != null)
@@ -1799,6 +979,7 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                     ),
                                     Expanded(
                                       child: ButtonClick(
+                                        
                                         color: const Color(0xFF4B5563),
                                         data: "back".tr,
                                         onTap: () {

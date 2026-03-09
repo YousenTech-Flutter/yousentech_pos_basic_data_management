@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/config/app_enums.dart';
 import 'package:shared_widgets/config/app_images.dart';
+import 'package:shared_widgets/config/app_sizes.dart';
 import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/shared_widgets/app_button.dart';
 import 'package:shared_widgets/shared_widgets/app_loading.dart';
@@ -704,7 +705,7 @@ class ButtonClick extends StatelessWidget {
         decoration: ShapeDecoration(
           color: color,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6.63),
+            borderRadius: BorderRadius.circular(AppSizes.textFieldButtonBorderRadius),
             side:borderColor==null ? BorderSide.none : BorderSide(color: borderColor! )
           ),
         ),
@@ -736,7 +737,7 @@ class ButtonClick extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: textColor,
-                      fontSize: context.setSp(fontSize?? 17),
+                      fontSize: context.setSp(fontSize?? AppSizes.buttonText),
                       fontFamily: DeviceUtils.isMobile(context) ? 'SansMedium' :'Tajawal',
                       fontWeight: FontWeight.w400,
                       height: 1.50,
