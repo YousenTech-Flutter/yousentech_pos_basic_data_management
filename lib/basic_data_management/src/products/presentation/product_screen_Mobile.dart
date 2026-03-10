@@ -397,6 +397,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                         Expanded(
                           child: ContainerTextField(
                             controller: searchController,
+                            height: context.setHeight(35.5),
                             labelText: "${'search_product'.tr} .....",
                             hintText: "${'search_product'.tr} .....",
                             keyboardType: TextInputType.text,
