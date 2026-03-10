@@ -146,7 +146,7 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                                 context.setSp(AppSizes.title),
                                             fontFamily: 'SansBold',
                                             fontWeight: FontWeight.w600,
-                                            height: 1.56,
+                                            height: 1.45,
                                           ),
                                         ),
                                       ],

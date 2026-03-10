@@ -14,6 +14,7 @@ import 'package:pos_shared_preferences/pos_shared_preferences.dart';
 import 'package:shared_widgets/config/app_colors.dart';
 import 'package:shared_widgets/config/app_enums.dart';
 import 'package:shared_widgets/config/app_images.dart';
+import 'package:shared_widgets/config/app_sizes.dart';
 import 'package:shared_widgets/config/theme_controller.dart';
 import 'package:shared_widgets/shared_widgets/app_drop_down_field.dart';
 import 'package:shared_widgets/shared_widgets/app_loading.dart';
@@ -147,10 +148,11 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                     .value
                                                 ? AppColor.white
                                                 : AppColor.black,
-                                            fontSize: context.setSp(14),
+                                            fontSize:
+                                                context.setSp(AppSizes.title),
                                             fontFamily: 'SansBold',
                                             fontWeight: FontWeight.w600,
-                                            height: 1.56,
+                                            height: 1.45,
                                           ),
                                         ),
                                       ],
@@ -249,7 +251,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               Icons.camera_alt,
                                                               size: context
                                                                   .setMinSize(
-                                                                      25.64),
+                                                                      AppSizes
+                                                                          .titleIcon),
                                                               color:
                                                                   Colors.grey,
                                                             ),
@@ -258,12 +261,11 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                               style: TextStyle(
                                                                 color: const Color(
                                                                     0xFF9CA3AF),
-                                                                fontSize:
-                                                                    context
-                                                                        .setSp(
-                                                                            12),
+                                                                fontSize: context
+                                                                    .setSp(AppSizes
+                                                                        .text),
                                                                 fontFamily:
-                                                                    'Tajawal',
+                                                                    'SansMedium',
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w400,
@@ -354,7 +356,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                     .value
                                                 ? AppColor.white
                                                 : AppColor.black,
-                                            fontSize: context.setSp(14),
+                                            fontSize: context
+                                                .setSp(AppSizes.subTitle),
                                             fontFamily: 'SansBold',
                                             fontWeight: FontWeight.w600,
                                             height: 1.56,
@@ -366,63 +369,20 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                           labelText: 'product_name'.tr,
                                           hintText: 'product_name'.tr,
                                           keyboardType: TextInputType.text,
-                                          width: context.screenWidth,
-                                          // height: context.setHeight(40),
                                           maxLines: 2,
-                                          fontSize: context.setSp(14),
-                                          contentPadding: EdgeInsets.fromLTRB(
-                                            context.setWidth(9.36),
-                                            context.setHeight(10.29),
-                                            context.setWidth(7.86),
-                                            context.setHeight(4.71),
-                                          ),
                                           showLable: true,
-                                          borderColor:
-                                              Get.find<ThemeController>()
-                                                      .isDarkMode
-                                                      .value
-                                                  ? Colors.white.withValues(
-                                                      alpha: 0.50,
-                                                    )
-                                                  : const Color(0xFFC2C3CB),
-                                          fillColor:
-                                              !Get.find<ThemeController>()
-                                                      .isDarkMode
-                                                      .value
-                                                  ? Colors.white.withValues(
-                                                      alpha: 0.43,
-                                                    )
-                                                  : const Color(0xFF2B2B2B),
-                                          hintcolor:
-                                              !Get.find<ThemeController>()
-                                                      .isDarkMode
-                                                      .value
-                                                  ? const Color(0xFF404040)
-                                                  : const Color(0xFF9CA3AF),
-                                          color: !Get.find<ThemeController>()
-                                                  .isDarkMode
-                                                  .value
-                                              ? const Color(0xFF404040)
-                                              : const Color(0xFF6B7280),
                                           isAddOrEdit: true,
-                                          borderRadius: context.setMinSize(
-                                            8,
-                                          ),
-                                          prefixIcon: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: context.setWidth(
-                                                10,
-                                              ),
-                                              vertical: context.setHeight(
-                                                10,
-                                              ),
+                                          prefixIcon: SvgPicture.asset(
+                                            AppImages.productEmptySvg,
+                                            package: 'shared_widgets',
+                                            color: const Color(
+                                              0xFF16A6B7,
                                             ),
-                                            child: SvgPicture.asset(
-                                              AppImages.productEmptySvg,
-                                              package: 'shared_widgets',
-                                              color: const Color(
-                                                0xFF16A6B7,
-                                              ),
+                                            width: context.setWidth(
+                                              AppSizes.iconTextField,
+                                            ),
+                                            height: context.setHeight(
+                                              AppSizes.iconTextField,
                                             ),
                                           ),
                                           validator: (value) {
@@ -449,75 +409,16 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                             ),
                                           ],
                                           keyboardType: TextInputType.number,
-                                          width: context.screenWidth,
-                                          // height: context.setHeight(
-                                          //   40,
-                                          // ),
-                                          fontSize: context.setSp(14),
-                                          contentPadding: EdgeInsets.fromLTRB(
-                                            context.setWidth(
-                                              9.36,
-                                            ),
-                                            context.setHeight(
-                                              10.29,
-                                            ),
-                                            context.setWidth(
-                                              7.86,
-                                            ),
-                                            context.setHeight(
-                                              4.71,
-                                            ),
-                                          ),
                                           showLable: true,
-                                          borderColor:
-                                              Get.find<ThemeController>()
-                                                      .isDarkMode
-                                                      .value
-                                                  ? Colors.white.withValues(
-                                                      alpha: 0.50,
-                                                    )
-                                                  : const Color(
-                                                      0xFFC2C3CB,
-                                                    ),
-                                          fillColor:
-                                              !Get.find<ThemeController>()
-                                                      .isDarkMode
-                                                      .value
-                                                  ? Colors.white.withValues(
-                                                      alpha: 0.43,
-                                                    )
-                                                  : const Color(
-                                                      0xFF2B2B2B,
-                                                    ),
-                                          hintcolor:
-                                              !Get.find<ThemeController>()
-                                                      .isDarkMode
-                                                      .value
-                                                  ? const Color(
-                                                      0xFF404040,
-                                                    )
-                                                  : const Color(
-                                                      0xFF9CA3AF,
-                                                    ),
-                                          color: !Get.find<ThemeController>()
-                                                  .isDarkMode
-                                                  .value
-                                              ? const Color(
-                                                  0xFF404040,
-                                                )
-                                              : const Color(
-                                                  0xFF6B7280,
-                                                ),
                                           isAddOrEdit: true,
-                                          borderRadius: context.setMinSize(8),
-                                          prefixIcon: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: context.setWidth(6.3),
-                                              vertical: context.setHeight(6.3),
+                                          prefixIcon: SvgPicture.asset(
+                                            AppImages.dIV59,
+                                            package: 'shared_widgets',
+                                            width: context.setWidth(
+                                              AppSizes.iconTextField,
                                             ),
-                                            child: SvgPicture.asset(
-                                              AppImages.dIV59,
-                                              package: 'shared_widgets',
+                                            height: context.setHeight(
+                                              AppSizes.iconTextField,
                                             ),
                                           ),
                                           validator: (value) {
@@ -580,7 +481,8 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                             .value
                                                         ? AppColor.white
                                                         : AppColor.black,
-                                                fontSize: context.setSp(14),
+                                                fontSize: context
+                                                    .setSp(AppSizes.subTitle),
                                                 fontFamily: 'SansBold',
                                                 fontWeight: FontWeight.w600,
                                                 height: 1.56,
@@ -635,6 +537,15 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                         AppImages.arrowDown,
                                                         package:
                                                             'shared_widgets',
+                                                        width: context.setWidth(
+                                                          AppSizes
+                                                              .iconTextField,
+                                                        ),
+                                                        height:
+                                                            context.setHeight(
+                                                          AppSizes
+                                                              .iconTextField,
+                                                        ),
                                                         // width: context
                                                         //     .setWidth(19),
                                                         // height: context
@@ -656,44 +567,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                   children: [
                                                     // product_taxes
                                                     ContainerDropDownField(
-                                                      fontSize:
-                                                          context.setSp(14),
-                                                      width:
-                                                          context.screenWidth,
-                                                      // height: context.setHeight(
-                                                      //   40,
-                                                      // ),
-                                                      fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                      borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                      hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                      borderRadius:
-                                                          context.setMinSize(8),
+                                                      
                                                       hintText: 'taxes',
                                                       labelText: 'taxes'.tr,
                                                       // prefixIcon: Padding(
@@ -715,16 +589,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           ? product!
                                                               .taxesId!.first
                                                           : product!.taxesId,
-                                                      color: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
+                                                      
                                                       iconcolor: const Color(
                                                         0xFF9CA3AF,
                                                       ),
@@ -776,60 +641,15 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                     ),
                                                     // product_category
                                                     ContainerDropDownField(
-                                                      fontSize:
-                                                          context.setSp(14),
-                                                      width:
-                                                          context.screenWidth,
-                                                      // height: context.setHeight(
-                                                      //   40,
-                                                      // ),
-                                                      fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                      borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                      hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                      borderRadius:
-                                                          context.setMinSize(8),
+                                                      
+                                                      
                                                       hintText:
                                                           'product_category',
                                                       labelText:
                                                           'product_category'.tr,
                                                       value:
                                                           product!.soPosCategId,
-                                                      color: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
+                                                      
                                                       iconcolor: const Color(
                                                         0xFF9CA3AF,
                                                       ),
@@ -918,60 +738,13 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           RegExp('[0-9\$]+'),
                                                         ),
                                                       ],
-                                                      width:
-                                                          context.screenWidth,
-                                                      // height: context.setHeight(
-                                                      //   40,
-                                                      // ),
-                                                      fontSize:
-                                                          context.setSp(14),
-                                                      contentPadding:
-                                                          const EdgeInsets
-                                                              .fromLTRB(12,
-                                                              10.0, 12, 10.0),
+                                                      
+                                                      
 
                                                       showLable: true,
-                                                      borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                      fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.43,
-                                                            )
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                      hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                      color: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                          : Colors.black,
+                                                      
                                                       isAddOrEdit: true,
-                                                      borderRadius:
-                                                          context.setMinSize(8),
+                                                      
                                                       // prefixIcon: Padding(
                                                       //   padding: EdgeInsets
                                                       //       .symmetric(
@@ -1001,60 +774,11 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           'default_code'.tr,
                                                       keyboardType:
                                                           TextInputType.text,
-                                                      // textAlign: TextAlign.justify,
-                                                      width:
-                                                          context.screenWidth,
-                                                      // height: context.setHeight(
-                                                      //   40,
-                                                      // ),
-                                                      fontSize:
-                                                          context.setSp(14),
-                                                      contentPadding:
-                                                          const EdgeInsets
-                                                              .fromLTRB(12,
-                                                              10.0, 12, 10.0),
+                                                      
                                                       showLable: true,
-                                                      borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                      fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.43,
-                                                            )
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                      hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                      color: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                          : Colors.black,
+                                                      
                                                       isAddOrEdit: true,
-                                                      borderRadius:
-                                                          context.setMinSize(8),
+                                                      
                                                       // prefixIcon: Padding(
                                                       //   padding: EdgeInsets
                                                       //       .symmetric(
@@ -1073,44 +797,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
 
                                                     // product_type
                                                     ContainerDropDownField(
-                                                      fontSize:
-                                                          context.setSp(14),
-                                                      width:
-                                                          context.screenWidth,
-                                                      // height: context.setHeight(
-                                                      //   40,
-                                                      // ),
-                                                      fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                      borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                      hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                      borderRadius:
-                                                          context.setMinSize(8),
+                                                      
                                                       hintText: 'product_type',
                                                       labelText:
                                                           'product_type'.tr,
@@ -1123,16 +810,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                           ? null
                                                           : product!
                                                               .detailedType,
-                                                      color: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
+                                                      
                                                       iconcolor: const Color(
                                                         0xFF9CA3AF,
                                                       ),
@@ -1170,6 +848,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                             .white
                                                                         : Colors
                                                                             .black,
+                                                                    
                                                                   ),
                                                                 ),
                                                               ),
@@ -1194,58 +873,16 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
 
                                                     // product_unit
                                                     ContainerDropDownField(
-                                                      fontSize:
-                                                          context.setSp(14),
-                                                      width:
-                                                          context.screenWidth,
-                                                      // height: context.setHeight(
-                                                      //   40,
-                                                      // ),
-                                                      fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                          : const Color(
-                                                              0xFF2B2B2B,
-                                                            ),
-                                                      borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB,
-                                                            ),
-                                                      hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF9CA3AF,
-                                                            ),
-                                                      borderRadius:
-                                                          context.setMinSize(8),
+                                                      
+                                                      
+                                                      
+                                                     
+                             
                                                       hintText: 'product_unit',
                                                       labelText:
                                                           'product_unit'.tr,
                                                       value: product!.uomId,
-                                                      color: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040,
-                                                            )
-                                                          : const Color(
-                                                              0xFF6B7280,
-                                                            ),
+                                                      
                                                       iconcolor: const Color(
                                                         0xFF9CA3AF,
                                                       ),
@@ -1340,7 +977,7 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                     ),
                                                               fontSize:
                                                                   context.setSp(
-                                                                12,
+                                                                AppSizes.subTitle,
                                                               ),
                                                               fontFamily:
                                                                   'SansMedium',
@@ -1405,9 +1042,9 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                         ),
                                                                   fontSize: context
                                                                       .setSp(
-                                                                          13),
+                                                                          AppSizes.text),
                                                                   fontFamily:
-                                                                      'Tajawal',
+                                                                      'SansMedium',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -1420,53 +1057,13 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                       ),
                                                     ),
                                                     ContainerDropDownField(
-                                                      fontSize:
-                                                          context.setSp(14),
-                                                      width:
-                                                          context.screenWidth,
-                                                      // height:
-                                                      //     context.setHeight(40),
-                                                      fillColor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                          : const Color(
-                                                              0xFF2B2B2B),
-                                                      borderColor: Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? Colors.white
-                                                              .withValues(
-                                                              alpha: 0.50,
-                                                            )
-                                                          : const Color(
-                                                              0xFFC2C3CB),
-                                                      hintcolor: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040)
-                                                          : const Color(
-                                                              0xFF9CA3AF),
-                                                      borderRadius:
-                                                          context.setMinSize(
-                                                        8,
-                                                      ),
+                                                      
+                                                      
                                                       hintText: 'product_note',
                                                       labelText:
                                                           'product_note'.tr,
                                                       value: null,
-                                                      color: !Get.find<
-                                                                  ThemeController>()
-                                                              .isDarkMode
-                                                              .value
-                                                          ? const Color(
-                                                              0xFF404040)
-                                                          : const Color(
-                                                              0xFF6B7280),
+                                                      
                                                       iconcolor: const Color(
                                                         0xFF9CA3AF,
                                                       ),
@@ -1568,10 +1165,10 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                                                     fontSize:
                                                                         context
                                                                             .setSp(
-                                                                      14,
+                                                                      AppSizes.text,
                                                                     ),
                                                                     fontFamily:
-                                                                        'Tajawal',
+                                                                        'SansMedium',
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
@@ -1618,17 +1215,16 @@ class _CreateEditeProductMobileState extends State<CreateEditeProductMobile> {
                                   children: [
                                     Expanded(
                                       child: ButtonClick(
+                                        height: context.setHeight(AppSizes.buttonHeight),
                                         color: AppColor.appColor,
                                         data: 'save'.tr,
-                                        // (product!.id != null
-                                        //         ? 'edit_product'
-                                        //         : 'add_product')
-                                        //     .tr,
+                                        
                                         onTap: _onPressed,
                                       ),
                                     ),
                                     Expanded(
                                       child: ButtonClick(
+                                        height: context.setHeight(AppSizes.buttonHeight),
                                         color: const Color(0xFF4B5563),
                                         data: "back".tr,
                                         onTap: () {

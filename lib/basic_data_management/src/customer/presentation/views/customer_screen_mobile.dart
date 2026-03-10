@@ -101,10 +101,9 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                       decoration: BoxDecoration(
                         border: Border(
                           bottom: BorderSide(
-                            color:
-                                Get.find<ThemeController>().isDarkMode.value
-                                    ? const Color(0xFF3F3F3F)
-                                    : const Color(0xFFDADADA),
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? const Color(0xFF3F3F3F)
+                                : const Color(0xFFDADADA),
                             width: 1,
                           ),
                         ),
@@ -116,10 +115,9 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                         child: Text(
                           'customer_list'.tr,
                           style: TextStyle(
-                            color:
-                                Get.find<ThemeController>().isDarkMode.value
-                                    ? Colors.white
-                                    : const Color(0xFF0C0C0C),
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? Colors.white
+                                : const Color(0xFF0C0C0C),
                             fontSize: context.setSp(AppSizes.title),
                             fontFamily: 'SansBold',
                             fontWeight: FontWeight.w700,
@@ -142,14 +140,12 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                             : local > remote
                                 ? (remote / (local == 0 ? 1 : local) * 100)
                                     .toStringAsFixed(0)
-                                : ((local / remote) * 100)
-                                    .toStringAsFixed(0));
+                                : ((local / remote) * 100).toStringAsFixed(0));
                         return Container(
                           decoration: ShapeDecoration(
-                            color:
-                                Get.find<ThemeController>().isDarkMode.value
-                                    ? const Color(0xFF292929)
-                                    : Colors.white.withValues(alpha: 0.84),
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? const Color(0xFF292929)
+                                : Colors.white.withValues(alpha: 0.84),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                   context.setMinSize(8.46)),
@@ -189,16 +185,15 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                     value: double.parse(syncData) / 100,
                                     minHeight: 8,
                                     borderRadius: BorderRadius.circular(9999),
-                                    backgroundColor:
-                                        Get.find<ThemeController>()
-                                                .isDarkMode
-                                                .value
-                                            ? const Color(
-                                                0x26F7F7F7,
-                                              )
-                                            : const Color(
-                                                0x268B8B8B,
-                                              ),
+                                    backgroundColor: Get.find<ThemeController>()
+                                            .isDarkMode
+                                            .value
+                                        ? const Color(
+                                            0x26F7F7F7,
+                                          )
+                                        : const Color(
+                                            0x268B8B8B,
+                                          ),
                                     color: Get.find<ThemeController>()
                                             .isDarkMode
                                             .value
@@ -240,11 +235,11 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                             horizontal: 10,
                             onTap: () async {
                               loadingDataController.isUpdate.value = true;
-                
+
                               var result = await synchronizeBasedOnModelType(
                                 type: Loaddata.customers.toString(),
                               );
-                
+
                               if (result == true) {
                                 appSnackBar(
                                   message: 'synchronized'.tr,
@@ -268,12 +263,12 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                   isDismissible: false,
                                 );
                               }
-                
+
                               loadingDataController.update([
                                 'card_loading_data',
                               ]);
                               loadingDataController.update(['loading']);
-                
+
                               loadingDataController.isUpdate.value = false;
                             },
                             color: const Color(0xFFF2AC57),
@@ -316,10 +311,9 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                 Get.find<ThemeController>().isDarkMode.value
                                     ? Colors.white
                                     : const Color(0xFF0C0C0C),
-                            color:
-                                Get.find<ThemeController>().isDarkMode.value
-                                    ? const Color(0xFF292929)
-                                    : const Color(0xFFD5D5D5),
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? const Color(0xFF292929)
+                                : const Color(0xFFD5D5D5),
                           ),
                         ),
                         Expanded(
@@ -353,10 +347,9 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                 Get.find<ThemeController>().isDarkMode.value
                                     ? Colors.white
                                     : const Color(0xFF0C0C0C),
-                            color:
-                                Get.find<ThemeController>().isDarkMode.value
-                                    ? const Color(0xFF292929)
-                                    : const Color(0xFFD5D5D5),
+                            color: Get.find<ThemeController>().isDarkMode.value
+                                ? const Color(0xFF292929)
+                                : const Color(0xFFD5D5D5),
                           ),
                         ),
                       ],
@@ -376,10 +369,9 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                       //   context.setHeight(4.71),
                       // ),
                       showLable: false,
-                      borderColor:
-                          !Get.find<ThemeController>().isDarkMode.value
-                              ? Color(0xFFC2C3CB)
-                              : null,
+                      borderColor: !Get.find<ThemeController>().isDarkMode.value
+                          ? Color(0xFFC2C3CB)
+                          : null,
                       fillColor: !Get.find<ThemeController>().isDarkMode.value
                           ? Colors.white.withValues(alpha: 0.43)
                           : const Color(0xFF2B2B2B),
@@ -394,8 +386,12 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                       prefixIcon: SvgPicture.asset(
                         AppImages.search,
                         package: 'shared_widgets',
-                        height: AppSizes.iconTextField,
-                        width:AppSizes.iconTextField ,
+                        height: context.setHeight(
+                          AppSizes.iconTextField,
+                        ),
+                        width: context.setWidth(
+                          AppSizes.iconTextField,
+                        ),
                       ),
                       onChanged: (text) async {
                         customerController.selectedPagnation = 0;
@@ -418,15 +414,13 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Builder(builder: (context) {
-                          var result = customerController.selectedPagnation ==
-                                  1
+                          var result = customerController.selectedPagnation == 1
                               ? customerController.searchResults.isNotEmpty
                                   ? customerController.seachCustomerPagingList
                                   : customerController.customerpagingList
                               : searchController.text != ''
                                   ? customerController.searchResults
-                                  : customerController
-                                          .searchResults.isNotEmpty
+                                  : customerController.searchResults.isNotEmpty
                                       ? customerController
                                           .seachCustomerPagingList
                                       : customerController.customerpagingList;
@@ -469,28 +463,31 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                             onTap: () {
                               customerController.toggleCustomersViewMode();
                             },
-                            child:
-                                customerController.customersViewMode.value ==
-                                        PagesViewMode.list
-                                    ? Icon(
-                                        Icons.menu,
-                                        color: Get.find<ThemeController>()
-                                                .isDarkMode
-                                                .value
-                                            ? Colors.white
-                                            : Color(0xFF9CA3AF),
-                                      )
-                                    : SvgPicture.asset(
-                                        AppImages.menueGrid,
-                                        package: 'shared_widgets',
-                                        color: Get.find<ThemeController>()
-                                                .isDarkMode
-                                                .value
-                                            ? Colors.white
-                                            : null,
-                                        width: context.setWidth(23.26),
-                                        height: context.setHeight(23.26),
-                                      ),
+                            child: customerController.customersViewMode.value ==
+                                    PagesViewMode.list
+                                ? Icon(
+                                    Icons.menu,
+                                    color: Get.find<ThemeController>()
+                                            .isDarkMode
+                                            .value
+                                        ? Colors.white
+                                        : Color(0xFF9CA3AF),
+                                  )
+                                : SvgPicture.asset(
+                                    AppImages.menueGrid,
+                                    package: 'shared_widgets',
+                                    color: Get.find<ThemeController>()
+                                            .isDarkMode
+                                            .value
+                                        ? Colors.white
+                                        : null,
+                                    width: context.setWidth(
+                                      AppSizes.iconTextField,
+                                    ),
+                                    height: context.setHeight(
+                                      AppSizes.iconTextField,
+                                    ),
+                                  ),
                           );
                         })
                       ],
@@ -505,8 +502,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                             : searchController.text != ''
                                 ? customerController.searchResults
                                 : customerController.searchResults.isNotEmpty
-                                    ? customerController
-                                        .seachCustomerPagingList
+                                    ? customerController.seachCustomerPagingList
                                     : customerController.customerpagingList;
                         return Expanded(
                           child: ListView.builder(
@@ -638,8 +634,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                     item.email ?? "",
                                                     style: TextStyle(
                                                       color: AppColor.appColor,
-                                                      fontSize:
-                                                          context.setSp(AppSizes.text),
+                                                      fontSize: context
+                                                          .setSp(AppSizes.text),
                                                       fontFamily: 'SansBold',
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -653,8 +649,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                     style: TextStyle(
                                                       color: const Color(
                                                           0xFF6B7280),
-                                                      fontSize:
-                                                          context.setSp(AppSizes.text),
+                                                      fontSize: context
+                                                          .setSp(AppSizes.text),
                                                       fontFamily: 'SansRegular',
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -688,8 +684,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                             : searchController.text != ''
                                 ? customerController.searchResults
                                 : customerController.searchResults.isNotEmpty
-                                    ? customerController
-                                        .seachCustomerPagingList
+                                    ? customerController.seachCustomerPagingList
                                     : customerController.customerpagingList;
                         return Expanded(
                           child: GridView.builder(
@@ -761,12 +756,12 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                               .toString())
                                                       ? AssetImage(
                                                           Get.find<ThemeController>()
-                                                                      .isDarkMode
-                                                                      .value
-                                                                  ? AppImages
-                                                                      .personEmptyDark
-                                                                  : AppImages
-                                                                      .personEmptyLight,
+                                                                  .isDarkMode
+                                                                  .value
+                                                              ? AppImages
+                                                                  .personEmptyDark
+                                                              : AppImages
+                                                                  .personEmptyLight,
                                                           package:
                                                               'shared_widgets',
                                                         )
@@ -795,7 +790,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                                       .value
                                                   ? AppColor.white
                                                   : AppColor.black,
-                                              fontSize: context.setSp(AppSizes.text),
+                                              fontSize:
+                                                  context.setSp(AppSizes.text),
                                               fontFamily: 'SansMedium',
                                               fontWeight: FontWeight.w700,
                                               height: 1.43,
@@ -806,7 +802,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                               color: const Color(0xFF6B7280),
-                                              fontSize: context.setSp(AppSizes.text),
+                                              fontSize:
+                                                  context.setSp(AppSizes.text),
                                               fontFamily: 'SansRegular',
                                               fontWeight: FontWeight.w500,
                                               height: 1.50,
@@ -817,7 +814,8 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                               color: const Color(0xFF6B7280),
-                                              fontSize: context.setSp(AppSizes.text),
+                                              fontSize:
+                                                  context.setSp(AppSizes.text),
                                               fontFamily: 'SansRegular',
                                               fontWeight: FontWeight.w500,
                                               height: 1.50,
