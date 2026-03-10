@@ -472,6 +472,7 @@ class _CustomerScreenMobileState extends State<CustomerScreenMobile> {
                                             .value
                                         ? Colors.white
                                         : Color(0xFF9CA3AF),
+                                    
                                   )
                                 : SvgPicture.asset(
                                     AppImages.menueGrid,
