@@ -714,8 +714,8 @@ class ButtonClick extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-            vertical:height != null ? context.setHeight(vertical ?? 6) :0.0,
-            horizontal:height != null ? context.setWidth(horizontal ?? 16) :0.0,
+            vertical:height == null ? context.setHeight(vertical ?? 6) :0.0,
+            horizontal:height == null ? context.setWidth(horizontal ?? 16) :0.0,
           ),
           child: Center(
             child: Row(

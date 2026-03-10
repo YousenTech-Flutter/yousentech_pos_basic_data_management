@@ -968,7 +968,7 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                   children: [
                                     Expanded(
                                       child: ButtonClick(
-                                        
+                                        height: context.setHeight(AppSizes.buttonHeight),
                                         color: AppColor.appColor,
                                         data: 'save'.tr,
                                         // (customer?.id != null)
@@ -979,7 +979,7 @@ class _CreateEditeCustomerMobileState extends State<CreateEditeCustomerMobile> {
                                     ),
                                     Expanded(
                                       child: ButtonClick(
-                                        
+                                        height: context.setHeight(AppSizes.buttonHeight),
                                         color: const Color(0xFF4B5563),
                                         data: "back".tr,
                                         onTap: () {
