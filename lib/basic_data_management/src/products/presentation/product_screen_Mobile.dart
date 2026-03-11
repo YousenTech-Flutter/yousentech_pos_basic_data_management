@@ -397,7 +397,6 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                         Expanded(
                           child: ContainerTextField(
                             controller: searchController,
-                            height: context.setHeight(35.5),
                             labelText: "${'search_product'.tr} .....",
                             hintText: "${'search_product'.tr} .....",
                             keyboardType: TextInputType.text,
@@ -460,7 +459,7 @@ class _ProductScreenMobileState extends State<ProductScreenMobile> {
                               },
                               child: Container(
                                 width: context.setWidth(52),
-                                height: context.setHeight(35.5),
+                                height: context.setHeight(AppSizes.textFieldHeight),
                                 decoration: ShapeDecoration(
                                   color: Get.find<ThemeController>()
                                           .isDarkMode
